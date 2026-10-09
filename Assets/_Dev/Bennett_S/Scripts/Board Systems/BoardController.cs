@@ -27,7 +27,7 @@ public class BoardController : MonoBehaviour
     private TileSelectionController _selectionController;
 
     // 2D array to store Tile Information
-    private TileData[,] _tiles;
+    private Tile[,] _tiles;
 
     // Variable to set the bottom left grid tile to be (0, 0) instead of the center
     private Vector3Int _bottomLeftTileOffset;
@@ -73,20 +73,20 @@ public class BoardController : MonoBehaviour
     {
         _bottomLeftTileOffset = new Vector3Int(-(_gridSize.x / 2), -(_gridSize.y / 2), 0);
 
-        _tiles = new TileData[_gridSize.x, _gridSize.y];
+        _tiles = new Tile[_gridSize.x, _gridSize.y];
 
         for (int i = 0; i < _tiles.GetLength(0); i++)
         {
             for (int j = 0; j < _tiles.GetLength(1); j++)
             {
-                _tiles[i, j] = new TileData();
+                _tiles[i, j] = new Tile();
                 if (!_showTileDataCreation) continue; 
                 Debug.Log($"Created tile data for tile positioned at ({i}, {j})");
             }
         }
     }
 
-    public TileData GetTileDataFromPosition()
+    public Tile GetTileDataFromPosition()
     {
         Vector3Int cellPosition = _grid.WorldToCell(SelectedPosition);
         Vector3Int localCellPosition = cellPosition - _bottomLeftTileOffset;
@@ -96,8 +96,8 @@ public class BoardController : MonoBehaviour
 
     private void PlaceUnit()
     {
-        TileData tileInfo = GetTileDataFromPosition();
-        if (tileInfo.IsOccupied)
+        Tile tileInfo = GetTileDataFromPosition();
+        if (tileInfo.Occupant)
         {
             if (_enableUnitCoordinateDebug)
             {
@@ -106,7 +106,6 @@ public class BoardController : MonoBehaviour
             return;
         }
 
-        Instantiate(_testCreature, _selectionBox.transform.position, Quaternion.identity);
-        tileInfo.IsOccupied = true;
+        tileInfo.Occupant = Instantiate(_testCreature, _selectionBox.transform.position, Quaternion.identity).gameObject;
     }
 }
