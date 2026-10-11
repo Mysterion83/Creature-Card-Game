@@ -1,9 +1,22 @@
+using System;
 using UnityEngine;
 
-public class Tile
+[Serializable]
+public class Tile : MonoBehaviour
 {
-    public TileData Data;
+    public TileData Data 
+    { 
+        set { 
+            Data = value;
+            OnDataUpdate(); 
+        } 
+    }
     public int RegionID;
     // Change to creature
-    public GameObject Occupant;
+    public Creature Occupant;
+
+    private void OnDataUpdate()
+    {
+
+    }
 }

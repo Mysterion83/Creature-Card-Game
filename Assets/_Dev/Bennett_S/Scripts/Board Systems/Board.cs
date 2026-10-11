@@ -50,7 +50,7 @@ public class Board : MonoBehaviour
     private void InitialiseGrid()
     {
         _tiles = new Tile[_gridSize.x, _gridSize.y];
-        
+
         Destroy(_tileContainer); // Does not work
         _tileContainer = new GameObject("TileContainer")
         {

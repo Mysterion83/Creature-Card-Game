@@ -50,6 +50,6 @@ public class BoardController : MonoBehaviour
         Tile tileInfo = _board.GetTileDataFromPosition(SelectedPosition);
         if (tileInfo.Occupant) return;
         
-        tileInfo.Occupant = Instantiate(unit, _selectionBox.transform.position, Quaternion.identity).gameObject;
+        //tileInfo.Occupant = Instantiate(unit, _selectionBox.transform.position, Quaternion.identity).gameObject;
     }
 }
