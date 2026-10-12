@@ -1,13 +1,53 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-[Serializable]
-public struct SavedTileData
+[CreateAssetMenu(fileName = "MapData", menuName = "Project/Map Data")]
+public class SavedMapData : ScriptableObject
 {
-    public int Region;
-    public string TileID;
-    public SavedTileData(int region, string tileID)
+    const ushort CURRENT_MAP_VERSION = 1;
+
+    public ushort MapVersion = CURRENT_MAP_VERSION;
+
+    public string MapName;
+
+    public Vector2Int MapSize;
+
+    public SavedTileData[] Tiles;
+
+
+    [Obsolete("Unfinished Function")]
+    public SavedMapData(Vector2Int mapSize, Tile[,] tiles)
     {
-        Region = region;
-        TileID = tileID;
+        MapVersion = CURRENT_MAP_VERSION;
+        MapSize = mapSize;
+        List<SavedTileData> tilesToSave = new List<SavedTileData>();
+
+        foreach (Tile item in tiles)
+        {
+            SavedTileData tileData = new SavedTileData(item.RegionID, item.Data.ID);
+            tilesToSave.Add(tileData);
+        }
+        Tiles = tilesToSave.ToArray();
+    }
+
+    [Obsolete("Unfinished Function")]
+    public static MapData LoadMapData(SavedMapData data)
+    {
+        MapData mapData = new MapData();
+
+        mapData.MapSize = data.MapSize;
+        mapData.Tiles = new Tile[data.MapSize.x, data.MapSize.y];
+        for (int currentTile = 0; currentTile < data.Tiles.Length; currentTile++)
+        {
+            int CurrentRow = currentTile / mapData.MapSize.x;
+            mapData.Tiles[currentTile % mapData.MapSize.x, CurrentRow] = new Tile
+            {
+                RegionID = data.Tiles[currentTile].Region,
+                Data = TileRegistry.Instance.GetTileData(data.Tiles[currentTile].TileID)
+            };
+        }
+
+        return mapData;
     }
 }

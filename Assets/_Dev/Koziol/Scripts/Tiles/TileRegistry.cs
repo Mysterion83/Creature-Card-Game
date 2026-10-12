@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TileRegistry", menuName = "Scriptable Objects/TileRegistry")]
+[CreateAssetMenu(fileName = "TileRegistry", menuName = "Project/Registries/Tile Registry")]
 public class TileRegistry : ScriptableObject
 {
     public static TileRegistry Instance;

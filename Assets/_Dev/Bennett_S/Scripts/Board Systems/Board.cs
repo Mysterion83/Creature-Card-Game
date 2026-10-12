@@ -17,7 +17,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Material _gridShaderMaterial;
     
     [Header("Grid Settings")]
-    [SerializeField, Min(2)] private Vector2Int _gridSize = new Vector2Int(20, 20);
+    [SerializeField] private MapData _mapData;
     [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
     [SerializeField] private float _gridYOffset = 0.015f;
     [SerializeField] private Color _gridColour = Color.white;
@@ -27,11 +27,6 @@ public class Board : MonoBehaviour
     
     [Header("Test Tile")]
     [SerializeField] private GameObject _tilePrefab;
-
-    [SerializeField] private MapData _mapData;
-
-    // 2D array to store Tile Information
-    private Tile[,] _tiles;
     private GameObject _prevTileContainer;
     private GameObject _tileContainer;
     // Variable to set the bottom left grid tile to be (0, 0) instead of the centre
@@ -41,11 +36,11 @@ public class Board : MonoBehaviour
     
     private void OnValidate()
     {
-        if (_previousGridSize == _gridSize) return;
+        if (_previousGridSize == _mapData.MapSize) return;
         
-        _previousGridSize = _gridSize;
+        _previousGridSize = _mapData.MapSize;
         
-        _bottomLeftTileOffset = new Vector3Int(-(_gridSize.x / 2), -(_gridSize.y / 2), 0);
+        _bottomLeftTileOffset = new Vector3Int(-(_mapData.MapSize.x / 2), -(_mapData.MapSize.y / 2), 0);
         
         EditorApplication.delayCall+=()=>
         {
@@ -53,16 +48,16 @@ public class Board : MonoBehaviour
         };
         
         // Move strings to const class
-        _shaderPlane.localScale = new Vector3(_gridSize.x * 0.1f, 1, _gridSize.y * 0.1f);
+        _shaderPlane.localScale = new Vector3(_mapData.MapSize.x * 0.1f, 1, _mapData.MapSize.y * 0.1f);
         _shaderPlane.position = new Vector3(0, _gridYOffset, 0);
-        //_gridShader.SetVector("_Size", new Vector2(_gridSize.x, _gridSize.y)); // Vector2 to convert into a Vector4 from Vector2Int
+        //_gridShader.SetVector("_Size", new Vector2(_mapData.MapSize.x, _mapData.MapSize.y)); // Vector2 to convert into a Vector4 from Vector2Int
         _gridShaderMaterial.SetFloat("_Thickness", _cellThickness);
         _gridShaderMaterial.SetColor("_Colour", _gridColour);
     }
     
     public void Build()
     {
-        _tiles = new Tile[_gridSize.x, _gridSize.y];
+        _mapData.Tiles = new Tile[_mapData.MapSize.x, _mapData.MapSize.y];
 
         _prevTileContainer = _tileContainer;
         _tileContainer = new GameObject("Tile Container");
@@ -71,14 +66,14 @@ public class Board : MonoBehaviour
         if (_prevTileContainer) Undo.DestroyObjectImmediate(_prevTileContainer);
         Undo.RegisterCreatedObjectUndo(_tileContainer, "Instantiate Tile Container");
         
-        for (int i = 0; i < _tiles.GetLength(0); i++)
+        for (int i = 0; i < _mapData.Tiles.GetLength(0); i++)
         {
-            for (int j = 0; j < _tiles.GetLength(1); j++)
+            for (int j = 0; j < _mapData.Tiles.GetLength(1); j++)
             {
                 Vector3 spawnPosition = _grid.CellToWorld(new Vector3Int(i, j) + _bottomLeftTileOffset);
                 
-                if (_gridSize.x % 2 == 0) spawnPosition.x += 0.5f;
-                if (_gridSize.y % 2 == 0) spawnPosition.z += 0.5f;
+                if (_mapData.MapSize.x % 2 == 0) spawnPosition.x += 0.5f;
+                if (_mapData.MapSize.y % 2 == 0) spawnPosition.z += 0.5f;
                 spawnPosition.y = -0.5f;
                 
                 GameObject created = Instantiate(_tilePrefab, 
@@ -97,7 +92,7 @@ public class Board : MonoBehaviour
                     return;
                 }
 
-                _tiles[i, j] = created.GetComponent<Tile>();;
+                _mapData.Tiles[i, j] = created.GetComponent<Tile>();;
                 tile.Init();
                 
                 if (!_showTileDataCreation) continue; 
@@ -111,7 +106,7 @@ public class Board : MonoBehaviour
         Vector3Int cellPosition = _grid.WorldToCell(position);
         Vector3Int localCellPosition = cellPosition - _bottomLeftTileOffset;
 
-        return _tiles[localCellPosition.x, localCellPosition.y];
+        return _mapData.Tiles[localCellPosition.x, localCellPosition.y];
     }
 
     // Wrapper method to avoid grid component referencing
@@ -124,6 +119,6 @@ public class Board : MonoBehaviour
 [Serializable]
 public struct MapData
 {
-    public Vector2Int MapSize;
+    [SerializeField, Min(2)] public Vector2Int MapSize;
     public Tile[,] Tiles;
 }

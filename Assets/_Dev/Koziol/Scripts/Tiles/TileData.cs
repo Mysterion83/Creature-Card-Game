@@ -1,7 +1,6 @@
-using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TileData", menuName = "Scriptable Objects/TileData")]
+[CreateAssetMenu(fileName = "TileData", menuName = "Project/Tile Data")]
 public class TileData : ScriptableObject
 {
     #region Inspector Styling
