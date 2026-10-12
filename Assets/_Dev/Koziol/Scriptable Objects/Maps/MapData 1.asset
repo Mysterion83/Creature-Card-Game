@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
-  m_Name: TileData
-  m_EditorClassIdentifier: Assembly-CSharp::TileData
-  Name: 
-  Element: 0
-  EffectStrength: 0
-  IsPassable: 0
+  m_Script: {fileID: 0}
+  m_Name: MapData 1
+  m_EditorClassIdentifier: Assembly-CSharp::SavedMapData
+  MapVersion: 0
+  MapName: 
+  MapSize: {x: 0, y: 0}
+  Tiles: []

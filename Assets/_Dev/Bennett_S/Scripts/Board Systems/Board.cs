@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System;
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -26,7 +27,9 @@ public class Board : MonoBehaviour
     
     [Header("Test Tile")]
     [SerializeField] private GameObject _tilePrefab;
-    
+
+    [SerializeField] private MapData _mapData;
+
     // 2D array to store Tile Information
     private Tile[,] _tiles;
     private GameObject _prevTileContainer;
@@ -116,4 +119,11 @@ public class Board : MonoBehaviour
     {
         return _grid.WorldToCell(position);
     }
+}
+
+[Serializable]
+public struct MapData
+{
+    public Vector2Int MapSize;
+    public Tile[,] Tiles;
 }
