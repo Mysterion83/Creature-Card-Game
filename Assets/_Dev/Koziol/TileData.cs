@@ -8,8 +8,7 @@ public class TileData : ScriptableObject
     const string STYLING_HEADER = "<size=200%><margin=0em><align=\"left\"><b>";
     const string STYLING_SUBHEADER = "<size=150%><margin=0em><align=\"left\">";
     #endregion
-
-
+    
     public string Name;
     [Header(STYLING_SUBHEADER+"Element Settings")]
     public ElementType Element;

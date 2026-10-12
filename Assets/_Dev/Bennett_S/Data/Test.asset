@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: Assembly-CSharp::TileData
+  Name: Default Tile
+  Element: 0
+  EffectStrength: 0
+  IsPassable: 1
+  CreatureYOffset: 0
+  RenderObjectPrefab: {fileID: 913468761168207022, guid: 7a2a9f9bc5ab8284ea5a28a8b32cbded, type: 3}
