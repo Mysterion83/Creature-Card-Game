@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07c569e65a416e4796baadb21c3fea4, type: 3}
+  m_Name: TestMapData 1
+  m_EditorClassIdentifier: Assembly-CSharp::SavedMapData
+  MapVersion: 0
+  MapName: Test
+  MapSize: {x: 4, y: 4}
+  Tiles:
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland
+  - Region: 0
+    TileID: Dev_Tiles_Grassland

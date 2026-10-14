@@ -11,13 +11,19 @@ public class Tile : MonoBehaviour
     public Creature Occupant;
 
     private TileData _prevData;
-    private GameObject _model;
-    private GameObject _prevModel;
+    private MeshFilter _meshFilter;
+    private MeshRenderer _meshRenderer;
     
     private void OnValidate()
     {
         if (Data == _prevData) return;
-        OnDataUpdate();
+        //OnDataUpdate();
+    }
+
+    private void Awake()
+    {
+        _meshFilter = GetComponent<MeshFilter>();
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     public void Init()
@@ -30,20 +36,19 @@ public class Tile : MonoBehaviour
         if (!Data) return;
         _prevData = Data;
         
-        _prevModel = _model;
-        _model = Data.RenderObjectPrefab;
-        if (!_model)
+        if (!Data.RenderObjectPrefab)
         {
             Debug.LogWarning($"Tiles using {Data} have no render object prefab, please assign one in {Data}'s Inspector");
             return;
         }
-        _model = Instantiate(_model, transform);
-        
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.delayCall+=()=>
+
+        if (Data.RenderObjectPrefab.TryGetComponent<MeshFilter>(out var meshFilter))
         {
-           if (_prevModel) DestroyImmediate(_prevModel);
-        };
-        #endif
+            _meshFilter.sharedMesh = meshFilter? meshFilter.sharedMesh : null;
+        }
+        if (Data.RenderObjectPrefab.TryGetComponent<MeshRenderer>(out var meshRenderer))
+        {
+            _meshRenderer.sharedMaterial = meshFilter? meshRenderer.sharedMaterial : null;
+        }
     }
 }

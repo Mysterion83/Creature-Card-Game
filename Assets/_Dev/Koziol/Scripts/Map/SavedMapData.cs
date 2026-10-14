@@ -31,23 +31,5 @@ public class SavedMapData : ScriptableObject
         Tiles = tilesToSave.ToArray();
     }
 
-    [Obsolete("Unfinished Function")]
-    public static MapData LoadMapData(SavedMapData data)
-    {
-        MapData mapData = new MapData();
-
-        mapData.MapSize = data.MapSize;
-        mapData.Tiles = new Tile[data.MapSize.x, data.MapSize.y];
-        for (int currentTile = 0; currentTile < data.Tiles.Length; currentTile++)
-        {
-            int CurrentRow = currentTile / mapData.MapSize.x;
-            mapData.Tiles[currentTile % mapData.MapSize.x, CurrentRow] = new Tile
-            {
-                RegionID = data.Tiles[currentTile].Region,
-                Data = TileRegistry.Instance.GetTileData(data.Tiles[currentTile].TileID)
-            };
-        }
-
-        return mapData;
-    }
+    
 }

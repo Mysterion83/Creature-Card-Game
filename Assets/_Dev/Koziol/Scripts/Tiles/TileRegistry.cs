@@ -14,7 +14,6 @@ public class TileRegistry : ScriptableObject
     {
         return _registry[ID];
     }
-
     
     public void OnValidate()
     {

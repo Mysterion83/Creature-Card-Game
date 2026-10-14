@@ -1,124 +1,97 @@
-#if UNITY_EDITOR
 using System;
-using UnityEditor;
-#endif
 using UnityEngine;
 
-// NOTES
-// Board still needs an active runtime state
-// That way easier to track units, functions are present for finding positions and Tile Data
-// Now just needs tile data updating and definition at runtime through board controller
-
+[RequireComponent(typeof(BoardController))]
 public class Board : MonoBehaviour
 {
-    [Header("Board References")]
-    [SerializeField] private Grid _grid;
-    [SerializeField] private Transform _shaderPlane;
-    [SerializeField] private Material _gridShaderMaterial;
-    
-    [Header("Grid Settings")]
-    [SerializeField] private MapData _mapData;
-    [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
-    [SerializeField] private float _gridYOffset = 0.015f;
-    [SerializeField] private Color _gridColour = Color.white;
-
-    [Header("Debug")]
-    [SerializeField] private bool _showTileDataCreation = false;
-    
-    [Header("Test Tile")]
+    [Header("References")]
     [SerializeField] private GameObject _tilePrefab;
-    private GameObject _prevTileContainer;
-    private GameObject _tileContainer;
-    // Variable to set the bottom left grid tile to be (0, 0) instead of the centre
-    private Vector3Int _bottomLeftTileOffset;
-    // Used for validation to auto-build grid
-    private Vector2Int _previousGridSize;
+
+    [SerializeField, Space] private Transform _tileContainer;
+    [SerializeField] private Transform _shaderPlane;
     
-    private void OnValidate()
+    [Header("Map Data to Load")]
+    [SerializeField] private SavedMapData _definitionData;
+    
+    [Header("Settings")]
+    [SerializeField] private float _gridYOffset = 0.015f;
+    
+    private Grid _grid;
+    private MapData _mapData;
+
+    private void Awake()
     {
-        if (_previousGridSize == _mapData.MapSize) return;
-        
-        _previousGridSize = _mapData.MapSize;
-        
-        _bottomLeftTileOffset = new Vector3Int(-(_mapData.MapSize.x / 2), -(_mapData.MapSize.y / 2), 0);
-        
-        EditorApplication.delayCall+=()=>
+        if (!_definitionData)
         {
-            DestroyImmediate(_prevTileContainer);
+            Debug.LogError("Board Loading Error: SavedMapData unassigned, please make sure it is assigned within the inspector.");
+            return;
+        }
+        if (!_tilePrefab)
+        {
+            Debug.LogError("Board Loading Error: Tile prefab unassigned, please make sure it is assigned within the inspector.");
+            return;
+        }
+     
+        _grid = GetComponentInChildren<Grid>();
+    }
+
+    private void Start()
+    {
+        // Load map data and build the board
+        _mapData = LoadMapData(_definitionData);
+        
+        float gridXOffset = (_mapData.MapSize.x % 2 != 0) ? 0.5f : 0f;
+        float gridZOffset = (_mapData.MapSize.y % 2 != 0) ? 0.5f : 0f;
+    
+        // Offset the Grid so WorldToCell and GetCellCenterWorld line up
+        _grid.transform.position = new Vector3(gridXOffset, 0, gridZOffset);
+        
+        // Apply Shaders
+        _shaderPlane.localScale = new Vector3(_mapData.MapSize.x * 0.1f, 1, _mapData.MapSize.y * 0.1f);
+        _shaderPlane.position = new Vector3(0, _shaderPlane.position.y + _gridYOffset, 0);
+    }
+
+    public MapData LoadMapData(SavedMapData data)
+    {
+        MapData mapData = new MapData
+        {
+            MapSize = data.MapSize,
+            Tiles = new Tile[data.MapSize.x, data.MapSize.y]
         };
         
-        // Move strings to const class
-        _shaderPlane.localScale = new Vector3(_mapData.MapSize.x * 0.1f, 1, _mapData.MapSize.y * 0.1f);
-        _shaderPlane.position = new Vector3(0, _gridYOffset, 0);
-        //_gridShader.SetVector("_Size", new Vector2(_mapData.MapSize.x, _mapData.MapSize.y)); // Vector2 to convert into a Vector4 from Vector2Int
-        _gridShaderMaterial.SetFloat("_Thickness", _cellThickness);
-        _gridShaderMaterial.SetColor("_Colour", _gridColour);
-    }
-    
-    public void Build()
-    {
-        _mapData.Tiles = new Tile[_mapData.MapSize.x, _mapData.MapSize.y];
+        Vector3 gridWorldOrigin = _grid.CellToWorld(Vector3Int.zero);
 
-        _prevTileContainer = _tileContainer;
-        _tileContainer = new GameObject("Tile Container");
-        _tileContainer.transform.SetParent(transform);
-        
-        if (_prevTileContainer) Undo.DestroyObjectImmediate(_prevTileContainer);
-        Undo.RegisterCreatedObjectUndo(_tileContainer, "Instantiate Tile Container");
-        
-        for (int i = 0; i < _mapData.Tiles.GetLength(0); i++)
+        for (int currentTile = 0; currentTile < data.Tiles.Length; currentTile++)
         {
-            for (int j = 0; j < _mapData.Tiles.GetLength(1); j++)
+            int currentCol = currentTile % mapData.MapSize.x;
+            int currentRow = currentTile / mapData.MapSize.x;
+            
+            Vector3 centerOffset = new Vector3(data.MapSize.x - 1, 0, data.MapSize.y - 1) * 0.5f;
+            Vector3 localPosition = new Vector3(currentCol, -0.5f, currentRow) - centerOffset;
+            Vector3 spawnPosition = gridWorldOrigin + localPosition;
+
+            GameObject tileInstance = Instantiate(_tilePrefab, 
+                spawnPosition,  
+                Quaternion.identity,
+                _tileContainer);
+            
+            Tile tile = tileInstance.GetComponent<Tile>();
+        
+            if (!tile)
             {
-                Vector3 spawnPosition = _grid.CellToWorld(new Vector3Int(i, j) + _bottomLeftTileOffset);
-                
-                if (_mapData.MapSize.x % 2 == 0) spawnPosition.x += 0.5f;
-                if (_mapData.MapSize.y % 2 == 0) spawnPosition.z += 0.5f;
-                spawnPosition.y = -0.5f;
-                
-                GameObject created = Instantiate(_tilePrefab, 
-                    spawnPosition,  
-                    Quaternion.identity,
-                    _tileContainer.transform);
-                
-                Undo.RegisterCreatedObjectUndo(created, "Create Tile Object");
-                
-                created.transform.SetParent(_tileContainer.transform);
-                Tile tile = created.GetComponent<Tile>();
-
-                if (!tile)
-                {
-                    Debug.LogError($"Board Build Error: Couldn't build tiles as prefab object did not contain a Tile component");
-                    return;
-                }
-
-                _mapData.Tiles[i, j] = created.GetComponent<Tile>();;
-                tile.Init();
-                
-                if (!_showTileDataCreation) continue; 
-                Debug.Log($"Created tile data for tile positioned at ({i}, {j})");
+                Debug.LogError("Board Loading Error: Tile prefab does not contain a Tile component! Please make sure the correct prefab is assigned within the inspector.");
+                break;
             }
+            
+            tile.RegionID = data.Tiles[currentTile].Region;
+            tile.Data = TileRegistry.Instance.GetTileData(data.Tiles[currentTile].TileID);
+        
+            tile.Init();
+            
+            mapData.Tiles[currentCol, currentRow] = tile;
         }
-    }
-    
-    public Tile GetTileDataFromPosition(Vector3 position)
-    {
-        Vector3Int cellPosition = _grid.WorldToCell(position);
-        Vector3Int localCellPosition = cellPosition - _bottomLeftTileOffset;
-
-        return _mapData.Tiles[localCellPosition.x, localCellPosition.y];
+        return mapData;
     }
 
-    // Wrapper method to avoid grid component referencing
-    public Vector3Int GetWorldToCell(Vector3 position)
-    {
-        return _grid.WorldToCell(position);
-    }
-}
-
-[Serializable]
-public struct MapData
-{
-    [SerializeField, Min(2)] public Vector2Int MapSize;
-    public Tile[,] Tiles;
+    public MapData GetData() => _mapData;
 }

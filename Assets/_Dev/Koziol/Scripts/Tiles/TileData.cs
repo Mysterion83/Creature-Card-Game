@@ -11,7 +11,7 @@ public class TileData : ScriptableObject
     public string ID;
 
     public string Name;
-    public string Description;
+    [TextArea, SerializeField] private string Description;
     [Header(STYLING_SUBHEADER+"Element Settings")]
     public ElementType Element;
     [Range(0,3)] public int EffectStrength = 0;

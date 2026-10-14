@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(TileSelectionController))]
-[RequireComponent(typeof(Board))]
 public class BoardController : MonoBehaviour
 {
     [Header("References")]
@@ -15,7 +14,7 @@ public class BoardController : MonoBehaviour
     [SerializeField] private bool _enableUnitCoordinateDebug = false;
     
     private TileSelectionController _selectionController;
-    private Board _board;
+    private Grid _grid;
     
     public Vector3 SelectedPosition { get; private set;  }
 
@@ -32,14 +31,14 @@ public class BoardController : MonoBehaviour
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
-        _board = GetComponent<Board>();
+        _grid = GetComponentInChildren<Grid>();
     }
 
     private void Update()
     {
         SelectedPosition = _selectionController.GetSelectedTilePosition();
-        Vector3Int cellPosition = _board.GetWorldToCell(SelectedPosition);
-        _selectionBox.transform.position = _board.GetWorldToCell(cellPosition);
+        Vector3Int cellPosition = _grid.WorldToCell(SelectedPosition);
+        _selectionBox.position = _grid.GetCellCenterWorld(cellPosition);
     }
     
     [Obsolete("Function does not yet implement the creature class (Placeholder method)")]
@@ -47,8 +46,8 @@ public class BoardController : MonoBehaviour
     {
         Debug.LogWarning("Function not yet integrated with creature system, please implement in future. Returning.");
         
-        Tile tileInfo = _board.GetTileDataFromPosition(SelectedPosition);
-        if (tileInfo.Occupant) return;
+        //Tile tileInfo = _boardBuilder.GetTileDataFromPosition(SelectedPosition);
+        //if (tileInfo.Occupant) return;
         
         //tileInfo.Occupant = Instantiate(unit, _selectionBox.transform.position, Quaternion.identity).gameObject;
     }
