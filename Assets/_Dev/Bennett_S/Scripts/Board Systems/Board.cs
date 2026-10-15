@@ -9,12 +9,15 @@ public class Board : MonoBehaviour
 
     [SerializeField, Space] private Transform _tileContainer;
     [SerializeField] private Transform _shaderPlane;
+    [SerializeField] private Material _gridShaderMaterial;
     
     [Header("Map Data to Load")]
     [SerializeField] private SavedMapData _definitionData;
     
     [Header("Settings")]
     [SerializeField] private float _gridYOffset = 0.015f;
+    [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
+    [SerializeField] private Color _gridColour = Color.white;
     
     private Grid _grid;
     private MapData _mapData;
@@ -46,9 +49,12 @@ public class Board : MonoBehaviour
         // Offset the Grid so WorldToCell and GetCellCenterWorld line up
         _grid.transform.position = new Vector3(gridXOffset, 0, gridZOffset);
         
-        // Apply Shaders
+        // Apply Shader Settings
         _shaderPlane.localScale = new Vector3(_mapData.MapSize.x * 0.1f, 1, _mapData.MapSize.y * 0.1f);
         _shaderPlane.position = new Vector3(0, _shaderPlane.position.y + _gridYOffset, 0);
+        
+        _gridShaderMaterial.SetFloat("_Thickness", _cellThickness);
+        _gridShaderMaterial.SetColor("_Colour", _gridColour);
     }
 
     public MapData LoadMapData(SavedMapData data)
@@ -67,7 +73,7 @@ public class Board : MonoBehaviour
             int currentRow = currentTile / mapData.MapSize.x;
             
             Vector3 centerOffset = new Vector3(data.MapSize.x - 1, 0, data.MapSize.y - 1) * 0.5f;
-            Vector3 localPosition = new Vector3(currentCol, -0.5f, currentRow) - centerOffset;
+            Vector3 localPosition = new Vector3(currentRow, -0.5f, currentCol) - centerOffset;
             Vector3 spawnPosition = gridWorldOrigin + localPosition;
 
             GameObject tileInstance = Instantiate(_tilePrefab, 

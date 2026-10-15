@@ -10,14 +10,12 @@ public class SavedMapData : ScriptableObject
     public ushort MapVersion = CURRENT_MAP_VERSION;
 
     public string MapName;
+    
+    /*[HideInInspector]*/public Vector2Int MapSize;
 
-    public Vector2Int MapSize;
-
-    public SavedTileData[] Tiles;
-
-
-    [Obsolete("Unfinished Function")]
-    public SavedMapData(Vector2Int mapSize, Tile[,] tiles)
+    /*[HideInInspector]*/public SavedTileData[] Tiles;
+    
+    public void Initialise (Vector2Int mapSize, Tile[,] tiles)
     {
         MapVersion = CURRENT_MAP_VERSION;
         MapSize = mapSize;
@@ -30,6 +28,4 @@ public class SavedMapData : ScriptableObject
         }
         Tiles = tilesToSave.ToArray();
     }
-
-    
 }

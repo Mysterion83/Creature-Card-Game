@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1e20856558474e9e99aeef3ec2727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  Data: {fileID: 11400000, guid: efa3c1861cb361441b685ac9b5f17c57, type: 2}
+  Data: {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
   RegionID: -1
   Occupant: {fileID: 0}
 --- !u!65 &3902302056277981238
