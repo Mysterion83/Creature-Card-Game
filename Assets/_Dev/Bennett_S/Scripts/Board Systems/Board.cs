@@ -73,7 +73,7 @@ public class Board : MonoBehaviour
             int currentRow = currentTile / mapData.MapSize.x;
             
             Vector3 centerOffset = new Vector3(data.MapSize.x - 1, 0, data.MapSize.y - 1) * 0.5f;
-            Vector3 localPosition = new Vector3(currentCol, -0.5f, currentRow) - centerOffset;
+            Vector3 localPosition = new Vector3(currentRow, -0.5f, currentCol) - centerOffset;
             Vector3 spawnPosition = gridWorldOrigin + localPosition;
 
             GameObject tileInstance = Instantiate(_tilePrefab, 

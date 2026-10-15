@@ -191,6 +191,8 @@ public class BoardBuilder : MonoBehaviour
         Resize();
     }
     
+    
+    
     public void ConstructSaveData()
     {
         string filePath = $"Assets/{_fileName}.asset";

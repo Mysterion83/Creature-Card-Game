@@ -261,7 +261,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 393065409079913093, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2717472310007726300, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_Name
@@ -273,23 +273,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3071719787645843231, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3071719787645843231, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: _fileName
-      value: New MapSaveData 0
+      value: ShowcaseBoard
       objectReference: {fileID: 0}
     - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: _mapData.MapSize.x
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: _mapData.MapSize.y
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8826718216982101263, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -612,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _definitionData
       value: 
-      objectReference: {fileID: 11400000, guid: 5c13b0d415f901a4ba9fe43c19b27d9f, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
