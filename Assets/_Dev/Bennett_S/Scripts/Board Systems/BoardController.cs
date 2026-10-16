@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(TileSelectionController))]
+[RequireComponent(typeof(TileSelectionController), typeof(Board))]
 public class BoardController : MonoBehaviour
 {
     [Header("References")]
@@ -11,9 +11,10 @@ public class BoardController : MonoBehaviour
     [SerializeField] private Transform _selectionBox;
     
     [Header("Debug")]
-    [SerializeField] private bool _enableUnitCoordinateDebug = false;
+    [SerializeField] private bool _enableCreatureCoordinateDebug = false;
     
     private TileSelectionController _selectionController;
+    private Board _board;
     private Grid _grid;
     
     public Vector3 SelectedPosition { get; private set;  }
@@ -31,6 +32,7 @@ public class BoardController : MonoBehaviour
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
+        _board = GetComponent<Board>();
         _grid = GetComponentInChildren<Grid>();
     }
 
@@ -41,14 +43,29 @@ public class BoardController : MonoBehaviour
         _selectionBox.position = _grid.GetCellCenterWorld(cellPosition);
     }
     
-    [Obsolete("Function does not yet implement the creature class (Placeholder method)")]
-    public void PlaceUnit(GameObject unit)
+    [Obsolete("Function not yet implemented fully")]
+    public void PlaceCreature(Creature creature)
     {
-        Debug.LogWarning("Function not yet integrated with creature system, please implement in future. Returning.");
+        Tile tile = _board.GetTileFromPosition(SelectedPosition);
+        if (tile.Occupant) return;
         
-        //Tile tileInfo = _boardBuilder.GetTileDataFromPosition(SelectedPosition);
-        //if (tileInfo.Occupant) return;
+        //tile.Occupant = Instantiate(unit, _selectionBox.transform.position, Quaternion.identity).gameObject;
+        // if (_enableCreatureCoordinateDebug)
+        // {
+        //     Debug.Log($"Placed Creature: {creature.name} at {SelectedPosition}");
+        // }
+    }
+
+    [Obsolete("Function not yet implemented fully")]
+    public void MoveCreature(Creature creature, Vector3 position)
+    {
+        Tile tile = _board.GetTileFromPosition(position);
+        if (tile.Occupant) return;
         
-        //tileInfo.Occupant = Instantiate(unit, _selectionBox.transform.position, Quaternion.identity).gameObject;
+        // if (_enableCreatureCoordinateDebug)
+        // {
+        //     Debug.Log(position);
+        // }
+        // Movement logic
     }
 }

@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
-// NOTES
-// Board still needs an active runtime state
-// That way easier to track units, functions are present for finding positions and Tile Data
-// Now just needs tile data updating and definition at runtime through board controller
 
 public class BoardBuilder : MonoBehaviour
 {
@@ -15,7 +10,7 @@ public class BoardBuilder : MonoBehaviour
     [SerializeField] private Transform _shaderPlane;
     
     [Header("Build Settings")]
-    [SerializeField] private MapData _mapData;
+    [SerializeField] private MapData _mapData; // Struct type
     [SerializeField] private string _fileName = "New MapSaveData";
 
     [Header("Debug")]
@@ -26,26 +21,20 @@ public class BoardBuilder : MonoBehaviour
     
     private GameObject _prevTileContainer;
     private GameObject _tileContainer;
-    // Variable to set the bottom left grid tile to be (0, 0) instead of the centre
     private Vector3Int _bottomLeftTileOffset;
-    // Used for validation to auto-build grid
     private Vector2Int _previousGridSize;
-
-    private SavedTileData[,] _tilesToLoad;
      
     private void Resize()
     {
-        if (_previousGridSize == _mapData.MapSize) return;
-        
         _previousGridSize = _mapData.MapSize;
-        
         _bottomLeftTileOffset = new Vector3Int(-(_mapData.MapSize.x / 2), -(_mapData.MapSize.y / 2), 0);
                 
-        EditorApplication.delayCall+=()=>
+        EditorApplication.delayCall += () =>
         {
-            DestroyImmediate(_prevTileContainer);
+            if (_prevTileContainer) DestroyImmediate(_prevTileContainer);
         };
 
+        if (!_shaderPlane) return;
         _shaderPlane.localScale = new Vector3(_mapData.MapSize.x * 0.1f, 1, _mapData.MapSize.y * 0.1f);
         _shaderPlane.position = new Vector3(0, 0.015f, 0);
     }
@@ -63,20 +52,18 @@ public class BoardBuilder : MonoBehaviour
         }
         catch (NullReferenceException)
         {
-            Debug.LogError($"\"BoardBuilder Load Error: Couldn't load asset at path {filePath}, object type is not SavedMapData");
+            Debug.LogError($"BoardBuilder Load Error: Couldn't load asset at path {filePath}, object type is not SavedMapData");
             return;
         }
 
-        _tilesToLoad = new SavedTileData[mapToLoad.MapSize.x, mapToLoad.MapSize.y];
-        
         CustomBuild(mapToLoad);
     }
     
     public void DestroyTiles()
     {
-        EditorApplication.delayCall+=()=>
+        EditorApplication.delayCall += () =>
         {
-            DestroyImmediate(_tileContainer);
+            if (_tileContainer) DestroyImmediate(_tileContainer);
         };
     }
     
@@ -93,37 +80,12 @@ public class BoardBuilder : MonoBehaviour
         if (_prevTileContainer) Undo.DestroyObjectImmediate(_prevTileContainer);
         Undo.RegisterCreatedObjectUndo(_tileContainer, "Instantiate Tile Container");
         
-        for (int i = 0; i < _mapData.Tiles.GetLength(0); i++)
+        for (int x = 0; x < _mapData.MapSize.x; x++)
         {
-            for (int j = 0; j < _mapData.Tiles.GetLength(1); j++)
+            for (int y = 0; y < _mapData.MapSize.y; y++)
             {
-                Vector3 spawnPosition = _grid.CellToWorld(new Vector3Int(i, j) + _bottomLeftTileOffset);
-                
-                if (_mapData.MapSize.x % 2 == 0) spawnPosition.x += 0.5f;
-                if (_mapData.MapSize.y % 2 == 0) spawnPosition.z += 0.5f;
-                spawnPosition.y = -0.5f;
-                
-                GameObject created = Instantiate(_defaultTilePrefab, 
-                    spawnPosition,  
-                    Quaternion.identity,
-                    _tileContainer.transform);
-                
-                Undo.RegisterCreatedObjectUndo(created, "Create Tile Object");
-                
-                created.transform.SetParent(_tileContainer.transform);
-                Tile tile = created.GetComponent<Tile>();
-
-                if (!tile)
-                {
-                    Debug.LogError($"Board Build Error: Couldn't build tiles as prefab object did not contain a Tile component");
-                    return;
-                }
-
-                _mapData.Tiles[i, j] = created.GetComponent<Tile>();;
-                tile.Init();
-                
-                if (!_showTileDataCreation) continue; 
-                Debug.Log($"Created tile data for tile positioned at ({i}, {j})");
+                Vector3 spawnPosition = CalculateSpawnPosition(x, y);
+                CreateEditorTile(x, y, spawnPosition, null); // Null as no save data being added
             }
         }
     }
@@ -131,6 +93,9 @@ public class BoardBuilder : MonoBehaviour
     private void CustomBuild(SavedMapData mapToLoad)
     {
         _mapData.MapSize = mapToLoad.MapSize;
+        
+        Resize();
+
         _mapData.Tiles = new Tile[_mapData.MapSize.x, _mapData.MapSize.y];
 
         _prevTileContainer = _tileContainer;
@@ -140,95 +105,91 @@ public class BoardBuilder : MonoBehaviour
         if (_prevTileContainer) Undo.DestroyObjectImmediate(_prevTileContainer);
         Undo.RegisterCreatedObjectUndo(_tileContainer, "Instantiate Tile Container");
         
-        // Convert 1D array to 2D array of Tiles
-        _tilesToLoad = new SavedTileData[mapToLoad.MapSize.x, mapToLoad.MapSize.y];
-        for (int i = 0; i < _tilesToLoad.GetLength(0); i++)
+        for (int x = 0; x < _mapData.MapSize.x; x++)
         {
-            for (int j = 0; j < _tilesToLoad.GetLength(1); j++)
+            for (int y = 0; y < _mapData.MapSize.y; y++)
             {
-                _tilesToLoad[i, j] = mapToLoad.Tiles[i * mapToLoad.MapSize.x + j];
+                int flatIndex = x + (y * mapToLoad.MapSize.x);
+                
+                if (flatIndex >= mapToLoad.Tiles.Length) continue;
+
+                Vector3 spawnPosition = CalculateSpawnPosition(x, y);
+                CreateEditorTile(x, y, spawnPosition, mapToLoad.Tiles[flatIndex]);
             }
         }
+    }
+
+    private Vector3 CalculateSpawnPosition(int x, int y)
+    {
+        Vector3 spawnPosition = _grid.CellToWorld(new Vector3Int(x, y, 0) + _bottomLeftTileOffset);
         
-        // Loop through 2D array of tiles and build them
-        for (int i = 0; i < _tilesToLoad.GetLength(0); i++)
-        {
-            for (int j = 0; j < _tilesToLoad.GetLength(1); j++)
-            {
-                Vector3 spawnPosition = _grid.CellToWorld(new Vector3Int(i, j) + _bottomLeftTileOffset);
-                
-                if (_mapData.MapSize.x % 2 == 0) spawnPosition.x += 0.5f;
-                if (_mapData.MapSize.y % 2 == 0) spawnPosition.z += 0.5f;
-                spawnPosition.y = -0.5f;
-                
-                GameObject created = Instantiate(_defaultTilePrefab, 
-                    spawnPosition,  
-                    Quaternion.identity,
-                    _tileContainer.transform);
-                
-                Undo.RegisterCreatedObjectUndo(created, "Create Tile Object");
-                
-                created.transform.SetParent(_tileContainer.transform);
-                Tile tile = created.GetComponent<Tile>();
+        if (_mapData.MapSize.x % 2 == 0) spawnPosition.x += 0.5f;
+        if (_mapData.MapSize.y % 2 == 0) spawnPosition.z += 0.5f;
+        spawnPosition.y = -0.5f;
 
-                if (!tile)
-                {
-                    Debug.LogError($"Board Build Error: Couldn't build tiles as prefab object did not contain a Tile component");
-                    return;
-                }
-
-                _mapData.Tiles[i, j] = tile;
-
-                tile.Data = TestTileRegistry.Instance.GetTileData(_tilesToLoad[i,j].TileID);
-                tile.Init();
-                
-                if (!_showTileDataCreation) continue; 
-                Debug.Log($"Created tile data for tile positioned at ({i}, {j})");
-            }
-        }
-        
-        Resize();
+        return spawnPosition;
     }
     
-    
+    private void CreateEditorTile(int x, int y, Vector3 spawnPosition, SavedTileData? savedTileData)
+    {
+        GameObject created = Instantiate(_defaultTilePrefab, spawnPosition, Quaternion.identity, _tileContainer.transform);
+        Undo.RegisterCreatedObjectUndo(created, "Create Tile Object");
+        
+        Tile tile = created.GetComponent<Tile>();
+        if (!tile)
+        {
+            Debug.LogError($"Board Build Error: Couldn't build tile at ({x}, {y}) as prefab missing Tile component.");
+            return;
+        }
+
+        _mapData.Tiles[x, y] = tile;
+
+        if (savedTileData.HasValue)
+        {
+            // Extract the actual struct data safely using .Value
+            SavedTileData tileData = savedTileData.Value;
+            tile.RegionID = tileData.Region;
+            tile.Data = TileRegistryV2.Instance.GetTileData(tileData.TileID);
+        }
+
+        tile.Init();
+        
+        if (_showTileDataCreation) Debug.Log($"Created tile data for tile positioned at ({x}, {y})");
+    }
     
     public void ConstructSaveData()
     {
         string filePath = $"Assets/{_fileName}.asset";
-
-        // Attempt to Load, will return null if asset isn't found
-        SavedMapData savedMapData = AssetDatabase.LoadAssetAtPath<SavedMapData>(filePath);
         
-        // Create asset and Initialise
-        savedMapData = ScriptableObject.CreateInstance<SavedMapData>();
+        SavedMapData savedMapData = ScriptableObject.CreateInstance<SavedMapData>();
+        
+        savedMapData.MapSize = _mapData.MapSize;
+        savedMapData.Tiles = new SavedTileData[_mapData.MapSize.x * _mapData.MapSize.y];
+        
+        for (int x = 0; x < _mapData.MapSize.x; x++)
+        {
+            for (int y = 0; y < _mapData.MapSize.y; y++)
+            {
+                int flatIndex = x + (y * _mapData.MapSize.x);
+                Tile currentTile = _mapData.Tiles[x, y];
+                if (currentTile != null)
+                {
+                    savedMapData.Tiles[flatIndex] = new SavedTileData
+                    {
+                        Region = currentTile.RegionID,
+                        TileID = currentTile.Data != null ? currentTile.Data.ID : string.Empty
+                    };
+                }
+            }
+        }
+        
         AssetDatabase.CreateAsset(savedMapData, filePath);
-        savedMapData.Initialise(_mapData.MapSize, _mapData.Tiles);
         
-        // Mark dirty to save changes to disk
         EditorUtility.SetDirty(savedMapData);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-    }
-    
-    public Tile GetTileDataFromPosition(Vector3 position)
-    {
-        Vector3Int cellPosition = _grid.WorldToCell(position);
-        Vector3Int localCellPosition = cellPosition - _bottomLeftTileOffset;
-
-        return _mapData.Tiles[localCellPosition.x, localCellPosition.y];
+        
+        Debug.Log($"Saved saved map to {filePath}!");
     }
 }
 #endif
-
-[Serializable]
-public struct MapData
-{
-    [SerializeField, Min(2)] public Vector2Int MapSize;
-    public Tile[,] Tiles;
-
-    public MapData(Vector2Int mapSize, Tile[,] tiles)
-    {
-        MapSize = mapSize;
-        Tiles = tiles;
-    }
-}
