@@ -1,9 +1,8 @@
-#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
 // NOTES
 // Board still needs an active runtime state
 // That way easier to track units, functions are present for finding positions and Tile Data

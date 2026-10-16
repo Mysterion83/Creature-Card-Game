@@ -90,7 +90,7 @@ public class Board : MonoBehaviour
             }
             
             tile.RegionID = data.Tiles[currentTile].Region;
-            tile.Data = TileRegistry.Instance.GetTileData(data.Tiles[currentTile].TileID);
+            tile.Data = TestTileRegistry.Instance.GetTileData(data.Tiles[currentTile].TileID);
         
             tile.Init();
             
