@@ -179,7 +179,7 @@ public class BoardBuilder : MonoBehaviour
 
                 _mapData.Tiles[i, j] = tile;
 
-                tile.Data = TileRegistry.Instance.GetTileData(_tilesToLoad[i,j].TileID);
+                tile.Data = TestTileRegistry.Instance.GetTileData(_tilesToLoad[i,j].TileID);
                 tile.Init();
                 
                 if (!_showTileDataCreation) continue; 
