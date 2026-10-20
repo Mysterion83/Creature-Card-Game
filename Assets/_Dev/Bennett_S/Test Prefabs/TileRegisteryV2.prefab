@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6524695950291570901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9035889292823556187}
+  - component: {fileID: 3546081570622767405}
+  m_Layer: 0
+  m_Name: TileRegisteryV2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9035889292823556187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524695950291570901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3546081570622767405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524695950291570901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be21d0a0f3db1614a9b2de1f1f947caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestTileRegistry
+  _defaultTiles:
+  - {fileID: 11400000, guid: 678162512b1a03f448a8ed9264519c22, type: 2}
+  - {fileID: 11400000, guid: bf770746effa4404a965604f5fedabbb, type: 2}
+  - {fileID: 11400000, guid: 0dba9bc5f0740124db1d40f0de15bc32, type: 2}
+  - {fileID: 11400000, guid: efa3c1861cb361441b685ac9b5f17c57, type: 2}
+  - {fileID: 11400000, guid: 2605604d2fb68e548923c7b6f5569e47, type: 2}
+  - {fileID: 11400000, guid: d73e17bf3cad7a04e93ac2fa6fedf69a, type: 2}
+  - {fileID: 11400000, guid: 5ff5fd67d14e8c547a112d4502b12d45, type: 2}
+  - {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
+  - {fileID: 11400000, guid: 12b454599ea86f24ba7456aa487a2a36, type: 2}
+  - {fileID: 11400000, guid: 80aa5f0d8e735464a8263da3e301e0d5, type: 2}
+  - {fileID: 11400000, guid: d05ca60b73f3e98408866aea43fc6edb, type: 2}
+  - {fileID: 11400000, guid: b981382cc9835b7479accb227bcc84dd, type: 2}
+  - {fileID: 11400000, guid: 1859ee7dd0470fb469d0f7a23b870e44, type: 2}
+  - {fileID: 11400000, guid: 9d082893e631f59438eedc18b8a67d11, type: 2}
+  - {fileID: 11400000, guid: 3817248a68f3bf046978feb4e5d48def, type: 2}
+  _registry:
+  - key: Dev_Tiles_Earth_Base_S1
+    value: {fileID: 11400000, guid: 678162512b1a03f448a8ed9264519c22, type: 2}
+  - key: Dev_Tiles_Earth_Base_S2
+    value: {fileID: 11400000, guid: bf770746effa4404a965604f5fedabbb, type: 2}
+  - key: Dev_Tiles_Earth_Base_S3
+    value: {fileID: 11400000, guid: 0dba9bc5f0740124db1d40f0de15bc32, type: 2}
+  - key: Dev_Tiles_Empty
+    value: {fileID: 11400000, guid: efa3c1861cb361441b685ac9b5f17c57, type: 2}
+  - key: Dev_Tiles_Fire_Base_S1
+    value: {fileID: 11400000, guid: 2605604d2fb68e548923c7b6f5569e47, type: 2}
+  - key: Dev_Tiles_Fire_Base_S2
+    value: {fileID: 11400000, guid: d73e17bf3cad7a04e93ac2fa6fedf69a, type: 2}
+  - key: Dev_Tiles_Fire_Base_S3
+    value: {fileID: 11400000, guid: 5ff5fd67d14e8c547a112d4502b12d45, type: 2}
+  - key: Dev_Tiles_Grassland
+    value: {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
+  - key: Dev_Tiles_Test
+    value: {fileID: 11400000, guid: 12b454599ea86f24ba7456aa487a2a36, type: 2}
+  - key: Dev_Tiles_Water_Base_S1
+    value: {fileID: 11400000, guid: 80aa5f0d8e735464a8263da3e301e0d5, type: 2}
+  - key: Dev_Tiles_Water_Base_S2
+    value: {fileID: 11400000, guid: d05ca60b73f3e98408866aea43fc6edb, type: 2}
+  - key: Dev_Tiles_Water_Base_S3
+    value: {fileID: 11400000, guid: b981382cc9835b7479accb227bcc84dd, type: 2}
+  - key: Dev_Tiles_Wind_Base_S1
+    value: {fileID: 11400000, guid: 1859ee7dd0470fb469d0f7a23b870e44, type: 2}
+  - key: Dev_Tiles_Wind_Base_S2
+    value: {fileID: 11400000, guid: 9d082893e631f59438eedc18b8a67d11, type: 2}
+  - key: Dev_Tiles_Wind_Base_S3
+    value: {fileID: 11400000, guid: 3817248a68f3bf046978feb4e5d48def, type: 2}
