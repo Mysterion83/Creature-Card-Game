@@ -129,6 +129,7 @@ MonoBehaviour:
   _shaderPlane: {fileID: 8173792111331296509}
   _gridShaderMaterial: {fileID: -876546973899608171, guid: 65518d819b3773245918daa1a4c63409, type: 3}
   _definitionData: {fileID: 11400000, guid: 14055ca37d3096241992ffcec254f56a, type: 2}
+  _tileSpawnOffset: {x: 0, y: 0.25, z: 0}
   _gridYOffset: 0.015
   _cellThickness: 0.1
   _gridColour: {r: 1, g: 1, b: 1, a: 1}
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoardController
   _input: {fileID: 0}
   _selectionBox: {fileID: 0}
-  _enableUnitCoordinateDebug: 0
+  _enableCreatureCoordinateDebug: 0
 --- !u!114 &3248407830656798115
 MonoBehaviour:
   m_ObjectHideFlags: 0

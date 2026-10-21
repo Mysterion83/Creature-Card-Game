@@ -1005,7 +1005,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6524695950291570901, guid: eb3198885300366488c726f41e2e2cfd, type: 3}
       propertyPath: m_Name
-      value: test
+      value: Tile Registry
       objectReference: {fileID: 0}
     - target: {fileID: 9035889292823556187, guid: eb3198885300366488c726f41e2e2cfd, type: 3}
       propertyPath: m_LocalPosition.x
