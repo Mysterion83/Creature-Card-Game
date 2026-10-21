@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CreatureData", menuName = "Scriptable Objects/CreatureData")]
+[CreateAssetMenu(fileName = "CreatureData", menuName = "Project/CreatureData")]
 public class CreatureData : ScriptableObject
 {
     #region Inspector Styling
