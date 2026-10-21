@@ -7,24 +7,24 @@ public class BoardController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputHandler _input;
-
-    [HideInInspector] private GameControls _inputMapping;
-
-    [Header("Selection References")]
+    
+    [Header("Selection Settings")]
     [SerializeField] private Transform _selectionBox;
+    [SerializeField] private float _selectionBoxHoverHeight = 0.5f; 
     
     [Header("Debug")]
     [SerializeField] private bool _enableCreatureCoordinateDebug = false;
 
     [SerializeField] public CreatureData TestingSpawner;
     
+    private GameControls _inputMapping;
     private TileSelectionController _selectionController;
     private Board _board;
     private Grid _grid;
 
     [SerializeField] private Tile _selectedTile;
 
-    public Vector3 SelectedPosition { get; private set;  }
+    public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     private void OnEnable()
     {
@@ -50,11 +50,34 @@ public class BoardController : MonoBehaviour
 
     private void Update()
     {
-        SelectedPosition = _selectionController.GetSelectedTilePosition();
-        Vector3Int cellPosition = _grid.WorldToCell(SelectedPosition);
-        _selectionBox.position = _grid.GetCellCenterWorld(cellPosition);
+        HandleTileSelection();
     }
 
+    private void HandleTileSelection()
+    {
+        if (_selectionController.TryGetSelectedWorldPosition(out Vector3 mouseWorldPosition))
+        {
+            Tile tile = _board.GetTileFromPosition(mouseWorldPosition);
+
+            if (tile && _board.IsIndexInBounds(tile.TileIndex))
+            {
+                if (!_selectionBox.gameObject.activeSelf) _selectionBox.gameObject.SetActive(true);
+                
+                Vector3 targetPosition = tile.transform.position;
+                targetPosition.y += _selectionBoxHoverHeight;
+                
+                _selectionBox.position = targetPosition;
+                return;
+            }
+        }
+        
+        // Disable selection if outside the board
+        if (_selectionBox.gameObject.activeSelf)
+        {
+            _selectionBox.gameObject.SetActive(false);
+        }
+    }
+    
     public void OnSelectionPressed(InputAction.CallbackContext context)
     {
         if (!_selectedTile)
@@ -82,7 +105,7 @@ public class BoardController : MonoBehaviour
             return null;
         }
 
-        GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, _selectionBox.transform.position, Quaternion.identity);
+        GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, _selectionBox.position, Quaternion.identity);
         if (!creatureObj.TryGetComponent(out Creature creature))
         {
             Debug.LogError($"Prefab '{creatureObj.name}' does not have a creature component.");
