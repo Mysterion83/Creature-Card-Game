@@ -23317,6 +23317,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 291963297}
     - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
+      propertyPath: TestingSpawner
+      value: 
+      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
+    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _testCreatureData
       value: 
       objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}

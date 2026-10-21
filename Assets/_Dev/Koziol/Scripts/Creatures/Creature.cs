@@ -7,6 +7,8 @@ public class Creature : MonoBehaviour
 
     public CreatureData Data;
 
+    public Tile OccupyingTile;
+
     public float CurrentHealth;
     public float Experience;
 
@@ -32,16 +34,9 @@ public class Creature : MonoBehaviour
     {
         return Data.MovementPattern.ValidPositions;
     }
-
-    [Obsolete("Outdated")]
-    public bool AttemptMove(Vector2Int targetPosition, Vector2Int currentPosition)
+    public Vector2Int[] ShowValidAttacks()
     {
-        if (Data.MovementPattern.ValidatePosition(targetPosition, currentPosition))
-        {
-            transform.position = new Vector3(targetPosition.x, targetPosition.y, 0);
-            return true;
-        }
-        return false;
+        return Data.AttackPattern.ValidPositions;
     }
 
     public Creature(CreatureData data, PlayerData owner)

@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
 {
     private PlayerInput _input;
     public event Action OnPlacement;
+    public event Action OnSelectTile;
 
     private void Awake()
     {
@@ -16,5 +17,9 @@ public class InputHandler : MonoBehaviour
     public void OnPlaceUnit()
     {
         OnPlacement?.Invoke();
+    }
+    public void OnSelectTileInput()
+    {
+        OnSelectTile?.Invoke();
     }
 }
