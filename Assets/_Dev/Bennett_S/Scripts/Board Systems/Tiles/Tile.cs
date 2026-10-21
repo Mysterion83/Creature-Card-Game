@@ -7,11 +7,14 @@ using UnityEngine;
 [ExecuteAlways]
 public class Tile : MonoBehaviour
 {
-    [Header("Tile Definition")] public TileData Data;
+    [Header("Tile Definition")] 
+    public TileData Data;
 
-    [Header("Active Info")] public int RegionID = -1;
+    [Header("Active Info")] 
+    public int RegionID = -1;
     public Creature Occupant;
-
+    public Vector2Int TileIndex;
+    
     private TileData _prevData;
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;

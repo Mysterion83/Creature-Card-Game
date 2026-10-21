@@ -12,7 +12,10 @@ public class Board : MonoBehaviour
     [Header("Map Data to Load")]
     [SerializeField] private SavedMapData _definitionData;
     
-    [Header("Settings")]
+    [Header("Generation Settings")]
+    [SerializeField] private Vector3 _tileSpawnOffset = new Vector3(0, 0.5f, 0);
+    
+    [Header("Shader Settings")]
     [SerializeField] private float _gridYOffset = 0.015f;
     [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
     [SerializeField] private Color _gridColour = Color.white;
@@ -94,12 +97,13 @@ public class Board : MonoBehaviour
                 spawnPosition.y = -0.5f;
                 
                 // Create Tile
-                GameObject tileInstance = Instantiate(_tilePrefab, spawnPosition, Quaternion.identity, _tileContainer);
+                GameObject tileInstance = Instantiate(_tilePrefab, spawnPosition + _tileSpawnOffset, Quaternion.identity, _tileContainer);
                 Tile tile = tileInstance.GetComponent<Tile>();
-            
-                tile.RegionID = savedTileData.Region;
+                
                 tile.Data = TileRegistryV2.Instance.GetTileData(savedTileData.TileID);
-            
+                tile.TileIndex = new Vector2Int(x, y);
+                tile.RegionID = savedTileData.Region;
+                
                 tile.Init();
                 
                 mapData.Tiles[x, y] = tile;
@@ -119,18 +123,15 @@ public class Board : MonoBehaviour
     {
         if (_mapData.Tiles == null) return null;
         
-        float halfWidth = _mapData.MapSize.x / 2f;
-        float halfHeight = _mapData.MapSize.y / 2f;
-        
-        Vector3 localPos = _grid.transform.InverseTransformPoint(worldPosition);
-
-        int xIndex = Mathf.FloorToInt(localPos.x + halfWidth);
-        int yIndex = Mathf.FloorToInt(localPos.z + halfHeight);
-
-        if (xIndex >= 0 && xIndex < _mapData.MapSize.x && 
-            yIndex >= 0 && yIndex < _mapData.MapSize.y)
+        Collider[] colliders = Physics.OverlapSphere(worldPosition, 0.1f);
+    
+        foreach (var col in colliders)
         {
-            return _mapData.Tiles[xIndex, yIndex];
+            if (col.TryGetComponent<Tile>(out Tile tile))
+            {
+                // Instantly pull the exact array slot without any division or truncation math
+                return _mapData.Tiles[tile.TileIndex.x, tile.TileIndex.y];
+            }
         }
 
         return null;
