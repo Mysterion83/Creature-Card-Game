@@ -18,5 +18,5 @@ MonoBehaviour:
   Element: 4
   EffectStrength: 3
   IsPassable: 1
-  CreatureYOffset: 0
+  CreatureYOffset: 1
   RenderObjectPrefab: {fileID: 5128458099396384883, guid: 21765460f53d5c74cb69dbbf2fb2c97c, type: 3}
