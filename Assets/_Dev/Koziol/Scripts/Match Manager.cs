@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using Random = UnityEngine.Random;
 
 public class MatchManager : MonoBehaviour
 {

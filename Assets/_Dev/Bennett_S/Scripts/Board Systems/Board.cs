@@ -136,7 +136,6 @@ public class Board : MonoBehaviour
         {
             if (col.TryGetComponent<Tile>(out Tile tile))
             {
-                // Instantly pull the exact array slot without any division or truncation math
                 return _mapData.Tiles[tile.TileIndex.x, tile.TileIndex.y];
             }
         }
