@@ -1,112 +1,164 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(TileSelectionController))]
+[RequireComponent(typeof(TileSelectionController), typeof(Board))]
 public class BoardController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputHandler _input;
-
-    [Header("Grid References")]
-    [SerializeField] private Grid _grid;
-    [SerializeField] private Transform _testCreature;
+    
+    [Header("Selection Settings")]
     [SerializeField] private Transform _selectionBox;
-    [SerializeField] private Transform _scalingParent;
-    [SerializeField, Space] private Transform _shaderPlane;
-    [SerializeField] private Material _gridShaderMaterial;
-
-    [Header("Grid Settings")]
-    [SerializeField, Min(2)] private Vector2Int _gridSize = new Vector2Int(20, 20);
-    [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
-    [SerializeField] private float _gridYOffset = 0.015f;
-    [SerializeField] private Color _gridColour = Color.white;
-
+    [SerializeField] private float _selectionBoxHoverHeight = 0.5f; 
+    
     [Header("Debug")]
-    [SerializeField] private bool _showTileDataCreation = false;
-    [SerializeField] private bool _enableUnitCoordinateDebug = false;
+    [SerializeField] private bool _enableCreatureCoordinateDebug = false;
 
+    [SerializeField] public CreatureData TestingSpawner;
+    
+    private GameControls _inputMapping;
     private TileSelectionController _selectionController;
+    private Board _board;
+    private Grid _grid;
 
-    // 2D array to store Tile Information
-    private TileData[,] _tiles;
+    [SerializeField] private Tile _selectedTile;
 
-    // Variable to set the bottom left grid tile to be (0, 0) instead of the center
-    private Vector3Int _bottomLeftTileOffset;
-
-    public Vector3 SelectedPosition { get; private set;  }
+    public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     private void OnEnable()
     {
-        _input.OnPlacement += PlaceUnit;
+        _inputMapping.Enable();
+        _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
+        _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
     }
 
     private void OnDisable()
     {
-        _input.OnPlacement -= PlaceUnit;
+        _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
+        _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
+        _inputMapping.Disable();
     }
-
-    private void OnValidate()
-    {
-        // Move strings to const class
-        _scalingParent.localScale = new Vector3(_gridSize.x * 0.1f, 1, _gridSize.y * 0.1f);
-        _shaderPlane.position = new Vector3(0, _gridYOffset, 0);
-        //_gridShader.SetVector("_Size", new Vector2(_gridSize.x, _gridSize.y)); // Vector2 to convert into a Vector4 from Vector2Int
-        _gridShaderMaterial.SetFloat("_Thickness", _cellThickness);
-        _gridShaderMaterial.SetColor("_Colour", _gridColour);
-    }
-
+    
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
-
-        InitialiseGrid();
+        _board = GetComponent<Board>();
+        _grid = GetComponentInChildren<Grid>();
+        _inputMapping = new GameControls();
     }
 
     private void Update()
     {
-        SelectedPosition = _selectionController.GetSelectedTilePosition();
-        Vector3Int cellPosition = _grid.WorldToCell(SelectedPosition);
-        _selectionBox.transform.position = _grid.GetCellCenterWorld(cellPosition);
-        _testCreature.transform.position = _grid.CellToWorld(cellPosition);
+        HandleTileSelection();
     }
 
-    private void InitialiseGrid()
+    private void HandleTileSelection()
     {
-        _bottomLeftTileOffset = new Vector3Int(-(_gridSize.x / 2), -(_gridSize.y / 2), 0);
-
-        _tiles = new TileData[_gridSize.x, _gridSize.y];
-
-        for (int i = 0; i < _tiles.GetLength(0); i++)
+        if (_selectionController.TryGetSelectedWorldPosition(out Vector3 mouseWorldPosition))
         {
-            for (int j = 0; j < _tiles.GetLength(1); j++)
+            Tile tile = _board.GetTileFromPosition(mouseWorldPosition);
+
+            if (tile && _board.IsIndexInBounds(tile.TileIndex))
             {
-                _tiles[i, j] = new TileData();
-                if (!_showTileDataCreation) continue; 
-                Debug.Log($"Created tile data for tile positioned at ({i}, {j})");
+                if (!_selectionBox.gameObject.activeSelf) _selectionBox.gameObject.SetActive(true);
+                
+                Vector3 targetPosition = tile.transform.position;
+                targetPosition.y += _selectionBoxHoverHeight;
+                
+                _selectionBox.position = targetPosition;
+                return;
             }
+        }
+        
+        // Disable selection if outside the board
+        if (_selectionBox.gameObject.activeSelf)
+        {
+            _selectionBox.gameObject.SetActive(false);
+        }
+    }
+    
+    public void OnSelectionPressed(InputAction.CallbackContext context)
+    {
+        if (!_selectedTile)
+        {
+            SelectCreature();
+        }
+        else
+        {
+            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
+            _selectedTile = null;
         }
     }
 
-    public TileData GetTileDataFromPosition()
+    public void PlaceCreature(InputAction.CallbackContext context)
     {
-        Vector3Int cellPosition = _grid.WorldToCell(SelectedPosition);
-        Vector3Int localCellPosition = cellPosition - _bottomLeftTileOffset;
-
-        return _tiles[localCellPosition.x, localCellPosition.y];
+        PlaceCreature(TestingSpawner);
     }
-
-    private void PlaceUnit()
+    
+    public Creature PlaceCreature(CreatureData creatureData)
     {
-        TileData tileInfo = GetTileDataFromPosition();
-        if (tileInfo.IsOccupied)
+        Tile tile = _board.GetTileFromPosition(SelectedPosition);
+        if (tile.Occupant || !tile.Data.IsPassable)
         {
-            if (_enableUnitCoordinateDebug)
-            {
-                Debug.Log($"Placement position: {_grid.WorldToCell(SelectedPosition) - _bottomLeftTileOffset} | Array Space | {_grid.WorldToCell(SelectedPosition)} | Grid Component Space | is occupied, returning.");
-            }
-            return;
+            Debug.Log("Position is Occupied or Impassable, returning");
+            return null;
         }
 
-        Instantiate(_testCreature, _selectionBox.transform.position, Quaternion.identity);
-        tileInfo.IsOccupied = true;
+        GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, _selectionBox.position, Quaternion.identity);
+        if (!creatureObj.TryGetComponent(out Creature creature))
+        {
+            Debug.LogError($"Prefab '{creatureObj.name}' does not have a creature component.");
+            return null;
+        }
+        tile.Occupant = creature;
+        creature.OccupyingTile = tile;
+
+        if (_enableCreatureCoordinateDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition}");
+        
+        return creature;
+    }
+
+    [Obsolete("Function not yet implemented fully")]
+    public void MoveCreature(Creature creature, Tile target)
+    {
+        if (target.Occupant || !target.Data.IsPassable) return;
+        
+        Vector2Int[] validMoves = creature.ShowValidMovement();
+        // if there are no valid moves, return
+        if (validMoves.Length == 0) return;
+
+        Vector2Int relativeTargetPoistion = target.TileIndex - creature.OccupyingTile.TileIndex;
+        // if the target tile is not in the valid moves, return
+        if (!Array.Exists(validMoves, move => move == relativeTargetPoistion)) return;
+
+        creature.OccupyingTile.Occupant = null;
+        target.Occupant = creature;
+        creature.OccupyingTile = target;
+        creature.transform.position = target.transform.position;
+        creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
+
+        // Debug logic
+        if (_enableCreatureCoordinateDebug)
+        {
+            Debug.Log(target.gameObject.transform.position);
+        }
+    }
+
+    [Obsolete("Function not yet implemented fully")]
+    public void PreviewPattern(Tile tile, bool isAttack)
+    {
+        if (!tile.Occupant) return;
+
+        Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
+
+        //Render Pattern on the board
+    }
+
+    public void SelectCreature()
+    {
+        Tile tile = _board.GetTileFromPosition(SelectedPosition);
+        if (!tile.Occupant) return;
+        _selectedTile = tile;
     }
 }
