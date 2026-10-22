@@ -25,4 +25,8 @@ public class TileData : ScriptableObject
     [Header(STYLING_SUBHEADER + "Rendering Settings")]
     // Prefab used for rendering the Tile
     public GameObject RenderObjectPrefab;
+
+
+    // Possibly change to be determined by a game rule
+    public float AttackerTileModifier => EffectStrength * 0.1f + 1;
 }

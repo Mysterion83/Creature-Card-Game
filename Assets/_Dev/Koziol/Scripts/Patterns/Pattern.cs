@@ -5,7 +5,7 @@ using static UnityEngine.Mathf;
 [CreateAssetMenu(fileName = "Pattern", menuName = "Project/Pattern")]
 public class Pattern : ScriptableObject
 {
-    public Vector2Int[] ValidPositions => _cachedValidPositions != null ? _cachedValidPositions : EvalulateValidPositions();
+    public Vector2Int[] ValidPositions => _cachedValidPositions.Length > 0 ? _cachedValidPositions : EvalulateValidPositions();
 
     //Cached All Positions for Performance
     private Vector2Int[] _cachedValidPositions;
