@@ -1,0 +1,65 @@
+{
+    "version": 1,
+    "name": "GameControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "02bd806f-46bf-4758-9007-f9cc89703da9",
+            "actions": [
+                {
+                    "name": "OnSelect",
+                    "type": "Button",
+                    "id": "38ed2276-1c79-4312-89bc-2a159546cbc2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0562b7c0-0a5a-4da4-afe5-adb5715ddd8c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dev",
+            "id": "980e8f69-a1d2-4718-9228-8e028659032b",
+            "actions": [
+                {
+                    "name": "Spawn Unit",
+                    "type": "Button",
+                    "id": "a4095a86-35c2-41be-a66d-c1b07b7e6ff0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7e7d4189-d589-4363-b8eb-f5771885115d",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spawn Unit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

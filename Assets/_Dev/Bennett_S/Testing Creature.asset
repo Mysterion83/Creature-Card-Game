@@ -19,8 +19,8 @@ MonoBehaviour:
   Defense: 9999
   EnergyCost: 0
   PurchaseCost: 0
-  AttackPattern: {fileID: 0}
-  MovementPattern: {fileID: 0}
+  AttackPattern: {fileID: 11400000, guid: 8d0f08983cdc9104eb38b2be3bc5385b, type: 2}
+  MovementPattern: {fileID: 11400000, guid: 8d0f08983cdc9104eb38b2be3bc5385b, type: 2}
   CreaturePrefab: {fileID: 2419497795459266344, guid: bb8b971bbda707540867b55222c93a0d, type: 3}
   CardPrefab: {fileID: 0}
   XpToEvolve: 0

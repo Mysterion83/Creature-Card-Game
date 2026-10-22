@@ -11,6 +11,7 @@ public class CreatureData : ScriptableObject
     [Header(STYLING_HEADER + "Creature Info")]
     public string CreatureName;
     public Element Element;
+    public CreatureType Type;
 
     public float MaxHealth;
     public float Attack;
