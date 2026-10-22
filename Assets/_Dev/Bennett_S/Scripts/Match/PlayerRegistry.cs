@@ -1,4 +1,4 @@
-using System.Collections.Generic; 
+using System.Collections.Generic;
 
 /// <summary>
 /// Static class for player initialisation
@@ -15,7 +15,7 @@ public static class PlayerRegistry
     private static readonly List<IPlayer> _masterList = new();
     public static IReadOnlyList<IPlayer> MasterList => _masterList;
 
-    public static int TotalPlayers => _masterList.Count;
+    public static int PlayerCount => _masterList.Count;
 
     /// <summary>
     /// Registers a player into the registry.

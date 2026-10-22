@@ -54,13 +54,3 @@ public enum MatchPhase
     Summon = 0,
     Gameplay = 1,
 }
-
-[Serializable]
-public class PlayerData
-{
-    public string Name;
-    public bool IsAI;
-    public float Energy;
-    public float MaxEnergy;
-    //public List<Card> Hand;
-}
