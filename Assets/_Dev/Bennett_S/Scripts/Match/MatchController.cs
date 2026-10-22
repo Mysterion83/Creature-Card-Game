@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MatchController : MonoBehaviour
@@ -18,6 +19,11 @@ public class MatchController : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    private void OnDestroy()
+    {
+        PlayerRegistry.Clear();
     }
 }
 

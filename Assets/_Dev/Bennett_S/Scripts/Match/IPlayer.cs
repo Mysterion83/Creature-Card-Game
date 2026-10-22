@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IPlayer
 {
-    string Name { get; }
+    PlayerData Data { get; }
     
     void StartTurn();
     void EndTurn();

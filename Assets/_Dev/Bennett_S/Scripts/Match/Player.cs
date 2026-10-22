@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IPlayer
 {
-    [SerializeField] string _playerName;
-    public string Name => _playerName;
-
+    [SerializeField] private PlayerData _data;
+    public PlayerData Data => _data;
+    
     private void OnEnable()
     {
-        PlayerRegistry.RegisterPlayer(this);
+        PlayerRegistry.RegisterPlayer(_data.Name, this);
     }
 
     private void OnDisable()
     {
-        PlayerRegistry.UnregisterPlayer(this);
+        PlayerRegistry.UnregisterPlayer(_data.Name);
     }
 
     public void StartTurn()
     {
-        Debug.Log($"Starting turn for {_playerName}");
+        Debug.Log($"Starting turn for {_data.Name}");
     }
 
     public void EndTurn()
     {
-        Debug.Log($"Ending turn for {_playerName}");
+        Debug.Log($"Ending turn for {_data.Name}");
     }
 }
