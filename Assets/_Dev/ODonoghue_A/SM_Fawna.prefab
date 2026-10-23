@@ -75,5 +75,54 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1150003e9a06b045ab933683d60013d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3291963634976891872}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1150003e9a06b045ab933683d60013d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3625909372045449982}
   m_SourcePrefab: {fileID: 100100000, guid: e1150003e9a06b045ab933683d60013d, type: 3}
+--- !u!1 &2657733167573545278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e1150003e9a06b045ab933683d60013d, type: 3}
+  m_PrefabInstance: {fileID: 2892230074997902447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &-3291963634976891872
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657733167573545278}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -769276607395705835, guid: e1150003e9a06b045ab933683d60013d, type: 3}
+--- !u!114 &-3625909372045449982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657733167573545278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5206ea0b802595b4fb8131662cc8cadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creature
+  Data: {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+  OccupyingTile: {fileID: 0}
+  CurrentHealth: 0
+  Experience: 0

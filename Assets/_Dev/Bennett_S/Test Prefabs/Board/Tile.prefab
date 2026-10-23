@@ -107,6 +107,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
   RegionID: -1
   Occupant: {fileID: 0}
+  TileIndex: {x: 0, y: 0}
 --- !u!65 &3902302056277981238
 BoxCollider:
   m_ObjectHideFlags: 0

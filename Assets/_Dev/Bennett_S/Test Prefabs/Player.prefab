@@ -46,14 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _data:
-    Name: Player_1
+    Name: Player_2
     IsAI: 0
     Energy: 50
     MaxEnergy: 50
     Hand: []
   _activeCreatures: []
-  _requiredSummonCount: 3
-  _enableTurnDebugging: 0
+  _requiredSummonCount: 4
+  _enableTurnDebugging: 1
 --- !u!114 &3234684253788528232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeck
   _creaturesToPlace:
+  - {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
   - {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
-  - {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
-  - {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+  - {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+  - {fileID: 11400000, guid: ac1094a90f306fd4c989c4cf5a5ad8a0, type: 2}

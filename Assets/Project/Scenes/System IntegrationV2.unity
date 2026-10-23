@@ -304,26 +304,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: _data.Name
-      value: Player_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: _enableTurnDebugging
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: _requiredSummonCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: '_creaturesToPlace.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
-    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: '_creaturesToPlace.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -889,17 +869,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: _enableTurnDebugging
-      value: 1
+      propertyPath: _data.Name
+      value: Player_1
       objectReference: {fileID: 0}
-    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: '_creaturesToPlace.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
-    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: '_creaturesToPlace.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
       value: Player 1
