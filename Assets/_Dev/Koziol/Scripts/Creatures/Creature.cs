@@ -1,46 +1,40 @@
+using System;
 using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
-    public PlayerData Owner { get; private set; }
+    public PlayerData Owner { get; set; }
 
     public CreatureData Data;
+
+    public Tile OccupyingTile;
 
     public float CurrentHealth;
     public float Experience;
 
+    public event Action<Creature> OnCreatureDeath;
+    public event Action<Creature, float> OnCreatureDamaged;
 
-
-    public AttackResult TakeDamage(CreatureData attacker, TempTileData attackerTile)
+    public void TakeDamage(CreatureData attacker, TileData attackerTile)
     {
-        AttackResult result = new AttackResult();
         float damage = Mathf.Max(0, attacker.Attack * attackerTile.AttackerTileModifier - Data.Defense);
 
-
         CurrentHealth -= damage;
-        result.DamageDealt = damage;
+        OnCreatureDamaged?.Invoke(this, damage);
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
-            result.IsDead = true;
+            OnCreatureDeath?.Invoke(this);
         }
-        return result;
     }
-
 
     public Vector2Int[] ShowValidMovement()
     {
         return Data.MovementPattern.ValidPositions;
     }
-
-    public bool AttemptMove(Vector2Int targetPosition, Vector2Int currentPosition)
+    public Vector2Int[] ShowValidAttacks()
     {
-        if (Data.MovementPattern.ValidatePosition(targetPosition, currentPosition))
-        {
-            transform.position = new Vector3(targetPosition.x, targetPosition.y, 0);
-            return true;
-        }
-        return false;
+        return Data.AttackPattern.ValidPositions;
     }
 
     public Creature(CreatureData data, PlayerData owner)
@@ -50,14 +44,4 @@ public class Creature : MonoBehaviour
         CurrentHealth = data.MaxHealth;
         Experience = 0;
     }
-}
-
-
-//temp class
-public class TempTileData 
-{
-    public Element TileElement;
-    public int TileEffectStrength;
-    public float AttackerTileModifier;
-    public Creature Occupant;
 }

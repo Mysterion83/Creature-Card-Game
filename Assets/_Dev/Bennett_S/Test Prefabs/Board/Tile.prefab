@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860190856340931989}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2042213483772058236, guid: 7d50dfe6ad51e5b47acf9fc71afd94bf, type: 3}
 --- !u!23 &-6244299633672849554
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d85d9275a58a0147bbd0103fb0d1900, type: 2}
+  - {fileID: -7791486788655378091, guid: 7d50dfe6ad51e5b47acf9fc71afd94bf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,9 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee1e20856558474e9e99aeef3ec2727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  Data: {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
+  Data: {fileID: 11400000, guid: d1dd337e19807cf48b3042bf02257043, type: 2}
   RegionID: -1
   Occupant: {fileID: 0}
+  TileIndex: {x: 0, y: 0}
 --- !u!65 &3902302056277981238
 BoxCollider:
   m_ObjectHideFlags: 0

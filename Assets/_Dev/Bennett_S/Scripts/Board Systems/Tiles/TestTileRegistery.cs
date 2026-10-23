@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TileRegistry", menuName = "Project/Registries/Tile Registry")]
-public class TestTileRegistry : MonoBehaviour
+public class TileRegistryV2 : MonoBehaviour
 {
-    public static TestTileRegistry Instance;
+    public static TileRegistryV2 Instance;
 
     [SerializeField] private TileData[] _defaultTiles;
 
