@@ -280,11 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3212184068507970961, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3212184068507970961, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3212184068507970961, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -337,6 +337,14 @@ PrefabInstance:
     - target: {fileID: 3484937488258276441, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
       propertyPath: m_Name
       value: DebugUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748131597444676995, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748131597444676995, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
