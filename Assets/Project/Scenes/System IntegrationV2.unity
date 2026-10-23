@@ -338,6 +338,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5748131597444676995, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748131597444676995, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -9,6 +9,9 @@ public class DebugUI : MonoBehaviour
     private TextMeshProUGUI _debugText;
 
     private float _runTime;
+    private float _deltaTime;
+    private float _fps;
+    
     private MatchState _state; // Assumed default enum state
     private bool _started;
     
@@ -44,7 +47,12 @@ public class DebugUI : MonoBehaviour
     
     private void Update()
     {
+        // Runtime Counter
         _runTime += Time.deltaTime;
+        
+        // FPS Counter
+        _deltaTime += (Time.deltaTime - _deltaTime) * 0.1f;
+        _fps = 1f / _deltaTime;
         
         if (_started && _currentPlayer != null)
         {
@@ -62,8 +70,12 @@ public class DebugUI : MonoBehaviour
         
         // Header
         _stringBuilder.AppendLine("<b>=== Debug UI ===</b>");
-        // Stats
+            
+        // Game Stats
         _stringBuilder.AppendLine($"[Runtime]: {_runTime:F2}s");
+        _stringBuilder.AppendLine($"[FPS]: {Mathf.Ceil(_fps).ToString()}");
+            
+        // Match Stats
         _stringBuilder.AppendLine($"[Match Status]: {(_started ? "<color=green>ACTIVE</color>" : "<color=red>WAITING</color>")}");
         _stringBuilder.AppendLine($"[Match State]: {_state}");
         
