@@ -29,11 +29,11 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
@@ -59,11 +59,11 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
@@ -87,15 +87,15 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Water_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Earth_Base_S1
   - Region: -1
@@ -117,15 +117,15 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Water_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Earth_Base_S1
   - Region: -1
@@ -147,17 +147,15 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Water_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Earth_Base_S1
   - Region: -1
@@ -167,151 +165,153 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Earth_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Earth_Base_S1
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Empty
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Empty
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
-  - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Empty
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Empty
+  - Region: -1
+    TileID: Dev_Tiles_Empty
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
+  - Region: -1
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
@@ -327,15 +327,15 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Wind_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Fire_Base_S1
   - Region: -1
@@ -357,15 +357,15 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Wind_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Fire_Base_S1
   - Region: -1
@@ -387,15 +387,15 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Wind_Base_S1
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Fire_Base_S1
   - Region: -1
@@ -419,11 +419,11 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
@@ -449,11 +449,11 @@ MonoBehaviour:
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
-    TileID: Dev_Tiles_Grassland
+    TileID: Dev_Tiles_Neutral
   - Region: -1
     TileID: Dev_Tiles_Empty
   - Region: -1

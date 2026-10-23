@@ -864,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1c635f2250f503e4dbb292c330f21ec6, type: 2}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.z
