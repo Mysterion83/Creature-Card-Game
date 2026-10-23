@@ -310,12 +310,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _enableTurnDebugging
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _requiredSummonCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -648,6 +656,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 291963297}
     - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
+      propertyPath: _creaturePrefab
+      value: 
+      objectReference: {fileID: 2419497795459266344, guid: bb8b971bbda707540867b55222c93a0d, type: 3}
+    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
+      propertyPath: _matchController
+      value: 
+      objectReference: {fileID: 6576931058267975847}
+    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _testCreatureData
       value: 
       objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
@@ -873,17 +889,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: _data.Name
-      value: Player_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _enableTurnDebugging
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1504588847935070250, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
-      propertyPath: _requiredSummonCount
-      value: 3
-      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -907,7 +923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: _maxTurnTime
-      value: 2
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -954,6 +970,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
+--- !u!114 &6576931058267975847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
+  m_PrefabInstance: {fileID: 6576931058267975846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b22c2a25bf2fb47a7f3dbf13171b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MatchController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

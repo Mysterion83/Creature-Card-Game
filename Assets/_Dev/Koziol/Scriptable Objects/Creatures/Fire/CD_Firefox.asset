@@ -22,6 +22,6 @@ MonoBehaviour:
   PurchaseCost: 0
   AttackPattern: {fileID: 11400000, guid: fb8b6e0587c629648b3861a7dd314121, type: 2}
   MovementPattern: {fileID: 11400000, guid: 0ef6203fecb7eda4fa89acee64ce78fe, type: 2}
-  CreaturePrefab: {fileID: 0}
+  CreaturePrefab: {fileID: 2419497795459266344, guid: bb8b971bbda707540867b55222c93a0d, type: 3}
   CardPrefab: {fileID: 0}
   XpToEvolve: 0

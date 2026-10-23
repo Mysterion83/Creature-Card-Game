@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
-    public PlayerData Owner { get; private set; }
+    public PlayerData Owner { get; set; }
 
     public CreatureData Data;
 
@@ -15,18 +15,16 @@ public class Creature : MonoBehaviour
     public event Action<Creature> OnCreatureDeath;
     public event Action<Creature, float> OnCreatureDamaged;
 
-
-
     public void TakeDamage(CreatureData attacker, TileData attackerTile)
     {
         float damage = Mathf.Max(0, attacker.Attack * attackerTile.AttackerTileModifier - Data.Defense);
 
         CurrentHealth -= damage;
-        OnCreatureDeath.Invoke(this);
+        OnCreatureDamaged?.Invoke(this, damage);
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
-            OnCreatureDeath.Invoke(this);
+            OnCreatureDeath?.Invoke(this);
         }
     }
 

@@ -7,6 +7,7 @@ public class BoardController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputHandler _input;
+    [SerializeField] private MatchController _matchController;
     
     [Header("Selection Settings")]
     [SerializeField] private Transform _selectionBox;
@@ -14,13 +15,10 @@ public class BoardController : MonoBehaviour
     
     [Header("Debug")]
     [SerializeField] private bool _enableCreatureCoordinateDebug = false;
-
-    [SerializeField] public CreatureData TestingSpawner;
     
     private GameControls _inputMapping;
     private TileSelectionController _selectionController;
     private Board _board;
-    private Grid _grid;
 
     [SerializeField] private Tile _selectedTile;
 
@@ -44,7 +42,6 @@ public class BoardController : MonoBehaviour
     {
         _selectionController = GetComponent<TileSelectionController>();
         _board = GetComponent<Board>();
-        _grid = GetComponentInChildren<Grid>();
         _inputMapping = new GameControls();
     }
 
@@ -80,6 +77,8 @@ public class BoardController : MonoBehaviour
     
     public void OnSelectionPressed(InputAction.CallbackContext context)
     {
+        if (!_matchController || !_matchController.IsMatchActive) return;
+        
         if (!_selectedTile)
         {
             SelectCreature();
@@ -91,13 +90,34 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    public void PlaceCreature(InputAction.CallbackContext context)
+    private void PlaceCreature(InputAction.CallbackContext context)
     {
-        PlaceCreature(TestingSpawner);
+        if (!_matchController || !_matchController.IsMatchActive) return;
+        
+        if (_matchController.CurrentState != MatchState.Summon)
+        {
+            Debug.Log("BoardController: Creatures cannot be summoned outside of the Summon phase");
+            return;
+        }
+        
+        IPlayer activePlayer = _matchController.CurrentPlayer;
+        if (activePlayer == null) return;
+        
+        CreatureData creatureData = activePlayer.SelectedCreature;
+        if (creatureData == null)
+        {
+            Debug.LogWarning($"BoardController: {activePlayer.Data.Name} tried to spawn a creature, but hasn't selected a creature yet.");
+            return;
+        }
+        
+        PlaceCreature(creatureData);
     }
     
     public Creature PlaceCreature(CreatureData creatureData)
     {
+        IPlayer activePlayer = _matchController.CurrentPlayer;
+        if (activePlayer == null) return null;
+        
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (tile.Occupant || !tile.Data.IsPassable)
         {
@@ -105,15 +125,27 @@ public class BoardController : MonoBehaviour
             return null;
         }
 
-        GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, _selectionBox.position, Quaternion.identity);
+        GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, tile.transform.position, Quaternion.identity);
+        creatureObj.transform.position += new Vector3(0, tile.Data.CreatureYOffset, 0);
+        
         if (!creatureObj.TryGetComponent(out Creature creature))
         {
             Debug.LogError($"Prefab '{creatureObj.name}' does not have a creature component.");
+            Destroy(creatureObj);
             return null;
         }
-        tile.Occupant = creature;
+        
+        creature.Data = creatureData;
+        creature.Owner = activePlayer.Data;
+        creature.CurrentHealth = creatureData.MaxHealth;
+        creature.Experience = 0;
         creature.OccupyingTile = tile;
-
+        
+        tile.Occupant = creature;
+        
+        activePlayer.AddCreature(creature);
+        creatureObj.name = creature.Data.CreatureName;
+        
         if (_enableCreatureCoordinateDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition}");
         
         return creature;
@@ -155,10 +187,15 @@ public class BoardController : MonoBehaviour
         //Render Pattern on the board
     }
 
-    public void SelectCreature()
+    private void SelectCreature()
     {
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (!tile.Occupant) return;
+        
+        // Return for creatures selected other than the player's own
+        if (tile.Occupant.Owner.Name != _matchController.CurrentPlayer.Data.Name) return;
+        
         _selectedTile = tile;
+        if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
 }

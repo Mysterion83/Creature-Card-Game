@@ -10,20 +10,21 @@ public class MatchController : MonoBehaviour
     private float _maxTurnTime = 30f;
     
     [Header("Debug"), SerializeField]
-    private bool _enableTurnDebugging = false;
+    private bool _enableTurnDebugging;
     
     private MatchState _state = MatchState.Summon;
-    private int _turnsPlayed = 0;
+    private int _turnsPlayed;
 
     private IPlayer _currentPlayer;
-    private int _startingPlayerIndex = 0;
-    private int _currentPlayerIndex = 0;
+    private int _startingPlayerIndex;
+    private int _currentPlayerIndex;
     private int _remainingPlayers;
     
-    private float _turnTimer = 0f;
-    private bool _isSetupComplete = false;
-    
-    public bool IsMatchActive { get; private set; } = false;
+    private float _turnTimer;
+
+    public bool IsMatchActive { get; private set; }
+    public IPlayer CurrentPlayer => _currentPlayer;
+    public MatchState CurrentState => _state;
     
     public static event Action<MatchState> OnMatchStateChanged;
     public static event Action<IPlayer, float> OnTurnStarted; // Sends active player and time limit
@@ -71,7 +72,6 @@ public class MatchController : MonoBehaviour
         }
         
         IsMatchActive = true;
-        _isSetupComplete = false;
         _turnsPlayed = 0;
         _remainingPlayers = PlayerRegistry.PlayerCount;
         
@@ -162,7 +162,7 @@ public class MatchController : MonoBehaviour
     {
         if (_state != MatchState.Summon || _currentPlayer != player) return;
         
-        if (_enableTurnDebugging) Debug.Log($"MatchController: Player {player} was Defeated.");
+        if (_enableTurnDebugging) Debug.Log($"MatchController: Player {player} has summoned all their creatures!");
         RequestEndTurn();
     }
 }
