@@ -90,7 +90,9 @@ public class DebugUI : MonoBehaviour
         _stringBuilder.AppendLine($"[Selected Creature]: {(_currentPlayerCreature ? _currentPlayerCreature.name : "None")}");
         _stringBuilder.AppendLine($"[Health]: {_currentPlayerCreature?.CurrentHealth.ToString() ?? "N/A"}");
         _stringBuilder.AppendLine($"[Position]: {_currentPlayerCreature?.OccupyingTile?.TileIndex.ToString() ?? "N/A"}");
-
+        _stringBuilder.AppendLine($"[Movement Pattern]: {_currentPlayerCreature?.Data.MovementPattern.ToString() ?? "N/A"}");
+        _stringBuilder.AppendLine($"[Attack Pattern]: {_currentPlayerCreature?.Data.AttackPattern.ToString() ?? "N/A"}");
+        
         _debugText.text = _stringBuilder.ToString();
     }
     
