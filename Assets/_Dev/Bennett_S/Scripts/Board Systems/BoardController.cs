@@ -24,6 +24,8 @@ public class BoardController : MonoBehaviour
 
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
+    public static event Action<Creature> OnCreatureSelected;
+    
     private void OnEnable()
     {
         _inputMapping.Enable();
@@ -196,6 +198,7 @@ public class BoardController : MonoBehaviour
         if (tile.Occupant.Owner.Name != _matchController.CurrentPlayer.Data.Name) return;
         
         _selectedTile = tile;
+        OnCreatureSelected?.Invoke(tile.Occupant);
         if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
 }

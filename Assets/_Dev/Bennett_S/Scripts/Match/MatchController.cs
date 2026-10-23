@@ -29,6 +29,7 @@ public class MatchController : MonoBehaviour
     public static event Action<MatchState> OnMatchStateChanged;
     public static event Action<IPlayer, float> OnTurnStarted; // Sends active player and time limit
     public static event Action<IPlayer> OnTurnEnded;
+    public static event Action OnMatchStarted;
     public static event Action<IPlayer> OnMatchEnded;
 
     private void OnEnable()
@@ -70,6 +71,8 @@ public class MatchController : MonoBehaviour
             Debug.LogError("MatchController Error: Match could not start as no players have been registered!"); 
             return;
         }
+        
+        OnMatchStarted?.Invoke();
         
         IsMatchActive = true;
         _turnsPlayed = 0;
