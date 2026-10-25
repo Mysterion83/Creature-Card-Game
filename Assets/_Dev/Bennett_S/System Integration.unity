@@ -603,6 +603,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _movementSpeed: 5
+  _originalFOV: 0
+  _targetFOV: 0
+  _cameraZoomSpeed: 10
+  _isZoomedIn: 0
 --- !u!1 &756965617
 GameObject:
   m_ObjectHideFlags: 0
