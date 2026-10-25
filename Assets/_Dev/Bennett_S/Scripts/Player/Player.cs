@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,11 +15,11 @@ public class Player : MonoBehaviour, IPlayer
     [SerializeField] private float _baseEnergyPerRound = 15f;
 
     [Header("Debug")] [SerializeField] private bool _enableTurnDebugging;
-    private EnergySystem _energySystem;
-    
+
     public PlayerData Data => _data;
     public bool IsDefeated => _activeCreatures.Count == 0;
     public CreatureData SelectedCreature { get; private set; }
+    public EnergySystem EnergySystem { get; private set; }
     
     private void OnEnable()
     {
@@ -34,7 +35,12 @@ public class Player : MonoBehaviour, IPlayer
             if (creature != null) creature.OnCreatureDeath -= HandleCreatureDeath;
         }
     }
-    
+
+    private void Awake()
+    {
+        EnergySystem = GetComponent<EnergySystem>();
+    }
+
     public void StartTurn()
     {
         if (_enableTurnDebugging) Debug.Log($"Starting turn for {_data.Name}");
@@ -44,7 +50,7 @@ public class Player : MonoBehaviour, IPlayer
     {
         if (_enableTurnDebugging) Debug.Log($"Ending turn for {_data.Name}");
         
-        _energySystem.AddEnergy(_baseEnergyPerRound);
+        EnergySystem.AddEnergy(_baseEnergyPerRound);
     }
 
     public void SelectCreature(CreatureData creatureData)
@@ -99,9 +105,9 @@ public class Player : MonoBehaviour, IPlayer
     /// <returns>True if cost is affordable, false if not</returns>
     public bool TryPerformMove(float cost)
     {
-        if (!(_energySystem.Energy.CurrentAmount >= cost)) return false;
+        if (!(EnergySystem.Energy.CurrentAmount >= cost)) return false;
         
-        _energySystem.RemoveEnergy(cost);
+        EnergySystem.RemoveEnergy(cost);
         return true;
     }
 }
