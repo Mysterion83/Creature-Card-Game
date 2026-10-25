@@ -1,22 +1,25 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EnergySystem))]
 public class Player : MonoBehaviour, IPlayer
 {
+    [Header("Data")]
     [SerializeField] private PlayerData _data;
 
     [Header("Settings")]
     [SerializeField] private List<Creature> _activeCreatures;
-    [SerializeField] private int _requiredSummonCount;
-    
-    [Header("Debug")]
-    [SerializeField] private bool _enableTurnDebugging;
+    [SerializeField] private int _requiredSummonCount = 4;
+    [Space]
+    [SerializeField] private float _baseEnergyPerRound = 15f;
+
+    [Header("Debug")] [SerializeField] private bool _enableTurnDebugging;
+    private EnergySystem _energySystem;
     
     public PlayerData Data => _data;
     public bool IsDefeated => _activeCreatures.Count == 0;
     public CreatureData SelectedCreature { get; private set; }
-
+    
     private void OnEnable()
     {
         PlayerRegistry.RegisterPlayer(_data.Name, this);
@@ -40,6 +43,8 @@ public class Player : MonoBehaviour, IPlayer
     public void EndTurn()
     {
         if (_enableTurnDebugging) Debug.Log($"Ending turn for {_data.Name}");
+        
+        _energySystem.AddEnergy(_baseEnergyPerRound);
     }
 
     public void SelectCreature(CreatureData creatureData)
@@ -47,6 +52,10 @@ public class Player : MonoBehaviour, IPlayer
         SelectedCreature = creatureData;
     }
     
+    /// <summary>
+    /// Add a creature to a player's active creatures
+    /// </summary>
+    /// <param name="creature">The <c>Creature</c> to add</param>
     public void AddCreature(Creature creature)
     {
         if (creature == null || _activeCreatures.Contains(creature)) return;
@@ -81,5 +90,18 @@ public class Player : MonoBehaviour, IPlayer
         
         if (_enableTurnDebugging) Debug.Log($"Player {_data.Name} has no alive creatures left and has been defeated!");
         PlayerEvents.TriggerDefeated(this);
+    }
+    
+    /// <summary>
+    /// Attempt to perform a move
+    /// </summary>
+    /// <param name="cost">The cost for the move</param>
+    /// <returns>True if cost is affordable, false if not</returns>
+    public bool TryPerformMove(float cost)
+    {
+        if (!(_energySystem.Energy.CurrentAmount >= cost)) return false;
+        
+        _energySystem.RemoveEnergy(cost);
+        return true;
     }
 }

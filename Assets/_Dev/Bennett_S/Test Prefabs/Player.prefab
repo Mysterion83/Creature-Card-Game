@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 294765893025156592}
   - component: {fileID: 1504588847935070250}
+  - component: {fileID: 2810096429106774986}
   - component: {fileID: 3234684253788528232}
   m_Layer: 0
   m_Name: Player
@@ -53,7 +54,23 @@ MonoBehaviour:
     Hand: []
   _activeCreatures: []
   _requiredSummonCount: 4
+  _baseEnergyPerRound: 15
   _enableTurnDebugging: 1
+--- !u!114 &2810096429106774986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844787196355625458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ec195a6e2db444fb904c8b672f1648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnergySystem
+  _energy:
+    currentAmount: 50
+    maxAmount: 50
 --- !u!114 &3234684253788528232
 MonoBehaviour:
   m_ObjectHideFlags: 0
