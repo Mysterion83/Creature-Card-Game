@@ -2,7 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(TileSelectionController), typeof(Board))]
+[RequireComponent(typeof(TileSelectionController), 
+    typeof(TileHighlightingController), 
+    typeof(Board))]
 public class BoardController : MonoBehaviour
 {
     [Header("References")]
@@ -18,6 +20,7 @@ public class BoardController : MonoBehaviour
     
     private GameControls _inputMapping;
     private TileSelectionController _selectionController;
+    private TileHighlightingController _highlightingController;
     private Board _board;
 
     [SerializeField] private Tile _selectedTile;
@@ -43,6 +46,7 @@ public class BoardController : MonoBehaviour
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
+        _highlightingController = GetComponent<TileHighlightingController>();
         _board = GetComponent<Board>();
         _inputMapping = new GameControls();
     }
@@ -178,15 +182,27 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
-
-    [Obsolete("Function not yet implemented fully")]
+    
     public void PreviewPattern(Tile tile, bool isAttack)
     {
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
+        Vector3[] validWorldPositions = new Vector3[validMoves.Length];
 
-        //Render Pattern on the board
+        // Convert 2D positions into (3D including tile height offset)
+        for (int i = 0; i < validMoves.Length; i++)
+        {
+            Vector2Int position = validMoves[i];
+            if (!_board.IsIndexInBounds(position)) continue;
+            
+            if (_board.TryGetWorldPositionFromIndex(position, out Vector3 worldPosition))
+            {
+                validWorldPositions[i] = worldPosition;
+            }
+        }
+        
+        _highlightingController.HighlightTiles(validWorldPositions, isAttack);
     }
 
     private void SelectCreature()
