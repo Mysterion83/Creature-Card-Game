@@ -94,6 +94,8 @@ public class BoardController : MonoBehaviour
         {
             MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
             _selectedTile = null;
+            
+            _highlightingController.Clear();
         }
     }
 
@@ -176,8 +178,6 @@ public class BoardController : MonoBehaviour
         creature.transform.position = target.transform.position;
         creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
 
-        _highlightingController.Clear();
-        
         // Debug logic
         if (_enableCreatureCoordinateDebug)
         {
@@ -212,12 +212,15 @@ public class BoardController : MonoBehaviour
             {
                 // Don't show movement highlights over inaccessible tiles
                 Tile tileToCheck = _board.GetTileFromPosition(worldPosition);
-                if (!tileToCheck.Data.IsPassable) continue;
+                if (!tileToCheck.Data.IsPassable || tileToCheck.Occupant) continue;
             }
             //
             
             validWorldPositions.Add(worldPosition);
         }
+        
+        // Add highlight to selected creature's tile
+        validWorldPositions.Add(tile.transform.position);
         
         _highlightingController.HighlightTiles(validWorldPositions, isAttack);
         
