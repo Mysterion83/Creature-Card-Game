@@ -82,7 +82,7 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    public void OnSelectionPressed(InputAction.CallbackContext context)
+    private void OnSelectionPressed(InputAction.CallbackContext context)
     {
         if (!_matchController || !_matchController.IsMatchActive) return;
         

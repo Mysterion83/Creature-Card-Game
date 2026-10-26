@@ -27,7 +27,6 @@ public class TileHighlightingController : MonoBehaviour
     /// <param name="isAttackRange">If the highlighting is for attack or movement patterns</param>
     public void HighlightTiles(List<Vector3> tilePositions, bool isAttackRange)
     {
-        Clear();
         foreach (var tilePos in tilePositions)
         {
             Vector3 spawnPosition = new Vector3(tilePos.x, tilePos.y + _highlightYOffset, tilePos.z);
@@ -51,7 +50,6 @@ public class TileHighlightingController : MonoBehaviour
     /// <param name="isAttackRange">If the highlighting is for attack or movement patterns</param>
     public void HighlightTiles(Vector3[] tilePositions, bool isAttackRange)
     {
-        Clear();
         foreach (var tilePos in tilePositions)
         {
             Vector3 spawnPosition = new Vector3(tilePos.x, tilePos.y + _highlightYOffset, tilePos.z);
