@@ -45,8 +45,11 @@ Material:
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
-    - _Pulse_Speed: 1
+    - _Glow_Strength: 250
+    - _Pulse_Speed: 5
     m_Colors:
+    - _Emission_Colour: {r: 1, g: 0.0021108945, b: 0, a: 1}
+    - _Neon_Colour: {r: 1, g: 0.10461649, b: 0, a: 1}
     - _Pulse_Colour: {r: 1, g: 0.30253032, b: 0.2396226, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
