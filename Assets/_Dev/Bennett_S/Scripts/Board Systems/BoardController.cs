@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(TileSelectionController), typeof(Board))]
+[RequireComponent(typeof(TileSelectionController), 
+    typeof(TileHighlightingController), 
+    typeof(Board))]
 public class BoardController : MonoBehaviour
 {
     [Header("References")]
@@ -18,10 +21,13 @@ public class BoardController : MonoBehaviour
     
     private GameControls _inputMapping;
     private TileSelectionController _selectionController;
+    private TileHighlightingController _highlightingController;
     private Board _board;
 
     [SerializeField] private Tile _selectedTile;
 
+    private CreatureStage _creatureStage = CreatureStage.None;
+        
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
@@ -31,18 +37,27 @@ public class BoardController : MonoBehaviour
         _inputMapping.Enable();
         _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
         _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
+        _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
+        _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
+
+        MatchController.OnTurnEnded += OnTurnEnded;
     }
 
     private void OnDisable()
     {
         _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
         _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
+        _inputMapping.Gameplay.ViewAttack.performed -= OnViewAttack;
+        _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
         _inputMapping.Disable();
+        
+        MatchController.OnTurnEnded -= OnTurnEnded;
     }
-    
+
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
+        _highlightingController = GetComponent<TileHighlightingController>();
         _board = GetComponent<Board>();
         _inputMapping = new GameControls();
     }
@@ -77,21 +92,6 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    public void OnSelectionPressed(InputAction.CallbackContext context)
-    {
-        if (!_matchController || !_matchController.IsMatchActive) return;
-        
-        if (!_selectedTile)
-        {
-            SelectCreature();
-        }
-        else
-        {
-            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
-            _selectedTile = null;
-        }
-    }
-
     private void PlaceCreature(InputAction.CallbackContext context)
     {
         if (!_matchController || !_matchController.IsMatchActive) return;
@@ -152,8 +152,7 @@ public class BoardController : MonoBehaviour
         
         return creature;
     }
-
-    [Obsolete("Function not yet implemented fully")]
+    
     public void MoveCreature(Creature creature, Tile target)
     {
         if (target.Occupant || !target.Data.IsPassable) return;
@@ -178,15 +177,47 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
-
-    [Obsolete("Function not yet implemented fully")]
+    
     public void PreviewPattern(Tile tile, bool isAttack)
     {
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
+        List<Vector3> validWorldPositions = new();
 
-        //Render Pattern on the board
+        // Convert 2D positions into 3D (including tile height offset)
+        foreach (Vector2Int position in validMoves)
+        {
+            // Convert relative to creature coordinate to relative to board coordinate
+            Vector2Int relativePosition = position + tile.TileIndex;
+            
+            // Check if tile is impassable
+            if (!tile.Data.IsPassable) continue;
+            // Check if world position can be retrieved from the given index
+            if (!_board.TryGetWorldPositionFromIndex(relativePosition, out Vector3 worldPosition)) continue;
+
+            // Not complete, ask Ben for details
+            if (isAttack)
+            {
+                // Show attack over occupied tiles
+            }
+            else
+            {
+                // Don't show movement highlights over inaccessible tiles
+                Tile tileToCheck = _board.GetTileFromPosition(worldPosition);
+                if (!tileToCheck.Data.IsPassable || tileToCheck.Occupant) continue;
+            }
+            //
+            
+            validWorldPositions.Add(worldPosition);
+        }
+        
+        // Add highlight to selected creature's tile
+        validWorldPositions.Add(tile.transform.position);
+        
+        _highlightingController.HighlightTiles(validWorldPositions, isAttack);
+        
+        // Add a check for impassable tiles and cut off the movement
     }
 
     private void SelectCreature()
@@ -199,6 +230,57 @@ public class BoardController : MonoBehaviour
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
+        
+        _creatureStage = CreatureStage.Moving;
+        PreviewPattern(_selectedTile, false);
+        
         if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
+    
+    private void OnSelectionPressed(InputAction.CallbackContext context)
+    {
+        if (!_matchController || !_matchController.IsMatchActive) return;
+        
+        if (!_selectedTile)
+        {
+            SelectCreature();
+        }
+        else
+        {
+            if (_creatureStage != CreatureStage.Moving) return;
+            
+            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
+            _selectedTile = null;
+            
+            _creatureStage = CreatureStage.None;
+            _highlightingController.Clear();
+        }
+    }
+    
+    private void OnViewAttack(InputAction.CallbackContext context)
+    {
+        _creatureStage = CreatureStage.Attacking;
+        _highlightingController.Clear();
+        PreviewPattern(_selectedTile, true);
+    }
+
+    private void OnViewMove(InputAction.CallbackContext context)
+    {
+        _creatureStage = CreatureStage.Moving;
+        _highlightingController.Clear();
+        PreviewPattern(_selectedTile, false);
+    }
+    
+    private void OnTurnEnded(IPlayer player)
+    {
+        _selectedTile = null;
+        _highlightingController.Clear();
+    }
+}
+
+public enum CreatureStage
+{
+    None,
+    Moving,
+    Attacking,
 }
