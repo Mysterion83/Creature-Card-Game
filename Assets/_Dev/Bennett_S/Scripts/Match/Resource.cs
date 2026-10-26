@@ -74,7 +74,7 @@ public class Resource
         currentAmount = MathF.Max(currentAmount - amount, 0f);
         
         float actualAmount = prevAmount - currentAmount;
-        OnDecreased?.Invoke(this, amount);
+        OnDecreased?.Invoke(this, actualAmount);
         
         if (currentAmount <= 0) OnDepleted?.Invoke(this);
     }

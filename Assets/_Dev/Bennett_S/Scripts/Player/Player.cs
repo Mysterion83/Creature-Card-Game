@@ -11,8 +11,6 @@ public class Player : MonoBehaviour, IPlayer
     [Header("Settings")]
     [SerializeField] private List<Creature> _activeCreatures;
     [SerializeField] private int _requiredSummonCount = 4;
-    [Space]
-    [SerializeField] private float _baseEnergyPerRound = 15f;
 
     [Header("Debug")] [SerializeField] private bool _enableTurnDebugging;
 
@@ -43,14 +41,13 @@ public class Player : MonoBehaviour, IPlayer
 
     public void StartTurn()
     {
+        EnergySystem.Recharge();
         if (_enableTurnDebugging) Debug.Log($"Starting turn for {_data.Name}");
     }
 
     public void EndTurn()
     {
         if (_enableTurnDebugging) Debug.Log($"Ending turn for {_data.Name}");
-        
-        EnergySystem.AddEnergy(_baseEnergyPerRound);
     }
 
     public void SelectCreature(CreatureData creatureData)
