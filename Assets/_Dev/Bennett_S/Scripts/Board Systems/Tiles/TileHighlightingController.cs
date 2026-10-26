@@ -10,15 +10,15 @@ public class TileHighlightingController : MonoBehaviour
     [Header("Highlighting Materials")]
     [SerializeField] private Material _moveMaterial;
     [SerializeField] private Material _attackMaterial;
-    
-    [Header("Highlight Settings")]
-    [SerializeField] private float _highlightPulseDuration = 2.5f;
+
+    [Header("Highlight Settings")] 
+    [SerializeField] private float _highlightYOffset = 1;
     
     [Header("Container")]
     [SerializeField] private GameObject _containerObject;
     
     // Tile tracking
-    private List<GameObject> _activeHighlights = new();
+    private readonly List<GameObject> _activeHighlights = new();
 
     /// <summary>
     /// Highlights all tiles within a given list
@@ -30,11 +30,12 @@ public class TileHighlightingController : MonoBehaviour
         Clear();
         foreach (var tilePos in tilePositions)
         {
-            Vector3 spawnPosition = new Vector3(tilePos.x, tilePos.y + 0.5f, tilePos.z);
+            Vector3 spawnPosition = new Vector3(tilePos.x, tilePos.y + _highlightYOffset, tilePos.z);
             
             // Spawn a highlight and make it point downwards
             GameObject highlight = Instantiate(_decalPrefab, spawnPosition, Quaternion.Euler(90, 0, 0));
             highlight.transform.parent = _containerObject.transform;
+            
             _activeHighlights.Add(highlight);
             
             // Get decal projector and assign its material
@@ -53,7 +54,7 @@ public class TileHighlightingController : MonoBehaviour
         Clear();
         foreach (var tilePos in tilePositions)
         {
-            Vector3 spawnPosition = new Vector3(tilePos.x, tilePos.y + 0.5f, tilePos.z);
+            Vector3 spawnPosition = new Vector3(tilePos.x, tilePos.y + _highlightYOffset, tilePos.z);
             
             // Spawn a highlight and make it point downwards
             GameObject highlight = Instantiate(_decalPrefab, spawnPosition, Quaternion.Euler(90, 0, 0));

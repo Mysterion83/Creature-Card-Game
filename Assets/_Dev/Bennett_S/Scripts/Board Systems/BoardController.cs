@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -156,8 +157,7 @@ public class BoardController : MonoBehaviour
         
         return creature;
     }
-
-    [Obsolete("Function not yet implemented fully")]
+    
     public void MoveCreature(Creature creature, Tile target)
     {
         if (target.Occupant || !target.Data.IsPassable) return;
@@ -176,6 +176,8 @@ public class BoardController : MonoBehaviour
         creature.transform.position = target.transform.position;
         creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
 
+        _highlightingController.Clear();
+        
         // Debug logic
         if (_enableCreatureCoordinateDebug)
         {
@@ -188,21 +190,38 @@ public class BoardController : MonoBehaviour
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
-        Vector3[] validWorldPositions = new Vector3[validMoves.Length];
+        List<Vector3> validWorldPositions = new();
 
-        // Convert 2D positions into (3D including tile height offset)
-        for (int i = 0; i < validMoves.Length; i++)
+        // Convert 2D positions into 3D (including tile height offset)
+        foreach (Vector2Int position in validMoves)
         {
-            Vector2Int position = validMoves[i];
-            if (!_board.IsIndexInBounds(position)) continue;
+            // Convert relative to creature coordinate to relative to board coordinate
+            Vector2Int relativePosition = position + tile.TileIndex;
             
-            if (_board.TryGetWorldPositionFromIndex(position, out Vector3 worldPosition))
+            // Check if tile is impassable
+            if (!tile.Data.IsPassable) continue;
+            // Check if world position can be retrieved from the given index
+            if (!_board.TryGetWorldPositionFromIndex(relativePosition, out Vector3 worldPosition)) continue;
+
+            // Not complete, ask Ben for details
+            if (isAttack)
             {
-                validWorldPositions[i] = worldPosition;
+                // Show attack over occupied tiles
             }
+            else
+            {
+                // Don't show movement highlights over inaccessible tiles
+                Tile tileToCheck = _board.GetTileFromPosition(worldPosition);
+                if (!tileToCheck.Data.IsPassable) continue;
+            }
+            //
+            
+            validWorldPositions.Add(worldPosition);
         }
         
         _highlightingController.HighlightTiles(validWorldPositions, isAttack);
+        
+        // Add a check for impassable tiles and cut off the movement
     }
 
     private void SelectCreature()
@@ -215,6 +234,7 @@ public class BoardController : MonoBehaviour
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
+        PreviewPattern(tile, false);
         if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
 }

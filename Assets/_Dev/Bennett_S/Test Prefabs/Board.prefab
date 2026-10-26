@@ -130,8 +130,8 @@ MonoBehaviour:
   _tileContainer: {fileID: 4189840062774914491}
   _shaderPlane: {fileID: 8173792111331296509}
   _gridShaderMaterial: {fileID: -876546973899608171, guid: 65518d819b3773245918daa1a4c63409, type: 3}
-  _definitionData: {fileID: 11400000, guid: 14055ca37d3096241992ffcec254f56a, type: 2}
-  _tileSpawnOffset: {x: 0, y: 0.25, z: 0}
+  _definitionData: {fileID: 11400000, guid: 1c635f2250f503e4dbb292c330f21ec6, type: 2}
+  _tileSpawnOffset: {x: 0, y: 0, z: 0}
   _gridYOffset: 0.015
   _cellThickness: 0.1
   _gridColour: {r: 1, g: 1, b: 1, a: 1}
@@ -183,8 +183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileHighlightingController
   _decalPrefab: {fileID: 628219849298597056, guid: 0c834577adaa76c4eb5d263f5df62699, type: 3}
-  _moveMaterial: {fileID: 2100000, guid: 73b0ebdf2e8618d40a1b829398c56d49, type: 2}
-  _attackMaterial: {fileID: 2100000, guid: 6f4025bceb09eee4eabc0f8a6544fb80, type: 2}
+  _moveMaterial: {fileID: 2100000, guid: d43167a6e700afe449c847c691eb1674, type: 2}
+  _attackMaterial: {fileID: 2100000, guid: c888291ab93787c4196b8010fca5c38b, type: 2}
+  _highlightYOffset: 1
   _highlightPulseDuration: 2.5
   _containerObject: {fileID: 4165773673100991358}
 --- !u!1 &4165773673100991358
@@ -197,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2243638259668675057}
   m_Layer: 0
-  m_Name: Tile Highlighting
+  m_Name: Tile Highlights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

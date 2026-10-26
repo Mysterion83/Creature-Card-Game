@@ -887,18 +887,6 @@ PrefabInstance:
       propertyPath: _enableCreatureCoordinateDebug
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _definitionData
-      value: 
-      objectReference: {fileID: 11400000, guid: 1c635f2250f503e4dbb292c330f21ec6, type: 2}
-    - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _tileSpawnOffset.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _tileSpawnOffset.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1225,10 +1213,6 @@ PrefabInstance:
     - target: {fileID: 1065110990875088718, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_Name
       value: MatchController
-      objectReference: {fileID: 0}
-    - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
-      propertyPath: _maxTurnTime
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_LocalPosition.x
