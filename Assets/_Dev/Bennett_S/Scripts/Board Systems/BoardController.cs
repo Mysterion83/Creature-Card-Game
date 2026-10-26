@@ -26,6 +26,8 @@ public class BoardController : MonoBehaviour
 
     [SerializeField] private Tile _selectedTile;
 
+    private CreatureStage _creatureStage = CreatureStage.None;
+        
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
@@ -35,15 +37,23 @@ public class BoardController : MonoBehaviour
         _inputMapping.Enable();
         _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
         _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
+        _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
+        _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
+
+        MatchController.OnTurnEnded += OnTurnEnded;
     }
 
     private void OnDisable()
     {
         _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
         _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
+        _inputMapping.Gameplay.ViewAttack.performed -= OnViewAttack;
+        _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
         _inputMapping.Disable();
+        
+        MatchController.OnTurnEnded -= OnTurnEnded;
     }
-    
+
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
@@ -82,23 +92,6 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    private void OnSelectionPressed(InputAction.CallbackContext context)
-    {
-        if (!_matchController || !_matchController.IsMatchActive) return;
-        
-        if (!_selectedTile)
-        {
-            SelectCreature();
-        }
-        else
-        {
-            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
-            _selectedTile = null;
-            
-            _highlightingController.Clear();
-        }
-    }
-
     private void PlaceCreature(InputAction.CallbackContext context)
     {
         if (!_matchController || !_matchController.IsMatchActive) return;
@@ -237,7 +230,57 @@ public class BoardController : MonoBehaviour
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
-        PreviewPattern(tile, false);
+        
+        _creatureStage = CreatureStage.Moving;
+        PreviewPattern(_selectedTile, false);
+        
         if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
+    
+    private void OnSelectionPressed(InputAction.CallbackContext context)
+    {
+        if (!_matchController || !_matchController.IsMatchActive) return;
+        
+        if (!_selectedTile)
+        {
+            SelectCreature();
+        }
+        else
+        {
+            if (_creatureStage != CreatureStage.Moving) return;
+            
+            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
+            _selectedTile = null;
+            
+            _creatureStage = CreatureStage.None;
+            _highlightingController.Clear();
+        }
+    }
+    
+    private void OnViewAttack(InputAction.CallbackContext context)
+    {
+        _creatureStage = CreatureStage.Attacking;
+        _highlightingController.Clear();
+        PreviewPattern(_selectedTile, true);
+    }
+
+    private void OnViewMove(InputAction.CallbackContext context)
+    {
+        _creatureStage = CreatureStage.Moving;
+        _highlightingController.Clear();
+        PreviewPattern(_selectedTile, false);
+    }
+    
+    private void OnTurnEnded(IPlayer player)
+    {
+        _selectedTile = null;
+        _highlightingController.Clear();
+    }
+}
+
+public enum CreatureStage
+{
+    None,
+    Moving,
+    Attacking,
 }
