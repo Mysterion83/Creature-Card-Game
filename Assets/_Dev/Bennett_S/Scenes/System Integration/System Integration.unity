@@ -904,10 +904,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
-    - target: {fileID: 3029391131907073102, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3248407830656798115, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _camera
       value: 
@@ -921,21 +917,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 291963297}
     - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _creaturePrefab
-      value: 
-      objectReference: {fileID: 2419497795459266344, guid: bb8b971bbda707540867b55222c93a0d, type: 3}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _matchController
       value: 
       objectReference: {fileID: 6576931058267975847}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _testCreatureData
-      value: 
-      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _enableCreatureCoordinateDebug
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
