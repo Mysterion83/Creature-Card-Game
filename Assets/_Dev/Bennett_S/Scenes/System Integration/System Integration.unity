@@ -1263,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchController
       objectReference: {fileID: 0}
+    - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
+      propertyPath: _maxTurnTime
+      value: 9999
+      objectReference: {fileID: 0}
     - target: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
