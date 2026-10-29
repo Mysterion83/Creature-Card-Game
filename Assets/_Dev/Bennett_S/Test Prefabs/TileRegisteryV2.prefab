@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2605604d2fb68e548923c7b6f5569e47, type: 2}
   - {fileID: 11400000, guid: d73e17bf3cad7a04e93ac2fa6fedf69a, type: 2}
   - {fileID: 11400000, guid: 5ff5fd67d14e8c547a112d4502b12d45, type: 2}
-  - {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
+  - {fileID: 11400000, guid: d1dd337e19807cf48b3042bf02257043, type: 2}
   - {fileID: 11400000, guid: 12b454599ea86f24ba7456aa487a2a36, type: 2}
   - {fileID: 11400000, guid: 80aa5f0d8e735464a8263da3e301e0d5, type: 2}
   - {fileID: 11400000, guid: d05ca60b73f3e98408866aea43fc6edb, type: 2}
@@ -75,8 +75,8 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: d73e17bf3cad7a04e93ac2fa6fedf69a, type: 2}
   - key: Dev_Tiles_Fire_Base_S3
     value: {fileID: 11400000, guid: 5ff5fd67d14e8c547a112d4502b12d45, type: 2}
-  - key: Dev_Tiles_Grassland
-    value: {fileID: 11400000, guid: d905eae2bcb0b0541a093b436addbaf3, type: 2}
+  - key: Dev_Tiles_Neutral
+    value: {fileID: 11400000, guid: d1dd337e19807cf48b3042bf02257043, type: 2}
   - key: Dev_Tiles_Test
     value: {fileID: 11400000, guid: 12b454599ea86f24ba7456aa487a2a36, type: 2}
   - key: Dev_Tiles_Water_Base_S1

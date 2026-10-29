@@ -136,7 +136,6 @@ public class Board : MonoBehaviour
         {
             if (col.TryGetComponent<Tile>(out Tile tile))
             {
-                // Instantly pull the exact array slot without any division or truncation math
                 return _mapData.Tiles[tile.TileIndex.x, tile.TileIndex.y];
             }
         }
@@ -145,6 +144,24 @@ public class Board : MonoBehaviour
     }
 
     /// <summary>
+    /// Attempt to get the 3D world position of a <c>Tile</c> using its grid index coordinates
+    /// </summary>
+    /// <param name="gridIndex">The grid index for a tile within the board space</param>
+    /// <param name="worldPosition">The found Vector3 position, defaults to Vector3.zero</param>
+    /// <returns>true if position is valid, false if not</returns>
+    public bool TryGetWorldPositionFromIndex(Vector2Int gridIndex, out Vector3 worldPosition)
+    {
+        worldPosition = Vector3.zero;
+        if (_mapData.Tiles == null || !IsIndexInBounds(gridIndex)) return false;
+
+        Tile tile = _mapData.Tiles[gridIndex.x, gridIndex.y];
+        if (tile == null) return false;
+        
+        worldPosition = tile.transform.position;
+        return true;
+    }
+    
+    /// <summary>
     /// Get a <c>Tile</c>'s definition data through a given world position
     /// </summary>
     /// <param name="worldPosition">Vector3 position to retrieve data from</param>
@@ -152,7 +169,6 @@ public class Board : MonoBehaviour
     public TileData GetTileDataFromPosition(Vector3 worldPosition)
     {
         Tile tile = GetTileFromPosition(worldPosition);
-
         return tile == null ? null : tile.Data;
     }
 
