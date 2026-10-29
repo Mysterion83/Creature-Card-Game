@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EnergySystem))]
-public class Player : MonoBehaviour, IPlayer
+public abstract class Player : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private PlayerData _data;
@@ -39,13 +38,13 @@ public class Player : MonoBehaviour, IPlayer
         EnergySystem = GetComponent<EnergySystem>();
     }
 
-    public void StartTurn()
+    public virtual void StartTurn()
     {
         EnergySystem.Recharge();
         if (_enableTurnDebugging) Debug.Log($"Starting turn for {_data.Name}");
     }
 
-    public void EndTurn()
+    public virtual void EndTurn()
     {
         if (_enableTurnDebugging) Debug.Log($"Ending turn for {_data.Name}");
     }

@@ -102,7 +102,7 @@ public class BoardController : MonoBehaviour
             return;
         }
         
-        IPlayer activePlayer = _matchController.CurrentPlayer;
+        Player activePlayer = _matchController.CurrentPlayer;
         if (activePlayer == null) return;
         
         CreatureData creatureData = activePlayer.SelectedCreature;
@@ -117,7 +117,7 @@ public class BoardController : MonoBehaviour
     
     public Creature PlaceCreature(CreatureData creatureData)
     {
-        IPlayer activePlayer = _matchController.CurrentPlayer;
+        Player activePlayer = _matchController.CurrentPlayer;
         if (activePlayer == null) return null;
         
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
@@ -271,7 +271,7 @@ public class BoardController : MonoBehaviour
         PreviewPattern(_selectedTile, false);
     }
     
-    private void OnTurnEnded(IPlayer player)
+    private void OnTurnEnded(Player player)
     {
         _selectedTile = null;
         _highlightingController.Clear();

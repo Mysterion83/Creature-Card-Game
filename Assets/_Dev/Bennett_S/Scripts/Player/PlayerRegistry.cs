@@ -6,14 +6,14 @@ using System.Collections.Generic;
 public static class PlayerRegistry
 {
     // Network Lookup
-    private static readonly Dictionary<string, IPlayer> _playerIDLookup = new();
+    private static readonly Dictionary<string, Player> _playerIDLookup = new();
     
     // Name Lookup
-    private static readonly Dictionary<string, IPlayer> _playerNameLookup = new();
+    private static readonly Dictionary<string, Player> _playerNameLookup = new();
 
     // Master list
-    private static readonly List<IPlayer> _masterList = new();
-    public static IReadOnlyList<IPlayer> MasterList => _masterList;
+    private static readonly List<Player> _masterList = new();
+    public static IReadOnlyList<Player> MasterList => _masterList;
 
     public static int PlayerCount => _masterList.Count;
 
@@ -22,7 +22,7 @@ public static class PlayerRegistry
     /// </summary>
     /// <param name="id">Unique player Network ID</param>
     /// <param name="player">The player to register</param>
-    public static void RegisterPlayer(string id, IPlayer player)
+    public static void RegisterPlayer(string id, Player player)
     {
         if (player?.Data == null) return;
         if (!_playerIDLookup.TryAdd(id, player)) return;
@@ -52,13 +52,13 @@ public static class PlayerRegistry
         }
     }
 
-    public static IPlayer GetPlayerById(string id)
+    public static Player GetPlayerById(string id)
     {
         _playerIDLookup.TryGetValue(id, out var player);
         return player;
     }
 
-    public static IPlayer GetPlayerByName(string name)
+    public static Player GetPlayerByName(string name)
     {
         if (string.IsNullOrEmpty(name)) return null;
         _playerNameLookup.TryGetValue(name, out var player);

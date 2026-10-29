@@ -15,9 +15,9 @@ public class DebugUI : MonoBehaviour
     private MatchState _state; // Assumed default enum state
     private bool _started;
     
-    private IPlayer _currentPlayer;
+    private Player _currentPlayer;
     private float _turnTimeElapsed;
-    private IPlayer _winner;
+    private Player _winner;
     
     private Creature _currentPlayerCreature;
     
@@ -108,13 +108,13 @@ public class DebugUI : MonoBehaviour
         _debugText.text = _stringBuilder.ToString();
     }
     
-    private void OnTurnStarted(IPlayer player, float time)
+    private void OnTurnStarted(Player player, float time)
     {
         _currentPlayer = player;
         _turnTimeElapsed = 0f;
     }
     
-    private void OnTurnEnded(IPlayer player)
+    private void OnTurnEnded(Player player)
     {
         _currentPlayer = null;
         _currentPlayerCreature = null;
@@ -131,7 +131,7 @@ public class DebugUI : MonoBehaviour
         _state = state;
     }
 
-    private void OnMatchEnded(IPlayer player)
+    private void OnMatchEnded(Player player)
     {
         _started = false;
         _currentPlayer = null;

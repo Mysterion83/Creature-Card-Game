@@ -11,11 +11,9 @@ public class MatchController : MonoBehaviour
     
     [Header("Debug"), SerializeField]
     private bool _enableTurnDebugging;
-    
-    private MatchState _state = MatchState.Summon;
+
     private int _turnsPlayed;
 
-    private IPlayer _currentPlayer;
     private int _startingPlayerIndex;
     private int _currentPlayerIndex;
     private int _remainingPlayers;
@@ -23,14 +21,15 @@ public class MatchController : MonoBehaviour
     private float _turnTimer;
 
     public bool IsMatchActive { get; private set; }
-    public IPlayer CurrentPlayer => _currentPlayer;
-    public MatchState CurrentState => _state;
-    
+    public Player CurrentPlayer { get; private set; }
+
+    public MatchState CurrentState { get; private set; } = MatchState.Summon;
+
     public static event Action<MatchState> OnMatchStateChanged;
-    public static event Action<IPlayer, float> OnTurnStarted; // Sends active player and time limit
-    public static event Action<IPlayer> OnTurnEnded;
+    public static event Action<Player, float> OnTurnStarted; // Sends active player and time limit
+    public static event Action<Player> OnTurnEnded;
     public static event Action OnMatchStarted;
-    public static event Action<IPlayer> OnMatchEnded;
+    public static event Action<Player> OnMatchEnded;
 
     private void OnEnable()
     {
@@ -52,7 +51,7 @@ public class MatchController : MonoBehaviour
     {
         if (!IsMatchActive) return;
         
-        if (_state == MatchState.Summon) return;
+        if (CurrentState == MatchState.Summon) return;
         
         _turnTimer -= Time.deltaTime;
         if (!(_turnTimer <= 0f)) return;
@@ -97,13 +96,13 @@ public class MatchController : MonoBehaviour
 
         // Choose the next player index relative to the starting player
         _currentPlayerIndex = (_startingPlayerIndex + (_turnsPlayed - 1)) % PlayerRegistry.PlayerCount;
-        _currentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
+        CurrentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
         
         _turnTimer = _maxTurnTime;
-        OnTurnStarted?.Invoke(_currentPlayer, _turnTimer);
+        OnTurnStarted?.Invoke(CurrentPlayer, _turnTimer);
         
-        Debug.Log($"MatchController: Turn {_turnsPlayed} | State: {_state} | Player: {_currentPlayer.Data.Name} (Index: {_currentPlayerIndex})");
-        _currentPlayer.StartTurn();
+        Debug.Log($"MatchController: Turn {_turnsPlayed} | State: {CurrentState} | Player: {CurrentPlayer.Data.Name} (Index: {_currentPlayerIndex})");
+        CurrentPlayer.StartTurn();
     }
 
     /// <summary>
@@ -111,17 +110,17 @@ public class MatchController : MonoBehaviour
     /// </summary>
     public void RequestEndTurn()
     {
-        if (!IsMatchActive || _currentPlayer == null) return;
+        if (!IsMatchActive || CurrentPlayer == null) return;
 
-        OnTurnEnded?.Invoke(_currentPlayer);
-        _currentPlayer.EndTurn();
+        OnTurnEnded?.Invoke(CurrentPlayer);
+        CurrentPlayer.EndTurn();
         ChangeTurn();
     }
     
     private void CompleteMatch()
     {
         IsMatchActive = false;
-        IPlayer winner = null;
+        Player winner = null;
         
         for (int i = 0; i < PlayerRegistry.PlayerCount; i++)
         {
@@ -140,10 +139,10 @@ public class MatchController : MonoBehaviour
 
     private void ChangeMatchState(MatchState state)
     {
-        if (_state == state) return;
+        if (CurrentState == state) return;
         
-        _state = state;
-        OnMatchStateChanged?.Invoke(_state);
+        CurrentState = state;
+        OnMatchStateChanged?.Invoke(CurrentState);
     }
     
     private void OnDestroy()
@@ -151,7 +150,7 @@ public class MatchController : MonoBehaviour
         PlayerRegistry.Clear();
     }
     
-    private void HandlePlayerDefeated(IPlayer player)
+    private void HandlePlayerDefeated(Player player)
     {
         if (!IsMatchActive) return;
 
@@ -161,9 +160,9 @@ public class MatchController : MonoBehaviour
         if (_remainingPlayers <= 1) CompleteMatch();
     }
 
-    private void HandlePlayerSummonStageCompleted(IPlayer player)
+    private void HandlePlayerSummonStageCompleted(Player player)
     {
-        if (_state != MatchState.Summon || _currentPlayer != player) return;
+        if (CurrentState != MatchState.Summon || CurrentPlayer != player) return;
         
         if (_enableTurnDebugging) Debug.Log($"MatchController: Player {player} has summoned all their creatures!");
         RequestEndTurn();

@@ -5,15 +5,15 @@ using System;
 /// </summary>
 public static class PlayerEvents
 {
-    public static event Action<IPlayer> OnPlayerDefeated;
-    public static event Action<IPlayer> OnPlayerSummonStageCompleted;
+    public static event Action<Player> OnPlayerDefeated;
+    public static event Action<Player> OnPlayerSummonStageCompleted;
 
-    public static void TriggerDefeated(IPlayer player)
+    public static void TriggerDefeated(Player player)
     {
         OnPlayerDefeated?.Invoke(player);
     }
 
-    public static void TriggerSummonStageCompleted(IPlayer player)
+    public static void TriggerSummonStageCompleted(Player player)
     {
         OnPlayerSummonStageCompleted?.Invoke(player);
     }
