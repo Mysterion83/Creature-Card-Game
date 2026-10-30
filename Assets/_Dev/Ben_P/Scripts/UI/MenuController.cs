@@ -1,23 +1,65 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private GameObject mainPanel;
-    [SerializeField] private GameObject levelSelectPanel;
-    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] GameObject mainPanel;
+    [SerializeField] GameObject levelSelectPanel;
 
-    private void Start() => ShowMain();
-       
-    public void ShowMain() => Show(mainPanel);
-    public void ShowLevelSelect() => Show(levelSelectPanel);
-    public void ShowSettings() => Show(settingsPanel);
+    readonly Stack<GameObject> history = new();
+    GameObject current;
 
+    void Start()
+    {       
+        var pm = ProfileManager.Instance;
+        if (pm != null && pm.ReturnToLevelSelect)
+        {
+            pm.ReturnToLevelSelect = false;
+            OpenFresh(levelSelectPanel);
+        }
+        else
+        {
+            OpenFresh(mainPanel);
+        }
+    }
+
+    // Navigation 
+    public void Open(GameObject panel)
+    {
+        if (current != null)
+        {
+            current.SetActive(false);
+            history.Push(current);
+        }
+        current = panel;
+        current.SetActive(true);
+    }
+
+    public void OpenFresh(GameObject panel)   // forward step that wipes Back history
+    {
+        history.Clear();
+        if (current != null) current.SetActive(false);
+        current = panel;
+        current.SetActive(true);
+    }
+
+    public void Back()
+    {
+        if (history.Count == 0) return;
+        current.SetActive(false);
+        current = history.Pop();
+        current.SetActive(true);
+    }
+
+    public void ShowMain() => OpenFresh(mainPanel);
+
+    // Scenes and quitting
     public void LoadLevel(string sceneName)
     {
         if (!Application.CanStreamedLevelBeLoaded(sceneName))
         {
-            Debug.LogError($"Scene '{sceneName}' can't be loaded.");
+            Debug.LogError($"Scene '{sceneName}' can't be loaded. Is it in the Build Profiles scene list?");
             return;
         }
         SceneManager.LoadScene(sceneName);
@@ -26,16 +68,9 @@ public class MenuController : MonoBehaviour
     public void Quit()
     {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // stop Play mode
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
-    }
-
-    private void Show(GameObject panel)
-    {
-        mainPanel.SetActive(panel == mainPanel);
-        levelSelectPanel.SetActive(panel == levelSelectPanel);
-        settingsPanel.SetActive(panel == settingsPanel);
     }
 }
