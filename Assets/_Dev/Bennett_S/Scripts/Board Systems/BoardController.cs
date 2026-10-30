@@ -17,7 +17,7 @@ public class BoardController : MonoBehaviour
     [SerializeField] private float _selectionBoxHoverHeight = 0.5f; 
     
     [Header("Debug")]
-    [SerializeField] private bool _enableCreatureCoordinateDebug = false;
+    [SerializeField] private bool _enableCreatureDebug = false;
     
     private GameControls _inputMapping;
     private TileSelectionController _selectionController;
@@ -95,14 +95,8 @@ public class BoardController : MonoBehaviour
     private void PlaceCreature(InputAction.CallbackContext context)
     {
         if (!_matchController || !_matchController.IsMatchActive) return;
-        
-        if (_matchController.CurrentState != MatchState.Summon)
-        {
-            Debug.Log("BoardController: Creatures cannot be summoned outside of the Summon phase");
-            return;
-        }
-        
-        IPlayer activePlayer = _matchController.CurrentPlayer;
+ 
+        Player activePlayer = _matchController.CurrentPlayer;
         if (activePlayer == null) return;
         
         CreatureData creatureData = activePlayer.SelectedCreature;
@@ -117,8 +111,12 @@ public class BoardController : MonoBehaviour
     
     public Creature PlaceCreature(CreatureData creatureData)
     {
-        IPlayer activePlayer = _matchController.CurrentPlayer;
+        if (_matchController.CurrentState != MatchState.TurnSummon) return null;
+        
+        Player activePlayer = _matchController.CurrentPlayer;
         if (activePlayer == null) return null;
+
+        if (!activePlayer.CanSummon()) return null; 
         
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (tile.Occupant || !tile.Data.IsPassable)
@@ -127,6 +125,12 @@ public class BoardController : MonoBehaviour
             return null;
         }
 
+        if (!activePlayer.TryPerformMove(creatureData.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not place creature as energy is too low");
+            return null;
+        }
+        
         GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, tile.transform.position, Quaternion.identity);
         creatureObj.transform.position += new Vector3(0, tile.Data.CreatureYOffset, 0);
         
@@ -148,23 +152,37 @@ public class BoardController : MonoBehaviour
         activePlayer.AddCreature(creature);
         creatureObj.name = creature.Data.CreatureName;
         
-        if (_enableCreatureCoordinateDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition}");
+        if (_enableCreatureDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition} | {activePlayer.EnergySystem.Energy.CurrentAmount} / {activePlayer.EnergySystem.Energy.MaxAmount}");
         
         return creature;
     }
     
     public void MoveCreature(Creature creature, Tile target)
     {
+        if (_matchController.CurrentState != MatchState.TurnAction) return;
+        
         if (target.Occupant || !target.Data.IsPassable) return;
+
+        Player activePlayer = _matchController.CurrentPlayer;
+        if (activePlayer == null) return;
         
         Vector2Int[] validMoves = creature.ShowValidMovement();
         // if there are no valid moves, return
         if (validMoves.Length == 0) return;
 
-        Vector2Int relativeTargetPoistion = target.TileIndex - creature.OccupyingTile.TileIndex;
+        Vector2Int relativeTargetPosition = target.TileIndex - creature.OccupyingTile.TileIndex;
         // if the target tile is not in the valid moves, return
-        if (!Array.Exists(validMoves, move => move == relativeTargetPoistion)) return;
+        if (!Array.Exists(validMoves, move => move == relativeTargetPosition)) return;
 
+        // return if selected tile equals the creatures tile
+        if (_selectedTile == _board.GetTileFromPosition(SelectedPosition)) return;
+            
+        if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not move creature as energy is too low");
+            return;
+        }
+        
         creature.OccupyingTile.Occupant = null;
         target.Occupant = creature;
         creature.OccupyingTile = target;
@@ -172,7 +190,7 @@ public class BoardController : MonoBehaviour
         creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
 
         // Debug logic
-        if (_enableCreatureCoordinateDebug)
+        if (_enableCreatureDebug)
         {
             Debug.Log(target.gameObject.transform.position);
         }
@@ -234,7 +252,7 @@ public class BoardController : MonoBehaviour
         _creatureStage = CreatureStage.Moving;
         PreviewPattern(_selectedTile, false);
         
-        if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
+        if (_enableCreatureDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
     
     private void OnSelectionPressed(InputAction.CallbackContext context)
@@ -248,12 +266,15 @@ public class BoardController : MonoBehaviour
         else
         {
             if (_creatureStage != CreatureStage.Moving) return;
+
+            Player activePlayer = _matchController.CurrentPlayer;
+            if (!activePlayer) return;
             
+            _highlightingController.Clear();
+
             MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
             _selectedTile = null;
-            
             _creatureStage = CreatureStage.None;
-            _highlightingController.Clear();
         }
     }
     
@@ -271,7 +292,7 @@ public class BoardController : MonoBehaviour
         PreviewPattern(_selectedTile, false);
     }
     
-    private void OnTurnEnded(IPlayer player)
+    private void OnTurnEnded(Player player)
     {
         _selectedTile = null;
         _highlightingController.Clear();

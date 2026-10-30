@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b22c2a25bf2fb47a7f3dbf13171b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MatchController
-  _maxTurnTime: 30
+  _maxPhaseTime: 15
   _enableTurnDebugging: 1
