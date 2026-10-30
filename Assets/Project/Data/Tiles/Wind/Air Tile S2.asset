@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
-  m_Name: Wind Tile S2
+  m_Name: Air Tile S2
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   ID: Dev_Tiles_Wind_Base_S2
   Name: Wind Base Tile S2
@@ -19,4 +19,4 @@ MonoBehaviour:
   EffectStrength: 2
   IsPassable: 1
   CreatureYOffset: 1
-  RenderObjectPrefab: {fileID: 2524129096567295341, guid: fb96af002a93e9d4a87235bd80070f47, type: 3}
+  RenderObjectPrefab: {fileID: 3398914090335047818, guid: 79fb16541771cd140b69a08d6bad1588, type: 3}
