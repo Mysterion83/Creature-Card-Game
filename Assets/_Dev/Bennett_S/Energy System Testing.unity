@@ -603,6 +603,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _movementSpeed: 5
+  _originalFOV: 0
+  _targetFOV: 0
+  _cameraZoomSpeed: 10
+  _isZoomedIn: 0
 --- !u!1 &756965617
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +863,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 530273150}
+    - target: {fileID: 3681888740147230207, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _input
       value: 
@@ -889,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1c635f2250f503e4dbb292c330f21ec6, type: 2}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.z

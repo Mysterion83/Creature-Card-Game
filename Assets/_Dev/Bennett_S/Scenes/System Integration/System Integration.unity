@@ -921,10 +921,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
-    - target: {fileID: 3029391131907073102, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3248407830656798115, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _camera
       value: 
@@ -937,10 +933,6 @@ PrefabInstance:
       propertyPath: _selectionBox
       value: 
       objectReference: {fileID: 291963297}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _creaturePrefab
-      value: 
-      objectReference: {fileID: 2419497795459266344, guid: bb8b971bbda707540867b55222c93a0d, type: 3}
     - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _matchController
       value: 
@@ -1287,6 +1279,10 @@ PrefabInstance:
     - target: {fileID: 1065110990875088718, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_Name
       value: MatchController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
+      propertyPath: _maxTurnTime
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_LocalPosition.x

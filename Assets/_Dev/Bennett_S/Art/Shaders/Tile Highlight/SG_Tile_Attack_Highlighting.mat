@@ -14,7 +14,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -45,8 +45,9 @@ Material:
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
-    - _Glow_Strength: 50
-    - _Pulse_Speed: 5
+    - _Emission_Strength: 15
+    - _Glow_Strength: 0.75
+    - _Pulse_Speed: 4
     m_Colors:
     - _Emission_Colour: {r: 1, g: 0.0021108945, b: 0, a: 1}
     - _Neon_Colour: {r: 1, g: 0.10461649, b: 0, a: 1}
