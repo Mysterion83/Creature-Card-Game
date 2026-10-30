@@ -8,7 +8,9 @@ public class PlayerDeck : MonoBehaviour
 {
     [Header("Summon Order List")]
     [SerializeField] private List<CreatureData> _creaturesToPlace = new();
-
+    public IReadOnlyList<CreatureData> CreaturesToPlace => _creaturesToPlace;
+    public bool PlacedAllCreatures => _currentCardIndex >= _creaturesToPlace.Count;
+    
     private Player _player;
     private int _currentCardIndex;
 
