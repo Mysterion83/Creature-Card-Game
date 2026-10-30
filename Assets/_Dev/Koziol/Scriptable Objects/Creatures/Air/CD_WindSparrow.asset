@@ -18,7 +18,7 @@ MonoBehaviour:
   MaxHealth: 0
   Attack: 0
   Defense: 0
-  EnergyCost: 0
+  EnergyCost: 10
   PurchaseCost: 0
   AttackPattern: {fileID: 11400000, guid: 9d47213e3858e1645908cc6ef70f2c2b, type: 2}
   MovementPattern: {fileID: 11400000, guid: f357e7d21baabc6459f18242d8ed82fb, type: 2}

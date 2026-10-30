@@ -3,30 +3,25 @@ using UnityEngine;
 
 public class MatchController : MonoBehaviour
 {
-    [Header("Match Settings")]
+    [Header("Match Settings"), SerializeField]
     private bool _beginOnStart = true;
     
     [Header("Turn Settings"), SerializeField]
-    private float _maxTurnTime = 30f;
+    private float _maxPhaseTime = 30f;
     
     [Header("Debug"), SerializeField]
     private bool _enableTurnDebugging;
 
     private int _turnsPlayed;
-
-    private int _startingPlayerIndex;
     private int _currentPlayerIndex;
-    private int _remainingPlayers;
-    
-    private float _turnTimer;
+    private float _phaseTimer;
 
     public bool IsMatchActive { get; private set; }
-    public Player CurrentPlayer { get; private set; }
-
-    public MatchState CurrentState { get; private set; } = MatchState.Summon;
+    public Player CurrentPlayer {get; private set;}
+    public MatchState CurrentState { get; private set; } = MatchState.Setup;
 
     public static event Action<MatchState> OnMatchStateChanged;
-    public static event Action<Player, float> OnTurnStarted; // Sends active player and time limit
+    public static event Action<Player, MatchState, float> OnPhaseStarted; // Sends active player and time limit
     public static event Action<Player> OnTurnEnded;
     public static event Action OnMatchStarted;
     public static event Action<Player> OnMatchEnded;
@@ -34,12 +29,10 @@ public class MatchController : MonoBehaviour
     private void OnEnable()
     {
         PlayerEvents.OnPlayerDefeated += HandlePlayerDefeated;
-        PlayerEvents.OnPlayerSummonStageCompleted += HandlePlayerSummonStageCompleted;
     }
     private void OnDisable()
     {
         PlayerEvents.OnPlayerDefeated -= HandlePlayerDefeated;
-        PlayerEvents.OnPlayerSummonStageCompleted -= HandlePlayerSummonStageCompleted;
     }
 
     private void Start()
@@ -51,13 +44,10 @@ public class MatchController : MonoBehaviour
     {
         if (!IsMatchActive) return;
         
-        if (CurrentState == MatchState.Summon) return;
-        
-        _turnTimer -= Time.deltaTime;
-        if (!(_turnTimer <= 0f)) return;
-            
-        if (_enableTurnDebugging) Debug.Log($"MatchController: {PlayerRegistry.MasterList[_currentPlayerIndex].Data.Name}'s turn timed out!");
-        RequestEndTurn();
+        _phaseTimer -= Time.deltaTime;
+        if (!(_phaseTimer <= 0f)) return;
+        if (_enableTurnDebugging) Debug.Log($"MatchController: {CurrentPlayer.Data.Name}'s {CurrentState} phase timed out!");
+        RequestNextPhase();
     }
 
     /// <summary>
@@ -75,66 +65,82 @@ public class MatchController : MonoBehaviour
         
         IsMatchActive = true;
         _turnsPlayed = 0;
-        _remainingPlayers = PlayerRegistry.PlayerCount;
         
-        ChangeMatchState(MatchState.Summon);
-        
-        _startingPlayerIndex = UnityEngine.Random.Range(0, PlayerRegistry.PlayerCount);
-        _currentPlayerIndex = _startingPlayerIndex;
+        _currentPlayerIndex = UnityEngine.Random.Range(0, PlayerRegistry.PlayerCount);
+        CurrentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
 
-        ChangeTurn();
+        Debug.Log(PlayerRegistry.PlayerCount);
+        
+        StartNextTurn();
     }
     
-    private void ChangeTurn()
+    private void StartNextTurn()
     {
-        _turnsPlayed++;
-        
-        if (_turnsPlayed > PlayerRegistry.PlayerCount)
-        {
-            ChangeMatchState(MatchState.Gameplay);
-        }
-
-        // Choose the next player index relative to the starting player
-        _currentPlayerIndex = (_startingPlayerIndex + (_turnsPlayed - 1)) % PlayerRegistry.PlayerCount;
+        if (_turnsPlayed > 0) _currentPlayerIndex = (_currentPlayerIndex + 1) % PlayerRegistry.PlayerCount;
         CurrentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
         
-        _turnTimer = _maxTurnTime;
-        OnTurnStarted?.Invoke(CurrentPlayer, _turnTimer);
-        
-        Debug.Log($"MatchController: Turn {_turnsPlayed} | State: {CurrentState} | Player: {CurrentPlayer.Data.Name} (Index: {_currentPlayerIndex})");
+        _turnsPlayed++;
         CurrentPlayer.StartTurn();
+        EnterPhase(MatchState.TurnSummon);
     }
 
+    private void EnterPhase(MatchState newPhase)
+    {
+        CurrentState = newPhase;
+        OnMatchStateChanged?.Invoke(CurrentState);
+
+        switch (CurrentState)
+        {
+            case MatchState.TurnSummon when !CurrentPlayer.CanSummon():
+            {
+                if (_enableTurnDebugging) Debug.Log($"MatchController: Skipping Summon Phase for {CurrentPlayer.Data.Name} (No energy/cards).");
+                EnterPhase(MatchState.TurnAction);
+                return;
+            }
+            case MatchState.TurnAction when !CurrentPlayer.CanMoveOrAttack():
+            {
+                if (_enableTurnDebugging) Debug.Log($"MatchController: Skipping Action Phase for {CurrentPlayer.Data.Name} (No energy/units).");
+                RequestEndTurn();
+                return;
+            }
+            default:
+                _phaseTimer = _maxPhaseTime;
+                OnPhaseStarted?.Invoke(CurrentPlayer, CurrentState, _phaseTimer);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Progress to the next phase of an active turn, called internally or through UI
+    /// </summary>
+    public void RequestNextPhase()
+    {
+        if (!IsMatchActive) return;
+
+        switch (CurrentState)
+        {
+            case MatchState.TurnSummon:
+                EnterPhase(MatchState.TurnAction);
+                break;
+            case MatchState.TurnAction:
+                RequestEndTurn();
+                break;
+            default:
+                return;
+        }
+    }
+    
     /// <summary>
     /// Force end a turn, should be called through UI or changed in future to subscribe
     /// </summary>
     public void RequestEndTurn()
     {
-        if (!IsMatchActive || CurrentPlayer == null) return;
+        if (!IsMatchActive || !CurrentPlayer) return;
 
-        OnTurnEnded?.Invoke(CurrentPlayer);
         CurrentPlayer.EndTurn();
-        ChangeTurn();
-    }
-    
-    private void CompleteMatch()
-    {
-        IsMatchActive = false;
-        Player winner = null;
+        OnTurnEnded?.Invoke(CurrentPlayer);
         
-        for (int i = 0; i < PlayerRegistry.PlayerCount; i++)
-        {
-            if (PlayerRegistry.MasterList[i].IsDefeated) continue;
-            
-            winner = PlayerRegistry.MasterList[i];
-            OnMatchEnded?.Invoke(winner);
-            break;
-        }
-
-        ChangeMatchState(MatchState.Ended);
-        
-        if (!_enableTurnDebugging) return;
-        if (winner != null) Debug.Log($"MatchController: Player {winner.Data.Name} was Defeated.");
+        StartNextTurn();
     }
 
     private void ChangeMatchState(MatchState state)
@@ -145,33 +151,46 @@ public class MatchController : MonoBehaviour
         OnMatchStateChanged?.Invoke(CurrentState);
     }
     
+    private void HandlePlayerDefeated(Player defeatedPlayer)
+    {
+        int aliveCount = 0;
+        Player potentialWinner = null;
+
+        foreach (Player player in PlayerRegistry.MasterList)
+        {
+            if (player.IsDefeated) continue;
+            
+            aliveCount++;
+            potentialWinner = player;
+        }
+
+        if (aliveCount <= 1)
+        {
+            CompleteMatch(potentialWinner);
+        }
+    }
+    
+    private void CompleteMatch(Player winner)
+    {
+        IsMatchActive = false;
+        ChangeMatchState(MatchState.MatchOver);
+        OnMatchEnded?.Invoke(winner);
+        
+        if (!_enableTurnDebugging) return;
+        Debug.Log($"MatchController: Player {winner.Data.Name} was Defeated.");
+    }
+    
     private void OnDestroy()
     {
         PlayerRegistry.Clear();
-    }
-    
-    private void HandlePlayerDefeated(Player player)
-    {
-        if (!IsMatchActive) return;
-
-        _remainingPlayers--;
-        if (_enableTurnDebugging) Debug.Log($"MatchController: Player {player} was Defeated.");
-
-        if (_remainingPlayers <= 1) CompleteMatch();
-    }
-
-    private void HandlePlayerSummonStageCompleted(Player player)
-    {
-        if (CurrentState != MatchState.Summon || CurrentPlayer != player) return;
-        
-        if (_enableTurnDebugging) Debug.Log($"MatchController: Player {player} has summoned all their creatures!");
-        RequestEndTurn();
     }
 }
 
 public enum MatchState
 {
-    Summon,
-    Gameplay,
-    Ended
+    Setup,
+    TurnSummon,      // Current player's summoning window
+    TurnAction,      // Current player's move/attack window
+    TurnEnded,
+    MatchOver
 }

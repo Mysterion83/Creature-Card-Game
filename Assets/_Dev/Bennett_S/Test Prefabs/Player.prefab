@@ -70,7 +70,7 @@ MonoBehaviour:
   _energy:
     currentAmount: 50
     maxAmount: 50
-  _baseEnergyPerRound: 15
+  _baseEnergyPerRound: 30
   _bonusEnergyHardCap: 50
 --- !u!114 &3234684253788528232
 MonoBehaviour:

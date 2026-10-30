@@ -11,12 +11,14 @@ public abstract class Player : MonoBehaviour
     [SerializeField] private List<Creature> _activeCreatures;
     [SerializeField] private int _requiredSummonCount = 4;
 
-    [Header("Debug")] [SerializeField] private bool _enableTurnDebugging;
+    [Header("Debug")] 
+    [SerializeField] private bool _enableTurnDebugging;
 
     public PlayerData Data => _data;
     public bool IsDefeated => _activeCreatures.Count == 0;
     public CreatureData SelectedCreature { get; private set; }
     public EnergySystem EnergySystem { get; private set; }
+    public IReadOnlyList<Creature> ActiveCreatures => _activeCreatures; 
     
     private void OnEnable()
     {
@@ -74,8 +76,6 @@ public abstract class Player : MonoBehaviour
         
         if (_activeCreatures.Count < _requiredSummonCount) return;
         
-        // Tell the MatchController summoning is complete
-        PlayerEvents.TriggerSummonStageCompleted(this);
         if (_enableTurnDebugging) Debug.Log($"{_data.Name} has placed all required units!");
     }
     
@@ -101,9 +101,37 @@ public abstract class Player : MonoBehaviour
     /// <returns>True if cost is affordable, false if not</returns>
     public bool TryPerformMove(float cost)
     {
-        if (!(EnergySystem.Energy.CurrentAmount >= cost)) return false;
+        if (EnergySystem == null || EnergySystem.Energy == null) return false;
+        
+        if (cost > EnergySystem.Energy.CurrentAmount) 
+        {
+            return false;
+        }
         
         EnergySystem.RemoveEnergy(cost);
         return true;
+    }
+    
+    /// <summary>
+    /// Checks if the player can summon
+    /// </summary>
+    public bool CanSummon()
+    {
+        if (TryGetComponent(out PlayerDeck deck))
+        {
+            if (deck.PlacedAllCreatures) return false; 
+        }
+        
+        return EnergySystem.Energy.CurrentAmount > 0f && !deck.PlacedAllCreatures;
+    }
+
+    /// <summary>
+    /// Checks if the player has active units capable of moving/attacking and energy to spend
+    /// </summary>
+    public bool CanMoveOrAttack()
+    {
+        if (_activeCreatures.Count == 0) return false;
+
+        return EnergySystem.Energy.CurrentAmount > 0f;
     }
 }
