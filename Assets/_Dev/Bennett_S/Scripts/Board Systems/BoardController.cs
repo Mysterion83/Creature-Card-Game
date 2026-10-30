@@ -195,7 +195,22 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
-    
+
+    public void AttackCreature(Creature attacker, Tile target)
+    {
+        if (!target.Occupant) return;
+        if (attacker.Owner == target.Occupant.Owner) return;
+
+        Vector2Int[] validAttacks = attacker.ShowValidAttacks();
+        // if there are no valid attacks, return
+        if (validAttacks.Length == 0) return;
+        Vector2Int relativeTargetPosition = target.TileIndex - attacker.OccupyingTile.TileIndex;
+        // if the target tile is not in the valid attacks, return
+        if (!Array.Exists(validAttacks, attack => attack == relativeTargetPosition)) return;
+
+        target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
+    }
+
     public void PreviewPattern(Tile tile, bool isAttack)
     {
         if (!tile.Occupant) return;
@@ -267,12 +282,17 @@ public class BoardController : MonoBehaviour
         {
             if (_creatureStage != CreatureStage.Moving) return;
 
-            Player activePlayer = _matchController.CurrentPlayer;
-            if (!activePlayer) return;
-            
-            _highlightingController.Clear();
+            Tile currentTile = _board.GetTileFromPosition(SelectedPosition);
 
-            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
+            // If tile is occupied by a creature attempt to attack, otherwise attempt to move the creature
+            if (currentTile.Occupant)
+            {
+                AttackCreature(_selectedTile.Occupant, currentTile);
+            }
+            else
+            {
+                MoveCreature(_selectedTile.Occupant, currentTile);
+            }
             _selectedTile = null;
             _creatureStage = CreatureStage.None;
         }
