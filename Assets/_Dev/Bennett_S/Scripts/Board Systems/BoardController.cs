@@ -189,6 +189,8 @@ public class BoardController : MonoBehaviour
         creature.transform.position = target.transform.position;
         creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
 
+        _highlightingController.Clear();
+        
         // Debug logic
         if (_enableCreatureDebug)
         {
@@ -201,6 +203,9 @@ public class BoardController : MonoBehaviour
         if (!target.Occupant) return;
         if (attacker.Owner == target.Occupant.Owner) return;
 
+        Player activePlayer = _matchController.CurrentPlayer;
+        if (activePlayer == null) return;
+        
         Vector2Int[] validAttacks = attacker.ShowValidAttacks();
         // if there are no valid attacks, return
         if (validAttacks.Length == 0) return;
@@ -208,11 +213,20 @@ public class BoardController : MonoBehaviour
         // if the target tile is not in the valid attacks, return
         if (!Array.Exists(validAttacks, attack => attack == relativeTargetPosition)) return;
 
+        if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
+            return;
+        }
+        
         target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
+        
+        _highlightingController.Clear();
     }
 
     public void PreviewPattern(Tile tile, bool isAttack)
     {
+        _highlightingController.Clear();
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
@@ -280,19 +294,20 @@ public class BoardController : MonoBehaviour
         }
         else
         {
-            if (_creatureStage != CreatureStage.Moving) return;
-
             Tile currentTile = _board.GetTileFromPosition(SelectedPosition);
 
             // If tile is occupied by a creature attempt to attack, otherwise attempt to move the creature
             if (currentTile.Occupant)
             {
+                if (_creatureStage != CreatureStage.Attacking) return;
                 AttackCreature(_selectedTile.Occupant, currentTile);
             }
             else
             {
+                if (_creatureStage != CreatureStage.Moving) return;
                 MoveCreature(_selectedTile.Occupant, currentTile);
             }
+            _highlightingController.Clear();
             _selectedTile = null;
             _creatureStage = CreatureStage.None;
         }
