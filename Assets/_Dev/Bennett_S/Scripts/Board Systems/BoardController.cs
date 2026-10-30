@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(TileSelectionController), typeof(Board))]
+[RequireComponent(typeof(TileSelectionController), 
+    typeof(TileHighlightingController), 
+    typeof(Board))]
 public class BoardController : MonoBehaviour
 {
     [Header("References")]
@@ -14,14 +17,17 @@ public class BoardController : MonoBehaviour
     [SerializeField] private float _selectionBoxHoverHeight = 0.5f; 
     
     [Header("Debug")]
-    [SerializeField] private bool _enableCreatureCoordinateDebug = false;
+    [SerializeField] private bool _enableCreatureDebug = false;
     
     private GameControls _inputMapping;
     private TileSelectionController _selectionController;
+    private TileHighlightingController _highlightingController;
     private Board _board;
 
     [SerializeField] private Tile _selectedTile;
 
+    private CreatureStage _creatureStage = CreatureStage.None;
+        
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
@@ -31,18 +37,27 @@ public class BoardController : MonoBehaviour
         _inputMapping.Enable();
         _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
         _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
+        _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
+        _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
+
+        MatchController.OnTurnEnded += OnTurnEnded;
     }
 
     private void OnDisable()
     {
         _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
         _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
+        _inputMapping.Gameplay.ViewAttack.performed -= OnViewAttack;
+        _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
         _inputMapping.Disable();
+        
+        MatchController.OnTurnEnded -= OnTurnEnded;
     }
-    
+
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
+        _highlightingController = GetComponent<TileHighlightingController>();
         _board = GetComponent<Board>();
         _inputMapping = new GameControls();
     }
@@ -77,32 +92,11 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    public void OnSelectionPressed(InputAction.CallbackContext context)
-    {
-        if (!_matchController || !_matchController.IsMatchActive) return;
-        
-        if (!_selectedTile)
-        {
-            SelectCreature();
-        }
-        else
-        {
-            MoveCreature(_selectedTile.Occupant, _board.GetTileFromPosition(SelectedPosition));
-            _selectedTile = null;
-        }
-    }
-
     private void PlaceCreature(InputAction.CallbackContext context)
     {
         if (!_matchController || !_matchController.IsMatchActive) return;
-        
-        if (_matchController.CurrentState != MatchState.Summon)
-        {
-            Debug.Log("BoardController: Creatures cannot be summoned outside of the Summon phase");
-            return;
-        }
-        
-        IPlayer activePlayer = _matchController.CurrentPlayer;
+ 
+        Player activePlayer = _matchController.CurrentPlayer;
         if (activePlayer == null) return;
         
         CreatureData creatureData = activePlayer.SelectedCreature;
@@ -117,8 +111,12 @@ public class BoardController : MonoBehaviour
     
     public Creature PlaceCreature(CreatureData creatureData)
     {
-        IPlayer activePlayer = _matchController.CurrentPlayer;
+        if (_matchController.CurrentState != MatchState.TurnSummon) return null;
+        
+        Player activePlayer = _matchController.CurrentPlayer;
         if (activePlayer == null) return null;
+
+        if (!activePlayer.CanSummon()) return null; 
         
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (tile.Occupant || !tile.Data.IsPassable)
@@ -127,6 +125,12 @@ public class BoardController : MonoBehaviour
             return null;
         }
 
+        if (!activePlayer.TryPerformMove(creatureData.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not place creature as energy is too low");
+            return null;
+        }
+        
         GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, tile.transform.position, Quaternion.identity);
         creatureObj.transform.position += new Vector3(0, tile.Data.CreatureYOffset, 0);
         
@@ -148,45 +152,119 @@ public class BoardController : MonoBehaviour
         activePlayer.AddCreature(creature);
         creatureObj.name = creature.Data.CreatureName;
         
-        if (_enableCreatureCoordinateDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition}");
+        if (_enableCreatureDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition} | {activePlayer.EnergySystem.Energy.CurrentAmount} / {activePlayer.EnergySystem.Energy.MaxAmount}");
         
         return creature;
     }
-
-    [Obsolete("Function not yet implemented fully")]
+    
     public void MoveCreature(Creature creature, Tile target)
     {
+        if (_matchController.CurrentState != MatchState.TurnAction) return;
+        
         if (target.Occupant || !target.Data.IsPassable) return;
+
+        Player activePlayer = _matchController.CurrentPlayer;
+        if (activePlayer == null) return;
         
         Vector2Int[] validMoves = creature.ShowValidMovement();
         // if there are no valid moves, return
         if (validMoves.Length == 0) return;
 
-        Vector2Int relativeTargetPoistion = target.TileIndex - creature.OccupyingTile.TileIndex;
+        Vector2Int relativeTargetPosition = target.TileIndex - creature.OccupyingTile.TileIndex;
         // if the target tile is not in the valid moves, return
-        if (!Array.Exists(validMoves, move => move == relativeTargetPoistion)) return;
+        if (!Array.Exists(validMoves, move => move == relativeTargetPosition)) return;
 
+        // return if selected tile equals the creatures tile
+        if (_selectedTile == _board.GetTileFromPosition(SelectedPosition)) return;
+            
+        if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not move creature as energy is too low");
+            return;
+        }
+        
         creature.OccupyingTile.Occupant = null;
         target.Occupant = creature;
         creature.OccupyingTile = target;
         creature.transform.position = target.transform.position;
         creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
 
+        _highlightingController.Clear();
+        
         // Debug logic
-        if (_enableCreatureCoordinateDebug)
+        if (_enableCreatureDebug)
         {
             Debug.Log(target.gameObject.transform.position);
         }
     }
 
-    [Obsolete("Function not yet implemented fully")]
+    public void AttackCreature(Creature attacker, Tile target)
+    {
+        if (!target.Occupant) return;
+        if (attacker.Owner == target.Occupant.Owner) return;
+
+        Player activePlayer = _matchController.CurrentPlayer;
+        if (activePlayer == null) return;
+        
+        Vector2Int[] validAttacks = attacker.ShowValidAttacks();
+        // if there are no valid attacks, return
+        if (validAttacks.Length == 0) return;
+        Vector2Int relativeTargetPosition = target.TileIndex - attacker.OccupyingTile.TileIndex;
+        // if the target tile is not in the valid attacks, return
+        if (!Array.Exists(validAttacks, attack => attack == relativeTargetPosition)) return;
+
+        if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
+            return;
+        }
+        
+        target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
+        
+        _highlightingController.Clear();
+    }
+
     public void PreviewPattern(Tile tile, bool isAttack)
     {
+        _highlightingController.Clear();
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
+        List<Vector3> validWorldPositions = new();
 
-        //Render Pattern on the board
+        // Convert 2D positions into 3D (including tile height offset)
+        foreach (Vector2Int position in validMoves)
+        {
+            // Convert relative to creature coordinate to relative to board coordinate
+            Vector2Int relativePosition = position + tile.TileIndex;
+            
+            // Check if tile is impassable
+            if (!tile.Data.IsPassable) continue;
+            // Check if world position can be retrieved from the given index
+            if (!_board.TryGetWorldPositionFromIndex(relativePosition, out Vector3 worldPosition)) continue;
+
+            // Not complete, ask Ben for details
+            if (isAttack)
+            {
+                // Show attack over occupied tiles
+            }
+            else
+            {
+                // Don't show movement highlights over inaccessible tiles
+                Tile tileToCheck = _board.GetTileFromPosition(worldPosition);
+                if (!tileToCheck.Data.IsPassable || tileToCheck.Occupant) continue;
+            }
+            //
+            
+            validWorldPositions.Add(worldPosition);
+        }
+        
+        // Add highlight to selected creature's tile
+        validWorldPositions.Add(tile.transform.position);
+        
+        _highlightingController.HighlightTiles(validWorldPositions, isAttack);
+        
+        // Add a check for impassable tiles and cut off the movement
     }
 
     private void SelectCreature()
@@ -199,6 +277,66 @@ public class BoardController : MonoBehaviour
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
-        if (_enableCreatureCoordinateDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
+        
+        _creatureStage = CreatureStage.Moving;
+        PreviewPattern(_selectedTile, false);
+        
+        if (_enableCreatureDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
+    
+    private void OnSelectionPressed(InputAction.CallbackContext context)
+    {
+        if (!_matchController || !_matchController.IsMatchActive) return;
+        
+        if (!_selectedTile)
+        {
+            SelectCreature();
+        }
+        else
+        {
+            Tile currentTile = _board.GetTileFromPosition(SelectedPosition);
+
+            // If tile is occupied by a creature attempt to attack, otherwise attempt to move the creature
+            if (currentTile.Occupant)
+            {
+                if (_creatureStage != CreatureStage.Attacking) return;
+                AttackCreature(_selectedTile.Occupant, currentTile);
+            }
+            else
+            {
+                if (_creatureStage != CreatureStage.Moving) return;
+                MoveCreature(_selectedTile.Occupant, currentTile);
+            }
+            _highlightingController.Clear();
+            _selectedTile = null;
+            _creatureStage = CreatureStage.None;
+        }
+    }
+    
+    private void OnViewAttack(InputAction.CallbackContext context)
+    {
+        _creatureStage = CreatureStage.Attacking;
+        _highlightingController.Clear();
+        PreviewPattern(_selectedTile, true);
+    }
+
+    private void OnViewMove(InputAction.CallbackContext context)
+    {
+        _creatureStage = CreatureStage.Moving;
+        _highlightingController.Clear();
+        PreviewPattern(_selectedTile, false);
+    }
+    
+    private void OnTurnEnded(Player player)
+    {
+        _selectedTile = null;
+        _highlightingController.Clear();
+    }
+}
+
+public enum CreatureStage
+{
+    None,
+    Moving,
+    Attacking,
 }

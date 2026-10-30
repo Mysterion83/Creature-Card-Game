@@ -25,6 +25,7 @@ public class Creature : MonoBehaviour
         {
             CurrentHealth = 0;
             OnCreatureDeath?.Invoke(this);
+            Destroy(gameObject);
         }
     }
 
