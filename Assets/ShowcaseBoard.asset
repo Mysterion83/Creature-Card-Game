@@ -16,453 +16,903 @@ MonoBehaviour:
   MapName: 
   MapSize: {x: 15, y: 15}
   Tiles:
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S3
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S3
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Water_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Earth_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S3
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S3
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S2
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Wind_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Neutral
-  - Region: -1
-    TileID: Dev_Tiles_Empty
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
-  - Region: -1
-    TileID: Dev_Tiles_Fire_Base_S1
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 1
+    IsZoneCenter: 1
+    ZoneDefinition: {fileID: 11400000, guid: abe4bb98df69b0d4189e3543be5d68ee, type: 2}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S3
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S3
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Water_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Earth_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S3
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S3
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S2
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Wind_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Neutral
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Empty
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}
+  - TileID: Dev_Tiles_Fire_Base_S1
+    ZoneID: 0
+    IsZoneCenter: 0
+    ZoneDefinition: {fileID: 0}

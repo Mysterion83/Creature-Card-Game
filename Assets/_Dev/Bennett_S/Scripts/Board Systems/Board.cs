@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -9,15 +10,15 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform _shaderPlane;
     [SerializeField] private Material _gridShaderMaterial;
 
-    [Header("Map Data to Load")] [SerializeField]
-    private SavedMapData _definitionData;
+    [Header("Board Generation")]
+    [SerializeField] private SavedMapData _definitionData;
+    [SerializeField] private Vector3 _tileSpawnOffset = new Vector3(0, 0.5f, 0);
 
-    [Header("Generation Settings")] [SerializeField]
-    private Vector3 _tileSpawnOffset = new Vector3(0, 0.5f, 0);
-
-    [Header("Shader Settings")] [SerializeField]
-    private float _gridYOffset = 0.015f;
-
+    [Header("Active Zones")]
+    [SerializeField] public List<ZoneInstance> ActiveZones = new();
+    
+    [Header("Shader Settings")] 
+    [SerializeField] private float _gridYOffset = 0.015f;
     [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
     [SerializeField] private Color _gridColour = Color.white;
 
@@ -44,6 +45,8 @@ public class Board : MonoBehaviour
 
         // Load map data and build the board
         _mapData = LoadMapData(_definitionData);
+
+        InitialiseZones();
     }
 
     private void Start()
@@ -67,13 +70,13 @@ public class Board : MonoBehaviour
         if (data == null || data.MapSize.x <= 0 || data.MapSize.y <= 0)
         {
             Debug.LogError("Runtime Loading Error: Invalid SavedMapData asset provided.");
-            return default(MapData);
+            return default;
         }
 
         if (!_tilePrefab || !_tilePrefab.GetComponent<Tile>())
         {
             Debug.LogError("Runtime Loading Error: Tile prefab is missing or does not contain a Tile component!");
-            return default(MapData);
+            return default;
         }
 
         MapData mapData = new MapData
@@ -108,7 +111,10 @@ public class Board : MonoBehaviour
 
                 tile.Data = TileRegistryV2.Instance.GetTileData(savedTileData.TileID);
                 tile.TileIndex = new Vector2Int(x, y);
-                tile.RegionID = savedTileData.Region;
+                
+                tile.ZoneID = savedTileData.ZoneID;
+                tile.AssignedZone = savedTileData.ZoneDefinition;
+                tile.IsZoneCenter = savedTileData.IsZoneCenter;
 
                 tile.Init();
 
@@ -121,6 +127,43 @@ public class Board : MonoBehaviour
 
     public MapData GetData() => _mapData;
 
+    /// <summary>
+    /// Initialise all the board's zones and construct their patterns
+    /// </summary>
+    private void InitialiseZones()
+    {
+        if (_mapData.Tiles == null) return;
+        ActiveZones.Clear();
+        int zoneCounter = 1;
+
+        foreach (Tile tile in _mapData.Tiles)
+        {
+            if (!tile || !tile.IsZoneCenter || !tile.AssignedZone) continue;
+
+            // Create zone instance and add the central tile
+            ZoneInstance newZone = new ZoneInstance(zoneCounter++, tile.AssignedZone, tile);
+            newZone.RelativeTiles.Add(tile);
+            
+            // Loop through zone offsets from the ZoneDefinition and assign them
+            foreach (Vector2Int offset in tile.AssignedZone.RelativeOffsets)
+            {
+                Vector2Int targetCoords = tile.TileIndex + offset;
+                if (!IsIndexInBounds(targetCoords)) continue;
+
+                Tile affectedTile = _mapData.Tiles[targetCoords.x, targetCoords.y];
+                // Prevent duplicate entries if footprints overlap
+                if (affectedTile && !newZone.RelativeTiles.Contains(affectedTile))
+                {
+                    newZone.RelativeTiles.Add(affectedTile);
+                }
+
+                affectedTile.ZoneID = newZone.Definition.ZoneID;
+            }
+
+            ActiveZones.Add(newZone);
+        }
+    }
+    
     /// <summary>
     /// Get a <c>Tile</c> through a given world position
     /// </summary>
