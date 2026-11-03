@@ -9,11 +9,15 @@ public class Tile : MonoBehaviour
 {
     [Header("Tile Definition")] 
     public TileData Data;
-
-    [Header("Active Info")] 
-    public int RegionID = -1;
+    
+    [Header("Tile Info")] 
     public Creature Occupant;
     public Vector2Int TileIndex;
+    
+    [Header("Zone Info")]
+    public int ZoneID = -1;
+    public bool IsZoneCenter;
+    public ZoneDefinition AssignedZone;
     
     private TileData _prevData;
     private MeshFilter _meshFilter;

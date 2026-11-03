@@ -148,7 +148,7 @@ public class BoardBuilder : MonoBehaviour
         {
             // Extract the actual struct data safely using .Value
             SavedTileData tileData = savedTileData.Value;
-            tile.RegionID = tileData.Region;
+            tile.ZoneID = tileData.ZoneID;
             tile.Data = TileRegistryV2.Instance.GetTileData(tileData.TileID);
         }
 
@@ -176,7 +176,7 @@ public class BoardBuilder : MonoBehaviour
                 {
                     savedMapData.Tiles[flatIndex] = new SavedTileData
                     {
-                        Region = currentTile.RegionID,
+                        ZoneID = currentTile.ZoneID,
                         TileID = currentTile.Data != null ? currentTile.Data.ID : string.Empty
                     };
                 }

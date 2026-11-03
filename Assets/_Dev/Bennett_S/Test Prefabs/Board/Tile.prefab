@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   Data: {fileID: 11400000, guid: d1dd337e19807cf48b3042bf02257043, type: 2}
-  RegionID: -1
   Occupant: {fileID: 0}
   TileIndex: {x: 0, y: 0}
+  ZoneID: -1
+  IsZoneCenter: 0
+  AssignedZone: {fileID: 0}
 --- !u!65 &3902302056277981238
 BoxCollider:
   m_ObjectHideFlags: 0
