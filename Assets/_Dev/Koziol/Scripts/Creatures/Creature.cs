@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
-    public PlayerData Owner { get; set; }
+    public Player Owner { get; set; }
 
     public CreatureData Data;
 
@@ -38,7 +38,7 @@ public class Creature : MonoBehaviour
         return Data.AttackPattern.ValidPositions;
     }
 
-    public Creature(CreatureData data, PlayerData owner)
+    public Creature(CreatureData data, Player owner)
     {
         Data = data;
         Owner = owner;

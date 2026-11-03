@@ -142,7 +142,7 @@ public class BoardController : MonoBehaviour
         }
         
         creature.Data = creatureData;
-        creature.Owner = activePlayer.Data;
+        creature.Owner = activePlayer;
         creature.CurrentHealth = creatureData.MaxHealth;
         creature.Experience = 0;
         creature.OccupyingTile = tile;
@@ -151,7 +151,10 @@ public class BoardController : MonoBehaviour
         
         activePlayer.AddCreature(creature);
         creatureObj.name = creature.Data.CreatureName;
+
+        creature.OnCreatureDeath += HandleCreatureDeath;
         
+        if (tile.ZoneID > 0) _board.EvaluateZoneControl();
         if (_enableCreatureDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition} | {activePlayer.EnergySystem.Energy.CurrentAmount} / {activePlayer.EnergySystem.Energy.MaxAmount}");
         
         return creature;
@@ -183,12 +186,21 @@ public class BoardController : MonoBehaviour
             return;
         }
         
-        creature.OccupyingTile.Occupant = null;
-        target.Occupant = creature;
-        creature.OccupyingTile = target;
+        // Move the creature to the new tile
         creature.transform.position = target.transform.position;
-        creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
-
+        creature.transform.position += new Vector3(0, target.Data.CreatureYOffset, 0);
+        
+        // Cache the previous Zone ID
+        int oldZoneID = creature.OccupyingTile.ZoneID;
+        
+        // Apply new tile data
+        creature.OccupyingTile.Occupant = null;
+        creature.OccupyingTile = target;
+        target.Occupant = creature;
+        
+        // Re-evaluate zone control if a creature moves into a zone or has moved from a zone
+        if (oldZoneID > 0 || target.ZoneID > 0) _board.EvaluateZoneControl();
+        
         _highlightingController.Clear();
         
         // Debug logic
@@ -273,7 +285,7 @@ public class BoardController : MonoBehaviour
         if (!tile.Occupant) return;
         
         // Return for creatures selected other than the player's own
-        if (tile.Occupant.Owner.Name != _matchController.CurrentPlayer.Data.Name) return;
+        if (tile.Occupant.Owner.Data.Name != _matchController.CurrentPlayer.Data.Name) return;
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
@@ -331,6 +343,22 @@ public class BoardController : MonoBehaviour
     {
         _selectedTile = null;
         _highlightingController.Clear();
+    }
+    
+    private void HandleCreatureDeath(Creature creature)
+    {
+        if (!creature) return;
+        
+        creature.OnCreatureDeath -= HandleCreatureDeath;
+        
+        Tile creatureOccupyingTile = creature.OccupyingTile;
+        if (!creatureOccupyingTile) return;
+        
+        creatureOccupyingTile.Occupant = null;
+        if (creatureOccupyingTile.ZoneID > 0)
+        {
+            _board.EvaluateZoneControl();
+        }
     }
 }
 

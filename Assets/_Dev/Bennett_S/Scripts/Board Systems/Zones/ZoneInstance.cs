@@ -10,6 +10,7 @@ public class ZoneInstance
     public ZoneDefinition Definition;
     public Tile CenterTile;
     public List<Tile> RelativeTiles = new();
+    public Player Occupier;
 
     public ZoneInstance(int instanceID, ZoneDefinition definition, Tile centerTile)
     {
@@ -17,4 +18,6 @@ public class ZoneInstance
         Definition = definition;
         CenterTile = centerTile;
     }
+    
+    public void SetOccupier(Player player) => Occupier = player;
 }

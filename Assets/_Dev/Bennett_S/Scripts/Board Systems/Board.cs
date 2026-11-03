@@ -21,7 +21,10 @@ public class Board : MonoBehaviour
     [SerializeField] private float _gridYOffset = 0.015f;
     [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
     [SerializeField] private Color _gridColour = Color.white;
-
+    
+    [Header("Debugging")]
+    [SerializeField] private bool _enableZoneDebugging;
+    
     private Grid _grid;
     private MapData _mapData;
 
@@ -127,6 +130,7 @@ public class Board : MonoBehaviour
 
     public MapData GetData() => _mapData;
 
+    #region Zoning
     /// <summary>
     /// Initialise all the board's zones and construct their patterns
     /// </summary>
@@ -151,7 +155,7 @@ public class Board : MonoBehaviour
                 if (!IsIndexInBounds(targetCoords)) continue;
 
                 Tile affectedTile = _mapData.Tiles[targetCoords.x, targetCoords.y];
-                // Prevent duplicate entries if footprints overlap
+                // Prevent duplicate tile entries
                 if (affectedTile && !newZone.RelativeTiles.Contains(affectedTile))
                 {
                     newZone.RelativeTiles.Add(affectedTile);
@@ -164,6 +168,94 @@ public class Board : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Evaluate all zones to see if a player controls them
+    /// </summary>
+    public void EvaluateZoneControl()
+    {
+        foreach (var zone in ActiveZones)
+        {
+            Dictionary<Player, int> playerCreatureCounts = new Dictionary<Player, int>();
+
+            // Retrieve every player
+            foreach (Tile tile in zone.RelativeTiles)
+            {
+                if (!tile.Occupant) continue;
+                
+                Player owner = tile.Occupant.Owner;
+                playerCreatureCounts.TryAdd(owner, 0);
+                playerCreatureCounts[owner]++;
+            }
+
+            float bonusEnergy = zone.Definition.BonusEnergy;
+            Player controller = DetermineMajorityOwner(playerCreatureCounts);
+            
+            // No majority check (tied between players or empty)
+            if (!controller)
+            {
+                if (zone.Occupier != null)
+                {
+                    if (_enableZoneDebugging) Debug.Log($"[Board] '{zone.Definition.ZoneName}' is now contested/empty. Removing bonus from {zone.Occupier.Data.Name}");
+                    zone.Occupier.EnergySystem.RemoveBonusEnergy(bonusEnergy);
+                    zone.SetOccupier(null);
+                }
+                continue;
+            }
+
+            // Player has majority and occupier is changing
+            if (zone.Occupier != controller)
+            {
+                // Remove energy from the old owner if there was one
+                if (zone.Occupier != null)
+                {
+                    if (_enableZoneDebugging) Debug.Log($"[Board] {zone.Occupier.Data.Name} lost majority in '{zone.Definition.ZoneName}'. Removing energy.");
+                    zone.Occupier.EnergySystem.RemoveBonusEnergy(bonusEnergy);
+                }
+
+                // Add energy to the new owner
+                if (_enableZoneDebugging)Debug.Log($"[Board] New Zone Occupier of '{zone.Definition.ZoneName}': {controller.Data.Name}");
+                controller.EnergySystem.AddBonusEnergy(bonusEnergy);
+
+                zone.SetOccupier(controller);
+            }
+            else
+            {
+                if (!_enableZoneDebugging) return;
+                Debug.Log($"[Board] {controller.Data.Name} maintains control of '{zone.Definition.ZoneName}'.");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Evaluate who the majority owner of a zone is
+    /// </summary>
+    /// <param name="counts">Dictionary of [Player, Creature Count]s to check</param>
+    /// <returns>The <c>Player</c> that controls the zone, null if majority is shared</returns>
+    private Player DetermineMajorityOwner(Dictionary<Player, int> counts)
+    {
+        Player leader = null;
+        int maxCount = 0;
+        bool isTie = false;
+
+        foreach (var pair in counts)
+        {
+            if (pair.Value > maxCount)
+            {
+                maxCount = pair.Value;
+                leader = pair.Key;
+                isTie = false;
+            }
+            else if (pair.Value == maxCount)
+            {
+                isTie = true;
+            }
+        }
+
+        return isTie ? null : leader;
+    }
+    #endregion
+    
+    #region Tile Helper Functions
     /// <summary>
     /// Get a <c>Tile</c> through a given world position
     /// </summary>
@@ -226,4 +318,5 @@ public class Board : MonoBehaviour
         return index.x >= 0 && index.x < _mapData.MapSize.x && 
                index.y >= 0 && index.y < _mapData.MapSize.y;
     }
+    #endregion
 }
