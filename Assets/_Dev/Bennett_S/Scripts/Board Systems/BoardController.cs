@@ -154,7 +154,7 @@ public class BoardController : MonoBehaviour
 
         creature.OnCreatureDeath += HandleCreatureDeath;
         
-        if (tile.ZoneID > 0) _board.EvaluateZoneControl();
+        if (tile.ZoneID >= 0) _board.EvaluateZoneControl();
         if (_enableCreatureDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition} | {activePlayer.EnergySystem.Energy.CurrentAmount} / {activePlayer.EnergySystem.Energy.MaxAmount}");
         
         return creature;
@@ -199,7 +199,7 @@ public class BoardController : MonoBehaviour
         target.Occupant = creature;
         
         // Re-evaluate zone control if a creature moves into a zone or has moved from a zone
-        if (oldZoneID > 0 || target.ZoneID > 0) _board.EvaluateZoneControl();
+        if (oldZoneID >= 0 || target.ZoneID >= 0) _board.EvaluateZoneControl();
         
         _highlightingController.Clear();
         
@@ -355,10 +355,7 @@ public class BoardController : MonoBehaviour
         if (!creatureOccupyingTile) return;
         
         creatureOccupyingTile.Occupant = null;
-        if (creatureOccupyingTile.ZoneID > 0)
-        {
-            _board.EvaluateZoneControl();
-        }
+        if (creatureOccupyingTile.ZoneID >= 0) _board.EvaluateZoneControl();
     }
 }
 

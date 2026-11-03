@@ -85,7 +85,7 @@ MonoBehaviour:
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
   - TileID: Dev_Tiles_Water_Base_S2
-    ZoneID: 1
+    ZoneID: 0
     IsZoneCenter: 1
     ZoneDefinition: {fileID: 11400000, guid: abe4bb98df69b0d4189e3543be5d68ee, type: 2}
   - TileID: Dev_Tiles_Water_Base_S2
@@ -509,9 +509,9 @@ MonoBehaviour:
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
   - TileID: Dev_Tiles_Neutral
-    ZoneID: 0
-    IsZoneCenter: 0
-    ZoneDefinition: {fileID: 0}
+    ZoneID: 1
+    IsZoneCenter: 1
+    ZoneDefinition: {fileID: 11400000, guid: abe4bb98df69b0d4189e3543be5d68ee, type: 2}
   - TileID: Dev_Tiles_Neutral
     ZoneID: 0
     IsZoneCenter: 0
@@ -786,8 +786,8 @@ MonoBehaviour:
     ZoneDefinition: {fileID: 0}
   - TileID: Dev_Tiles_Fire_Base_S3
     ZoneID: 0
-    IsZoneCenter: 0
-    ZoneDefinition: {fileID: 0}
+    IsZoneCenter: 1
+    ZoneDefinition: {fileID: 11400000, guid: abe4bb98df69b0d4189e3543be5d68ee, type: 2}
   - TileID: Dev_Tiles_Fire_Base_S2
     ZoneID: 0
     IsZoneCenter: 0

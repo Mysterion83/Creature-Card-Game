@@ -8,7 +8,6 @@ using UnityEngine;
 public class ZoneDefinition : ScriptableObject
 {
     [Header("Zone Definition")]
-    public int ZoneID = -1;
     public string ZoneName;
     [TextArea, SerializeField] private string ZoneDescription;
     public int BonusEnergy;

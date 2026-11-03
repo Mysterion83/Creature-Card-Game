@@ -115,7 +115,6 @@ public class Board : MonoBehaviour
                 tile.Data = TileRegistryV2.Instance.GetTileData(savedTileData.TileID);
                 tile.TileIndex = new Vector2Int(x, y);
                 
-                tile.ZoneID = savedTileData.ZoneID;
                 tile.AssignedZone = savedTileData.ZoneDefinition;
                 tile.IsZoneCenter = savedTileData.IsZoneCenter;
 
@@ -138,7 +137,7 @@ public class Board : MonoBehaviour
     {
         if (_mapData.Tiles == null) return;
         ActiveZones.Clear();
-        int zoneCounter = 1;
+        int zoneCounter = 0;
 
         foreach (Tile tile in _mapData.Tiles)
         {
@@ -148,6 +147,8 @@ public class Board : MonoBehaviour
             ZoneInstance newZone = new ZoneInstance(zoneCounter++, tile.AssignedZone, tile);
             newZone.RelativeTiles.Add(tile);
             
+            tile.ZoneID = newZone.ZoneID; 
+            
             // Loop through zone offsets from the ZoneDefinition and assign them
             foreach (Vector2Int offset in tile.AssignedZone.RelativeOffsets)
             {
@@ -155,13 +156,18 @@ public class Board : MonoBehaviour
                 if (!IsIndexInBounds(targetCoords)) continue;
 
                 Tile affectedTile = _mapData.Tiles[targetCoords.x, targetCoords.y];
-                // Prevent duplicate tile entries
-                if (affectedTile && !newZone.RelativeTiles.Contains(affectedTile))
+                
+                // Only claim if ID is below 0
+                if (!affectedTile || affectedTile.ZoneID >= 0) continue;
+                
+                // Set ZoneID to the initialised Zone
+                affectedTile.ZoneID = newZone.ZoneID;
+                
+                //Prevent duplicate tile entries
+                if (!newZone.RelativeTiles.Contains(affectedTile))
                 {
                     newZone.RelativeTiles.Add(affectedTile);
                 }
-
-                affectedTile.ZoneID = newZone.Definition.ZoneID;
             }
 
             ActiveZones.Add(newZone);
@@ -190,38 +196,27 @@ public class Board : MonoBehaviour
             float bonusEnergy = zone.Definition.BonusEnergy;
             Player controller = DetermineMajorityOwner(playerCreatureCounts);
             
-            // No majority check (tied between players or empty)
-            if (!controller)
+            // Continue if occupier is the same
+            if (zone.Occupier == controller) continue; 
+
+            // Remove bonus energy from previous Occupier (if they exist)
+            if (zone.Occupier)
             {
-                if (zone.Occupier != null)
-                {
-                    if (_enableZoneDebugging) Debug.Log($"[Board] '{zone.Definition.ZoneName}' is now contested/empty. Removing bonus from {zone.Occupier.Data.Name}");
-                    zone.Occupier.EnergySystem.RemoveBonusEnergy(bonusEnergy);
-                    zone.SetOccupier(null);
-                }
-                continue;
+                if (_enableZoneDebugging) Debug.Log($"[Board] {zone.Occupier.Data.Name} lost control of '{zone.Definition.ZoneName}'.");
+                zone.Occupier.EnergySystem.RemoveBonusEnergy(bonusEnergy);
             }
+            
+            zone.SetOccupier(controller);
 
-            // Player has majority and occupier is changing
-            if (zone.Occupier != controller)
+            // Check for a winner (not a tie/vacant) and add bonus energy
+            if (controller != null)
             {
-                // Remove energy from the old owner if there was one
-                if (zone.Occupier != null)
-                {
-                    if (_enableZoneDebugging) Debug.Log($"[Board] {zone.Occupier.Data.Name} lost majority in '{zone.Definition.ZoneName}'. Removing energy.");
-                    zone.Occupier.EnergySystem.RemoveBonusEnergy(bonusEnergy);
-                }
-
-                // Add energy to the new owner
-                if (_enableZoneDebugging)Debug.Log($"[Board] New Zone Occupier of '{zone.Definition.ZoneName}': {controller.Data.Name}");
+                if (_enableZoneDebugging) Debug.Log($"[Board] New Zone Occupier of '{zone.Definition.ZoneName}': {controller.Data.Name}");
                 controller.EnergySystem.AddBonusEnergy(bonusEnergy);
-
-                zone.SetOccupier(controller);
             }
             else
             {
-                if (!_enableZoneDebugging) return;
-                Debug.Log($"[Board] {controller.Data.Name} maintains control of '{zone.Definition.ZoneName}'.");
+                if (_enableZoneDebugging) Debug.Log($"[Board] '{zone.Definition.ZoneName}' is now contested or empty.");
             }
         }
     }

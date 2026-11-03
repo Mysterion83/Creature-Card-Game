@@ -6,15 +6,15 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ZoneInstance
 {
-    public int InstanceID;
+    public int ZoneID;
     public ZoneDefinition Definition;
     public Tile CenterTile;
     public List<Tile> RelativeTiles = new();
     public Player Occupier;
 
-    public ZoneInstance(int instanceID, ZoneDefinition definition, Tile centerTile)
+    public ZoneInstance(int zoneID, ZoneDefinition definition, Tile centerTile)
     {
-        InstanceID = instanceID;
+        ZoneID = zoneID;
         Definition = definition;
         CenterTile = centerTile;
     }
