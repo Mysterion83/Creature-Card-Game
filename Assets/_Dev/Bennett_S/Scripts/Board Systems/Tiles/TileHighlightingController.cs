@@ -10,7 +10,8 @@ public class TileHighlightingController : MonoBehaviour
     [Header("Highlighting Materials")]
     [SerializeField] private Material _moveMaterial;
     [SerializeField] private Material _attackMaterial;
-    [Space, SerializeField] private Material _zoneMaterial;
+    [SerializeField] private Material _zoneMaterial;
+    [SerializeField] private Material _spawnMaterial;
 
     [Header("Highlight Settings")] 
     [SerializeField] private float _highlightYOffset = 1f;
@@ -19,25 +20,41 @@ public class TileHighlightingController : MonoBehaviour
     [SerializeField] private GameObject _patternContainer;
     [SerializeField] private GameObject _zoneContainer;
     
-    private static readonly int BaseColor = Shader.PropertyToID("_Emission_Colour");
+    private static readonly int BaseColour = Shader.PropertyToID("_Emission_Colour");
     
     private readonly List<GameObject> _activePatternHighlights = new();
     private readonly List<GameObject> _activeZoneHighlights = new();
-
+    
     /// <summary>
     /// Instantiate a Decal Prefab at a given position and under a parent
     /// </summary>
     /// <param name="position">Position of the Decal</param>
     /// <param name="container">Container object to spawn under</param>
+    /// <param name="material">Material to use for the tile</param>
+    /// <param name="customColor">Colour to set the tile</param>
     /// <returns></returns>
-    private GameObject CreateDecalInstance(Vector3 position, GameObject container)
+    private GameObject CreateDecalInstance(Vector3 position, GameObject container, Material material, Color? customColor = null)
     {
         Vector3 spawnPosition = new Vector3(position.x, position.y + _highlightYOffset, position.z);
         GameObject highlight = Instantiate(_decalPrefab, spawnPosition, Quaternion.Euler(90f, 0f, 0f));
         
-        if (container != null)
+        if (container)
         {
             highlight.transform.parent = container.transform;
+        }
+
+        DecalProjector projector = highlight.GetComponent<DecalProjector>();
+        if (!projector || !material) return highlight;
+        
+        if (customColor.HasValue)
+        {
+            Material matInstance = new Material(material);
+            matInstance.SetColor(BaseColour, customColor.Value);
+            projector.material = matInstance;
+        }
+        else
+        {
+            projector.material = material;
         }
 
         return highlight;
@@ -51,14 +68,9 @@ public class TileHighlightingController : MonoBehaviour
     /// <param name="isAttackRange">Required: True for attack patterns, false for movement patterns</param>
     public void HighlightPatternTile(Vector3 position, bool isAttackRange)
     {
-        GameObject highlight = CreateDecalInstance(position, _patternContainer);
+        Material mat = isAttackRange ? _attackMaterial : _moveMaterial;
+        GameObject highlight = CreateDecalInstance(position, _patternContainer, mat);
         _activePatternHighlights.Add(highlight);
-
-        DecalProjector projector = highlight.GetComponent<DecalProjector>();
-        if (projector != null)
-        {
-            projector.material = isAttackRange ? _attackMaterial : _moveMaterial;
-        }
     }
     
     public void HighlightPatternTiles(List<Vector3> tilePositions, bool isAttackRange)
@@ -79,22 +91,8 @@ public class TileHighlightingController : MonoBehaviour
     /// <param name="playerColor">Optional custom colour. If null, defaults to White.</param>
     public void HighlightZoneTile(Vector3 position, Color? playerColor = null)
     {
-        GameObject highlight = CreateDecalInstance(position, _zoneContainer);
+        GameObject highlight = CreateDecalInstance(position, _zoneContainer, _zoneMaterial, playerColor);
         _activeZoneHighlights.Add(highlight);
-
-        DecalProjector projector = highlight.GetComponent<DecalProjector>();
-        if (!projector || !_zoneMaterial) return;
-        
-        if (playerColor.HasValue)
-        {
-            Material zoneMaterialInstance = new Material(_zoneMaterial);
-            zoneMaterialInstance.SetColor(BaseColor, playerColor.Value);
-            projector.material = zoneMaterialInstance;
-        }
-        else
-        {
-            projector.material = _zoneMaterial;
-        }
     }
 
     public void HighlightZoneTiles(List<Vector3> tilePositions, Color? playerColor = null)
@@ -104,7 +102,23 @@ public class TileHighlightingController : MonoBehaviour
             HighlightZoneTile(tilePos, playerColor);
         }
     }
+    #endregion
+    
+    #region SpawnHighlights
+    public void HighlightSpawnTile(Vector3 position)
+    {
+        Material mat = _spawnMaterial ? _spawnMaterial : _zoneMaterial;
+        GameObject highlight = CreateDecalInstance(position, _zoneContainer, mat);
+        _activeZoneHighlights.Add(highlight);
+    }
 
+    public void HighlightSpawnTiles(List<Vector3> tilePositions)
+    {
+        foreach (var tilePos in tilePositions)
+        {
+            HighlightSpawnTile(tilePos);
+        }
+    }
     #endregion
     
     #region Cleanup

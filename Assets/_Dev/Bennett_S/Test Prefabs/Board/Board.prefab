@@ -219,6 +219,7 @@ MonoBehaviour:
   _moveMaterial: {fileID: 2100000, guid: d43167a6e700afe449c847c691eb1674, type: 2}
   _attackMaterial: {fileID: 2100000, guid: c888291ab93787c4196b8010fca5c38b, type: 2}
   _zoneMaterial: {fileID: 2100000, guid: 804bde9564af385418e144f145815b6f, type: 2}
+  _spawnMaterial: {fileID: 2100000, guid: 3cfedc071461d2e43aaa2cd282dcf388, type: 2}
   _highlightYOffset: 1
   _patternContainer: {fileID: 2940030216277597985}
   _zoneContainer: {fileID: 7124424353386384478}

@@ -40,6 +40,7 @@ public class BoardController : MonoBehaviour
         _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
 
+        MatchController.OnMatchStateChanged += OnMatchStateChanged;
         MatchController.OnTurnEnded += OnTurnEnded;
     }
 
@@ -51,9 +52,10 @@ public class BoardController : MonoBehaviour
         _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
         _inputMapping.Disable();
         
+        MatchController.OnMatchStateChanged -= OnMatchStateChanged;
         MatchController.OnTurnEnded -= OnTurnEnded;
     }
-
+    
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
@@ -320,6 +322,37 @@ public class BoardController : MonoBehaviour
         }
     }
     
+    private void HighlightSpawnZoneForPlayer(Player player)
+    {
+        _highlightingController.ClearZones();
+    
+        MapData mapData = _board.GetData();
+        if (mapData.Tiles == null || !player) return;
+
+        List<Vector3> spawnTilePositions = new();
+
+        // Find the active player's index from the registry
+        int playerIndex = -1;
+        for (int i = 0; i < PlayerRegistry.MasterList.Count; i++)
+        {
+            if (PlayerRegistry.MasterList[i] != player) continue;
+            playerIndex = i;
+            break;
+        }
+
+        if (playerIndex == -1) return;
+
+        // Collect all tiles marked as spawn tiles belonging to the active player
+        foreach (Tile tile in mapData.Tiles)
+        {
+            if (tile && tile.IsSpawnTile && tile.SpawnOwnerID == playerIndex)
+            {
+                spawnTilePositions.Add(tile.transform.position);
+            }
+        }
+        
+        _highlightingController.HighlightSpawnTiles(spawnTilePositions);
+    }
     private void SelectCreature()
     {
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
@@ -404,6 +437,18 @@ public class BoardController : MonoBehaviour
         _creatureStage = CreatureStage.Moving;
         _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, false);
+    }
+    
+    private void OnMatchStateChanged(MatchState newState)
+    {
+        if (newState == MatchState.TurnSummon)
+        {
+            HighlightSpawnZoneForPlayer(_matchController.CurrentPlayer);
+        }
+        else
+        {
+            RefreshZoneHighlights();
+        }
     }
     
     private void OnTurnEnded(Player player)

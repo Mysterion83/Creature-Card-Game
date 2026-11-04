@@ -47,6 +47,7 @@ Material:
     - _DrawOrder: 0
     - _Emission_Strength: 5
     - _Glow_Strength: 0.2
+    - _MaxOpacity: 0.15
     - _Pulse_Speed: 2
     m_Colors:
     - _Emission_Colour: {r: 1, g: 1, b: 1, a: 1}
