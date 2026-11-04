@@ -23,7 +23,9 @@ public class SavedMapData : ScriptableObject
 
         foreach (Tile item in tiles)
         {
-            SavedTileData tileData = new SavedTileData(item.Data.ID, item.ZoneID, item.IsZoneCenter, item.AssignedZone);
+            SavedTileData tileData = new SavedTileData(
+                item.Data.ID, item.ZoneID, item.IsZoneCenter, 
+                item.AssignedZone, item.IsSpawnTile, item.SpawnOwnerID);
             tilesToSave.Add(tileData);
         }
         Tiles = tilesToSave.ToArray();
