@@ -75,6 +75,37 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 1
+--- !u!1 &2940030216277597985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8368115191199383974}
+  m_Layer: 0
+  m_Name: Patterns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8368115191199383974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940030216277597985}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2243638259668675057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3029391131907073102
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +167,7 @@ MonoBehaviour:
   _gridYOffset: 0.015
   _cellThickness: 0.1
   _gridColour: {r: 1, g: 1, b: 1, a: 1}
+  _enableZoneDebugging: 0
 --- !u!114 &4550795233912878616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +218,10 @@ MonoBehaviour:
   _decalPrefab: {fileID: 628219849298597056, guid: 0c834577adaa76c4eb5d263f5df62699, type: 3}
   _moveMaterial: {fileID: 2100000, guid: d43167a6e700afe449c847c691eb1674, type: 2}
   _attackMaterial: {fileID: 2100000, guid: c888291ab93787c4196b8010fca5c38b, type: 2}
+  _zoneMaterial: {fileID: 2100000, guid: 804bde9564af385418e144f145815b6f, type: 2}
   _highlightYOffset: 1
-  _containerObject: {fileID: 4165773673100991358}
+  _patternContainer: {fileID: 2940030216277597985}
+  _zoneContainer: {fileID: 7124424353386384478}
 --- !u!1 &4165773673100991358
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +250,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8368115191199383974}
+  - {fileID: 2613813278068876300}
   m_Father: {fileID: 1558808842113445126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4834703998641539603
@@ -309,3 +345,34 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7124424353386384478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2613813278068876300}
+  m_Layer: 0
+  m_Name: Zones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2613813278068876300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7124424353386384478}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2243638259668675057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

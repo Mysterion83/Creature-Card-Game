@@ -809,6 +809,14 @@ PrefabInstance:
       propertyPath: _data.Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
       value: Local Player (1)
@@ -1258,6 +1266,22 @@ PrefabInstance:
     - target: {fileID: 2810096429106774986, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _baseEnergyPerRound
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
