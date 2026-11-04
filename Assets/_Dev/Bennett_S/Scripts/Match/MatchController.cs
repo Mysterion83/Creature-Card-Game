@@ -61,6 +61,13 @@ public class MatchController : MonoBehaviour
             Debug.LogError("MatchController Error: Match could not start as no players have been registered!"); 
             return;
         }
+
+        Board board = FindAnyObjectByType<Board>();
+        if (board && !board.ValidateSpawnZones())
+        {
+            Debug.LogError("MatchController Error: Map spawn zone configuration does not match the active player count!");
+            return;
+        }
         
         OnMatchStarted?.Invoke();
         

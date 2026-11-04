@@ -118,6 +118,9 @@ public class Board : MonoBehaviour
                 tile.AssignedZone = savedTileData.ZoneDefinition;
                 tile.IsZoneCenter = savedTileData.IsZoneCenter;
 
+                tile.IsSpawnTile = savedTileData.IsSpawnTile;
+                tile.SpawnOwnerID = savedTileData.SpawnOwnerID;
+                
                 tile.Init();
 
                 mapData.Tiles[x, y] = tile;
@@ -128,8 +131,47 @@ public class Board : MonoBehaviour
     }
 
     public MapData GetData() => _mapData;
-
+    
     #region Zoning
+    /// <summary>
+    /// Validates that every registered player has at least one valid spawn tile assigned on the board.
+    /// </summary>
+    public bool ValidateSpawnZones()
+    {
+        if (_mapData.Tiles == null) return false;
+
+        int playerCount = PlayerRegistry.PlayerCount;
+        if (playerCount == 0)
+        {
+            Debug.LogWarning("Board Warning: No players registered yet during spawn validation.");
+            return true; 
+        }
+
+        // Keep track of which players have a spawn tile
+        HashSet<int> foundSpawnOwners = new();
+
+        foreach (Tile tile in _mapData.Tiles)
+        {
+            if (tile && tile.IsSpawnTile)
+            {
+                foundSpawnOwners.Add(tile.SpawnOwnerID);
+            }
+        }
+
+        // Verify every player has a spawn zone
+        bool isValid = true;
+        for (int i = 0; i < playerCount; i++)
+        {
+            if (foundSpawnOwners.Contains(i)) continue;
+            
+            string playerName = PlayerRegistry.MasterList[i]?.Data?.Name ?? $"Player {i}";
+            Debug.LogError($"Board Error: Player index {i} ({playerName}) has no designated spawn tiles assigned on this map!");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+    
     /// <summary>
     /// Initialise all the board's zones and construct their patterns
     /// </summary>

@@ -133,6 +133,12 @@ public class BoardController : MonoBehaviour
             return null;
         }
 
+        if (!IsValidSpawnZone(tile, activePlayer))
+        {
+            if (_enableCreatureDebug) Debug.Log("BoardController: Cannot summon outside your designated spawn zone.");
+            return null;
+        }
+        
         if (!activePlayer.TryPerformMove(creatureData.EnergyCost))
         {
             if (_enableCreatureDebug) Debug.Log("Could not place creature as energy is too low");
@@ -329,6 +335,32 @@ public class BoardController : MonoBehaviour
         PreviewPattern(_selectedTile, false);
         
         if (_enableCreatureDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
+    }
+    
+    /// <summary>
+    /// Checks if a tile is a valid spawn zone
+    /// </summary>
+    /// <param name="tile"><c>Tile</c> to check</param>
+    /// <param name="player"><c>Player</c> to check can spawn here</param>
+    /// <returns></returns>
+    public static bool IsValidSpawnZone(Tile tile, Player player)
+    {
+        if (!tile || !tile.IsSpawnTile || !player) return false;
+
+        int playerIndex = -1;
+    
+        // Find the player's index from the master list
+        for (int i = 0; i < PlayerRegistry.MasterList.Count; i++)
+        {
+            if (PlayerRegistry.MasterList[i] != player) continue;
+            
+            playerIndex = i;
+            break;
+        }
+
+        if (playerIndex == -1) return false;
+        
+        return tile.SpawnOwnerID == playerIndex;
     }
     
     private void OnSelectionPressed(InputAction.CallbackContext context)

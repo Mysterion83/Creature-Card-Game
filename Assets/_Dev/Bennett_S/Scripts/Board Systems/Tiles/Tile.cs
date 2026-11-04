@@ -19,6 +19,10 @@ public class Tile : MonoBehaviour
     public bool IsZoneCenter;
     public ZoneDefinition AssignedZone;
     
+    [Header("Spawn Info")]
+    public bool IsSpawnTile;
+    public int SpawnOwnerID = -1;
+    
     private TileData _prevData;
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
