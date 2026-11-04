@@ -793,6 +793,30 @@ PrefabInstance:
       propertyPath: _baseEnergyPerRound
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _creaturesToPlace.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ac1094a90f306fd4c989c4cf5a5ad8a0, type: 2}
     - target: {fileID: 6829910671130761150, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _data.Name
       value: Player-2
@@ -1267,6 +1291,30 @@ PrefabInstance:
       propertyPath: _baseEnergyPerRound
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _creaturesToPlace.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ac1094a90f306fd4c989c4cf5a5ad8a0, type: 2}
     - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _data.TeamColor.a
       value: 1

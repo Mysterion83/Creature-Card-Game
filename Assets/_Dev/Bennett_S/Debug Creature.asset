@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef7c6f6978681154db37cc23be5b5664, type: 3}
-  m_Name: Testing Creature
+  m_Name: Debug Creature
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
-  CreatureName: Testing Creature
+  CreatureName: Debug Creature
   Element: 0
+  Type: 0
   MaxHealth: 9999
   Attack: 9999
-  Defense: 9999
+  Defense: 0
   EnergyCost: 0
   PurchaseCost: 0
   AttackPattern: {fileID: 11400000, guid: 8d0f08983cdc9104eb38b2be3bc5385b, type: 2}
-  MovementPattern: {fileID: 11400000, guid: 8d0f08983cdc9104eb38b2be3bc5385b, type: 2}
+  MovementPattern: {fileID: 11400000, guid: fb8b6e0587c629648b3861a7dd314121, type: 2}
   CreaturePrefab: {fileID: 2419497795459266344, guid: bb8b971bbda707540867b55222c93a0d, type: 3}
   CardPrefab: {fileID: 0}
   XpToEvolve: 0
