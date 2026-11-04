@@ -62,6 +62,14 @@ public class BoardController : MonoBehaviour
         _inputMapping = new GameControls();
     }
 
+    private void Start()
+    {
+        foreach (ZoneInstance zone in _board.ActiveZones)
+        {
+            _highlightingController.HighlightZoneTiles(zone.GetRelativePositions());
+        }
+    }
+
     private void Update()
     {
         HandleTileSelection();
@@ -153,8 +161,12 @@ public class BoardController : MonoBehaviour
         creatureObj.name = creature.Data.CreatureName;
 
         creature.OnCreatureDeath += HandleCreatureDeath;
-        
-        if (tile.ZoneID >= 0) _board.EvaluateZoneControl();
+
+        if (tile.ZoneID >= 0)
+        {
+            _board.EvaluateZoneControl();
+            RefreshZoneHighlights();
+        }
         if (_enableCreatureDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition} | {activePlayer.EnergySystem.Energy.CurrentAmount} / {activePlayer.EnergySystem.Energy.MaxAmount}");
         
         return creature;
@@ -199,9 +211,13 @@ public class BoardController : MonoBehaviour
         target.Occupant = creature;
         
         // Re-evaluate zone control if a creature moves into a zone or has moved from a zone
-        if (oldZoneID >= 0 || target.ZoneID >= 0) _board.EvaluateZoneControl();
+        if (oldZoneID >= 0 || target.ZoneID >= 0)
+        {
+            _board.EvaluateZoneControl();
+            RefreshZoneHighlights();
+        }
         
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         
         // Debug logic
         if (_enableCreatureDebug)
@@ -233,12 +249,12 @@ public class BoardController : MonoBehaviour
         
         target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
         
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
     }
 
     public void PreviewPattern(Tile tile, bool isAttack)
     {
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
@@ -274,11 +290,30 @@ public class BoardController : MonoBehaviour
         // Add highlight to selected creature's tile
         validWorldPositions.Add(tile.transform.position);
         
-        _highlightingController.HighlightTiles(validWorldPositions, isAttack);
+        _highlightingController.HighlightPatternTiles(validWorldPositions, isAttack);
         
         // Add a check for impassable tiles and cut off the movement
     }
+    
+    public void RefreshZoneHighlights()
+    {
+        if (!_highlightingController) return;
+        _highlightingController.ClearZones();
+        
+        foreach (ZoneInstance zone in _board.ActiveZones)
+        {
+            Color? highlightColor = null;
 
+            // If the zone has an owner then get its colour
+            if (zone.Occupier && zone.Occupier.Data != null)
+            {
+                highlightColor = zone.Occupier.Data.TeamColor; 
+            }
+            
+            _highlightingController.HighlightZoneTiles(zone.GetRelativePositions(), highlightColor);
+        }
+    }
+    
     private void SelectCreature()
     {
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
@@ -319,7 +354,7 @@ public class BoardController : MonoBehaviour
                 if (_creatureStage != CreatureStage.Moving) return;
                 MoveCreature(_selectedTile.Occupant, currentTile);
             }
-            _highlightingController.Clear();
+            _highlightingController.ClearPatterns();
             _selectedTile = null;
             _creatureStage = CreatureStage.None;
         }
@@ -328,21 +363,21 @@ public class BoardController : MonoBehaviour
     private void OnViewAttack(InputAction.CallbackContext context)
     {
         _creatureStage = CreatureStage.Attacking;
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, true);
     }
 
     private void OnViewMove(InputAction.CallbackContext context)
     {
         _creatureStage = CreatureStage.Moving;
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, false);
     }
     
     private void OnTurnEnded(Player player)
     {
         _selectedTile = null;
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
     }
     
     private void HandleCreatureDeath(Creature creature)
@@ -355,7 +390,11 @@ public class BoardController : MonoBehaviour
         if (!creatureOccupyingTile) return;
         
         creatureOccupyingTile.Occupant = null;
-        if (creatureOccupyingTile.ZoneID >= 0) _board.EvaluateZoneControl();
+        if (creatureOccupyingTile.ZoneID >= 0)
+        {
+            _board.EvaluateZoneControl();
+            RefreshZoneHighlights();
+        }
     }
 }
 

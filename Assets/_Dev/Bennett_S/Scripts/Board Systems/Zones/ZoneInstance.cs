@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Runtime instance of a <c>ZoneDefinition</c>
@@ -20,4 +21,15 @@ public class ZoneInstance
     }
     
     public void SetOccupier(Player player) => Occupier = player;
+
+    public List<Vector3> GetRelativePositions()
+    {
+        List<Vector3> relativePositions = new();
+        foreach (Tile tile in RelativeTiles)
+        {
+            if (!tile) continue;
+            relativePositions.Add(tile.transform.position);
+        }
+        return relativePositions;
+    }
 }
