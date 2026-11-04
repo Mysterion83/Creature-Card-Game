@@ -18,6 +18,7 @@ public class MatchController : MonoBehaviour
 
     public bool IsMatchActive { get; private set; }
     public Player CurrentPlayer {get; private set;}
+    public Player Winner { get; private set; } = null;
     public MatchState CurrentState { get; private set; } = MatchState.Setup;
 
     public static event Action<MatchState> OnMatchStateChanged;
@@ -173,6 +174,7 @@ public class MatchController : MonoBehaviour
     private void CompleteMatch(Player winner)
     {
         IsMatchActive = false;
+        Winner = winner;
         ChangeMatchState(MatchState.MatchOver);
         OnMatchEnded?.Invoke(winner);
         
