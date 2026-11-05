@@ -12,19 +12,19 @@ using UnityEngine;
 
 public class BattleAdapter
 {
-    readonly Player aiPlayer;                   
-    readonly MatchController match;             
-    readonly BoardController boardController;    
-    readonly Board board;                        
-    readonly Transform selectionBox;             
-        
+    private readonly Player _aiPlayer;
+    private readonly MatchController _match;
+    private readonly BoardController _boardController;
+    private readonly Board _board;
+    private readonly Transform _selectionBox;
+
     public BattleAdapter(Player aiPlayer, Transform selectionBox)
     {
-        this.aiPlayer = aiPlayer;
-        this.selectionBox = selectionBox;
-        match = Object.FindAnyObjectByType<MatchController>();
-        boardController = Object.FindAnyObjectByType<BoardController>();
-        board = boardController.GetComponent<Board>();
+        _aiPlayer = aiPlayer;
+        _selectionBox = selectionBox;
+        _match = Object.FindAnyObjectByType<MatchController>();
+        _boardController = Object.FindAnyObjectByType<BoardController>();
+        _board = _boardController.GetComponent<Board>();
     }
 
     /*
@@ -38,20 +38,20 @@ public class BattleAdapter
      */
 
     public bool IsMyPhase(MatchState state) =>
-        match.IsMatchActive && match.CurrentPlayer == aiPlayer && match.CurrentState == state;       
-    public float Energy => aiPlayer.EnergySystem.Energy.CurrentAmount;
-    public CreatureData NextCard => aiPlayer.SelectedCreature;        
-    public bool CanSummon => aiPlayer.CanSummon() && NextCard != null && Energy >= NextCard.EnergyCost;     
-    public IReadOnlyList<Creature> MyCreatures => aiPlayer.ActiveCreatures;
+        _match.IsMatchActive && _match.CurrentPlayer == _aiPlayer && _match.CurrentState == state;
+    public float Energy => _aiPlayer.EnergySystem.Energy.CurrentAmount;
+    public CreatureData NextCard => _aiPlayer.SelectedCreature;
+    public bool CanSummon => _aiPlayer.CanSummon() && NextCard != null && Energy >= NextCard.EnergyCost;
+    public IReadOnlyList<Creature> MyCreatures => _aiPlayer.ActiveCreatures;
 
-   public List<Tile> FreeTiles()
+    public List<Tile> FreeTiles()
     {
         var result = new List<Tile>();
-        foreach (Tile tile in board.GetData().Tiles)
+        foreach (Tile tile in _board.GetData().Tiles)
             if (tile != null && tile.Data.IsPassable && tile.Occupant == null) result.Add(tile);
         return result;
     }
-    
+
     public List<Tile> MoveTiles(Creature c)
     {
         var result = new List<Tile>();
@@ -62,20 +62,20 @@ public class BattleAdapter
         }
         return result;
     }
-   
+
     public List<Tile> AttackTiles(Creature c)
     {
         var result = new List<Tile>();
         foreach (Vector2Int offset in c.ShowValidAttacks())
         {
             Tile tile = TileAt(c.OccupyingTile.TileIndex + offset);
-            if (tile != null && tile.Occupant != null && tile.Occupant.Owner != aiPlayer.Data) result.Add(tile);
+            if (tile != null && tile.Occupant != null && tile.Occupant.Owner != _aiPlayer.Data) result.Add(tile);
         }
         return result;
     }
-   
+
     Tile TileAt(Vector2Int index) =>
-        board.IsIndexInBounds(index) ? board.GetData().Tiles[index.x, index.y] : null;
+        _board.IsIndexInBounds(index) ? _board.GetData().Tiles[index.x, index.y] : null;
 
     /*
      * BoardController summons and moves onto whatever tile its selection box is over
@@ -85,27 +85,27 @@ public class BattleAdapter
      * action. (Yes I know thats scuffed but it works)    
      */
 
-    void PointAt(Tile tile) => selectionBox.position = tile.transform.position + Vector3.up;
-        
+    void PointAt(Tile tile) => _selectionBox.position = tile.transform.position + Vector3.up;
+
     public bool Summon(Tile tile)
     {
         PointAt(tile);
-        return boardController.PlaceCreature(NextCard) != null;
+        return _boardController.PlaceCreature(NextCard) != null;
     }
-        
+
     public bool Move(Creature c, Tile tile)
     {
         PointAt(tile);
-        boardController.MoveCreature(c, tile);
+        _boardController.MoveCreature(c, tile);
         return c.OccupyingTile == tile;
     }
-     
+
     public bool Attack(Creature attacker, Tile target)
     {
         float before = Energy;
-        boardController.AttackCreature(attacker, target);
+        _boardController.AttackCreature(attacker, target);
         return Energy < before;
     }
-      
-    public void NextPhase() => match.RequestNextPhase();
+
+    public void NextPhase() => _match.RequestNextPhase();
 }

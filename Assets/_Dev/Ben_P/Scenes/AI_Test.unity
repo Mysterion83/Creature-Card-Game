@@ -375,11 +375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7760f3bfb0adfa64cb0591ce210a4796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIController
-  phaseStartDelay: 1.5
-  actionDelay: 1.5
-  selectionBox: {fileID: 291963297}
-  manualSummon: 0
-  logActions: 1
+  _phaseStartDelay: 1
+  _actionDelay: 1.5
+  _selectionBox: {fileID: 291963297}
+  _logActions: 1
 --- !u!1001 &514714596
 PrefabInstance:
   m_ObjectHideFlags: 0

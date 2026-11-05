@@ -11,17 +11,17 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     [Header("Pacing")]
-    [SerializeField] float phaseStartDelay = 0.6f;
-    [SerializeField] float actionDelay = 0.4f;
+    [SerializeField] private float _phaseStartDelay = 0.6f;
+    [SerializeField] private float _actionDelay = 0.4f;
 
     [Header("Board")]
-    [SerializeField] Transform selectionBox;
+    [SerializeField] private Transform _selectionBox;
 
     [Header("Debug")]
-    [SerializeField] bool logActions = true;
+    [SerializeField] private bool _logActions = true;
 
-    Player aiPlayer;
-    BattleAdapter adapter;
+    private Player _aiPlayer;
+    private BattleAdapter _adapter;
 
     /*
      * The AI follows MatchControllers phases rather than tracking turns itself. 
@@ -29,31 +29,31 @@ public class AIController : MonoBehaviour
      * starts the summon or action coroutine to match
      */
 
-    void Awake() => aiPlayer = GetComponent<Player>();
-        
+    void Awake() => _aiPlayer = GetComponent<Player>();
+
     void OnEnable()
     {
         MatchController.OnPhaseStarted += HandlePhaseStarted;
         MatchController.OnMatchEnded += HandleMatchEnded;
     }
-    
+
     void OnDisable()
     {
         MatchController.OnPhaseStarted -= HandlePhaseStarted;
         MatchController.OnMatchEnded -= HandleMatchEnded;
-    }   
+    }
     void HandlePhaseStarted(Player player, MatchState state, float timeLimit)
     {
-        if (player != aiPlayer || !aiPlayer.Data.IsAI) return;
-        adapter ??= new BattleAdapter(aiPlayer, selectionBox);
+        if (player != _aiPlayer || !_aiPlayer.Data.IsAI) return;
+        _adapter ??= new BattleAdapter(_aiPlayer, _selectionBox);
         StopAllCoroutines();
         if (state == MatchState.TurnSummon) StartCoroutine(SummonPhase());
         else if (state == MatchState.TurnAction) StartCoroutine(ActionPhase());
-    }        
+    }
     void HandleMatchEnded(Player winner)
     {
         StopAllCoroutines();
-        Log(winner == aiPlayer ? "won the match." : "lost the match.");
+        Log(winner == _aiPlayer ? "won the match." : "lost the match.");
     }
 
     /*
@@ -64,30 +64,30 @@ public class AIController : MonoBehaviour
 
     IEnumerator SummonPhase()
     {
-        Log($"--- Summon phase. Energy {adapter.Energy}");
-        yield return new WaitForSeconds(phaseStartDelay);
+        Log($"--- Summon phase. Energy {_adapter.Energy}");
+        yield return new WaitForSeconds(_phaseStartDelay);
 
-        while (adapter.IsMyPhase(MatchState.TurnSummon) && adapter.CanSummon)
+        while (_adapter.IsMyPhase(MatchState.TurnSummon) && _adapter.CanSummon)
         {
-            List<Tile> free = adapter.FreeTiles();
+            List<Tile> free = _adapter.FreeTiles();
             if (free.Count == 0) { Log("No free tile to summon on."); break; }
 
-            CreatureData card = adapter.NextCard;
+            CreatureData card = _adapter.NextCard;
             Tile tile = free[Random.Range(0, free.Count)];
-            if (adapter.Summon(tile))
-                Log($"SUMMON {card.CreatureName} at {tile.TileIndex}. Energy left {adapter.Energy}");
+            if (_adapter.Summon(tile))
+                Log($"SUMMON {card.CreatureName} at {tile.TileIndex}. Energy left {_adapter.Energy}");
             else
             {
                 LogRefused($"summon {card.CreatureName} at {tile.TileIndex}");
                 break;
             }
-            yield return new WaitForSeconds(actionDelay);
+            yield return new WaitForSeconds(_actionDelay);
         }
 
-        if (adapter.IsMyPhase(MatchState.TurnSummon))
+        if (_adapter.IsMyPhase(MatchState.TurnSummon))
         {
             Log("Summon phase done.");
-            adapter.NextPhase();
+            _adapter.NextPhase();
         }
     }
 
@@ -102,19 +102,19 @@ public class AIController : MonoBehaviour
 
     IEnumerator ActionPhase()
     {
-        Log($"--- Action phase. Energy {adapter.Energy}, creatures {adapter.MyCreatures.Count}");
-        yield return new WaitForSeconds(phaseStartDelay);
+        Log($"--- Action phase. Energy {_adapter.Energy}, creatures {_adapter.MyCreatures.Count}");
+        yield return new WaitForSeconds(_phaseStartDelay);
 
-        var creatures = new List<Creature>(adapter.MyCreatures);
+        var creatures = new List<Creature>(_adapter.MyCreatures);
         Shuffle(creatures);
 
         foreach (Creature c in creatures)
         {
-            if (!adapter.IsMyPhase(MatchState.TurnAction)) yield break;
+            if (!_adapter.IsMyPhase(MatchState.TurnAction)) yield break;
             if (c == null) continue;
-            if (adapter.Energy <= 0) { Log("Out of energy."); break; }
+            if (_adapter.Energy <= 0) { Log("Out of energy."); break; }
 
-            List<Tile> targets = adapter.AttackTiles(c);
+            List<Tile> targets = _adapter.AttackTiles(c);
             if (targets.Count > 0)
             {
                 Tile target = targets[Random.Range(0, targets.Count)];
@@ -122,17 +122,17 @@ public class AIController : MonoBehaviour
                 string victimName = victim.Data.CreatureName;
                 float hpBefore = victim.CurrentHealth;
 
-                if (adapter.Attack(c, target))
+                if (_adapter.Attack(c, target))
                 {
-                    float hpAfter = victim.CurrentHealth;   
+                    float hpAfter = victim.CurrentHealth;
                     string result = hpAfter <= 0 ? "KILLED it" : $"HP {hpBefore} -> {hpAfter}";
-                    Log($"ATTACK {c.Data.CreatureName} at {c.OccupyingTile.TileIndex} hit {victimName} at {target.TileIndex}: {result}. Energy left {adapter.Energy}");
+                    Log($"ATTACK {c.Data.CreatureName} at {c.OccupyingTile.TileIndex} hit {victimName} at {target.TileIndex}: {result}. Energy left {_adapter.Energy}");
                 }
                 else LogRefused($"attack by {c.Data.CreatureName} on {victimName}");
             }
             else
             {
-                List<Tile> moves = adapter.MoveTiles(c);
+                List<Tile> moves = _adapter.MoveTiles(c);
                 if (moves.Count == 0)
                 {
                     Log($"{c.Data.CreatureName} has no enemy in range and nowhere to move.");
@@ -141,19 +141,19 @@ public class AIController : MonoBehaviour
                 {
                     Vector2Int from = c.OccupyingTile.TileIndex;
                     Tile to = moves[Random.Range(0, moves.Count)];
-                    if (adapter.Move(c, to))
-                        Log($"MOVE {c.Data.CreatureName} {from} -> {to.TileIndex} (no enemy in range). Energy left {adapter.Energy}");
+                    if (_adapter.Move(c, to))
+                        Log($"MOVE {c.Data.CreatureName} {from} -> {to.TileIndex} (no enemy in range). Energy left {_adapter.Energy}");
                     else
                         LogRefused($"move by {c.Data.CreatureName} {from} -> {to.TileIndex}");
                 }
             }
-            yield return new WaitForSeconds(actionDelay);
+            yield return new WaitForSeconds(_actionDelay);
         }
 
-        if (adapter.IsMyPhase(MatchState.TurnAction))
+        if (_adapter.IsMyPhase(MatchState.TurnAction))
         {
             Log("Turn done.");
-            adapter.NextPhase(); 
+            _adapter.NextPhase();
         }
     }
 
@@ -161,11 +161,11 @@ public class AIController : MonoBehaviour
 
     void Log(string message)
     {
-        if (logActions) Debug.Log($"<color=orange>[AI {aiPlayer.Data.Name}]</color> {message}");
+        if (_logActions) Debug.Log($"<color=orange>[AI {_aiPlayer.Data.Name}]</color> {message}");
     }
-       
-    void LogRefused(string action) => Debug.LogWarning($"[AI {aiPlayer.Data.Name}] The game refused {action}.");
-       
+
+    void LogRefused(string action) => Debug.LogWarning($"[AI {_aiPlayer.Data.Name}] The game refused {action}.");
+
     static void Shuffle<T>(List<T> list)
     {
         for (int i = list.Count - 1; i > 0; i--)
