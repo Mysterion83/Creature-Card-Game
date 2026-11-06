@@ -69,7 +69,7 @@ public class BattleAdapter
         foreach (Vector2Int offset in c.ShowValidAttacks())
         {
             Tile tile = TileAt(c.OccupyingTile.TileIndex + offset);
-            if (tile != null && tile.Occupant != null && tile.Occupant.Owner != _aiPlayer.Data) result.Add(tile);
+            if (tile != null && tile.Occupant != null && tile.Occupant.Owner.Data != _aiPlayer.Data) result.Add(tile);
         }
         return result;
     }

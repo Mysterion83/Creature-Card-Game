@@ -110,6 +110,8 @@ MonoBehaviour:
   ZoneID: -1
   IsZoneCenter: 0
   AssignedZone: {fileID: 0}
+  IsSpawnTile: 0
+  SpawnOwnerID: -1
 --- !u!65 &3902302056277981238
 BoxCollider:
   m_ObjectHideFlags: 0
