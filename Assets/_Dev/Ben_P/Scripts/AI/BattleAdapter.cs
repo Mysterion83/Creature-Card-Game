@@ -48,7 +48,7 @@ public class BattleAdapter
     {
         var result = new List<Tile>();
         foreach (Tile tile in _board.GetData().Tiles)
-            if (tile != null && tile.Data.IsPassable && tile.Occupant == null) result.Add(tile);
+            if (tile != null && tile.Data.IsPassable && tile.Occupant == null && BoardController.IsValidSpawnZone(tile, _aiPlayer)) result.Add(tile);
         return result;
     }
 

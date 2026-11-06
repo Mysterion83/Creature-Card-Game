@@ -19,6 +19,6 @@ MonoBehaviour:
   Difficulty: 2
   Description: 
   Preview: {fileID: 0}
-  SceneName: 
+  SceneName: Level_Water1
   CoinReward: 200
   RequiredLevel: {fileID: 0}

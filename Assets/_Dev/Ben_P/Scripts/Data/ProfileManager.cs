@@ -23,6 +23,12 @@ public class ProfileManager : MonoBehaviour
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this) SceneManager.sceneLoaded -= HandleSceneLoaded;
     }
 
     // Save slots
@@ -100,6 +106,8 @@ public class ProfileManager : MonoBehaviour
         CurrentLevel = level;
         SceneManager.LoadScene(level.SceneName);
     }
+
+    void HandleSceneLoaded(Scene scene, LoadSceneMode mode) => BattleDeckLoader.Apply(Profile, catalog);
 
     public void CompleteCurrentLevel()
     {
