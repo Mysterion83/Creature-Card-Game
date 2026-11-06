@@ -14,13 +14,11 @@ public class TopBar : MonoBehaviour
     [SerializeField] GameObject tabsGroup;     
     [SerializeField] GameObject coinGroup;     
     [SerializeField] GameObject titleGroup;    
-
-    [Header("Change these on each copy")]
+        
     [SerializeField] string title = "Level Selector";
     [SerializeField] bool showBackButton = true;    
     [SerializeField] bool showTabs = false;    
-
-    [Header("Things in HUB (drag them in)")]
+        
     [SerializeField] MenuController menu;   
     [SerializeField] Popup settingsPopup;
     [SerializeField] Popup exitPopup;
