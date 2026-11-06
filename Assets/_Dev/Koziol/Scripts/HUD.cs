@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
@@ -15,6 +16,11 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject TileInfo;
     [SerializeField] private TextMeshProUGUI TileInfoText;
 
+    public void Start()
+    {
+        FindAnyObjectByType<BoardController>().OnTileSelected += SetTileInfoData;
+    }
+
     public void UpdatePhase(bool isSummoningPhase)
     {
         if (isSummoningPhase)
@@ -29,7 +35,7 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void SetTileInfoData(Tile tile, Vector2 mousePosition)
+    public void SetTileInfoData(Tile tile)
     {
         if (tile == null)
         {
@@ -37,6 +43,7 @@ public class HUD : MonoBehaviour
             return;
         }
         TileInfo.SetActive(true);
+        TileInfo.transform.position = Mouse.current.position.ReadValue();
         string tileInfo = $"Tile: {tile.Data.Name}\n" +
             $"Element: {tile.Data.Element}\n" +
             $"Elemental Resonance: {tile.Data.EffectStrength}\n";
@@ -45,9 +52,10 @@ public class HUD : MonoBehaviour
 
         if (occupant != null)
         {
-            tileInfo += $"Occupant: {occupant.Data.name}\n" +
-                $"Health: {FormatValue((int)occupant.CurrentHealth, (int)occupant.Data.MaxHealth)}\n" +
-                $"Attack: {occupant.Data.Attack} {occupant.Data.Defense}\n";
+            tileInfo += $"Occupant: {occupant.Data.CreatureName}\n" +
+                $"Owner: {occupant.Owner.Name}\n" +
+                $"HP: {FormatValue((int)occupant.CurrentHealth, (int)occupant.Data.MaxHealth)}\n" +
+                $"ATK: {occupant.Data.Attack} DEF: {occupant.Data.Defense}\n";
         }
         else
         {

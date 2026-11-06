@@ -27,7 +27,9 @@ public class BoardController : MonoBehaviour
     [SerializeField] private Tile _selectedTile;
 
     private CreatureStage _creatureStage = CreatureStage.None;
-        
+
+    public event Action<Tile> OnTileSelected;
+
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
@@ -67,16 +69,21 @@ public class BoardController : MonoBehaviour
         HandleTileSelection();
     }
 
+    [Obsolete("Update events in this function")]
     private void HandleTileSelection()
     {
+        
+        OnTileSelected?.Invoke(null);
         if (_selectionController.TryGetSelectedWorldPosition(out Vector3 mouseWorldPosition))
         {
             Tile tile = _board.GetTileFromPosition(mouseWorldPosition);
 
+            OnTileSelected?.Invoke(tile);
+
             if (tile && _board.IsIndexInBounds(tile.TileIndex))
             {
                 if (!_selectionBox.gameObject.activeSelf) _selectionBox.gameObject.SetActive(true);
-                
+
                 Vector3 targetPosition = tile.transform.position;
                 targetPosition.y += _selectionBoxHoverHeight;
                 
