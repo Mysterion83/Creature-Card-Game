@@ -37,19 +37,19 @@
                     "priority": 0
                 },
                 {
-                    "name": "ViewAttack",
-                    "type": "Button",
-                    "id": "32df813b-8cfb-4632-af7b-e842d2bc7db5",
-                    "expectedControlType": "",
+                    "name": "CameraRotation",
+                    "type": "Value",
+                    "id": "c1e265db-f1a9-45ce-9aa6-ff055081b6c7",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false,
+                    "initialStateCheck": true,
                     "priority": 0
                 },
                 {
-                    "name": "ViewMove",
+                    "name": "EnableCameraRotation",
                     "type": "Button",
-                    "id": "5e3c95e7-f3ae-4180-b8cb-50a5d2fbba65",
+                    "id": "60cfea29-add2-495c-bac5-b98a405c3996",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -137,23 +137,23 @@
                 },
                 {
                     "name": "",
-                    "id": "2d5debc8-e339-4713-8645-75e47f5e9fe4",
-                    "path": "<Keyboard>/q",
+                    "id": "fd01ef51-ed7d-41c0-a283-38c219b3f953",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ViewAttack",
+                    "action": "CameraRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "09776c68-c010-4628-8318-58a5c4ac6dff",
-                    "path": "<Keyboard>/e",
+                    "id": "8978596e-cca0-4421-aef8-d400068b1219",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ViewMove",
+                    "action": "EnableCameraRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
