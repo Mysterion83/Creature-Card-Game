@@ -121,6 +121,26 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""CameraRotation"",
+                    ""type"": ""Value"",
+                    ""id"": ""c1e265db-f1a9-45ce-9aa6-ff055081b6c7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""EnableCameraRotation"",
+                    ""type"": ""Button"",
+                    ""id"": ""60cfea29-add2-495c-bac5-b98a405c3996"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -200,6 +220,28 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""CameraZoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd01ef51-ed7d-41c0-a283-38c219b3f953"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8978596e-cca0-4421-aef8-d400068b1219"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnableCameraRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -240,6 +282,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Gameplay_OnSelect = m_Gameplay.FindAction("OnSelect", throwIfNotFound: true);
         m_Gameplay_CameraMovement = m_Gameplay.FindAction("CameraMovement", throwIfNotFound: true);
         m_Gameplay_CameraZoom = m_Gameplay.FindAction("CameraZoom", throwIfNotFound: true);
+        m_Gameplay_CameraRotation = m_Gameplay.FindAction("CameraRotation", throwIfNotFound: true);
+        m_Gameplay_EnableCameraRotation = m_Gameplay.FindAction("EnableCameraRotation", throwIfNotFound: true);
         // Dev
         m_Dev = asset.FindActionMap("Dev", throwIfNotFound: true);
         m_Dev_SpawnUnit = m_Dev.FindAction("Spawn Unit", throwIfNotFound: true);
@@ -327,6 +371,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_OnSelect;
     private readonly InputAction m_Gameplay_CameraMovement;
     private readonly InputAction m_Gameplay_CameraZoom;
+    private readonly InputAction m_Gameplay_CameraRotation;
+    private readonly InputAction m_Gameplay_EnableCameraRotation;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -350,6 +396,14 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/CameraZoom".
         /// </summary>
         public InputAction @CameraZoom => m_Wrapper.m_Gameplay_CameraZoom;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/CameraRotation".
+        /// </summary>
+        public InputAction @CameraRotation => m_Wrapper.m_Gameplay_CameraRotation;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/EnableCameraRotation".
+        /// </summary>
+        public InputAction @EnableCameraRotation => m_Wrapper.m_Gameplay_EnableCameraRotation;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -385,6 +439,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @CameraZoom.started += instance.OnCameraZoom;
             @CameraZoom.performed += instance.OnCameraZoom;
             @CameraZoom.canceled += instance.OnCameraZoom;
+            @CameraRotation.started += instance.OnCameraRotation;
+            @CameraRotation.performed += instance.OnCameraRotation;
+            @CameraRotation.canceled += instance.OnCameraRotation;
+            @EnableCameraRotation.started += instance.OnEnableCameraRotation;
+            @EnableCameraRotation.performed += instance.OnEnableCameraRotation;
+            @EnableCameraRotation.canceled += instance.OnEnableCameraRotation;
         }
 
         /// <summary>
@@ -405,6 +465,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @CameraZoom.started -= instance.OnCameraZoom;
             @CameraZoom.performed -= instance.OnCameraZoom;
             @CameraZoom.canceled -= instance.OnCameraZoom;
+            @CameraRotation.started -= instance.OnCameraRotation;
+            @CameraRotation.performed -= instance.OnCameraRotation;
+            @CameraRotation.canceled -= instance.OnCameraRotation;
+            @EnableCameraRotation.started -= instance.OnEnableCameraRotation;
+            @EnableCameraRotation.performed -= instance.OnEnableCameraRotation;
+            @EnableCameraRotation.canceled -= instance.OnEnableCameraRotation;
         }
 
         /// <summary>
@@ -562,6 +628,20 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCameraZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CameraRotation" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCameraRotation(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EnableCameraRotation" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEnableCameraRotation(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Dev" which allows adding and removing callbacks.
