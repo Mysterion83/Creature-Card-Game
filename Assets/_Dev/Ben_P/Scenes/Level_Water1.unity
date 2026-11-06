@@ -753,6 +753,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5051997105557438374, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051997105557438374, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051997105557438374, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051997105557438374, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081225394888671746, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081225394888671746, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081225394888671746, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081225394888671746, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5823070376412548270, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1298,7 +1330,7 @@ PrefabInstance:
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _definitionData
       value: 
-      objectReference: {fileID: 11400000, guid: 1c635f2250f503e4dbb292c330f21ec6, type: 2}
+      objectReference: {fileID: 11400000, guid: 2c0478983a9aca44e835d50ed8d489fa, type: 2}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.y
       value: 0

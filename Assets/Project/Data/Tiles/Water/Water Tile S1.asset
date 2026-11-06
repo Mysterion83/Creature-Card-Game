@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: Core_Tiles_Water_Base_S1
   Name: Puddle
   Description: Base Water Tile with an effect strength of 1
-  Element: 2
+  Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   EffectStrength: 1
   IsPassable: 1
   CreatureYOffset: 1

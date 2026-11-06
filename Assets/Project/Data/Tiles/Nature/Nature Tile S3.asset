@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: 'Base Earth Tile with an effect strength of 3
 
 '
-  Element: 3
+  Element: {fileID: 11400000, guid: 269f4244797fc2a4cae09eaeca01c809, type: 2}
   EffectStrength: 3
   IsPassable: 1
   CreatureYOffset: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_JellyShroom
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   CreatureName: JellyShroom
-  Element: 2
+  Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   Type: 1
   MaxHealth: 28
   Attack: 6
