@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Neutral_Tile
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   ID: Dev_Tiles_Neutral
-  Name: Neutral Tile
+  Name: Plains
   Description: Neutral Tile, no element
   Element: 0
   EffectStrength: 0

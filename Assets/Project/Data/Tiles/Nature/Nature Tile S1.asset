@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Nature Tile S1
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Dev_Tiles_Earth_Base_S1
-  Name: Earth Base Tile S1
+  ID: Core_Tiles_Earth_Base_S1
+  Name: Grassland
   Description: Base Earth Tile with an effect strength of 1
   Element: 3
   EffectStrength: 1
