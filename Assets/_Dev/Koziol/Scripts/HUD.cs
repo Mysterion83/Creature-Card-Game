@@ -53,7 +53,7 @@ public class HUD : MonoBehaviour
         if (occupant != null)
         {
             tileInfo += $"Occupant: {occupant.Data.CreatureName}\n" +
-                $"Owner: {occupant.Owner.Name}\n" +
+                $"Owner: {occupant.Owner.Data.Name}\n" +
                 $"HP: {FormatValue((int)occupant.CurrentHealth, (int)occupant.Data.MaxHealth)}\n" +
                 $"ATK: {occupant.Data.Attack} DEF: {occupant.Data.Defense}\n";
         }

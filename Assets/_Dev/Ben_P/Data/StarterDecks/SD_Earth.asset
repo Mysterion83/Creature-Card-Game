@@ -17,6 +17,6 @@ MonoBehaviour:
   ElementIcon: {fileID: 0}
   Cards:
   - {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
-  - {fileID: 11400000, guid: f1af59fae037e51419c63f65dca58b56, type: 2}
-  - {fileID: 11400000, guid: f1af59fae037e51419c63f65dca58b56, type: 2}
-  - {fileID: 11400000, guid: f1af59fae037e51419c63f65dca58b56, type: 2}
+  - {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+  - {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+  - {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
