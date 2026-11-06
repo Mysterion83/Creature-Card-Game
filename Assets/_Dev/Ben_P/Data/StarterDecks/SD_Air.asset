@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1fc58299b52dc4d8d06accfe94a368, type: 3}
+  m_Name: SD_Air
+  m_EditorClassIdentifier: Assembly-CSharp::StarterDeck
+  Element: 4
+  Art: {fileID: 0}
+  ElementIcon: {fileID: 0}
+  Cards:
+  - {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+  - {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+  - {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+  - {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
