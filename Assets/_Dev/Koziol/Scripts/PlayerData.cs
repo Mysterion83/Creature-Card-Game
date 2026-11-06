@@ -10,8 +10,3 @@ public class PlayerData
     public float MaxEnergy;
     public List<Card> Hand;
 }
-
-
-[Obsolete("Placeholder Class")]
-[Serializable]
-public class Card { }
