@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: Core_Tiles_Wind_Base_S3
   Name: Stormy Plains
   Description: Base Wind Tile with an effect strength of 3
-  Element: 4
+  Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   EffectStrength: 3
   IsPassable: 1
   CreatureYOffset: 1

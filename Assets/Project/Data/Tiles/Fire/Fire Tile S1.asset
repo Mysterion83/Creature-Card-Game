@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: Core_Tiles_Fire_Base_S1
   Name: Fire Base Tile S1
   Description: Base Fire Tile with an effect strength of 1
-  Element: 1
+  Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   EffectStrength: 1
   IsPassable: 1
   CreatureYOffset: 1

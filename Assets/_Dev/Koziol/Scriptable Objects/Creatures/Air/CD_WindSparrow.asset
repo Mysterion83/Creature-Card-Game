@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_WindSparrow
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   CreatureName: Wind Sparrow
-  Element: 4
+  Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   Type: 5
   MaxHealth: 0
   Attack: 0
@@ -23,5 +23,5 @@ MonoBehaviour:
   AttackPattern: {fileID: 11400000, guid: 9d47213e3858e1645908cc6ef70f2c2b, type: 2}
   MovementPattern: {fileID: 11400000, guid: f357e7d21baabc6459f18242d8ed82fb, type: 2}
   CreaturePrefab: {fileID: 0}
-  CardPrefab: {fileID: 0}
+  CreatureImage: {fileID: 0}
   XpToEvolve: 0

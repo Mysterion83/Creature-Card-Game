@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_Capycano
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   CreatureName: Capycano
-  Element: 1
+  Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   Type: 1
   MaxHealth: 44
   Attack: 9

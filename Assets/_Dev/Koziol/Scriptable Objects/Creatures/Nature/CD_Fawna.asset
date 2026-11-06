@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_Fawna
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   CreatureName: Fawna
-  Element: 3
+  Element: {fileID: 11400000, guid: 269f4244797fc2a4cae09eaeca01c809, type: 2}
   Type: 6
   MaxHealth: 20
   Attack: 7
