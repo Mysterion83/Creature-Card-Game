@@ -11,8 +11,3 @@ public class PlayerData
     public List<Card> Hand;
     public UnityEngine.Color TeamColor;
 }
-
-
-[Obsolete("Placeholder Class")]
-[Serializable]
-public class Card { }
