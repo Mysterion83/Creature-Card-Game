@@ -141,6 +141,26 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""ViewMove"",
+                    ""type"": ""Button"",
+                    ""id"": ""f87c5a14-cfa6-474e-a831-b05a19f33b62"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""ViewAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""0481cbce-6cfd-4e20-bba4-716f3e6ee0a6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -242,6 +262,28 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""EnableCameraRotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03201fb9-b046-48c2-a51d-1c018807f8d0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ViewMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62fc1c8a-cf4e-4670-b3bf-3f40a345e79b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ViewAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -284,6 +326,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Gameplay_CameraZoom = m_Gameplay.FindAction("CameraZoom", throwIfNotFound: true);
         m_Gameplay_CameraRotation = m_Gameplay.FindAction("CameraRotation", throwIfNotFound: true);
         m_Gameplay_EnableCameraRotation = m_Gameplay.FindAction("EnableCameraRotation", throwIfNotFound: true);
+        m_Gameplay_ViewMove = m_Gameplay.FindAction("ViewMove", throwIfNotFound: true);
+        m_Gameplay_ViewAttack = m_Gameplay.FindAction("ViewAttack", throwIfNotFound: true);
         // Dev
         m_Dev = asset.FindActionMap("Dev", throwIfNotFound: true);
         m_Dev_SpawnUnit = m_Dev.FindAction("Spawn Unit", throwIfNotFound: true);
@@ -373,6 +417,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_CameraZoom;
     private readonly InputAction m_Gameplay_CameraRotation;
     private readonly InputAction m_Gameplay_EnableCameraRotation;
+    private readonly InputAction m_Gameplay_ViewMove;
+    private readonly InputAction m_Gameplay_ViewAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -404,6 +450,14 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/EnableCameraRotation".
         /// </summary>
         public InputAction @EnableCameraRotation => m_Wrapper.m_Gameplay_EnableCameraRotation;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/ViewMove".
+        /// </summary>
+        public InputAction @ViewMove => m_Wrapper.m_Gameplay_ViewMove;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/ViewAttack".
+        /// </summary>
+        public InputAction @ViewAttack => m_Wrapper.m_Gameplay_ViewAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -445,6 +499,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @EnableCameraRotation.started += instance.OnEnableCameraRotation;
             @EnableCameraRotation.performed += instance.OnEnableCameraRotation;
             @EnableCameraRotation.canceled += instance.OnEnableCameraRotation;
+            @ViewMove.started += instance.OnViewMove;
+            @ViewMove.performed += instance.OnViewMove;
+            @ViewMove.canceled += instance.OnViewMove;
+            @ViewAttack.started += instance.OnViewAttack;
+            @ViewAttack.performed += instance.OnViewAttack;
+            @ViewAttack.canceled += instance.OnViewAttack;
         }
 
         /// <summary>
@@ -471,6 +531,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @EnableCameraRotation.started -= instance.OnEnableCameraRotation;
             @EnableCameraRotation.performed -= instance.OnEnableCameraRotation;
             @EnableCameraRotation.canceled -= instance.OnEnableCameraRotation;
+            @ViewMove.started -= instance.OnViewMove;
+            @ViewMove.performed -= instance.OnViewMove;
+            @ViewMove.canceled -= instance.OnViewMove;
+            @ViewAttack.started -= instance.OnViewAttack;
+            @ViewAttack.performed -= instance.OnViewAttack;
+            @ViewAttack.canceled -= instance.OnViewAttack;
         }
 
         /// <summary>
@@ -642,6 +708,20 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEnableCameraRotation(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ViewMove" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnViewMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ViewAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnViewAttack(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Dev" which allows adding and removing callbacks.

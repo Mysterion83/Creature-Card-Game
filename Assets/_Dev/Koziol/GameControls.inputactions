@@ -55,6 +55,26 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "ViewMove",
+                    "type": "Button",
+                    "id": "f87c5a14-cfa6-474e-a831-b05a19f33b62",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "ViewAttack",
+                    "type": "Button",
+                    "id": "0481cbce-6cfd-4e20-bba4-716f3e6ee0a6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -154,6 +174,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "EnableCameraRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03201fb9-b046-48c2-a51d-1c018807f8d0",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ViewMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62fc1c8a-cf4e-4670-b3bf-3f40a345e79b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ViewAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
