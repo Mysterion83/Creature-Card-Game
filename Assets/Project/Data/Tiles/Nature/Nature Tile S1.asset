@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
-  m_Name: Earth Tile S2
+  m_Name: Nature Tile S1
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Dev_Tiles_Earth_Base_S2
-  Name: Earth Base Tile S2
-  Description: Base Earth Tile with an effect strength of 2
+  ID: Dev_Tiles_Earth_Base_S1
+  Name: Earth Base Tile S1
+  Description: Base Earth Tile with an effect strength of 1
   Element: 3
-  EffectStrength: 2
+  EffectStrength: 1
   IsPassable: 1
   CreatureYOffset: 1
-  RenderObjectPrefab: {fileID: 2813658284779829094, guid: fee4fc5d41d5e734384ce829f62e234f, type: 3}
+  RenderObjectPrefab: {fileID: 1137781593689301265, guid: f727abe722c1aa94ebf700879c288563, type: 3}
+  Decorations: []

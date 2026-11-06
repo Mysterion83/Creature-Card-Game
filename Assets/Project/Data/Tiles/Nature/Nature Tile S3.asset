@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
-  m_Name: Earth Tile S3
+  m_Name: Nature Tile S3
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   ID: Dev_Tiles_Earth_Base_S3
   Name: Earth Base Tile S3
@@ -21,4 +21,5 @@ MonoBehaviour:
   EffectStrength: 3
   IsPassable: 1
   CreatureYOffset: 1
-  RenderObjectPrefab: {fileID: 2389497688485730533, guid: 64b22dc751f82204696ab2bd6971c5a8, type: 3}
+  RenderObjectPrefab: {fileID: 2217552970976131072, guid: 2bc13e3d1835d274ebabeb43dfccd504, type: 3}
+  Decorations: []

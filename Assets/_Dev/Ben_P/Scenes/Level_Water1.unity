@@ -622,6 +622,7 @@ MonoBehaviour:
   _targetFOV: 0
   _cameraZoomSpeed: 10
   _isZoomedIn: 0
+  _sensitivity: 0.2
 --- !u!1 &975307747
 GameObject:
   m_ObjectHideFlags: 0
