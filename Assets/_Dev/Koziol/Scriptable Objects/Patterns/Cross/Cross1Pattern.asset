@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfa21147cba8b74dba272de23051c8f, type: 3}
   m_Name: Cross1Pattern
   m_EditorClassIdentifier: Assembly-CSharp::Pattern
-  RuleType: 1
-  PatternRadius: 1
+  _ruleType: 1
+  _patternRadius: 1

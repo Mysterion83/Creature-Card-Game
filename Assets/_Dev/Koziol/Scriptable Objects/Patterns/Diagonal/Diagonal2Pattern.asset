@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfa21147cba8b74dba272de23051c8f, type: 3}
   m_Name: Diagonal2Pattern
   m_EditorClassIdentifier: Assembly-CSharp::Pattern
-  RuleType: 2
-  PatternRadius: 2
+  _ruleType: 2
+  _patternRadius: 2

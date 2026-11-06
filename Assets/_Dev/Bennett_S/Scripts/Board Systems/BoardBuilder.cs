@@ -146,10 +146,14 @@ public class BoardBuilder : MonoBehaviour
 
         if (savedTileData.HasValue)
         {
-            // Extract the actual struct data safely using .Value
             SavedTileData tileData = savedTileData.Value;
-            tile.RegionID = tileData.Region;
             tile.Data = TileRegistryV2.Instance.GetTileData(tileData.TileID);
+            
+            tile.IsZoneCenter = tileData.IsZoneCenter;
+            tile.AssignedZone = tileData.ZoneDefinition;
+            
+            tile.IsSpawnTile = tileData.IsSpawnTile;
+            tile.SpawnOwnerID = tileData.SpawnOwnerID;
         }
 
         tile.Init();
@@ -172,13 +176,16 @@ public class BoardBuilder : MonoBehaviour
             {
                 int flatIndex = x + (y * _mapData.MapSize.x);
                 Tile currentTile = _mapData.Tiles[x, y];
-                if (currentTile != null)
+                if (currentTile)
                 {
-                    savedMapData.Tiles[flatIndex] = new SavedTileData
-                    {
-                        Region = currentTile.RegionID,
-                        TileID = currentTile.Data != null ? currentTile.Data.ID : string.Empty
-                    };
+                    savedMapData.Tiles[flatIndex] = new SavedTileData(
+                        currentTile.Data ? currentTile.Data.ID : string.Empty,
+                        currentTile.ZoneID,
+                        currentTile.IsZoneCenter,
+                        currentTile.AssignedZone,
+                        currentTile.IsSpawnTile,
+                        currentTile.SpawnOwnerID
+                    );
                 }
             }
         }
