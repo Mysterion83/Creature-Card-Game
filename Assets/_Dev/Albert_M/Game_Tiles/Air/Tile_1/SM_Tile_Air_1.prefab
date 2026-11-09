@@ -52,9 +52,13 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6a3ae86e18109a84598c7e78eeefad98, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 760f0eace33c50c4283b0a2bc67ab68e, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cdfe456a7e18e4d4fa1d3498fd9d9500, type: 2}
     - target: {fileID: 919132149155446097, guid: 760f0eace33c50c4283b0a2bc67ab68e, type: 3}
       propertyPath: m_Name
-      value: SM_airtile
+      value: SM_Tile_Air_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -789,6 +789,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2810096429106774986, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _baseEnergyPerRound
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _creaturesToPlace.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ac1094a90f306fd4c989c4cf5a5ad8a0, type: 2}
     - target: {fileID: 6829910671130761150, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _data.Name
       value: Player-2
@@ -804,6 +832,14 @@ PrefabInstance:
     - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: _data.Name
       value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
@@ -937,18 +973,6 @@ PrefabInstance:
       propertyPath: _matchController
       value: 
       objectReference: {fileID: 6576931058267975847}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _testCreatureData
-      value: 
-      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _enableCreatureDebug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
-      propertyPath: _enableCreatureCoordinateDebug
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1198,14 +1222,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugUI
       objectReference: {fileID: 0}
-    - target: {fileID: 5748131597444676995, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
-      propertyPath: m_fontSize
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 5748131597444676995, guid: 866a8da7badb9554d9598b77ab7ee50e, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1259,6 +1275,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2810096429106774986, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _baseEnergyPerRound
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _creaturesToPlace.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: eeff4f8fd29939b4c8ba2705e32876b7, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d4b39d50c947664197ae78a2aca77e0, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+    - target: {fileID: 3234684253788528232, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: '_creaturesToPlace.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ac1094a90f306fd4c989c4cf5a5ad8a0, type: 2}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489637133347161383, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
+      propertyPath: _data.TeamColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8844787196355625458, guid: 1b75c0d16a777f34fa7734b2fa882dd6, type: 3}
       propertyPath: m_Name
       value: Local Player
@@ -1283,6 +1343,10 @@ PrefabInstance:
     - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: _maxTurnTime
       value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
+      propertyPath: _maxPhaseTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_LocalPosition.x

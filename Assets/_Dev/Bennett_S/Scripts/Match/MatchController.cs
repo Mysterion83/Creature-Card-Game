@@ -18,6 +18,7 @@ public class MatchController : MonoBehaviour
 
     public bool IsMatchActive { get; private set; }
     public Player CurrentPlayer {get; private set;}
+    public Player Winner { get; private set; } = null;
     public MatchState CurrentState { get; private set; } = MatchState.Setup;
 
     public static event Action<MatchState> OnMatchStateChanged;
@@ -58,6 +59,13 @@ public class MatchController : MonoBehaviour
         if (PlayerRegistry.PlayerCount == 0)
         {
             Debug.LogError("MatchController Error: Match could not start as no players have been registered!"); 
+            return;
+        }
+
+        Board board = FindAnyObjectByType<Board>();
+        if (board && !board.ValidateSpawnZones())
+        {
+            Debug.LogError("MatchController Error: Map spawn zone configuration does not match the active player count!");
             return;
         }
         
@@ -173,6 +181,7 @@ public class MatchController : MonoBehaviour
     private void CompleteMatch(Player winner)
     {
         IsMatchActive = false;
+        Winner = winner;
         ChangeMatchState(MatchState.MatchOver);
         OnMatchEnded?.Invoke(winner);
         

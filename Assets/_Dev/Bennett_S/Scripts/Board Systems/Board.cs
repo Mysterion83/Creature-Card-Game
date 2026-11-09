@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -9,18 +10,21 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform _shaderPlane;
     [SerializeField] private Material _gridShaderMaterial;
 
-    [Header("Map Data to Load")] [SerializeField]
-    private SavedMapData _definitionData;
+    [Header("Board Generation")]
+    [SerializeField] private SavedMapData _definitionData;
+    [SerializeField] private Vector3 _tileSpawnOffset = new Vector3(0, 0.5f, 0);
 
-    [Header("Generation Settings")] [SerializeField]
-    private Vector3 _tileSpawnOffset = new Vector3(0, 0.5f, 0);
-
-    [Header("Shader Settings")] [SerializeField]
-    private float _gridYOffset = 0.015f;
-
+    [Header("Active Zones")]
+    [SerializeField] public List<ZoneInstance> ActiveZones = new();
+    
+    [Header("Shader Settings")] 
+    [SerializeField] private float _gridYOffset = 0.015f;
     [SerializeField, Range(0.01f, 0.1f)] private float _cellThickness = 0.1f;
     [SerializeField] private Color _gridColour = Color.white;
-
+    
+    [Header("Debugging")]
+    [SerializeField] private bool _enableZoneDebugging;
+    
     private Grid _grid;
     private MapData _mapData;
 
@@ -44,6 +48,8 @@ public class Board : MonoBehaviour
 
         // Load map data and build the board
         _mapData = LoadMapData(_definitionData);
+
+        InitialiseZones();
     }
 
     private void Start()
@@ -67,13 +73,13 @@ public class Board : MonoBehaviour
         if (data == null || data.MapSize.x <= 0 || data.MapSize.y <= 0)
         {
             Debug.LogError("Runtime Loading Error: Invalid SavedMapData asset provided.");
-            return default(MapData);
+            return default;
         }
 
         if (!_tilePrefab || !_tilePrefab.GetComponent<Tile>())
         {
             Debug.LogError("Runtime Loading Error: Tile prefab is missing or does not contain a Tile component!");
-            return default(MapData);
+            return default;
         }
 
         MapData mapData = new MapData
@@ -108,8 +114,13 @@ public class Board : MonoBehaviour
 
                 tile.Data = TileRegistryV2.Instance.GetTileData(savedTileData.TileID);
                 tile.TileIndex = new Vector2Int(x, y);
-                tile.RegionID = savedTileData.Region;
+                
+                tile.AssignedZone = savedTileData.ZoneDefinition;
+                tile.IsZoneCenter = savedTileData.IsZoneCenter;
 
+                tile.IsSpawnTile = savedTileData.IsSpawnTile;
+                tile.SpawnOwnerID = savedTileData.SpawnOwnerID;
+                
                 tile.Init();
 
                 mapData.Tiles[x, y] = tile;
@@ -120,7 +131,168 @@ public class Board : MonoBehaviour
     }
 
     public MapData GetData() => _mapData;
+    
+    #region Zoning
+    /// <summary>
+    /// Validates that every registered player has at least one valid spawn tile assigned on the board.
+    /// </summary>
+    public bool ValidateSpawnZones()
+    {
+        if (_mapData.Tiles == null) return false;
 
+        int playerCount = PlayerRegistry.PlayerCount;
+        if (playerCount == 0)
+        {
+            Debug.LogWarning("Board Warning: No players registered yet during spawn validation.");
+            return true; 
+        }
+
+        // Keep track of which players have a spawn tile
+        HashSet<int> foundSpawnOwners = new();
+
+        foreach (Tile tile in _mapData.Tiles)
+        {
+            if (tile && tile.IsSpawnTile)
+            {
+                foundSpawnOwners.Add(tile.SpawnOwnerID);
+            }
+        }
+
+        // Verify every player has a spawn zone
+        bool isValid = true;
+        for (int i = 0; i < playerCount; i++)
+        {
+            if (foundSpawnOwners.Contains(i)) continue;
+            
+            string playerName = PlayerRegistry.MasterList[i]?.Data?.Name ?? $"Player {i}";
+            Debug.LogError($"Board Error: Player index {i} ({playerName}) has no designated spawn tiles assigned on this map!");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+    
+    /// <summary>
+    /// Initialise all the board's zones and construct their patterns
+    /// </summary>
+    private void InitialiseZones()
+    {
+        if (_mapData.Tiles == null) return;
+        ActiveZones.Clear();
+        int zoneCounter = 0;
+
+        foreach (Tile tile in _mapData.Tiles)
+        {
+            if (!tile || !tile.IsZoneCenter || !tile.AssignedZone) continue;
+
+            // Create zone instance and add the central tile
+            ZoneInstance newZone = new ZoneInstance(zoneCounter++, tile.AssignedZone, tile);
+            newZone.RelativeTiles.Add(tile);
+            
+            tile.ZoneID = newZone.ZoneID; 
+            
+            // Loop through zone offsets from the ZoneDefinition and assign them
+            foreach (Vector2Int offset in tile.AssignedZone.RelativeOffsets)
+            {
+                Vector2Int targetCoords = tile.TileIndex + offset;
+                if (!IsIndexInBounds(targetCoords)) continue;
+
+                Tile affectedTile = _mapData.Tiles[targetCoords.x, targetCoords.y];
+                
+                // Only claim if ID is below 0
+                if (!affectedTile || affectedTile.ZoneID >= 0) continue;
+                
+                // Set ZoneID to the initialised Zone
+                affectedTile.ZoneID = newZone.ZoneID;
+                
+                //Prevent duplicate tile entries
+                if (!newZone.RelativeTiles.Contains(affectedTile))
+                {
+                    newZone.RelativeTiles.Add(affectedTile);
+                }
+            }
+
+            ActiveZones.Add(newZone);
+        }
+    }
+    
+    /// <summary>
+    /// Evaluate all zones to see if a player controls them
+    /// </summary>
+    public void EvaluateZoneControl()
+    {
+        foreach (var zone in ActiveZones)
+        {
+            Dictionary<Player, int> playerCreatureCounts = new Dictionary<Player, int>();
+
+            // Retrieve every player
+            foreach (Tile tile in zone.RelativeTiles)
+            {
+                if (!tile.Occupant) continue;
+                
+                Player owner = tile.Occupant.Owner;
+                playerCreatureCounts.TryAdd(owner, 0);
+                playerCreatureCounts[owner]++;
+            }
+
+            float bonusEnergy = zone.Definition.BonusEnergy;
+            Player controller = DetermineMajorityOwner(playerCreatureCounts);
+            
+            // Continue if occupier is the same
+            if (zone.Occupier == controller) continue; 
+
+            // Remove bonus energy from previous Occupier (if they exist)
+            if (zone.Occupier)
+            {
+                if (_enableZoneDebugging) Debug.Log($"[Board] {zone.Occupier.Data.Name} lost control of '{zone.Definition.ZoneName}'.");
+                zone.Occupier.EnergySystem.RemoveBonusEnergy(bonusEnergy);
+            }
+            
+            zone.SetOccupier(controller);
+
+            // Check for a winner (not a tie/vacant) and add bonus energy
+            if (controller != null)
+            {
+                if (_enableZoneDebugging) Debug.Log($"[Board] New Zone Occupier of '{zone.Definition.ZoneName}': {controller.Data.Name}");
+                controller.EnergySystem.AddBonusEnergy(bonusEnergy);
+            }
+            else
+            {
+                if (_enableZoneDebugging) Debug.Log($"[Board] '{zone.Definition.ZoneName}' is now contested or empty.");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Evaluate who the majority owner of a zone is
+    /// </summary>
+    /// <param name="counts">Dictionary of [Player, Creature Count]s to check</param>
+    /// <returns>The <c>Player</c> that controls the zone, null if majority is shared</returns>
+    private Player DetermineMajorityOwner(Dictionary<Player, int> counts)
+    {
+        Player leader = null;
+        int maxCount = 0;
+        bool isTie = false;
+
+        foreach (var pair in counts)
+        {
+            if (pair.Value > maxCount)
+            {
+                maxCount = pair.Value;
+                leader = pair.Key;
+                isTie = false;
+            }
+            else if (pair.Value == maxCount)
+            {
+                isTie = true;
+            }
+        }
+
+        return isTie ? null : leader;
+    }
+    #endregion
+    
+    #region Tile Helper Functions
     /// <summary>
     /// Get a <c>Tile</c> through a given world position
     /// </summary>
@@ -183,4 +355,5 @@ public class Board : MonoBehaviour
         return index.x >= 0 && index.x < _mapData.MapSize.x && 
                index.y >= 0 && index.y < _mapData.MapSize.y;
     }
+    #endregion
 }

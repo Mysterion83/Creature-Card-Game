@@ -10,71 +10,148 @@ public class TileHighlightingController : MonoBehaviour
     [Header("Highlighting Materials")]
     [SerializeField] private Material _moveMaterial;
     [SerializeField] private Material _attackMaterial;
+    [SerializeField] private Material _zoneMaterial;
+    [SerializeField] private Material _spawnMaterial;
 
     [Header("Highlight Settings")] 
-    [SerializeField] private float _highlightYOffset = 1;
+    [SerializeField] private float _highlightYOffset = 1f;
     
-    [Header("Container")]
-    [SerializeField] private GameObject _containerObject;
+    [Header("Containers")]
+    [SerializeField] private GameObject _patternContainer;
+    [SerializeField] private GameObject _zoneContainer;
     
-    // Tile tracking
-    private readonly List<GameObject> _activeHighlights = new();
-
+    private static readonly int BaseColour = Shader.PropertyToID("_Emission_Colour");
+    
+    private readonly List<GameObject> _activePatternHighlights = new();
+    private readonly List<GameObject> _activeZoneHighlights = new();
+    
     /// <summary>
-    /// Highlight a Tile at a given position
+    /// Instantiate a Decal Prefab at a given position and under a parent
     /// </summary>
-    /// <param name="position">The positon of the tile in world space</param>
-    /// <param name="isAttackRange">If the highlighting is for attack or movement patterns</param>
-    public void HighLightTile(Vector3 position, bool isAttackRange)
+    /// <param name="position">Position of the Decal</param>
+    /// <param name="container">Container object to spawn under</param>
+    /// <param name="material">Material to use for the tile</param>
+    /// <param name="customColor">Colour to set the tile</param>
+    /// <returns></returns>
+    private GameObject CreateDecalInstance(Vector3 position, GameObject container, Material material, Color? customColor = null)
     {
         Vector3 spawnPosition = new Vector3(position.x, position.y + _highlightYOffset, position.z);
-            
-        // Spawn a highlight and make it point downwards
-        GameObject highlight = Instantiate(_decalPrefab, spawnPosition, Quaternion.Euler(90, 0, 0));
-        highlight.transform.parent = _containerObject.transform;
-            
-        _activeHighlights.Add(highlight);
-            
-        // Get decal projector and assign its material
-        DecalProjector projector = highlight.GetComponent<DecalProjector>();
-        if (projector != null) projector.material = isAttackRange ? _attackMaterial : _moveMaterial;
-    }
-    
-    /// <summary>
-    /// Highlights all tiles within a given list
-    /// </summary>
-    /// <param name="tilePositions">List of tile positions in world space</param>
-    /// <param name="isAttackRange">If the highlighting is for attack or movement patterns</param>
-    public void HighlightTiles(List<Vector3> tilePositions, bool isAttackRange)
-    {
-        foreach (var tilePos in tilePositions)
+        GameObject highlight = Instantiate(_decalPrefab, spawnPosition, Quaternion.Euler(90f, 0f, 0f));
+        
+        if (container)
         {
-            HighLightTile(tilePos, isAttackRange);
+            highlight.transform.parent = container.transform;
         }
+
+        DecalProjector projector = highlight.GetComponent<DecalProjector>();
+        if (!projector || !material) return highlight;
+        
+        if (customColor.HasValue)
+        {
+            Material matInstance = new Material(material);
+            matInstance.SetColor(BaseColour, customColor.Value);
+            projector.material = matInstance;
+        }
+        else
+        {
+            projector.material = material;
+        }
+
+        return highlight;
     }
     
+    #region Pattern Highlighting (Movement / Attack)
     /// <summary>
-    /// Highlights all tiles within a given array
+    /// Highlight a Tile at a given position for patterns
     /// </summary>
-    /// <param name="tilePositions">Array of tile positions in world space</param>
-    /// <param name="isAttackRange">If the highlighting is for attack or movement patterns</param>
-    public void HighlightTiles(Vector3[] tilePositions, bool isAttackRange)
+    /// <param name="position">The position of the tile in world space</param>
+    /// <param name="isAttackRange">Required: True for attack patterns, false for movement patterns</param>
+    public void HighlightPatternTile(Vector3 position, bool isAttackRange)
+    {
+        Material mat = isAttackRange ? _attackMaterial : _moveMaterial;
+        GameObject highlight = CreateDecalInstance(position, _patternContainer, mat);
+        _activePatternHighlights.Add(highlight);
+    }
+    
+    public void HighlightPatternTiles(List<Vector3> tilePositions, bool isAttackRange)
     {
         foreach (var tilePos in tilePositions)
         {
-            HighLightTile(tilePos, isAttackRange);
+            HighlightPatternTile(tilePos, isAttackRange);
         }
     }
 
+    #endregion
+
+    #region Zone Highlighting
     /// <summary>
-    /// Destroys and clears all highlighted tiles
+    /// Highlight a Tile at a given position as a zone (White by default, or custom player colour)
     /// </summary>
-    public void Clear()
+    /// <param name="position">The position of the tile in world space</param>
+    /// <param name="playerColor">Optional custom colour. If null, defaults to White.</param>
+    public void HighlightZoneTile(Vector3 position, Color? playerColor = null)
     {
-        foreach (var highlight in _activeHighlights)
+        GameObject highlight = CreateDecalInstance(position, _zoneContainer, _zoneMaterial, playerColor);
+        _activeZoneHighlights.Add(highlight);
+    }
+
+    public void HighlightZoneTiles(List<Vector3> tilePositions, Color? playerColor = null)
+    {
+        foreach (var tilePos in tilePositions)
         {
+            HighlightZoneTile(tilePos, playerColor);
+        }
+    }
+    #endregion
+    
+    #region SpawnHighlights
+    public void HighlightSpawnTile(Vector3 position)
+    {
+        Material mat = _spawnMaterial ? _spawnMaterial : _zoneMaterial;
+        GameObject highlight = CreateDecalInstance(position, _zoneContainer, mat);
+        _activeZoneHighlights.Add(highlight);
+    }
+
+    public void HighlightSpawnTiles(List<Vector3> tilePositions)
+    {
+        foreach (var tilePos in tilePositions)
+        {
+            HighlightSpawnTile(tilePos);
+        }
+    }
+    #endregion
+    
+    #region Cleanup
+    /// <summary>
+    /// Clears all tile highlights
+    /// </summary>
+    public void ClearAll()
+    {
+        ClearPatterns();
+        ClearZones();
+    }
+
+    /// <summary>
+    /// Destroys and clears only the movement/attack pattern highlights
+    /// </summary>
+    public void ClearPatterns() => ClearList(_activePatternHighlights);
+
+    /// <summary>
+    /// Destroys and clears only the zone highlights
+    /// </summary>
+    public void ClearZones()
+    {
+        ClearList(_activeZoneHighlights);
+    }
+    
+    private void ClearList(List<GameObject> listToClear)
+    {
+        foreach (var highlight in listToClear)
+        {
+            if (!highlight) continue;
             Destroy(highlight);
         }
-        _activeHighlights.Clear();
+        listToClear.Clear();
     }
+    #endregion
 }

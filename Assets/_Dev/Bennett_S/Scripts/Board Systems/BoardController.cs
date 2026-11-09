@@ -42,6 +42,7 @@ public class BoardController : MonoBehaviour
         _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
 
+        MatchController.OnMatchStateChanged += OnMatchStateChanged;
         MatchController.OnTurnEnded += OnTurnEnded;
     }
 
@@ -53,15 +54,24 @@ public class BoardController : MonoBehaviour
         _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
         _inputMapping.Disable();
         
+        MatchController.OnMatchStateChanged -= OnMatchStateChanged;
         MatchController.OnTurnEnded -= OnTurnEnded;
     }
-
+    
     private void Awake()
     {
         _selectionController = GetComponent<TileSelectionController>();
         _highlightingController = GetComponent<TileHighlightingController>();
         _board = GetComponent<Board>();
         _inputMapping = new GameControls();
+    }
+
+    private void Start()
+    {
+        foreach (ZoneInstance zone in _board.ActiveZones)
+        {
+            _highlightingController.HighlightZoneTiles(zone.GetRelativePositions());
+        }
     }
 
     private void Update()
@@ -132,6 +142,12 @@ public class BoardController : MonoBehaviour
             return null;
         }
 
+        if (!IsValidSpawnZone(tile, activePlayer))
+        {
+            if (_enableCreatureDebug) Debug.Log("BoardController: Cannot summon outside your designated spawn zone.");
+            return null;
+        }
+        
         if (!activePlayer.TryPerformMove(creatureData.EnergyCost))
         {
             if (_enableCreatureDebug) Debug.Log("Could not place creature as energy is too low");
@@ -149,7 +165,7 @@ public class BoardController : MonoBehaviour
         }
         
         creature.Data = creatureData;
-        creature.Owner = activePlayer.Data;
+        creature.Owner = activePlayer;
         creature.CurrentHealth = creatureData.MaxHealth;
         creature.Experience = 0;
         creature.OccupyingTile = tile;
@@ -158,7 +174,14 @@ public class BoardController : MonoBehaviour
         
         activePlayer.AddCreature(creature);
         creatureObj.name = creature.Data.CreatureName;
-        
+
+        creature.OnCreatureDeath += HandleCreatureDeath;
+
+        if (tile.ZoneID >= 0)
+        {
+            _board.EvaluateZoneControl();
+            RefreshZoneHighlights();
+        }
         if (_enableCreatureDebug) Debug.Log($"Placed Creature: {creatureObj.name} at {SelectedPosition} | {activePlayer.EnergySystem.Energy.CurrentAmount} / {activePlayer.EnergySystem.Energy.MaxAmount}");
         
         return creature;
@@ -190,13 +213,26 @@ public class BoardController : MonoBehaviour
             return;
         }
         
-        creature.OccupyingTile.Occupant = null;
-        target.Occupant = creature;
-        creature.OccupyingTile = target;
+        // Move the creature to the new tile
         creature.transform.position = target.transform.position;
-        creature.transform.position += new Vector3(0, creature.OccupyingTile.Data.CreatureYOffset, 0);
-
-        _highlightingController.Clear();
+        creature.transform.position += new Vector3(0, target.Data.CreatureYOffset, 0);
+        
+        // Cache the previous Zone ID
+        int oldZoneID = creature.OccupyingTile.ZoneID;
+        
+        // Apply new tile data
+        creature.OccupyingTile.Occupant = null;
+        creature.OccupyingTile = target;
+        target.Occupant = creature;
+        
+        // Re-evaluate zone control if a creature moves into a zone or has moved from a zone
+        if (oldZoneID >= 0 || target.ZoneID >= 0)
+        {
+            _board.EvaluateZoneControl();
+            RefreshZoneHighlights();
+        }
+        
+        _highlightingController.ClearPatterns();
         
         // Debug logic
         if (_enableCreatureDebug)
@@ -228,12 +264,12 @@ public class BoardController : MonoBehaviour
         
         target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
         
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
     }
 
     public void PreviewPattern(Tile tile, bool isAttack)
     {
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         if (!tile.Occupant) return;
 
         Vector2Int[] validMoves = isAttack ? tile.Occupant.ShowValidAttacks() : tile.Occupant.ShowValidMovement();
@@ -269,18 +305,68 @@ public class BoardController : MonoBehaviour
         // Add highlight to selected creature's tile
         validWorldPositions.Add(tile.transform.position);
         
-        _highlightingController.HighlightTiles(validWorldPositions, isAttack);
+        _highlightingController.HighlightPatternTiles(validWorldPositions, isAttack);
         
         // Add a check for impassable tiles and cut off the movement
     }
+    
+    public void RefreshZoneHighlights()
+    {
+        if (!_highlightingController) return;
+        _highlightingController.ClearZones();
+        
+        foreach (ZoneInstance zone in _board.ActiveZones)
+        {
+            Color? highlightColor = null;
 
+            // If the zone has an owner then get its colour
+            if (zone.Occupier && zone.Occupier.Data != null)
+            {
+                highlightColor = zone.Occupier.Data.TeamColor; 
+            }
+            
+            _highlightingController.HighlightZoneTiles(zone.GetRelativePositions(), highlightColor);
+        }
+    }
+    
+    private void HighlightSpawnZoneForPlayer(Player player)
+    {
+        _highlightingController.ClearZones();
+    
+        MapData mapData = _board.GetData();
+        if (mapData.Tiles == null || !player) return;
+
+        List<Vector3> spawnTilePositions = new();
+
+        // Find the active player's index from the registry
+        int playerIndex = -1;
+        for (int i = 0; i < PlayerRegistry.MasterList.Count; i++)
+        {
+            if (PlayerRegistry.MasterList[i] != player) continue;
+            playerIndex = i;
+            break;
+        }
+
+        if (playerIndex == -1) return;
+
+        // Collect all tiles marked as spawn tiles belonging to the active player
+        foreach (Tile tile in mapData.Tiles)
+        {
+            if (tile && tile.IsSpawnTile && tile.SpawnOwnerID == playerIndex)
+            {
+                spawnTilePositions.Add(tile.transform.position);
+            }
+        }
+        
+        _highlightingController.HighlightSpawnTiles(spawnTilePositions);
+    }
     private void SelectCreature()
     {
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (!tile.Occupant) return;
         
         // Return for creatures selected other than the player's own
-        if (tile.Occupant.Owner.Name != _matchController.CurrentPlayer.Data.Name) return;
+        if (tile.Occupant.Owner.Data.Name != _matchController.CurrentPlayer.Data.Name) return;
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
@@ -289,6 +375,32 @@ public class BoardController : MonoBehaviour
         PreviewPattern(_selectedTile, false);
         
         if (_enableCreatureDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
+    }
+    
+    /// <summary>
+    /// Checks if a tile is a valid spawn zone
+    /// </summary>
+    /// <param name="tile"><c>Tile</c> to check</param>
+    /// <param name="player"><c>Player</c> to check can spawn here</param>
+    /// <returns></returns>
+    public static bool IsValidSpawnZone(Tile tile, Player player)
+    {
+        if (!tile || !tile.IsSpawnTile || !player) return false;
+
+        int playerIndex = -1;
+    
+        // Find the player's index from the master list
+        for (int i = 0; i < PlayerRegistry.MasterList.Count; i++)
+        {
+            if (PlayerRegistry.MasterList[i] != player) continue;
+            
+            playerIndex = i;
+            break;
+        }
+
+        if (playerIndex == -1) return false;
+        
+        return tile.SpawnOwnerID == playerIndex;
     }
     
     private void OnSelectionPressed(InputAction.CallbackContext context)
@@ -314,7 +426,7 @@ public class BoardController : MonoBehaviour
                 if (_creatureStage != CreatureStage.Moving) return;
                 MoveCreature(_selectedTile.Occupant, currentTile);
             }
-            _highlightingController.Clear();
+            _highlightingController.ClearPatterns();
             _selectedTile = null;
             _creatureStage = CreatureStage.None;
         }
@@ -323,21 +435,50 @@ public class BoardController : MonoBehaviour
     private void OnViewAttack(InputAction.CallbackContext context)
     {
         _creatureStage = CreatureStage.Attacking;
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, true);
     }
 
     private void OnViewMove(InputAction.CallbackContext context)
     {
         _creatureStage = CreatureStage.Moving;
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, false);
+    }
+    
+    private void OnMatchStateChanged(MatchState newState)
+    {
+        if (newState == MatchState.TurnSummon)
+        {
+            HighlightSpawnZoneForPlayer(_matchController.CurrentPlayer);
+        }
+        else
+        {
+            RefreshZoneHighlights();
+        }
     }
     
     private void OnTurnEnded(Player player)
     {
         _selectedTile = null;
-        _highlightingController.Clear();
+        _highlightingController.ClearPatterns();
+    }
+    
+    private void HandleCreatureDeath(Creature creature)
+    {
+        if (!creature) return;
+        
+        creature.OnCreatureDeath -= HandleCreatureDeath;
+        
+        Tile creatureOccupyingTile = creature.OccupyingTile;
+        if (!creatureOccupyingTile) return;
+        
+        creatureOccupyingTile.Occupant = null;
+        if (creatureOccupyingTile.ZoneID >= 0)
+        {
+            _board.EvaluateZoneControl();
+            RefreshZoneHighlights();
+        }
     }
 }
 

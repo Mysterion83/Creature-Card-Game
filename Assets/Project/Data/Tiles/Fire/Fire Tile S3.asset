@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Fire Tile S3
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Dev_Tiles_Fire_Base_S3
+  ID: Core_Tiles_Fire_Base_S3
   Name: Fire Base Tile S3
   Description: Base Fire Tile with an effect strength of 3
-  Element: 1
+  Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   EffectStrength: 3
   IsPassable: 1
   CreatureYOffset: 1
   RenderObjectPrefab: {fileID: 8783905725713609810, guid: d268affdb9b56f0478eb235471e9d6b0, type: 3}
+  Decorations: []

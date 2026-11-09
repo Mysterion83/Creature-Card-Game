@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Water Tile S3
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Dev_Tiles_Water_Base_S3
-  Name: Water Base Tile S3
+  ID: Core_Tiles_Water_Base_S3
+  Name: Deep Ocean
   Description: Base Water Tile with an effect strength of 3
-  Element: 2
+  Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   EffectStrength: 3
   IsPassable: 1
   CreatureYOffset: 1
   RenderObjectPrefab: {fileID: 5295348218987517757, guid: 45331036a18bbf94da24610fdc6a94d7, type: 3}
+  Decorations: []

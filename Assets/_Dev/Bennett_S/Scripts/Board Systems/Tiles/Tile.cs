@@ -9,15 +9,27 @@ public class Tile : MonoBehaviour
 {
     [Header("Tile Definition")] 
     public TileData Data;
-
-    [Header("Active Info")] 
-    public int RegionID = -1;
+    
+    [Header("Tile Info")] 
     public Creature Occupant;
     public Vector2Int TileIndex;
+    
+    [Header("Zone Info")]
+    public int ZoneID = -1;
+    public bool IsZoneCenter;
+    public ZoneDefinition AssignedZone;
+    
+    [Header("Spawn Info")]
+    public bool IsSpawnTile;
+    public int SpawnOwnerID = -1;
     
     private TileData _prevData;
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
+
+    private GameObject _renderObject;
+
+    private bool _queuedForDecorationRefresh;
 
     private void OnValidate()
     {
@@ -27,8 +39,28 @@ public class Tile : MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
         
         if (Data == _prevData) return;
+
+        // Queue a safe visual refresh cycle that triggers on the next global editor update tick
+        _queuedForDecorationRefresh = true;
+
+#if UNITY_EDITOR
+        EditorApplication.update -= HandleEditorUpdate;
+        EditorApplication.update += HandleEditorUpdate;
+#endif
+    }
+
+#if UNITY_EDITOR
+    private void HandleEditorUpdate()
+    {
+        // Unsubscribe to prevent infinite execution
+        EditorApplication.update -= HandleEditorUpdate;
+
+        if (!_queuedForDecorationRefresh || !this) return;
+        _queuedForDecorationRefresh = false;
+        
         Init();
     }
+#endif
 
     private void Awake()
     {
@@ -38,11 +70,8 @@ public class Tile : MonoBehaviour
 
     public void Init()
     {
-        OnDataUpdate();
-    }
-
-    private void OnDataUpdate()
-    {
+        ClearDecorations();
+        
         if (!Data) return;
         _prevData = Data;
 
@@ -65,18 +94,44 @@ public class Tile : MonoBehaviour
             }
         }
 #endif
-        // if (Data.RenderObjectPrefab.TryGetComponent<MeshFilter>(out var meshFilter))
-        // {
-        //     _meshFilter.sharedMesh = meshFilter? meshFilter.sharedMesh : null;
-        // }
-        // if (Data.RenderObjectPrefab.TryGetComponent<MeshRenderer>(out var meshRenderer))
-        // {
-        //     _meshRenderer.sharedMaterial = meshFilter? meshRenderer.sharedMaterial : null;
-        // }
 
-        _meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
-            ? prefabMeshFilter.sharedMesh : null;
-        _meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
-            ? prefabMeshRenderer.sharedMaterial : null;
+        Destroy(_renderObject); _renderObject = null;
+        Instantiate(Data.RenderObjectPrefab, this.transform);
+        
+        //// Mesh and Material assignment
+        //_meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
+        //    ? prefabMeshFilter.sharedMesh : null;
+        //_meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
+        //    ? prefabMeshRenderer.sharedMaterial : null;
+        
+        // Tile Decoration Spawning
+        if (Data.Decorations == null) return;
+        
+        foreach (var decoration in Data.Decorations)
+        {
+            decoration?.Spawn(transform);
+        }
+    }
+    
+    public void ClearDecorations()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            
+            if (Application.isPlaying)
+            {
+                Destroy(child);
+            }
+            else
+            {
+#if UNITY_EDITOR
+                if (child)
+                {
+                    Undo.DestroyObjectImmediate(child);
+                }
+#endif
+            }
+        }
     }
 }

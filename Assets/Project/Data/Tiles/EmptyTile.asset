@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: EmptyTile
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Dev_Tiles_Empty
+  ID: Core_Tiles_Empty
   Name: Empty Tile
   Description: Generates an Empty Tile
   Element: 0
@@ -20,3 +20,4 @@ MonoBehaviour:
   IsPassable: 0
   CreatureYOffset: 0
   RenderObjectPrefab: {fileID: 200334408011035903, guid: ff4a03f8bcf7cf649b0dab8ae6ee521e, type: 3}
+  Decorations: []

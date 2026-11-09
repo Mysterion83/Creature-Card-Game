@@ -15,10 +15,12 @@ public abstract class Player : MonoBehaviour
     [SerializeField] private bool _enableTurnDebugging;
 
     public PlayerData Data => _data;
-    public bool IsDefeated => _activeCreatures.Count == 0;
+    public bool IsDefeated => _activeCreatures.Count == 0 && _summonedCreatureCount >= _requiredSummonCount;
     public CreatureData SelectedCreature { get; private set; }
     public EnergySystem EnergySystem { get; private set; }
-    public IReadOnlyList<Creature> ActiveCreatures => _activeCreatures; 
+    public IReadOnlyList<Creature> ActiveCreatures => _activeCreatures;
+
+    private int _summonedCreatureCount;
     
     private void OnEnable()
     {
@@ -62,20 +64,17 @@ public abstract class Player : MonoBehaviour
     /// <param name="creature">The <c>Creature</c> to add</param>
     public void AddCreature(Creature creature)
     {
-        if (creature == null || _activeCreatures.Contains(creature)) return;
+        if (!creature || _activeCreatures.Contains(creature)) return;
         
         _activeCreatures.Add(creature);
+        _summonedCreatureCount++;
         creature.OnCreatureDeath += HandleCreatureDeath;
         if (_enableTurnDebugging) Debug.Log($"{_data.Name} placed a unit! ({_activeCreatures.Count}/{_requiredSummonCount})");
-
+        
         // Temp link to deck for vertical slice testing, update when works
-        if (TryGetComponent(out PlayerDeck deck))
-        {
-            deck.MarkCurrentCardAsPlaced();
-        }
+        if (TryGetComponent(out PlayerDeck deck)) deck.MarkCurrentCardAsPlaced();
         
         if (_activeCreatures.Count < _requiredSummonCount) return;
-        
         if (_enableTurnDebugging) Debug.Log($"{_data.Name} has placed all required units!");
     }
     
