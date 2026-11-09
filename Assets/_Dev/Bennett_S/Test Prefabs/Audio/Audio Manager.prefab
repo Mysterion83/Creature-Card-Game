@@ -79,12 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbda2d9ef3a4ff74eb469040f37f82cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  _audioMixer: {fileID: 0}
+  _audioMixer: {fileID: 24100000, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
   _snapshots:
   - key: Default
-    value: {fileID: 0}
+    value: {fileID: 24500006, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
   - key: Paused
-    value: {fileID: 0}
+    value: {fileID: 8508798226180062891, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
   _defaultTransitionTime: 0.25
 --- !u!114 &206916785128169395
 MonoBehaviour:
