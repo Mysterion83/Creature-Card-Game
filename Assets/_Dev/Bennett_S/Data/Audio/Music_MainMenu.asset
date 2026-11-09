@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd1651a5cec4ce4b896612b6aaa25b7, type: 3}
   m_Name: Music_MainMenu
   m_EditorClassIdentifier: Assembly-CSharp::MusicDefinition
-  MixerGroupOverride: {fileID: 0}
+  MixerGroupOverride: {fileID: 1803735144258637242, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
   BaseVolume: 1
   BasePitch: 1
   Clip: {fileID: 0}
+  TrackType: 0
   Loop: 1
+  FadeInMode: 0
   FadeInTime: 1
+  FadeOutMode: 0
+  FadeOutTime: 1
