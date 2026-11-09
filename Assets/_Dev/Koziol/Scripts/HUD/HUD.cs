@@ -212,7 +212,6 @@ public class HUDEditor : Editor
             defender.Data = new CreatureData { CreatureName = "Test Defender" };
             PlayerData defenderOwner = new PlayerData { Name = "Player 2", IsAI = true };
             defender.Owner = defenderOwner;
-
             AttackResult attackResult = new AttackResult
             {
                 Attacker = attacker,
@@ -220,7 +219,6 @@ public class HUDEditor : Editor
                 DamageDealt = 10,
                 IsDead = false
             };
-
             hud.UpdateCombatLogValues(attackResult);
         }
         if (GUILayout.Button("Show No Energy Popup"))
