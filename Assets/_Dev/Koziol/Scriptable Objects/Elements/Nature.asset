@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3be3b5c957e6784196dfb847a367dca, type: 3}
+  m_Name: Nature
+  m_EditorClassIdentifier: Assembly-CSharp::Element
+  Name: Nature
+  Icon: {fileID: 5415080162996510669, guid: 6da3511818803934b9c37bab9fea463c, type: 3}
+  Color: {r: 0.20583123, g: 1, b: 0, a: 1}

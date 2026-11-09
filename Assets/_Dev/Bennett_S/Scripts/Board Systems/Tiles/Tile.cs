@@ -27,6 +27,8 @@ public class Tile : MonoBehaviour
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
 
+    private GameObject _renderObject;
+
     private bool _queuedForDecorationRefresh;
 
     private void OnValidate()
@@ -92,12 +94,15 @@ public class Tile : MonoBehaviour
             }
         }
 #endif
+
+        Destroy(_renderObject); _renderObject = null;
+        Instantiate(Data.RenderObjectPrefab, this.transform);
         
-        // Mesh and Material assignment
-        _meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
-            ? prefabMeshFilter.sharedMesh : null;
-        _meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
-            ? prefabMeshRenderer.sharedMaterial : null;
+        //// Mesh and Material assignment
+        //_meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
+        //    ? prefabMeshFilter.sharedMesh : null;
+        //_meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
+        //    ? prefabMeshRenderer.sharedMaterial : null;
         
         // Tile Decoration Spawning
         if (Data.Decorations == null) return;

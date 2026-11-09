@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_Capycano
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   CreatureName: Capycano
-  Element: 1
+  Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   Type: 1
   MaxHealth: 44
   Attack: 9
@@ -23,5 +23,5 @@ MonoBehaviour:
   AttackPattern: {fileID: 11400000, guid: 605a82cf68102e04c84cdb7d71b0a0d7, type: 2}
   MovementPattern: {fileID: 11400000, guid: 605a82cf68102e04c84cdb7d71b0a0d7, type: 2}
   CreaturePrefab: {fileID: 8483155126143150484, guid: faccbf509d3e87346b2dfd5ee7f00fbf, type: 3}
-  CardPrefab: {fileID: 0}
+  CreatureImage: {fileID: 4682181726574255261, guid: eec59012b64acd14c9b95ebf37a8bdd8, type: 3}
   XpToEvolve: 0

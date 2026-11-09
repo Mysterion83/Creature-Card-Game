@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Air Tile S1
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Dev_Tiles_Wind_Base_S1
-  Name: Wind Base Tile S1
+  ID: Core_Tiles_Wind_Base_S1
+  Name: Cloudy Plains
   Description: Base Wind Tile with an effect strength of 1
-  Element: 4
+  Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   EffectStrength: 1
   IsPassable: 1
   CreatureYOffset: 1
   RenderObjectPrefab: {fileID: 4630128711829741646, guid: f32d70ede71f9144c9b5af4747ab056f, type: 3}
+  Decorations: []

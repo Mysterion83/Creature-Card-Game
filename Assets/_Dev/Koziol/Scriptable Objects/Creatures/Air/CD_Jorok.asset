@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_Jorok
   m_EditorClassIdentifier: Assembly-CSharp::CreatureData
   CreatureName: Jorok
-  Element: 4
+  Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   Type: 3
   MaxHealth: 22
   Attack: 12
@@ -23,5 +23,5 @@ MonoBehaviour:
   AttackPattern: {fileID: 11400000, guid: 0ef6203fecb7eda4fa89acee64ce78fe, type: 2}
   MovementPattern: {fileID: 11400000, guid: 0ef6203fecb7eda4fa89acee64ce78fe, type: 2}
   CreaturePrefab: {fileID: 347617496225955837, guid: 52001052a83379b46be0f2e2ff79f758, type: 3}
-  CardPrefab: {fileID: 0}
+  CreatureImage: {fileID: 0}
   XpToEvolve: 0
