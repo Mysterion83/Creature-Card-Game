@@ -79,7 +79,7 @@ public class HUD : MonoBehaviour
         if (occupant != null)
         {
             tileInfo += $"<b>Occupant:</b> {occupant.Data.CreatureName}\n" +
-                $"<b>Owner:</b> {occupant.Owner.Name}\n" +
+                $"<b>Owner:</b> {occupant.Owner.Data.IsAI}\n" +
                 $"{HP_COLOR_TAG}<b>HP:</b>{END_COLOR_TAG} {FormatValue((int)occupant.CurrentHealth, (int)occupant.Data.MaxHealth)}\n" +
                 $"{ATTACK_COLOR_TAG}<b>ATK:</b>{END_COLOR_TAG} {occupant.Data.Attack} {DEF_COLOR_TAG}<b>DEF:</b>{END_COLOR_TAG} {occupant.Data.Defense}\n";
         }
@@ -130,13 +130,13 @@ public class HUD : MonoBehaviour
     {
         string logEntry = "";
 
-        if (!attackResult.Attacker.Owner.IsAI) logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
+        if (!attackResult.Attacker.Owner.Data.IsAI) logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
         else logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
 
         if (attackResult.IsDead) logEntry += "killed ";
         else logEntry += "attacked ";
 
-        if (!attackResult.Defender.Owner.IsAI) logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
+        if (!attackResult.Defender.Owner.Data.IsAI) logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
         else logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
 
         if (attackResult.DamageDealt > 0 && !attackResult.IsDead) logEntry += $"for {attackResult.DamageDealt} damage.";
@@ -200,34 +200,6 @@ public class HUDEditor : Editor
         if (GUILayout.Button("Add Combat Log Entry"))
         {
             hud.UpdateCombatLogValues("Test combat log entry.");
-        }
-        if (GUILayout.Button("Add Combat Log Entry (AttackResult)"))
-        {
-            //Dummy data
-            Creature attacker = new GameObject("Attacker").AddComponent<Creature>();
-            attacker.Data = new CreatureData { CreatureName = "Test Attacker" };
-            PlayerData attackerOwner = new PlayerData { Name = "Player 1", IsAI = false };
-            attacker.Owner = attackerOwner;
-            Creature defender = new GameObject("Defender").AddComponent<Creature>();
-            defender.Data = new CreatureData { CreatureName = "Test Defender" };
-            PlayerData defenderOwner = new PlayerData { Name = "Player 2", IsAI = true };
-            defender.Owner = defenderOwner;
-            AttackResult attackResult = new AttackResult
-            {
-                Attacker = attacker,
-                Defender = defender,
-                DamageDealt = 10,
-                IsDead = false
-            };
-            hud.UpdateCombatLogValues(attackResult);
-        }
-        if (GUILayout.Button("Show No Energy Popup"))
-        {
-            hud.ShowNoEnergyPopup();
-        }
-        if (GUILayout.Button("Randomise Turn Timer"))
-        {
-            hud.UpdateTurnTimer(UnityEngine.Random.Range(0f, 120f));
         }
     }
 }
