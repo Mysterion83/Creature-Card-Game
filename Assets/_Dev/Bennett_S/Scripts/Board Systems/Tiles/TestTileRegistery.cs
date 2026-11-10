@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileRegistryV2 : MonoBehaviour
+public class TileRegistry : MonoBehaviour
 {
-    public static TileRegistryV2 Instance;
+    public static TileRegistry Instance;
 
     [SerializeField] private TileData[] _defaultTiles;
 
     [SerializeField] private Dictionary<string, TileData> _registry;
 
-    public TileData GetTileData(string ID)
+    public TileData GetTileData(string id)
     {
-        return _registry[ID];
+        return _registry[id];
     }
 
 #if UNITY_EDITOR

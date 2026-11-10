@@ -545,6 +545,7 @@ MonoBehaviour:
   _targetFOV: 0
   _cameraZoomSpeed: 10
   _isZoomedIn: 0
+  _sensitivity: 0.2
 --- !u!1 &756965617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1079,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6524695950291570901, guid: eb3198885300366488c726f41e2e2cfd, type: 3}
       propertyPath: m_Name
-      value: TileRegisteryV2
+      value: TileRegistery
       objectReference: {fileID: 0}
     - target: {fileID: 9035889292823556187, guid: eb3198885300366488c726f41e2e2cfd, type: 3}
       propertyPath: m_LocalPosition.x

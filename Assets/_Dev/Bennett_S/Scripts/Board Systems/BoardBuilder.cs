@@ -147,7 +147,7 @@ public class BoardBuilder : MonoBehaviour
         if (savedTileData.HasValue)
         {
             SavedTileData tileData = savedTileData.Value;
-            tile.Data = TileRegistryV2.Instance.GetTileData(tileData.TileID);
+            tile.Data = TileRegistry.Instance.GetTileData(tileData.TileID);
             
             tile.IsZoneCenter = tileData.IsZoneCenter;
             tile.AssignedZone = tileData.ZoneDefinition;

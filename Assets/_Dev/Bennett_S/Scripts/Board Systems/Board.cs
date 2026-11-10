@@ -112,7 +112,7 @@ public class Board : MonoBehaviour
                     Quaternion.identity, _tileContainer);
                 Tile tile = tileInstance.GetComponent<Tile>();
 
-                tile.Data = TileRegistryV2.Instance.GetTileData(savedTileData.TileID);
+                tile.Data = TileRegistry.Instance.GetTileData(savedTileData.TileID);
                 tile.TileIndex = new Vector2Int(x, y);
                 
                 tile.AssignedZone = savedTileData.ZoneDefinition;

@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Obsolete("Class Deprecated. Use TileRegistry instead.")]
 [CreateAssetMenu(fileName = "TileRegistry", menuName = "Project/Registries/Tile Registry")]
-public class TileRegistry : ScriptableObject
+public class LegacyTileRegistry : ScriptableObject
 {
-    public static TileRegistry Instance;
+    public static LegacyTileRegistry Instance;
 
     [SerializeField] private TileData[] _defaultTiles;
 

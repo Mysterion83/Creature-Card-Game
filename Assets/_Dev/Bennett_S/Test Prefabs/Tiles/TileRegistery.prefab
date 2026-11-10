@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9035889292823556187}
   - component: {fileID: 3546081570622767405}
   m_Layer: 0
-  m_Name: TileRegisteryV2
+  m_Name: TileRegistery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
