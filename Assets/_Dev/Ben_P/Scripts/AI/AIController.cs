@@ -57,9 +57,9 @@ public class AIController : MonoBehaviour
     }
 
     /*
-     * After a delay the AI keeps summoning its next card onto a
-     * random free tile until it runs out of cards/energy/space then moves on to
-     * the action phase
+     * After a delay the AI keeps summoning its next card onto the free spawn tile
+     * closest to an enemy (or the middle of the board if there are no enemies yet)
+     * until it runs out of cards/energy/space then moves on to the action phase
      */
 
     IEnumerator SummonPhase()
@@ -73,7 +73,7 @@ public class AIController : MonoBehaviour
             if (free.Count == 0) { Log("No free tile to summon on."); break; }
 
             CreatureData card = _adapter.NextCard;
-            Tile tile = free[Random.Range(0, free.Count)];
+            Tile tile = AIRules.ChooseSummonTile(free, _adapter.EnemyCreatures(), _adapter.BoardCentre);
             if (_adapter.Summon(tile))
                 Log($"SUMMON {card.CreatureName} at {tile.TileIndex}. Energy left {_adapter.Energy}");
             else
@@ -92,12 +92,10 @@ public class AIController : MonoBehaviour
     }
 
     /*
-     * The AI goes through its creatures in a random order and gives each
-     * one a single action. If an enemy is in its attack range it attacks one at random
-     * otherwise it moves to a random tile it can reach. It works from a copy of the
-     * creature list in case one dies partway through and stops early if it runs out
-     * of energy or the phase ends. Once every creature has had its go the turn ends
-     * Choices are random for now I'll smarter decisions replace this later
+     * The AI goes through its creatures closest to the enemy first and asks AIRules
+     * what each one should do. If it advances it then attacks if an enemy is now in range. 
+     * It works from a copy of the creature list in case one dies partway through and 
+     * stops early if it runs out of energy or the phase ends.
      */
 
     IEnumerator ActionPhase()
@@ -106,7 +104,10 @@ public class AIController : MonoBehaviour
         yield return new WaitForSeconds(_phaseStartDelay);
 
         var creatures = new List<Creature>(_adapter.MyCreatures);
-        Shuffle(creatures);
+        creatures.RemoveAll(c => c == null);
+        List<Creature> startEnemies = _adapter.EnemyCreatures();
+        creatures.Sort((a, b) => AIRules.DistanceToNearest(a.OccupyingTile.TileIndex, startEnemies)
+            .CompareTo(AIRules.DistanceToNearest(b.OccupyingTile.TileIndex, startEnemies)));
 
         foreach (Creature c in creatures)
         {
@@ -114,10 +115,33 @@ public class AIController : MonoBehaviour
             if (c == null) continue;
             if (_adapter.Energy <= 0) { Log("Out of energy."); break; }
 
-            List<Tile> targets = _adapter.AttackTiles(c);
-            if (targets.Count > 0)
+            RuleChoice choice = AIRules.ChooseAction(c, _adapter, _adapter.EnemyCreatures());
+            bool advanced = false;
+
+            if (choice.Rule == RuleType.Advance)
             {
-                Tile target = targets[Random.Range(0, targets.Count)];
+                Vector2Int from = c.OccupyingTile.TileIndex;
+                Tile to = choice.Target;
+                if (!_adapter.Move(c, to))
+                {
+                    LogRefused($"move by {c.Data.CreatureName} {from} -> {to.TileIndex}");
+                    yield return new WaitForSeconds(_actionDelay);
+                    continue;
+                }
+                Log($"ADVANCE {c.Data.CreatureName} {from} -> {to.TileIndex}. Energy left {_adapter.Energy}");
+                advanced = true;
+                if (_adapter.Energy <= 0) { Log("Out of energy."); break; }
+                yield return new WaitForSeconds(_actionDelay);
+                choice = AIRules.ChooseAttack(c, _adapter);
+            }
+
+            if (choice.Rule == RuleType.Wait)
+            {
+                if (!advanced) Log($"WAIT {c.Data.CreatureName}: no enemy in range and no move gets closer.");
+            }
+            else
+            {
+                Tile target = choice.Target;
                 Creature victim = target.Occupant;
                 string victimName = victim.Data.CreatureName;
                 float hpBefore = victim.CurrentHealth;
@@ -126,26 +150,9 @@ public class AIController : MonoBehaviour
                 {
                     float hpAfter = victim.CurrentHealth;
                     string result = hpAfter <= 0 ? "KILLED it" : $"HP {hpBefore} -> {hpAfter}";
-                    Log($"ATTACK {c.Data.CreatureName} at {c.OccupyingTile.TileIndex} hit {victimName} at {target.TileIndex}: {result}. Energy left {_adapter.Energy}");
+                    Log($"{choice.Rule.ToString().ToUpper()} {c.Data.CreatureName} at {c.OccupyingTile.TileIndex} hit {victimName} at {target.TileIndex}: {result}. Energy left {_adapter.Energy}");
                 }
                 else LogRefused($"attack by {c.Data.CreatureName} on {victimName}");
-            }
-            else
-            {
-                List<Tile> moves = _adapter.MoveTiles(c);
-                if (moves.Count == 0)
-                {
-                    Log($"{c.Data.CreatureName} has no enemy in range and nowhere to move.");
-                }
-                else
-                {
-                    Vector2Int from = c.OccupyingTile.TileIndex;
-                    Tile to = moves[Random.Range(0, moves.Count)];
-                    if (_adapter.Move(c, to))
-                        Log($"MOVE {c.Data.CreatureName} {from} -> {to.TileIndex} (no enemy in range). Energy left {_adapter.Energy}");
-                    else
-                        LogRefused($"move by {c.Data.CreatureName} {from} -> {to.TileIndex}");
-                }
             }
             yield return new WaitForSeconds(_actionDelay);
         }
@@ -165,13 +172,4 @@ public class AIController : MonoBehaviour
     }
 
     void LogRefused(string action) => Debug.LogWarning($"[AI {_aiPlayer.Data.Name}] The game refused {action}.");
-
-    static void Shuffle<T>(List<T> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (list[i], list[j]) = (list[j], list[i]);
-        }
-    }
 }

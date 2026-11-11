@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9096f04d26faf8449abeeaf133cbe394, type: 3}
-  m_Name: LD_Earth1
+  m_Name: LD_Nature1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  Id: LD_Earth1
-  Wing: 3
+  Id: LD_Nature1
+  Wing: {fileID: 11400000, guid: 269f4244797fc2a4cae09eaeca01c809, type: 2}
   Number: 1
   LevelName: 
   Difficulty: 2

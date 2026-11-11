@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LD_Air1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   Id: LD_Air1
-  Wing: 4
+  Wing: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   Number: 1
   LevelName: 
   Difficulty: 2
