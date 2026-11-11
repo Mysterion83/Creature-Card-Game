@@ -41,10 +41,6 @@ public abstract class SFXDefinition : SoundDefinition
     [Tooltip("Ignore any reverb zone this audio source may be in.")]
     public bool BypassReverbZones;
     
-    [Header("Pooling and Priority")]
-    [Tooltip("Priority of the sound source (0 = most important, 256 = least important). Used to rectify 'voice stealing'.")]
-    [Range(0, 256)] public int Priority = 128;
-
     /*
     Above is an Audio priority field, from 0-256. Higher amounts mean the sound must absolutely be heard.
     I researched into how audio works in Unity, something called voice stealing occurs when the number of active
@@ -56,7 +52,7 @@ public abstract class SFXDefinition : SoundDefinition
     
     public override void ApplySource(AudioSource source)
     {
-        source.outputAudioMixerGroup = MixerGroupOverride;
+        base.ApplySource(source);
         
         // Playback Randomisation
         // Swap Min/Max if entered wrong in the Inspector
@@ -87,8 +83,6 @@ public abstract class SFXDefinition : SoundDefinition
         source.bypassEffects = BypassEffects;
         source.bypassListenerEffects = BypassListenerEffects;
         source.bypassReverbZones = BypassReverbZones;
-        
-        source.priority = Priority;
     }
 
     public override bool IsValid()
