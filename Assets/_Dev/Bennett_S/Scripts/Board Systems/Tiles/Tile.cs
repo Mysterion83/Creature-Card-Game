@@ -39,8 +39,7 @@ public class Tile : MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
         
         if (Data == _prevData) return;
-
-        // Queue a safe visual refresh cycle that triggers on the next global editor update tick
+        
         _queuedForDecorationRefresh = true;
 
 #if UNITY_EDITOR
@@ -81,10 +80,10 @@ public class Tile : MonoBehaviour
                 $"Tiles using {Data} have no render object prefab, please assign one in {Data}'s Inspector");
             return;
         }
-
-        GameObject targetSource = Data.RenderObjectPrefab;
-
+        
 #if UNITY_EDITOR
+        GameObject targetSource = Data.RenderObjectPrefab;
+        
         if (!Application.isPlaying)
         {
             var source = PrefabUtility.GetCorrespondingObjectFromSource(Data.RenderObjectPrefab);
@@ -93,16 +92,35 @@ public class Tile : MonoBehaviour
                 targetSource = source;
             }
         }
-#endif
-
-        Destroy(_renderObject); _renderObject = null;
-        Instantiate(Data.RenderObjectPrefab, this.transform);
         
-        //// Mesh and Material assignment
-        //_meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
-        //    ? prefabMeshFilter.sharedMesh : null;
-        //_meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
-        //    ? prefabMeshRenderer.sharedMaterial : null;
+        // Mesh and Material assignment
+        _meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
+            ? prefabMeshFilter.sharedMesh : null;
+#endif
+        
+        if (Application.isPlaying)
+        {
+            if (_renderObject)
+            {
+                Destroy(_renderObject);
+                _renderObject = null;
+            }
+            
+            if (Data.RenderObjectPrefab)
+            {
+                _renderObject = Instantiate(Data.RenderObjectPrefab, transform);
+            }
+            
+            // Set mesh and material to null so the render object is visible
+            if (_meshRenderer)
+            {
+                _meshRenderer.sharedMaterial = null;
+            }
+            if (_meshFilter)
+            {
+                _meshFilter.sharedMesh = null;
+            }
+        }
         
         // Tile Decoration Spawning
         if (Data.Decorations == null) return;

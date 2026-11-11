@@ -1,9 +1,10 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public struct SavedTileData
 {
-    public string TileID;
+    public GUID TileID;
     
     public int ZoneID;
     public bool IsZoneCenter;
@@ -12,7 +13,7 @@ public struct SavedTileData
     public bool IsSpawnTile;
     public int SpawnOwnerID;
     
-    public SavedTileData(string tileID, int zoneID, bool isZoneCenter, ZoneDefinition zoneDefinition, bool isSpawnTile, int spawnOwnerID )
+    public SavedTileData(GUID tileID, int zoneID, bool isZoneCenter, ZoneDefinition zoneDefinition, bool isSpawnTile, int spawnOwnerID )
     {
         TileID = tileID;
         ZoneID = zoneID;

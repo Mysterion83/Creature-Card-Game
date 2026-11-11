@@ -33,7 +33,7 @@ public class LegacyTileRegistry : ScriptableObject
         _registry = new Dictionary<string, TileData>();
         foreach (TileData tile in _defaultTiles)
         {
-            if (!_registry.TryAdd(tile.ID, tile))
+            if (!_registry.TryAdd(tile.StringID, tile))
             {
                 Debug.LogWarning($"Failed to add Tile to registry - {tile.name}");
             }
