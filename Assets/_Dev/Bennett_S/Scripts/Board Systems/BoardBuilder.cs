@@ -130,7 +130,14 @@ public class BoardBuilder : MonoBehaviour
     
     private void CreateEditorTile(int x, int y, Vector3 spawnPosition, SavedTileData? savedTileData)
     {
-        GameObject created = Instantiate(_defaultTilePrefab, spawnPosition, Quaternion.identity, _tileContainer.transform);
+        Quaternion spawnRotation = Quaternion.identity;
+        
+        if (savedTileData.HasValue)
+        {
+            spawnRotation = savedTileData.Value.Rotation;
+        }
+        
+        GameObject created = Instantiate(_defaultTilePrefab, spawnPosition, spawnRotation, _tileContainer.transform);
         Undo.RegisterCreatedObjectUndo(created, "Create Tile Object");
         
         Tile tile = created.GetComponent<Tile>();

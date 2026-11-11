@@ -111,8 +111,11 @@ public class Board : MonoBehaviour
                 spawnPosition.y = -0.5f;
 
                 // Create Tile
-                GameObject tileInstance = Instantiate(_tilePrefab, spawnPosition + _tileSpawnOffset,
-                    Quaternion.identity, _tileContainer);
+                GameObject tileInstance = Instantiate(
+                    _tilePrefab,
+                    spawnPosition + _tileSpawnOffset, 
+                    savedTileData.Rotation, 
+                    _tileContainer);
                 Tile tile = tileInstance.GetComponent<Tile>();
 
                 tile.Data = TileRegistry.Instance.GetTileData(savedTileData.TileID);

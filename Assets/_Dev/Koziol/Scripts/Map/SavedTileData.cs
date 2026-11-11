@@ -13,7 +13,9 @@ public struct SavedTileData
     public bool IsSpawnTile;
     public int SpawnOwnerID;
     
-    public SavedTileData(GUID tileID, int zoneID, bool isZoneCenter, ZoneDefinition zoneDefinition, bool isSpawnTile, int spawnOwnerID )
+    public Quaternion Rotation;
+    
+    public SavedTileData(GUID tileID, int zoneID, bool isZoneCenter, ZoneDefinition zoneDefinition, bool isSpawnTile, int spawnOwnerID, Quaternion spawnRotation )
     {
         TileID = tileID;
         ZoneID = zoneID;
@@ -21,5 +23,6 @@ public struct SavedTileData
         ZoneDefinition = zoneDefinition;
         IsSpawnTile = isSpawnTile;
         SpawnOwnerID = spawnOwnerID;
+        Rotation = spawnRotation;
     }
 }

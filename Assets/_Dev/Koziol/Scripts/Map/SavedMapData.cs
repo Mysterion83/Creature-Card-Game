@@ -32,7 +32,8 @@ public class SavedMapData : ScriptableObject
                 {
                     Tiles[flatIndex] = new SavedTileData(
                         item.Data.ID, item.ZoneID, item.IsZoneCenter, 
-                        item.AssignedZone, item.IsSpawnTile, item.SpawnOwnerID);
+                        item.AssignedZone, item.IsSpawnTile, item.SpawnOwnerID,
+                        item.transform.rotation);
                 }
             }
         }

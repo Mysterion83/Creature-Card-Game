@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: _fileName
-      value: test
+      value: y
       objectReference: {fileID: 0}
     - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: _mapData.MapSize.x
@@ -669,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _definitionData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 2e70fd0b5f810f84395b1a4fc5e438c9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
