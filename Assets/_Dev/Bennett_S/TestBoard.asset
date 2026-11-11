@@ -20,1349 +20,1574 @@ MonoBehaviour:
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ee5d84af357805949825a652c1714679
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 19c1fdaaa0c911e479431a8e5658955d
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: a7f4a5ef2c272fc46959c1bad8842bf1
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7c5f8aa903951fe4fb4c9ae7bdd5224a
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 033655c1595a5344ca7925ec94ee7abf
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 92c1c82eb4365c5428b0dc1b8cafe94b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ad21ee5bfe650a84890c852ccdde0426
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: c33393dd9fc95864195d1d169f324c24
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 76b81dc0e65d3e148991904741ea0a1f
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 506670d4313a90b4f8c6264ed3b1ed32
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 7f5055ecd8430294f9bce6fd7146c145
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
     IsSpawnTile: 0
     SpawnOwnerID: -1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: ff740dfb4b216fd45987d24724ab336b
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: 095063a5fcfa3ff44801e4e3ff4de5d6
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
   - TileID: d3f3e72826636974e863ef246df99050
     ZoneID: -1
     IsZoneCenter: 0
     ZoneDefinition: {fileID: 0}
-    IsSpawnTile: 0
-    SpawnOwnerID: -1
+    IsSpawnTile: 1
+    SpawnOwnerID: 1
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
