@@ -23,7 +23,7 @@ public class StarterDeckScreen : MonoBehaviour
     {
         selected = deck;
         confirmButton.interactable = true;
-        confirmLabel.text = $"Confirm {ElementLabel.For(deck.Element)} Deck";
+        confirmLabel.text = $"Confirm {(deck.Element != null ? deck.Element.Name : "")} Deck";
     }
 
     public void Confirm()

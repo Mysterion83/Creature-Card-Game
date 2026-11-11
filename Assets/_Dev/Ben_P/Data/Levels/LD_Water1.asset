@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LD_Water1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   Id: LD_Water1
-  Wing: 2
+  Wing: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   Number: 1
   LevelName: 
   Difficulty: 2

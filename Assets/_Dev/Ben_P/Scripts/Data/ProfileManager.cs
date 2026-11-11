@@ -38,7 +38,7 @@ public class ProfileManager : MonoBehaviour
         Profile = new PlayerProfile
         {
             Coins = startingCoins,
-            StarterElement = starter.Element,
+            StarterElement = starter.Element != null ? starter.Element.Name : "",
             ProgressLabel = "New game"
         };
         var cards = starter.CardIds();
@@ -117,7 +117,7 @@ public class ProfileManager : MonoBehaviour
             Profile.CompletedLevels.Add(CurrentLevel.Id);
 
         Profile.Coins += CurrentLevel.CoinReward;
-        Profile.ProgressLabel = $"Level {CurrentLevel.Number} - {ElementLabel.For(CurrentLevel.Wing)} Wing";
+        Profile.ProgressLabel = $"Level {CurrentLevel.Number} - {(CurrentLevel.Wing != null ? CurrentLevel.Wing.Name : "")} Wing";
         RerollShop();
         Save();
         Changed();
