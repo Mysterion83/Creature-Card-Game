@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
-  m_Name: Air Tile S1
+  m_Name: Air Tile S3
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Core_Tiles_Wind_Base_S1
-  Name: Cloudy Plains
-  Description: Base Wind Tile with an effect strength of 1
+  _stringID: Core_Tiles_Air_Base_S3
+  _id: ff740dfb4b216fd45987d24724ab336b
+  _name: 
+  _description: 
   Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
-  EffectStrength: 1
+  EffectStrength: 3
   IsPassable: 1
   CreatureYOffset: 1
-  RenderObjectPrefab: {fileID: 4630128711829741646, guid: f32d70ede71f9144c9b5af4747ab056f, type: 3}
+  RenderObjectPrefab: {fileID: 1081440250390806607, guid: 6b87d2a92ada983459ee589a4af9b991, type: 3}
   Decorations: []

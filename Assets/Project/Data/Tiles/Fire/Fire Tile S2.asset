@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Fire Tile S2
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Core_Tiles_Fire_Base_S2
-  Name: Fire Base Tile S2
-  Description: Base Fire Tile with an effect strength of 2
+  _stringID: Core_Tiles_Fire_Base_S2
+  _id: 033655c1595a5344ca7925ec94ee7abf
+  _name: 
+  _description: 
   Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   EffectStrength: 2
   IsPassable: 1

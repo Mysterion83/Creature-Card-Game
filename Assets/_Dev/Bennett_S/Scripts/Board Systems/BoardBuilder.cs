@@ -5,28 +5,26 @@ using UnityEditor;
 
 public class BoardBuilder : MonoBehaviour
 {
-    [Header("Board References")]
+    [Header("References")]
     [SerializeField] private Grid _grid;
     [SerializeField] private Transform _shaderPlane;
+    
+    [Header("Tile Prefab")]
+    [SerializeField] private GameObject _defaultTilePrefab;
     
     [Header("Build Settings")]
     [SerializeField] private MapData _mapData; // Struct type
     [SerializeField] private string _fileName = "New MapSaveData";
 
     [Header("Debug")]
-    [SerializeField] private bool _showTileDataCreation = false;
-    
-    [Header("Test Tile")]
-    [SerializeField] private GameObject _defaultTilePrefab;
+    [SerializeField] private bool _showTileDataCreation;
     
     private GameObject _prevTileContainer;
     private GameObject _tileContainer;
     private Vector3Int _bottomLeftTileOffset;
-    private Vector2Int _previousGridSize;
      
     private void Resize()
     {
-        _previousGridSize = _mapData.MapSize;
         _bottomLeftTileOffset = new Vector3Int(-(_mapData.MapSize.x / 2), -(_mapData.MapSize.y / 2), 0);
                 
         EditorApplication.delayCall += () =>
@@ -132,7 +130,14 @@ public class BoardBuilder : MonoBehaviour
     
     private void CreateEditorTile(int x, int y, Vector3 spawnPosition, SavedTileData? savedTileData)
     {
-        GameObject created = Instantiate(_defaultTilePrefab, spawnPosition, Quaternion.identity, _tileContainer.transform);
+        Quaternion spawnRotation = Quaternion.identity;
+        
+        if (savedTileData.HasValue)
+        {
+            spawnRotation = savedTileData.Value.Rotation;
+        }
+        
+        GameObject created = Instantiate(_defaultTilePrefab, spawnPosition, spawnRotation, _tileContainer.transform);
         Undo.RegisterCreatedObjectUndo(created, "Create Tile Object");
         
         Tile tile = created.GetComponent<Tile>();
@@ -147,7 +152,7 @@ public class BoardBuilder : MonoBehaviour
         if (savedTileData.HasValue)
         {
             SavedTileData tileData = savedTileData.Value;
-            tile.Data = TileRegistryV2.Instance.GetTileData(tileData.TileID);
+            tile.Data = TileRegistry.Instance.GetTileData(tileData.TileID);
             
             tile.IsZoneCenter = tileData.IsZoneCenter;
             tile.AssignedZone = tileData.ZoneDefinition;
@@ -167,28 +172,7 @@ public class BoardBuilder : MonoBehaviour
         
         SavedMapData savedMapData = ScriptableObject.CreateInstance<SavedMapData>();
         
-        savedMapData.MapSize = _mapData.MapSize;
-        savedMapData.Tiles = new SavedTileData[_mapData.MapSize.x * _mapData.MapSize.y];
-        
-        for (int x = 0; x < _mapData.MapSize.x; x++)
-        {
-            for (int y = 0; y < _mapData.MapSize.y; y++)
-            {
-                int flatIndex = x + (y * _mapData.MapSize.x);
-                Tile currentTile = _mapData.Tiles[x, y];
-                if (currentTile)
-                {
-                    savedMapData.Tiles[flatIndex] = new SavedTileData(
-                        currentTile.Data ? currentTile.Data.ID : string.Empty,
-                        currentTile.ZoneID,
-                        currentTile.IsZoneCenter,
-                        currentTile.AssignedZone,
-                        currentTile.IsSpawnTile,
-                        currentTile.SpawnOwnerID
-                    );
-                }
-            }
-        }
+        savedMapData.Initialise(_mapData.MapSize, _mapData.Tiles);
         
         AssetDatabase.CreateAsset(savedMapData, filePath);
         

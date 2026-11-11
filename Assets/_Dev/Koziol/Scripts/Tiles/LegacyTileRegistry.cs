@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Obsolete("Class Deprecated. Use TileRegistry instead.")]
 [CreateAssetMenu(fileName = "TileRegistry", menuName = "Project/Registries/Tile Registry")]
-public class TileRegistry : ScriptableObject
+public class LegacyTileRegistry : ScriptableObject
 {
-    public static TileRegistry Instance;
+    public static LegacyTileRegistry Instance;
 
     [SerializeField] private TileData[] _defaultTiles;
 
@@ -31,7 +33,7 @@ public class TileRegistry : ScriptableObject
         _registry = new Dictionary<string, TileData>();
         foreach (TileData tile in _defaultTiles)
         {
-            if (!_registry.TryAdd(tile.ID, tile))
+            if (!_registry.TryAdd(tile.StringID, tile))
             {
                 Debug.LogWarning($"Failed to add Tile to registry - {tile.name}");
             }

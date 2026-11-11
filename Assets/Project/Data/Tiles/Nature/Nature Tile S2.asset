@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Nature Tile S2
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Core_Tiles_Earth_Base_S2
-  Name: Flower Field
-  Description: Base Earth Tile with an effect strength of 2
+  _stringID: Core_Tiles_Nature_Base_S2
+  _id: 19c1fdaaa0c911e479431a8e5658955d
+  _name: 
+  _description: 
   Element: {fileID: 11400000, guid: 269f4244797fc2a4cae09eaeca01c809, type: 2}
   EffectStrength: 2
   IsPassable: 1
