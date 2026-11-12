@@ -8,6 +8,10 @@ public abstract class SoundDefinition : ScriptableObject
 {
     [Header("Mixer Routing")]
     public AudioMixerGroup MixerGroupOverride;
+    
+    [Header("Pooling and Priority")]
+    [Tooltip("Priority of the sound source (0 = most important, 256 = least important). Used to rectify 'voice stealing'.")]
+    [Range(0, 256)] public int Priority = 128;
 
     [Header("Playback")]
     [Tooltip("Base volume for the sound")]
@@ -22,6 +26,8 @@ public abstract class SoundDefinition : ScriptableObject
         // Playback
         source.volume = BaseVolume;
         source.pitch = BasePitch;
+                
+        source.priority = Priority;
     }
     
     public virtual bool IsValid()
