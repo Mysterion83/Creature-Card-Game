@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: Dev_Tiles_Neutral
   Name: Plains
   Description: Neutral Tile, no element
-  Element: 0
+  Element: {fileID: 11400000, guid: c6b1c7fdfb747f246b954d8b4715ba84, type: 2}
   EffectStrength: 0
   IsPassable: 1
   CreatureYOffset: 1

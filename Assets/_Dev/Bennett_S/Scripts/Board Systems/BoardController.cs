@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,8 +15,9 @@ public class BoardController : MonoBehaviour
     
     [Header("Selection Settings")]
     [SerializeField] private Transform _selectionBox;
-    [SerializeField] private float _selectionBoxHoverHeight = 0.5f; 
-    
+    [SerializeField] private float _selectionBoxHoverHeight = 0.5f;
+    [SerializeField] private float _selectedCreatureHoverHeight = 1.0f;
+
     [Header("Debug")]
     [SerializeField] private bool _enableCreatureDebug = false;
     
@@ -33,7 +35,9 @@ public class BoardController : MonoBehaviour
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
-    
+
+    [SerializeField] private GameObject _hitParticlesPrefab;
+
     private void OnEnable()
     {
         _inputMapping.Enable();
@@ -155,7 +159,7 @@ public class BoardController : MonoBehaviour
         }
         
         GameObject creatureObj = Instantiate(creatureData.CreaturePrefab, tile.transform.position, Quaternion.identity);
-        creatureObj.transform.position += new Vector3(0, tile.Data.CreatureYOffset, 0);
+        creatureObj.transform.position += new Vector3(0, 50, 0);
         
         if (!creatureObj.TryGetComponent(out Creature creature))
         {
@@ -163,13 +167,16 @@ public class BoardController : MonoBehaviour
             Destroy(creatureObj);
             return null;
         }
-        
+
+        creature.TargetPosition = tile.transform.position + new Vector3(0, tile.Data.CreatureYOffset, 0);
+
         creature.Data = creatureData;
         creature.Owner = activePlayer;
         creature.CurrentHealth = creatureData.MaxHealth;
         creature.Experience = 0;
         creature.OccupyingTile = tile;
-        
+        creature.HitParticlePrefab = _hitParticlesPrefab;
+
         tile.Occupant = creature;
         
         activePlayer.AddCreature(creature);
@@ -214,8 +221,8 @@ public class BoardController : MonoBehaviour
         }
         
         // Move the creature to the new tile
-        creature.transform.position = target.transform.position;
-        creature.transform.position += new Vector3(0, target.Data.CreatureYOffset, 0);
+        creature.transform.parent = target.transform;
+        creature.TargetPosition = target.transform.position + new Vector3(0, target.Data.CreatureYOffset, 0);
         
         // Cache the previous Zone ID
         int oldZoneID = creature.OccupyingTile.ZoneID;
@@ -373,7 +380,9 @@ public class BoardController : MonoBehaviour
         
         _creatureStage = CreatureStage.Moving;
         PreviewPattern(_selectedTile, false);
-        
+
+        tile.Occupant.TargetPosition = tile.transform.position + new Vector3(0, _selectedTile.Data.CreatureYOffset + _selectedCreatureHoverHeight, 0);
+
         if (_enableCreatureDebug) Debug.Log($"Selected Creature: {tile.Occupant.Data.name} at {tile.TileIndex}");
     }
     
@@ -414,6 +423,12 @@ public class BoardController : MonoBehaviour
         else
         {
             Tile currentTile = _board.GetTileFromPosition(SelectedPosition);
+
+            //drop current creature
+            if (_selectedTile)
+            {
+                if (_selectedTile.Occupant) _selectedTile.Occupant.TargetPosition = _selectedTile.transform.position + new Vector3(0, _selectedTile.Data.CreatureYOffset, 0);
+            }
 
             // If tile is occupied by a creature attempt to attack, otherwise attempt to move the creature
             if (currentTile.Occupant)

@@ -71,7 +71,7 @@ public class HUD : MonoBehaviour
         _tileInfo.SetActive(true);
         _tileInfo.transform.position = Mouse.current.position.ReadValue();
         string tileInfo = $"<b>Tile:</b> {tile.Data.Name}\n" +
-            $"<b>Element:</b> {tile.Data.Element}\n" +
+            $"<b>Element:</b> {tile.Data.Element?.Name}\n" +
             $"<b>Elemental Resonance:</b> {tile.Data.EffectStrength}\n";
 
         Creature occupant = tile.Occupant;
