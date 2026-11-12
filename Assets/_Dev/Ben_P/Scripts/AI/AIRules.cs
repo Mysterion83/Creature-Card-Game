@@ -92,8 +92,10 @@ public static class AIRules
 
     private static Tile ChooseAdvanceTile(Creature creature, BattleAdapter adapter, List<Creature> enemies)
     {
-        int bestDistance = DistanceToNearest(creature.OccupyingTile.TileIndex, enemies);
+        int currentDistance = DistanceToNearest(creature.OccupyingTile.TileIndex, enemies);
+        int bestDistance = currentDistance;
         Tile best = null;
+        Tile sideways = null;
 
         foreach (Tile tile in adapter.MoveTiles(creature))
         {
@@ -103,7 +105,18 @@ public static class AIRules
                 best = tile;
                 bestDistance = distance;
             }
+            else if (distance == currentDistance && sideways == null && OpensCloserStep(creature, tile, adapter, enemies, currentDistance))
+            {
+                sideways = tile;
+            }
         }
-        return best;
+        return best != null ? best : sideways;
+    }
+
+    private static bool OpensCloserStep(Creature creature, Tile from, BattleAdapter adapter, List<Creature> enemies, int currentDistance)
+    {
+        foreach (Tile next in adapter.MoveTilesFrom(creature, from.TileIndex))
+            if (DistanceToNearest(next.TileIndex, enemies) < currentDistance) return true;
+        return false;
     }
 }

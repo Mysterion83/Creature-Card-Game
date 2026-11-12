@@ -52,12 +52,14 @@ public class BattleAdapter
         return result;
     }
 
-    public List<Tile> MoveTiles(Creature c)
+    public List<Tile> MoveTiles(Creature c) => MoveTilesFrom(c, c.OccupyingTile.TileIndex);
+
+    public List<Tile> MoveTilesFrom(Creature c, Vector2Int from)
     {
         var result = new List<Tile>();
         foreach (Vector2Int offset in c.ShowValidMovement())
         {
-            Tile tile = TileAt(c.OccupyingTile.TileIndex + offset);
+            Tile tile = TileAt(from + offset);
             if (tile != null && tile.Data.IsPassable && tile.Occupant == null) result.Add(tile);
         }
         return result;
