@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8667454810663240476}
   - component: {fileID: 8298534837219641988}
   m_Layer: 5
-  m_Name: Indicator Text
+  m_Name: w
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 11400000, guid: 529f19996e9d10a428b736993ca61904, type: 2}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 20c087780892ebb43a16a58fd545283e, type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
