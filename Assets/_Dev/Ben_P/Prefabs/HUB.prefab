@@ -2099,7 +2099,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
   mainPanel: {fileID: 4946826505524366471}
   levelSelectPanel: {fileID: 8307236470726615831}
-  settingsPanel: {fileID: 623476548100425015}
 --- !u!1 &4341673505816589129
 GameObject:
   m_ObjectHideFlags: 0
