@@ -9,9 +9,5 @@ public class PlayerData
     public float Energy;
     public float MaxEnergy;
     public List<Card> Hand;
+    public UnityEngine.Color TeamColor;
 }
-
-
-[Obsolete("Placeholder Class")]
-[Serializable]
-public class Card { }

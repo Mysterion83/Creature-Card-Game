@@ -19,13 +19,23 @@ public class SavedMapData : ScriptableObject
     {
         MapVersion = CURRENT_MAP_VERSION;
         MapSize = mapSize;
-        List<SavedTileData> tilesToSave = new List<SavedTileData>();
+        Tiles = new SavedTileData[mapSize.x * mapSize.y];
 
-        foreach (Tile item in tiles)
+        for (int x = 0; x < mapSize.x; x++)
         {
-            SavedTileData tileData = new SavedTileData(item.RegionID, item.Data.ID);
-            tilesToSave.Add(tileData);
+            for (int y = 0; y < mapSize.y; y++)
+            {
+                int flatIndex = x + y * mapSize.x;
+                Tile item = tiles[x, y];
+
+                if (item && item.Data)
+                {
+                    Tiles[flatIndex] = new SavedTileData(
+                        item.Data.ID, item.ZoneID, item.IsZoneCenter, 
+                        item.AssignedZone, item.IsSpawnTile, item.SpawnOwnerID,
+                        item.transform.rotation);
+                }
+            }
         }
-        Tiles = tilesToSave.ToArray();
     }
 }

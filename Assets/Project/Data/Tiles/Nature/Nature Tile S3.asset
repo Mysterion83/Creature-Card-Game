@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
+  m_Name: Nature Tile S3
+  m_EditorClassIdentifier: Assembly-CSharp::TileData
+  _stringID: Core_Tiles_Nature_Base_S3
+  _id: ee5d84af357805949825a652c1714679
+  _name: 
+  _description: 
+  Element: {fileID: 11400000, guid: 269f4244797fc2a4cae09eaeca01c809, type: 2}
+  EffectStrength: 3
+  IsPassable: 1
+  CreatureYOffset: 1
+  RenderObjectPrefab: {fileID: 2217552970976131072, guid: 2bc13e3d1835d274ebabeb43dfccd504, type: 3}
+  Decorations: []

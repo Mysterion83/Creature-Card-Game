@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "CreatureData", menuName = "Project/CreatureData")]
 public class CreatureData : ScriptableObject
@@ -27,7 +28,7 @@ public class CreatureData : ScriptableObject
     // Prefabs
     [Header(STYLING_HEADER + "Prefabs")]
     public GameObject CreaturePrefab;
-    public GameObject CardPrefab;
+    public Sprite CreatureImage;
 
     // Evolution
     [Header(STYLING_HEADER + "Evolution")]

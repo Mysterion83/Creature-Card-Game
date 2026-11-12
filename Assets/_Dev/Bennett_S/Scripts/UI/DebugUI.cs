@@ -102,13 +102,35 @@ public class DebugUI : MonoBehaviour
             _stringBuilder.AppendLine($"<color=yellow>[Match Over] Winner: {_winner.Data.Name}</color>");
         }
 
+        // Creatures
         _stringBuilder.AppendLine("\n<b>=== Creature Stats ===</b>");
-        _stringBuilder.AppendLine($"[Selected Creature]: {(_currentPlayerCreature ? _currentPlayerCreature.name : "None")}");
+        _stringBuilder.AppendLine($"[Selected Creature]: {_currentPlayerCreature?.Data.CreatureName ?? "N/A"}");
         _stringBuilder.AppendLine($"[Health]: {_currentPlayerCreature?.CurrentHealth.ToString() ?? "N/A"}");
         _stringBuilder.AppendLine($"[Energy Cost]: {_currentPlayerCreature?.Data.EnergyCost.ToString() ?? "N/A"}");
         _stringBuilder.AppendLine($"[Position]: {_currentPlayerCreature?.OccupyingTile?.TileIndex.ToString() ?? "N/A"}");
         _stringBuilder.AppendLine($"[Movement Pattern]: {_currentPlayerCreature?.Data.MovementPattern.ToString() ?? "N/A"}");
         _stringBuilder.AppendLine($"[Attack Pattern]: {_currentPlayerCreature?.Data.AttackPattern.ToString() ?? "N/A"}");
+        
+        // Tiles
+        Tile tile = _currentPlayerCreature?.OccupyingTile;
+        if (tile)
+        {
+            _stringBuilder.AppendLine("\n<b>=== Tile Stats ===</b>");
+            _stringBuilder.AppendLine($"[Tile Element]: {tile.Data.Element.Name.ToString() ?? "N/A"}");
+            _stringBuilder.AppendLine($"[Tile Strength]: {tile.Data.EffectStrength.ToString()}");
+            _stringBuilder.AppendLine($"[Tile Position]: {tile.TileIndex.ToString()}");
+        }
+        
+        // Zones
+        int? occupyingTileZoneID = _currentPlayerCreature?.OccupyingTile?.ZoneID;
+        if (occupyingTileZoneID > 0)
+        {
+            _stringBuilder.AppendLine("\n<b>=== Zone Stats ===</b>");
+            
+            _stringBuilder.AppendLine($"[Zone ID]: {occupyingTileZoneID.ToString()}");
+            _stringBuilder.AppendLine($"[Is Center]: {_currentPlayerCreature?.OccupyingTile?.IsZoneCenter.ToString() ?? "N/A"}");
+            //_stringBuilder.AppendLine($"[Controller]: {(occupyingTileZoneID > 0 ? _currentPlayer?.Data.Name: "Uncontested/Contested")}");
+        }
         
         _debugText.text = _stringBuilder.ToString();
     }
