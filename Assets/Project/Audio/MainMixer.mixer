@@ -39,6 +39,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 8508798226180062891}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -103,10 +104,11 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Default
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: abb05cfa471eb80459b368ee9c10d1da
-  m_FloatValues: {}
+  m_FloatValues:
+    cb4bb1792aea8114db876da0bf5e502f: 22000
   m_TransitionOverrides: {}
 --- !u!243 &795586258071113918
 AudioMixerGroupController:
@@ -142,10 +144,29 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -4966947992251102418}
+  - {fileID: 4539913978285252571}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &4539913978285252571
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8f65bdfb023c039479ea775656f56ef3
+  m_EffectName: Lowpass
+  m_MixLevel: 7b1e8c1825b9a9e44ab240bb87a3e3fe
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: cb4bb1792aea8114db876da0bf5e502f
+  - m_ParameterName: Resonance
+    m_GUID: 6cc3a87a36a73b04bb98b76bf7103889
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &7607593977830291996
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -179,3 +200,15 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &8508798226180062891
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Paused
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 0060d83cc80543147a40ede954e49385
+  m_FloatValues:
+    cb4bb1792aea8114db876da0bf5e502f: 500
+  m_TransitionOverrides: {}

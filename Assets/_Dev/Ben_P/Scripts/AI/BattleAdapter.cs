@@ -52,12 +52,14 @@ public class BattleAdapter
         return result;
     }
 
-    public List<Tile> MoveTiles(Creature c)
+    public List<Tile> MoveTiles(Creature c) => MoveTilesFrom(c, c.OccupyingTile.TileIndex);
+
+    public List<Tile> MoveTilesFrom(Creature c, Vector2Int from)
     {
         var result = new List<Tile>();
         foreach (Vector2Int offset in c.ShowValidMovement())
         {
-            Tile tile = TileAt(c.OccupyingTile.TileIndex + offset);
+            Tile tile = TileAt(from + offset);
             if (tile != null && tile.Data.IsPassable && tile.Occupant == null) result.Add(tile);
         }
         return result;
@@ -73,6 +75,28 @@ public class BattleAdapter
         }
         return result;
     }
+
+    public List<Creature> EnemyCreatures()
+    {
+        var result = new List<Creature>();
+        foreach (Player player in PlayerRegistry.MasterList)
+        {
+            if (player == null || player == _aiPlayer) continue;
+            foreach (Creature creature in player.ActiveCreatures)
+                if (creature != null) result.Add(creature);
+        }
+        return result;
+    }
+
+    /*
+     * PredictDamage copies Piotrs damage formula from Creature.TakeDamage so the AI
+     * can tell if a hit will kill.
+     */
+
+    public float PredictDamage(Creature attacker, Creature target) =>
+        Mathf.Max(0f, attacker.Data.Attack * attacker.OccupyingTile.Data.AttackerTileModifier - target.Data.Defense);
+
+    public Vector2Int BoardCentre => _board.GetData().MapSize / 2;
 
     Tile TileAt(Vector2Int index) =>
         _board.IsIndexInBounds(index) ? _board.GetData().Tiles[index.x, index.y] : null;

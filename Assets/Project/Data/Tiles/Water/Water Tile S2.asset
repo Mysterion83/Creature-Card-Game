@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Water Tile S2
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Core_Tiles_Water_Base_S2
-  Name: Shallow Ocean
-  Description: Base Water Tile with an effect strength of 2
+  _stringID: Core_Tiles_Water_Base_S2
+  _id: 506670d4313a90b4f8c6264ed3b1ed32
+  _name: 
+  _description: 
   Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   EffectStrength: 2
   IsPassable: 1

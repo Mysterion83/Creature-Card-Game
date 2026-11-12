@@ -257,6 +257,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1586326378777429607, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586326378777429607, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586326378777429607, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1697552624453116732, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -420,10 +432,6 @@ PrefabInstance:
     - target: {fileID: 5247404433508367259, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7524858633656702548, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level_Water1
       objectReference: {fileID: 0}
     - target: {fileID: 7661384490423841368, guid: 330c43f225243cf40a4e70ad4d5d191d, type: 3}
       propertyPath: m_AnchorMax.y

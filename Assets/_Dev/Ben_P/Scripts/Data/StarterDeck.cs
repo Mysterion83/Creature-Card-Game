@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StarterDeck", menuName = "Ben_P/Starter Deck")]
 public class StarterDeck : ScriptableObject
 {
-    public Element Element;                       // piotrs enum
+    public Element Element;                       // Element asset: Fire, Water, Nature, Air
     public Sprite Art;                            
     public Sprite ElementIcon;                    
     public List<CreatureData> Cards = new();      // duplicates allowed
