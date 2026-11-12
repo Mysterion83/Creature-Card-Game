@@ -184,8 +184,10 @@ MonoBehaviour:
   _matchController: {fileID: 0}
   _selectionBox: {fileID: 0}
   _selectionBoxHoverHeight: 0.5
+  _selectedCreatureHoverHeight: 1
   _enableCreatureDebug: 0
   _selectedTile: {fileID: 0}
+  _hitParticlesPrefab: {fileID: 1680812763015278310, guid: a548cff9a08189245979c6678cddf48e, type: 3}
 --- !u!114 &3248407830656798115
 MonoBehaviour:
   m_ObjectHideFlags: 0
