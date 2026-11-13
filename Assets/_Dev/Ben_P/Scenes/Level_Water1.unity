@@ -1515,7 +1515,7 @@ PrefabInstance:
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _definitionData
       value: 
-      objectReference: {fileID: 11400000, guid: a0e7dd1c3419d714981fc53ccc70d0ab, type: 2}
+      objectReference: {fileID: 11400000, guid: f7b23387bbac33e41abe2148dda5c1d6, type: 2}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.y
       value: 0
