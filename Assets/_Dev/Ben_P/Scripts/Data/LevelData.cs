@@ -5,7 +5,7 @@ public class LevelData : ScriptableObject
 {
     [Header("Identity")]
     public string Id;                 
-    public Element Wing;              // piotr enum: Fire, Water, Nature (Earth), Air (Wind)
+    public Element Wing;              // Element asset: Fire, Water, Nature, Air
     public int Number = 1;            
     public string LevelName;          
 

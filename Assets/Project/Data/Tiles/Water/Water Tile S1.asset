@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee471d491e9042f4aad827a9dabe3221, type: 3}
   m_Name: Water Tile S1
   m_EditorClassIdentifier: Assembly-CSharp::TileData
-  ID: Core_Tiles_Water_Base_S1
-  Name: Puddle
-  Description: Base Water Tile with an effect strength of 1
+  _stringID: Core_Tiles_Water_Base_S1
+  _id: 7f5055ecd8430294f9bce6fd7146c145
+  _name: 
+  _description: 
   Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   EffectStrength: 1
   IsPassable: 1

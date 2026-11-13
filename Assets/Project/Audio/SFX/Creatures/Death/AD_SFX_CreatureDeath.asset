@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b00961199258b140a6eeac7abd5a800, type: 3}
+  m_Name: AD_SFX_CreatureDeath
+  m_EditorClassIdentifier: Assembly-CSharp::SFXMultiClipDefinition
+  MixerGroupOverride: {fileID: 795586258071113918, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
+  BaseVolume: 0.25
+  BasePitch: 1
+  VolumeVariance: {x: 0.95, y: 1.05}
+  PitchVariance: {x: 0.95, y: 1.05}
+  StereoPanning: 0
+  SpatialBlend: 1
+  ReverbZoneMix: 1
+  MinDistance: 1
+  MaxDistance: 20
+  RolloffMode: 0
+  UseCustomRolloffCurve: 0
+  CustomRolloffCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: -1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  Priority: 128
+  _audioClips:
+  - {fileID: 8300000, guid: 0af2a513feead064d8f33e1e352cab36, type: 3}
+  - {fileID: 8300000, guid: d41341ac3f28f444cb9b6b28f84f98b5, type: 3}

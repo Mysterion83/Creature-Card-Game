@@ -25,6 +25,9 @@ public class Board : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] private bool _enableZoneDebugging;
     
+    private static readonly int Thickness = Shader.PropertyToID("_Thickness");
+    private static readonly int Colour = Shader.PropertyToID("_Colour");
+    
     private Grid _grid;
     private MapData _mapData;
 
@@ -64,8 +67,8 @@ public class Board : MonoBehaviour
         _shaderPlane.localScale = new Vector3(_mapData.MapSize.x * 0.1f, 1, _mapData.MapSize.y * 0.1f);
         _shaderPlane.position = new Vector3(0, _shaderPlane.position.y + _gridYOffset, 0);
 
-        _gridShaderMaterial.SetFloat("_Thickness", _cellThickness);
-        _gridShaderMaterial.SetColor("_Colour", _gridColour);
+        _gridShaderMaterial.SetFloat(Thickness, _cellThickness);
+        _gridShaderMaterial.SetColor(Colour, _gridColour);
     }
 
     public MapData LoadMapData(SavedMapData data)
@@ -108,11 +111,14 @@ public class Board : MonoBehaviour
                 spawnPosition.y = -0.5f;
 
                 // Create Tile
-                GameObject tileInstance = Instantiate(_tilePrefab, spawnPosition + _tileSpawnOffset,
-                    Quaternion.identity, _tileContainer);
+                GameObject tileInstance = Instantiate(
+                    _tilePrefab,
+                    spawnPosition + _tileSpawnOffset, 
+                    savedTileData.Rotation, 
+                    _tileContainer);
                 Tile tile = tileInstance.GetComponent<Tile>();
 
-                tile.Data = TileRegistryV2.Instance.GetTileData(savedTileData.TileID);
+                tile.Data = TileRegistry.Instance.GetTileData(savedTileData.TileID);
                 tile.TileIndex = new Vector2Int(x, y);
                 
                 tile.AssignedZone = savedTileData.ZoneDefinition;
@@ -251,7 +257,7 @@ public class Board : MonoBehaviour
             zone.SetOccupier(controller);
 
             // Check for a winner (not a tie/vacant) and add bonus energy
-            if (controller != null)
+            if (controller)
             {
                 if (_enableZoneDebugging) Debug.Log($"[Board] New Zone Occupier of '{zone.Definition.ZoneName}': {controller.Data.Name}");
                 controller.EnergySystem.AddBonusEnergy(bonusEnergy);
@@ -306,7 +312,7 @@ public class Board : MonoBehaviour
 
         foreach (var col in colliders)
         {
-            if (col.TryGetComponent<Tile>(out Tile tile))
+            if (col.TryGetComponent(out Tile tile))
             {
                 return _mapData.Tiles[tile.TileIndex.x, tile.TileIndex.y];
             }

@@ -116,7 +116,7 @@ public class DebugUI : MonoBehaviour
         if (tile)
         {
             _stringBuilder.AppendLine("\n<b>=== Tile Stats ===</b>");
-            _stringBuilder.AppendLine($"[Tile Element]: {tile.Data.Element.ToString() ?? "N/A"}");
+            _stringBuilder.AppendLine($"[Tile Element]: {tile.Data.Element.Name.ToString() ?? "N/A"}");
             _stringBuilder.AppendLine($"[Tile Strength]: {tile.Data.EffectStrength.ToString()}");
             _stringBuilder.AppendLine($"[Tile Position]: {tile.TileIndex.ToString()}");
         }

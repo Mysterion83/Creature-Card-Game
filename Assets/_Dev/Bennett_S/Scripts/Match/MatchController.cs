@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class MatchController : MonoBehaviour
 {
-    [Header("Match Settings"), SerializeField]
-    private bool _beginOnStart = true;
-    
-    [Header("Turn Settings"), SerializeField]
-    private float _maxPhaseTime = 30f;
+    [Header("Match Settings")]
+    [SerializeField] private bool _beginOnStart = true;
+
+    [Header("Turn Settings")]
+    [SerializeField] private bool _enableTurnTimer;
+    [SerializeField] private float _maxPhaseTime = 30f;
     
     [Header("Debug"), SerializeField]
     private bool _enableTurnDebugging;
@@ -18,7 +19,7 @@ public class MatchController : MonoBehaviour
 
     public bool IsMatchActive { get; private set; }
     public Player CurrentPlayer {get; private set;}
-    public Player Winner { get; private set; } = null;
+    public Player Winner { get; private set; }
     public MatchState CurrentState { get; private set; } = MatchState.Setup;
 
     public static event Action<MatchState> OnMatchStateChanged;
@@ -44,6 +45,7 @@ public class MatchController : MonoBehaviour
     private void Update()
     {
         if (!IsMatchActive) return;
+        if (!_enableTurnTimer) return;
         
         _phaseTimer -= Time.deltaTime;
         if (!(_phaseTimer <= 0f)) return;

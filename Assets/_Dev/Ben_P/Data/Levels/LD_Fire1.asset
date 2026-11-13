@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LD_Fire1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   Id: LD_Fire1
-  Wing: 1
+  Wing: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   Number: 1
   LevelName: 
   Difficulty: 2
