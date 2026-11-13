@@ -18,8 +18,8 @@ MonoBehaviour:
   BasePitch: 1
   _useVolumeVariance: 0
   VolumeVariance: {x: 0.95, y: 1.05}
-  _usePitchVariance: 0
-  PitchVariance: {x: 0.95, y: 1.05}
+  _usePitchVariance: 1
+  PitchVariance: {x: 0.99, y: 1.01}
   StereoPanning: 0
   SpatialBlend: 0
   ReverbZoneMix: 1
