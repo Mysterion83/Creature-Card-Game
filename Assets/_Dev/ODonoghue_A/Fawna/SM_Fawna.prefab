@@ -82,6 +82,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1150003e9a06b045ab933683d60013d, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3625909372045449982}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1150003e9a06b045ab933683d60013d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4891430524384653675}
   m_SourcePrefab: {fileID: 100100000, guid: e1150003e9a06b045ab933683d60013d, type: 3}
 --- !u!1 &2657733167573545278 stripped
 GameObject:
@@ -126,3 +129,16 @@ MonoBehaviour:
   OccupyingTile: {fileID: 0}
   CurrentHealth: 0
   Experience: 0
+--- !u!114 &4891430524384653675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657733167573545278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161fe8481abd6b5429cf831ccf41e19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
+  _damageIndicatorPrefab: {fileID: 8610561946721827751, guid: 7dd6aaab5a2800b4c908e7eb992fd9bb, type: 3}
