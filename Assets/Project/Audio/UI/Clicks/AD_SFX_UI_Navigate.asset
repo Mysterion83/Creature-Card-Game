@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd0994774b2e5044847379afe9f18e5, type: 3}
-  m_Name: New SFX Clip Definition
+  m_Name: AD_SFX_UI_Navigate
   m_EditorClassIdentifier: Assembly-CSharp::SFXClipDefinition
   MixerGroupOverride: {fileID: 8151385632943832337, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
   Priority: 128
@@ -54,4 +54,4 @@ MonoBehaviour:
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
-  AudioClip: {fileID: 0}
+  AudioClip: {fileID: 8300000, guid: 05ef673e901016e4db41a50826e25c82, type: 3}
