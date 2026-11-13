@@ -1730,6 +1730,7 @@ GameObject:
   - component: {fileID: 4974813742273100049}
   - component: {fileID: 6806323715235741790}
   - component: {fileID: 2115513163121693000}
+  - component: {fileID: 7618296114462150204}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -1851,6 +1852,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7618296114462150204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972541938610487397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1464198547012973524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2117,7 @@ GameObject:
   - component: {fileID: 360996693915955145}
   - component: {fileID: 3852833959163254479}
   - component: {fileID: 813963168954219703}
+  - component: {fileID: 368547108275870101}
   m_Layer: 5
   m_Name: GameSaveButton
   m_TagString: Untagged
@@ -2196,6 +2239,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &368547108275870101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545015036624133755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1578014939801158250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2609,6 +2693,7 @@ GameObject:
   - component: {fileID: 3823250101827947533}
   - component: {fileID: 1581394695571395027}
   - component: {fileID: 1565372348294232389}
+  - component: {fileID: 9000522566688076452}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -2742,6 +2827,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9000522566688076452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849055818383390962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1868169420353751889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4225,6 +4351,7 @@ GameObject:
   - component: {fileID: 6210202202074115441}
   - component: {fileID: 6838238538104303890}
   - component: {fileID: 7429163840407427793}
+  - component: {fileID: 793536428252941993}
   m_Layer: 5
   m_Name: RestoreDefaultsButton
   m_TagString: Untagged
@@ -4346,6 +4473,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &793536428252941993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937014371403369280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2941593039482327591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4769,6 +4937,7 @@ GameObject:
   - component: {fileID: 5987106484942346527}
   - component: {fileID: 7195560847862025651}
   - component: {fileID: 5205592146797897603}
+  - component: {fileID: 77177834810243777}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -4890,6 +5059,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &77177834810243777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029020924157833612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3117215120083089596
 GameObject:
   m_ObjectHideFlags: 0
@@ -5467,6 +5677,7 @@ GameObject:
   - component: {fileID: 7373373707910781187}
   - component: {fileID: 4466795075750867958}
   - component: {fileID: 8346436317208806115}
+  - component: {fileID: 452920232177258983}
   m_Layer: 5
   m_Name: YesButton
   m_TagString: Untagged
@@ -5588,6 +5799,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &452920232177258983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362692466534407853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3381735551756875694
 GameObject:
   m_ObjectHideFlags: 0
@@ -5890,6 +6142,7 @@ GameObject:
   - component: {fileID: 4833063612090944391}
   - component: {fileID: 6823881970251495067}
   - component: {fileID: 731562125088584976}
+  - component: {fileID: 5580220887787132872}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -6011,6 +6264,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5580220887787132872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458919681662979174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3529685501662486782
 GameObject:
   m_ObjectHideFlags: 0
@@ -6716,6 +7010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3761937510037967740}
   - component: {fileID: 414507531835610761}
+  - component: {fileID: 4015203743316784847}
   m_Layer: 5
   m_Name: HUB_V2
   m_TagString: Untagged
@@ -6758,6 +7053,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
   mainPanel: {fileID: 7697335204457031345}
   levelSelectPanel: {fileID: 3867921027952455655}
+--- !u!114 &4015203743316784847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889173531383328976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a8161cbdbe045439a9af8f9a4e0169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuAudioController
+  _menuMusic: {fileID: 11400000, guid: f4d878e997fc9764fbc3a6c07dcedfd6, type: 2}
+  _navigation: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _open: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _close: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
+  _next: {fileID: 11400000, guid: c5f226f8fc6026945b958855bb7f7234, type: 2}
+  _back: {fileID: 11400000, guid: 9f607e443e6ff7941880fa06fdd0125a, type: 2}
 --- !u!1 &3919021288142923383
 GameObject:
   m_ObjectHideFlags: 0
@@ -7389,6 +7702,7 @@ GameObject:
   - component: {fileID: 4186573022674355785}
   - component: {fileID: 6930948778754365761}
   - component: {fileID: 4464526906615720232}
+  - component: {fileID: 3657583970164198547}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -7510,6 +7824,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3657583970164198547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097316974792197341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4104815444782783261
 GameObject:
   m_ObjectHideFlags: 0
@@ -8317,6 +8672,7 @@ GameObject:
   - component: {fileID: 473922878556461651}
   - component: {fileID: 4702365770009035115}
   - component: {fileID: 8530393762691337267}
+  - component: {fileID: 3814687819676053095}
   m_Layer: 5
   m_Name: GameLoadButton
   m_TagString: Untagged
@@ -8438,6 +8794,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3814687819676053095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711071852286372642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4910080584137930232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9148,6 +9545,7 @@ GameObject:
   - component: {fileID: 8189542597239201738}
   - component: {fileID: 8182470472795360277}
   - component: {fileID: 1564356302401640887}
+  - component: {fileID: 7179512762962972054}
   m_Layer: 5
   m_Name: LoadGameButton
   m_TagString: Untagged
@@ -9269,6 +9667,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7179512762962972054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368877893752255504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5426670395331389078
 GameObject:
   m_ObjectHideFlags: 0
@@ -9318,6 +9757,7 @@ GameObject:
   - component: {fileID: 3124328261797207007}
   - component: {fileID: 2973542737057661}
   - component: {fileID: 3134311240671397348}
+  - component: {fileID: 7492445891885296585}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
@@ -9439,6 +9879,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7492445891885296585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557552286293432926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5722014302873218718
 GameObject:
   m_ObjectHideFlags: 0
@@ -9850,6 +10331,7 @@ GameObject:
   - component: {fileID: 5837911661383323480}
   - component: {fileID: 572192996757812779}
   - component: {fileID: 5236821470114847971}
+  - component: {fileID: 1192513144294398689}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -9971,6 +10453,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1192513144294398689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059756544701689495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6079378896786007142
 GameObject:
   m_ObjectHideFlags: 0
@@ -9983,6 +10506,7 @@ GameObject:
   - component: {fileID: 104084082585870135}
   - component: {fileID: 5690435274412163059}
   - component: {fileID: 1401108842189171823}
+  - component: {fileID: 7920944580098305324}
   m_Layer: 5
   m_Name: ApplyButton
   m_TagString: Untagged
@@ -10104,6 +10628,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7920944580098305324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6079378896786007142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6091009768096108159
 GameObject:
   m_ObjectHideFlags: 0
@@ -10229,6 +10794,7 @@ GameObject:
   - component: {fileID: 2584772174675459171}
   - component: {fileID: 6205958240564391789}
   - component: {fileID: 8615946559291128842}
+  - component: {fileID: 6162667492457111851}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -10337,7 +10903,48 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6205958240564391789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6162667492457111851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171457658332879320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6211532644848916013
 GameObject:
   m_ObjectHideFlags: 0
@@ -11308,6 +11915,7 @@ GameObject:
   - component: {fileID: 2308073734057107031}
   - component: {fileID: 4149381878468811230}
   - component: {fileID: 1760252957413349697}
+  - component: {fileID: 43768223404786271}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -11429,6 +12037,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &43768223404786271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845720996210375224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7079697138645715836
 GameObject:
   m_ObjectHideFlags: 0
@@ -11861,6 +12510,7 @@ GameObject:
   - component: {fileID: 8516609441943351806}
   - component: {fileID: 8874719850957075463}
   - component: {fileID: 6607233387697363915}
+  - component: {fileID: 9053100145624854655}
   m_Layer: 5
   m_Name: MultiplayerButton
   m_TagString: Untagged
@@ -11970,6 +12620,35 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9053100145624854655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219870213033225073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7250436089576546018
 GameObject:
   m_ObjectHideFlags: 0
@@ -12331,6 +13010,7 @@ GameObject:
   - component: {fileID: 7468876764923306166}
   - component: {fileID: 727113090104676388}
   - component: {fileID: 1616888048223825140}
+  - component: {fileID: 8451880074665131336}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -12452,6 +13132,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8451880074665131336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351548979793320640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7545944748338648998
 GameObject:
   m_ObjectHideFlags: 0
@@ -13441,6 +14162,7 @@ GameObject:
   - component: {fileID: 7354584269879451150}
   - component: {fileID: 8363937300843611565}
   - component: {fileID: 6900740166827579398}
+  - component: {fileID: 455734550482126790}
   m_Layer: 5
   m_Name: NoButton
   m_TagString: Untagged
@@ -13562,6 +14284,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &455734550482126790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986147347792850021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7996650486305322793
 GameObject:
   m_ObjectHideFlags: 0
@@ -13786,6 +14549,7 @@ GameObject:
   - component: {fileID: 5199818200875038167}
   - component: {fileID: 1785380972286061618}
   - component: {fileID: 8270865890129915383}
+  - component: {fileID: 5160540970844747659}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -13907,6 +14671,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5160540970844747659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024474829656269153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8062713336035744583
 GameObject:
   m_ObjectHideFlags: 0
@@ -13919,6 +14724,7 @@ GameObject:
   - component: {fileID: 4302214682388811879}
   - component: {fileID: 4268914279259157013}
   - component: {fileID: 5203177901622478258}
+  - component: {fileID: 6561572566083769797}
   m_Layer: 5
   m_Name: DeckButton
   m_TagString: Untagged
@@ -14040,6 +14846,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6561572566083769797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062713336035744583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8220407492142841134
 GameObject:
   m_ObjectHideFlags: 0
@@ -14265,6 +15112,7 @@ GameObject:
   - component: {fileID: 6897741713640345517}
   - component: {fileID: 5902480089408476844}
   - component: {fileID: 5599622665120675097}
+  - component: {fileID: 2398235337593534738}
   m_Layer: 5
   m_Name: ClearButton
   m_TagString: Untagged
@@ -14386,6 +15234,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2398235337593534738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543013586284635613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8551514688255981047
 GameObject:
   m_ObjectHideFlags: 0
@@ -15316,6 +16205,7 @@ GameObject:
   - component: {fileID: 8169361308760888270}
   - component: {fileID: 7327623457361030270}
   - component: {fileID: 986705762731705586}
+  - component: {fileID: 9013315054386228800}
   m_Layer: 5
   m_Name: ConfirmButton
   m_TagString: Untagged
@@ -15437,6 +16327,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4015203743316784847}
+        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+        m_MethodName: PlayOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9013315054386228800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096953773796381938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &9146151165599075390
 GameObject:
   m_ObjectHideFlags: 0
@@ -16628,6 +17559,34 @@ PrefabInstance:
       propertyPath: settingsPopup
       value: 
       objectReference: {fileID: 4499632340599367323}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4015203743316784847}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 85957863899869044, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 311240175962667702, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16643,6 +17602,34 @@ PrefabInstance:
     - target: {fileID: 311240175962667702, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4015203743316784847}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555794464864569570, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1621011205142814580, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_Pivot.x
@@ -16724,6 +17711,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4015203743316784847}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayNext
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2797172250176959349, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16741,16 +17756,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6954027006607509048}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4015203743316784847}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowDeckManager
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DeckShopScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5001663966135657704, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_Name
@@ -16788,17 +17831,73 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -160.00006
       objectReference: {fileID: 0}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4015203743316784847}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6954027006607509048}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4015203743316784847}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowShop
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DeckShopScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuAudioController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7287844995665321652, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16835,8 +17934,162 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6393432630046089996, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5628106203891679471}
+    - targetCorrespondingSourceObject: {fileID: 1748659935169847449, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2380568326527681185}
+    - targetCorrespondingSourceObject: {fileID: 836989780596965745, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3193566830650416321}
+    - targetCorrespondingSourceObject: {fileID: 6735747527235362508, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5896006484391849401}
+    - targetCorrespondingSourceObject: {fileID: 2018986229293621460, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2107895058545278302}
+    - targetCorrespondingSourceObject: {fileID: 7124857764757013735, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8891424976909826968}
   m_SourcePrefab: {fileID: 100100000, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+--- !u!1 &1295092193577574369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6735747527235362508, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+  m_PrefabInstance: {fileID: 5513313922603991341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5896006484391849401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295092193577574369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1457249655167328801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6393432630046089996, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+  m_PrefabInstance: {fileID: 5513313922603991341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5628106203891679471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457249655167328801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &3342706311467910602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7124857764757013735, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+  m_PrefabInstance: {fileID: 5513313922603991341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8891424976909826968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342706311467910602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &5124722576842260572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 836989780596965745, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+  m_PrefabInstance: {fileID: 5513313922603991341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3193566830650416321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124722576842260572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &5527261951370976476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 15761192160665073, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
@@ -16853,12 +18106,80 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 284789192316719176, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
   m_PrefabInstance: {fileID: 5513313922603991341}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3342706311467910602}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &5802844732366610937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2018986229293621460, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+  m_PrefabInstance: {fileID: 5513313922603991341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2107895058545278302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802844732366610937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &6108927558462955956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1748659935169847449, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
+  m_PrefabInstance: {fileID: 5513313922603991341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2380568326527681185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108927558462955956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4015203743316784847}
+          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
+          m_MethodName: PlayNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &6556613060343225945 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1621011205142814580, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
@@ -16869,7 +18190,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3521217874822749155, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
   m_PrefabInstance: {fileID: 5513313922603991341}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5802844732366610937}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
