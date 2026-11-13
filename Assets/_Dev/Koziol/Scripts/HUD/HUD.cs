@@ -180,7 +180,7 @@ public class HUD : MonoBehaviour
     }
 }
 
-
+#if UNITY_EDITOR
 
 [CustomEditor(typeof(HUD))]
 public class HUDEditor : Editor
@@ -203,3 +203,5 @@ public class HUDEditor : Editor
         }
     }
 }
+
+#endif

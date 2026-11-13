@@ -69,6 +69,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 433d968646207394691b4789fe7e5e81, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7451844595325354531}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 433d968646207394691b4789fe7e5e81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2255361695764625465}
   m_SourcePrefab: {fileID: 100100000, guid: 433d968646207394691b4789fe7e5e81, type: 3}
 --- !u!1 &8483155126143150484 stripped
 GameObject:
@@ -113,6 +116,8 @@ MonoBehaviour:
   OccupyingTile: {fileID: 0}
   CurrentHealth: 0
   Experience: 0
+  TargetPosition: {x: 0, y: 0, z: 0}
+  HitParticlePrefab: {fileID: 0}
 --- !u!114 &-7451844595325354531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +131,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
   _damageIndicatorPrefab: {fileID: 8610561946721827751, guid: 7dd6aaab5a2800b4c908e7eb992fd9bb, type: 3}
+--- !u!114 &-2255361695764625465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483155126143150484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f27733e0f61fd34983c522f0bacfe64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureAudioController
+  _damageSound: {fileID: 0}
+  _deathSound: {fileID: 11400000, guid: 7b3117320fb1c2147a635e38f6170a44, type: 2}
