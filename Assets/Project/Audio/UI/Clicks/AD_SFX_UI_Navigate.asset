@@ -9,16 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b00961199258b140a6eeac7abd5a800, type: 3}
-  m_Name: SFX_CreatureDeath
-  m_EditorClassIdentifier: Assembly-CSharp::SFXMultiClipDefinition
-  MixerGroupOverride: {fileID: 795586258071113918, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
-  BaseVolume: 0.25
+  m_Script: {fileID: 11500000, guid: edd0994774b2e5044847379afe9f18e5, type: 3}
+  m_Name: AD_SFX_UI_Navigate
+  m_EditorClassIdentifier: Assembly-CSharp::SFXClipDefinition
+  MixerGroupOverride: {fileID: 8151385632943832337, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
+  Priority: 128
+  BaseVolume: 1
   BasePitch: 1
+  _useVolumeVariance: 0
   VolumeVariance: {x: 0.95, y: 1.05}
+  _usePitchVariance: 0
   PitchVariance: {x: 0.95, y: 1.05}
   StereoPanning: 0
-  SpatialBlend: 1
+  SpatialBlend: 0
   ReverbZoneMix: 1
   MinDistance: 1
   MaxDistance: 20
@@ -51,7 +54,4 @@ MonoBehaviour:
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
-  Priority: 128
-  _audioClips:
-  - {fileID: 8300000, guid: 0af2a513feead064d8f33e1e352cab36, type: 3}
-  - {fileID: 8300000, guid: d41341ac3f28f444cb9b6b28f84f98b5, type: 3}
+  AudioClip: {fileID: 8300000, guid: 05ef673e901016e4db41a50826e25c82, type: 3}
