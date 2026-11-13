@@ -8,5 +8,5 @@ public class Element : ScriptableObject
     public Sprite Icon;
     public Color Color;
 
-    public Dictionary<Element, float> ElementModifiers; 
+    [SerializeField] public Dictionary<Element, float> ElementModifiers;
 }

@@ -15,3 +15,8 @@ MonoBehaviour:
   Name: Water
   Icon: {fileID: 8252269166943296992, guid: fbdf56d1022503b4c9dcd6f7d702ff92, type: 3}
   Color: {r: 0, g: 0.6886052, b: 1, a: 1}
+  ElementModifiers:
+  - key: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
+    value: 1.5
+  - key: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
+    value: 0.75

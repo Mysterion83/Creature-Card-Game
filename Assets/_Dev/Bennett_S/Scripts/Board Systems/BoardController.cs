@@ -247,7 +247,7 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
-
+    [Obsolete("Link AttackResult to HUD")]
     public void AttackCreature(Creature attacker, Tile target)
     {
         if (!target.Occupant) return;
@@ -269,7 +269,7 @@ public class BoardController : MonoBehaviour
             return;
         }
         
-        target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
+        AttackResult result = target.Occupant.TakeDamage(attacker, attacker.OccupyingTile.Data);
         
         _highlightingController.ClearPatterns();
     }
