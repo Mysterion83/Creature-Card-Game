@@ -19,6 +19,6 @@ MonoBehaviour:
   Difficulty: 2
   Description: 
   Preview: {fileID: 0}
-  SceneName: 
+  SceneName: Level_Nature1
   CoinReward: 200
-  RequiredLevel: {fileID: 11400000, guid: e7dce235545baac4ba5e60e3e95c96bc, type: 2}
+  RequiredLevel: {fileID: 11400000, guid: 938f239b29d03c64bbeb7fe1df70471c, type: 2}
