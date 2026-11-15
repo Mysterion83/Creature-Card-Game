@@ -21,6 +21,7 @@ public class HUD : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI _energyCounter;
+    [SerializeField] private TextMeshProUGUI _energyBonusText;
     [SerializeField] private TextMeshProUGUI _objectiveCounter;
     [SerializeField] private GameObject _noEnergyPopup;
     [SerializeField] private TextMeshProUGUI _turnText;
@@ -31,6 +32,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private Color _activePhaseColour;
     [SerializeField] private Image _phasePopup;
     [SerializeField] private TextMeshProUGUI _phasePopupText;
+    [SerializeField] private TextMeshProUGUI _phasePopupTurnText;
 
     [SerializeField] private GameObject _tileInfo;
     [SerializeField] private TextMeshProUGUI _tileInfoText;
@@ -99,6 +101,10 @@ public class HUD : MonoBehaviour
     {
         _energyCounter.text = FormatValue(currentEnergy, maxEnergy);
     }
+    public void UpdateEnergyBonus(int energyBonus)
+    {
+        _energyBonusText.text = energyBonus > 0 ? $"+{energyBonus}" : string.Empty;
+    }
     public void UpdateObjectiveCounter(int currentObjectives, int maxObjectives)
     {
         _objectiveCounter.text = FormatValue(currentObjectives, maxObjectives);
@@ -114,6 +120,7 @@ public class HUD : MonoBehaviour
         CancelInvoke(nameof(ClosePopup));
         _phasePopupText.text = phaseName;
         _phasePopup.gameObject.SetActive(true);
+        _phasePopupTurnText.text = _turnText.text;
         Invoke(nameof(ClosePopup), PHASE_POPUP_DURATION);
     }
     private void ClosePopup()
