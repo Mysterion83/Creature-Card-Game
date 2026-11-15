@@ -36,6 +36,8 @@ public class BoardController : MonoBehaviour
 
     public static event Action<Creature> OnCreatureSelected;
 
+    public event Action<AttackResult> OnAttackResult;
+
     [SerializeField] private GameObject _hitParticlesPrefab;
 
     private void OnEnable()
@@ -247,7 +249,7 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
-
+    [Obsolete("Link AttackResult to HUD")]
     public void AttackCreature(Creature attacker, Tile target)
     {
         if (!target.Occupant) return;
@@ -268,8 +270,10 @@ public class BoardController : MonoBehaviour
             if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
             return;
         }
-        
-        target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
+
+        AttackResult result = target.Occupant.TakeDamage(attacker, attacker.OccupyingTile.Data);
+
+        OnAttackResult?.Invoke(result);
         
         _highlightingController.ClearPatterns();
     }
