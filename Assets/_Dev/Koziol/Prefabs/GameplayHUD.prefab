@@ -1021,8 +1021,8 @@ MonoBehaviour:
   _phasePopup: {fileID: 7742588147285495436}
   _phasePopupText: {fileID: 7002882111210540992}
   _phasePopupTurnText: {fileID: 2328011771477920862}
-  _tileInfo: {fileID: 8584500390987494139}
-  _tileInfoText: {fileID: 3840751217391411619}
+  _infoBox: {fileID: 8584500390987494139}
+  _infoBoxText: {fileID: 3840751217391411619}
   _combatLog: {fileID: 4268412092925250906}
   _combatLogText: {fileID: 1435941960534174511}
 --- !u!114 &7090636362276665319

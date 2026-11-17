@@ -40,8 +40,7 @@ public class Creature : MonoBehaviour
 
     public AttackResult TakeDamage(Creature attacker, TileData attackerTile)
     {
-        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(Data.Element) ? attacker.Data.Element.ElementModifiers[Data.Element] : 1f;
-        float damage = Mathf.Max(0, (attacker.Data.Attack * attackerTile.AttackerTileModifier - Data.Defense) * elementModifier);
+        float damage = CalculateDamage(attacker, this, attackerTile);
 
         CurrentHealth -= damage;
         OnCreatureDamaged?.Invoke(this, damage);
@@ -75,6 +74,12 @@ public class Creature : MonoBehaviour
     public Vector2Int[] ShowValidAttacks()
     {
         return Data.AttackPattern.ValidPositions;
+    }
+
+    public static float CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
+    {
+        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : 1f;
+        return Mathf.Max(0, (attacker.Data.Attack * attackerTile.AttackerTileModifier - defender.Data.Defense) * elementModifier);
     }
 
     public Creature(CreatureData data, Player owner)
