@@ -1,8 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MatchController : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private BoardController _boardController;
+    
     [Header("Match Settings")]
     [SerializeField] private bool _beginOnStart = true;
 
@@ -16,6 +20,7 @@ public class MatchController : MonoBehaviour
     private int _turnsPlayed;
     private int _currentPlayerIndex;
     private float _phaseTimer;
+    private bool _transitionQueued;
 
     public bool IsMatchActive { get; private set; }
     public Player CurrentPlayer {get; private set;}
@@ -27,7 +32,7 @@ public class MatchController : MonoBehaviour
     public static event Action<Player> OnTurnEnded;
     public static event Action OnMatchStarted;
     public static event Action<Player> OnMatchEnded;
-
+    
     private void OnEnable()
     {
         PlayerEvents.OnPlayerDefeated += HandlePlayerDefeated;
@@ -119,14 +124,48 @@ public class MatchController : MonoBehaviour
                 break;
         }
     }
-
+    
     /// <summary>
     /// Progress to the next phase of an active turn, called internally or through UI
     /// </summary>
     public void RequestNextPhase()
     {
-        if (!IsMatchActive) return;
+        ExecuteOrQueueTransition(ExecuteNextPhase);
+    }
+    
+    /// <summary>
+    /// Force end a turn, should be called through UI or changed in future to subscribe
+    /// </summary>
+    public void RequestEndTurn()
+    {
+        ExecuteOrQueueTransition(ExecuteEndTurn);
+    }
 
+    private void ExecuteOrQueueTransition(Action transitionAction)
+    {
+        if (_transitionQueued) return;
+
+        if (_boardController && _boardController.IsBusy)
+        {
+            StartCoroutine(WaitAndExecuteRoutine(transitionAction));
+            return;
+        }
+
+        transitionAction?.Invoke();
+    }
+
+    private IEnumerator WaitAndExecuteRoutine(Action transitionAction)
+    {
+        _transitionQueued = true;
+        
+        yield return new WaitWhile(() => _boardController && _boardController.IsBusy);
+
+        _transitionQueued = false;
+        transitionAction?.Invoke();
+    }
+    
+    private void ExecuteNextPhase()
+    {
         switch (CurrentState)
         {
             case MatchState.TurnSummon:
@@ -139,20 +178,15 @@ public class MatchController : MonoBehaviour
                 return;
         }
     }
-    
-    /// <summary>
-    /// Force end a turn, should be called through UI or changed in future to subscribe
-    /// </summary>
-    public void RequestEndTurn()
-    {
-        if (!IsMatchActive || !CurrentPlayer) return;
 
+    private void ExecuteEndTurn()
+    {
         CurrentPlayer.EndTurn();
         OnTurnEnded?.Invoke(CurrentPlayer);
         
         StartNextTurn();
     }
-
+    
     private void ChangeMatchState(MatchState state)
     {
         if (CurrentState == state) return;

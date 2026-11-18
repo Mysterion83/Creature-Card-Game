@@ -60,6 +60,26 @@ PrefabInstance:
       propertyPath: _attackVFXPrefab
       value: 
       objectReference: {fileID: 2722298861590243563, guid: ed45c2569bbc1e449a971e67ad373b73, type: 3}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _impactVfxPrefab
+      value: 
+      objectReference: {fileID: 7757652289635993600, guid: a52385493654aee4f9659bf79c37d1f3, type: 3}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _windupVfxPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _hitSmokeVfxPrefab
+      value: 
+      objectReference: {fileID: 1680812763015278310, guid: a548cff9a08189245979c6678cddf48e, type: 3}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _attackFireVfxPrefab
+      value: 
+      objectReference: {fileID: 2722298861590243563, guid: ed45c2569bbc1e449a971e67ad373b73, type: 3}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _damageIndicatorPrefab
+      value: 
+      objectReference: {fileID: 8610561946721827751, guid: 7dd6aaab5a2800b4c908e7eb992fd9bb, type: 3}
     - target: {fileID: 5870679666264807007, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
