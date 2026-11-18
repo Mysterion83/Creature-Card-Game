@@ -19,6 +19,6 @@ MonoBehaviour:
   Element: {fileID: 11400000, guid: c6b1c7fdfb747f246b954d8b4715ba84, type: 2}
   EffectStrength: 0
   IsPassable: 1
-  CreatureYOffset: 1
-  RenderObjectPrefab: {fileID: 1137781593689301265, guid: f727abe722c1aa94ebf700879c288563, type: 3}
+  CreatureYOffset: 0.5
+  RenderObjectPrefab: {fileID: 3291089317478272133, guid: d73fa9a61fa151c4ba468355a6eb0f13, type: 3}
   Decorations: []

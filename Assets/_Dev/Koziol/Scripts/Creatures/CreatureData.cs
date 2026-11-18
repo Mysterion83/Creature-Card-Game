@@ -19,7 +19,12 @@ public class CreatureData : ScriptableObject
     public float Defense;
     public float EnergyCost;
     public float PurchaseCost;
-
+    
+    [Header(STYLING_SUBHEADER + "Attack Durations")] 
+    [Min(0)] public float WindupDuration = 2.5f;
+    [Min(0)] public float AttackDuration = 0.2f;
+    [Min(0)] public float RecoveryDuration = 2.5f;
+    
     // Patterns
     [Header(STYLING_HEADER + "Patterns")]
     public Pattern AttackPattern;
