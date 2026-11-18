@@ -27,11 +27,13 @@ public class CreatureAudioController : MonoBehaviour
     
     private void OnDamage(Creature creature, float damage)
     {
-        //AudioManager.Instance.SFX.Play(_damageSound);
+        //if (!_damageSound) return;
+        //AudioManager.Instance?.SFX.Play(_damageSound);
     }
 
     private void OnDeath(Creature creature)
     {
-        AudioManager.Instance.SFX.Play(_deathSound);
+        if (!_deathSound) return;
+        AudioManager.Instance?.SFX.Play(_deathSound);
     }
 }
