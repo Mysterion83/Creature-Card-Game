@@ -382,6 +382,7 @@ MonoBehaviour:
   _phaseStartDelay: 1
   _actionDelay: 1.5
   _selectionBox: {fileID: 291963297}
+  _profile: {fileID: 11400000, guid: 873344d50391401e9c89b1cbdf09f580, type: 2}
   _logActions: 1
 --- !u!1001 &514714596
 PrefabInstance:
