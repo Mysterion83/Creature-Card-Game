@@ -30,11 +30,13 @@ public class BoardController : MonoBehaviour
 
     private CreatureStage _creatureStage = CreatureStage.None;
 
-    public event Action<Tile> OnTileSelected;
+    public event Action<Tile, Tile> OnTileSelected;
 
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
+
+    public event Action<AttackResult> OnAttackResult;
 
     [SerializeField] private GameObject _hitParticlesPrefab;
 
@@ -87,12 +89,12 @@ public class BoardController : MonoBehaviour
     private void HandleTileSelection()
     {
         
-        OnTileSelected?.Invoke(null);
+        OnTileSelected?.Invoke(null, null);
         if (_selectionController.TryGetSelectedWorldPosition(out Vector3 mouseWorldPosition))
         {
             Tile tile = _board.GetTileFromPosition(mouseWorldPosition);
 
-            OnTileSelected?.Invoke(tile);
+            OnTileSelected?.Invoke(tile, _selectedTile);
 
             if (tile && _board.IsIndexInBounds(tile.TileIndex))
             {
@@ -247,7 +249,7 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
-
+    [Obsolete("Link AttackResult to HUD")]
     public void AttackCreature(Creature attacker, Tile target)
     {
         if (!target.Occupant) return;
@@ -268,8 +270,10 @@ public class BoardController : MonoBehaviour
             if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
             return;
         }
-        
-        target.Occupant.TakeDamage(attacker.Data, attacker.OccupyingTile.Data);
+
+        AttackResult result = target.Occupant.TakeDamage(attacker, attacker.OccupyingTile.Data);
+
+        OnAttackResult?.Invoke(result);
         
         _highlightingController.ClearPatterns();
     }
@@ -370,7 +374,7 @@ public class BoardController : MonoBehaviour
     private void SelectCreature()
     {
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
-        if (!tile.Occupant) return;
+        if (!tile?.Occupant) return;
         
         // Return for creatures selected other than the player's own
         if (tile.Occupant.Owner.Data.Name != _matchController.CurrentPlayer.Data.Name) return;

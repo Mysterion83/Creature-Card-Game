@@ -38,9 +38,9 @@ public class Creature : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
     }
 
-    public void TakeDamage(CreatureData attacker, TileData attackerTile)
+    public AttackResult TakeDamage(Creature attacker, TileData attackerTile)
     {
-        float damage = Mathf.Max(0, attacker.Attack * attackerTile.AttackerTileModifier - Data.Defense);
+        float damage = CalculateDamage(attacker, this, attackerTile);
 
         CurrentHealth -= damage;
         OnCreatureDamaged?.Invoke(this, damage);
@@ -48,7 +48,7 @@ public class Creature : MonoBehaviour
         {
             GameObject hitParticle = Instantiate(HitParticlePrefab, transform.position, Quaternion.identity);
             Material hitMaterial = hitParticle.GetComponentInChildren<Renderer>().material;
-            hitMaterial.color = attacker.Element.Color;
+            hitMaterial.color = attacker.Data.Element.Color;
         }
         if (CurrentHealth <= 0)
         {
@@ -56,6 +56,15 @@ public class Creature : MonoBehaviour
             OnCreatureDeath?.Invoke(this);
             Destroy(gameObject);
         }
+
+        return new AttackResult
+        {
+            Attacker = attacker,
+            Defender = this,
+            DamageDealt = damage,
+            DamageType = DamageType.Normal,
+            IsDead = CurrentHealth <= 0
+        };
     }
 
     public Vector2Int[] ShowValidMovement()
@@ -65,6 +74,12 @@ public class Creature : MonoBehaviour
     public Vector2Int[] ShowValidAttacks()
     {
         return Data.AttackPattern.ValidPositions;
+    }
+
+    public static float CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
+    {
+        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : 1f;
+        return Mathf.Max(0, (attacker.Data.Attack * attackerTile.AttackerTileModifier - defender.Data.Defense) * elementModifier);
     }
 
     public Creature(CreatureData data, Player owner)
