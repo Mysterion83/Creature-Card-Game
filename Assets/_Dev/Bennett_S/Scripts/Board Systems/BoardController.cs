@@ -265,16 +265,16 @@ public class BoardController : MonoBehaviour
         // if the target tile is not in the valid attacks, return
         Vector2Int relativeTargetPosition = target.TileIndex - attacker.OccupyingTile.TileIndex;
         if (!Array.Exists(validAttacks, attack => attack == relativeTargetPosition)) return;
-
-        if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
-        {
-            if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
-            return;
-        }
-
+        
         if (attacker.HasAttacked)
         {
             if (_enableCreatureDebug) Debug.Log("Creature has already attacked this turn!");
+            return;
+        }
+        
+        if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
+        {
+            if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
             return;
         }
         
@@ -385,15 +385,26 @@ public class BoardController : MonoBehaviour
 
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (!tile?.Occupant) return;
+
+        Creature occupyingCreature = tile.Occupant;
         
         // Disable selection of other player's creatures
-        if (tile.Occupant.Owner != _matchController.CurrentPlayer) return;
+        if (occupyingCreature.Owner != _matchController.CurrentPlayer) return;
+        
+        // Disable selection if no action
+        if (occupyingCreature.HasAttacked && occupyingCreature.HasMoved)
+        {
+            if (_enableCreatureDebug) Debug.Log("Creature cannot be selected as it has performed an attack and move already!");
+            return;
+        }
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
         
         _creatureStage = CreatureStage.Moving;
-        PreviewPattern(_selectedTile, false);
+
+        // Shows attack pattern if moved, move pattern otherwise
+        PreviewPattern(_selectedTile, occupyingCreature.HasMoved);
 
         tile.Occupant.TargetPosition = tile.transform.position + new Vector3(0, _selectedTile.Data.CreatureYOffset + _selectedCreatureHoverHeight, 0);
 
