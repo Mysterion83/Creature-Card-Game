@@ -15,14 +15,35 @@ public class DeckShopScreen : MonoBehaviour
 
     [SerializeField] bool openOnShop = false;   // which tab shows first
 
+    [Header("Shop unlock")]
+    [SerializeField] LevelData unlockLevel;
+
+    Button shopTabButton;
+
+    void Awake()
+    {
+        if (shopTab != null) shopTabButton = shopTab.GetComponent<Button>();
+    }
+
     void OnEnable()
     {
-        if (openOnShop) ShowShop();
+        if (shopTabButton != null) shopTabButton.interactable = ShopUnlocked();
+
+        if (openOnShop && ShopUnlocked()) ShowShop();
         else ShowDeckManager();
     }
 
+    bool ShopUnlocked()
+    {
+        var pm = ProfileManager.Instance;
+        return unlockLevel == null || (pm != null && pm.IsCompleted(unlockLevel));
+    }
+
     // Tab buttons
-    public void ShowShop() => Show(true);
+    public void ShowShop()
+    {
+        if (ShopUnlocked()) Show(true);
+    }
     public void ShowDeckManager() => Show(false);
 
     void Show(bool shop)

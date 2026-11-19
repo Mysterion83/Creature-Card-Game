@@ -15,9 +15,9 @@ MonoBehaviour:
   Id: LD_Water1
   Wing: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   Number: 1
-  LevelName: 
-  Difficulty: 2
-  Description: 
+  LevelName: The Alder Vortex
+  Difficulty: 1
+  Description: The eastern shore of the vale has long been home to a deep vortex. Small islands spread around the vortex offer the only saftey from the vortex's pull.
   Preview: {fileID: 0}
   SceneName: Level_Water1
   CoinReward: 200

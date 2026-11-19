@@ -15,9 +15,9 @@ MonoBehaviour:
   Id: LD_Fire1
   Wing: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   Number: 1
-  LevelName: 
+  LevelName: Twin Peaks
   Difficulty: 2
-  Description: 
+  Description: 'Two once dormant volcanos now errupt into flame spreading lava into the valley below. '
   Preview: {fileID: 0}
   SceneName: Level_Fire1
   CoinReward: 200
