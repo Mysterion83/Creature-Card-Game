@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
+    private const float NORMAL_DAMAGE_MODIFIER = 1f;
+    private const float NORMAL_TILE_MODIFIER = 1f;
+    private const float MOVEMENT_ANIM_DISTANCE_THRESHOLD = 0.001f;
+
     public Player Owner { get; set; }
 
     public CreatureData Data;
@@ -39,7 +43,7 @@ public class Creature : MonoBehaviour
         Vector3 movementDirection = TargetPosition - transform.position;
         movementDirection.y = 0f;
 
-        if (movementDirection.sqrMagnitude <= 0.001f) return;
+        if (movementDirection.sqrMagnitude <= MOVEMENT_ANIM_DISTANCE_THRESHOLD) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
 
@@ -84,7 +88,7 @@ public class Creature : MonoBehaviour
     
     public AttackResult TakeDamage(Creature attacker, TileData attackerTile)
     {
-        float damage = CalculateDamage(attacker, this, attackerTile);
+        (float damage, DamageType damageType) = CalculateDamage(attacker, this, attackerTile);
         
         CurrentHealth -= damage;
         bool isDead = CurrentHealth <= 0;
@@ -94,7 +98,7 @@ public class Creature : MonoBehaviour
             Attacker = attacker,
             Defender = this,
             DamageDealt = damage,
-            DamageType = DamageType.Normal,
+            DamageType = damageType,
             IsDead = isDead
         };
 
@@ -119,10 +123,24 @@ public class Creature : MonoBehaviour
         return Data.AttackPattern.ValidPositions;
     }
 
-    public static float CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
+    public static (float Damage, DamageType DamageType) CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
     {
-        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : 1f;
-        return Mathf.Max(0, (attacker.Data.Attack * attackerTile.AttackerTileModifier - defender.Data.Defense) * elementModifier);
+        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : NORMAL_DAMAGE_MODIFIER;
+        DamageType damageType = elementModifier > NORMAL_DAMAGE_MODIFIER ? DamageType.Advantage : (elementModifier < NORMAL_DAMAGE_MODIFIER ? DamageType.Disadvantage : DamageType.Normal);
+
+        //Calculate tile modifier advantage/disadvantage
+        float tileModifier = NORMAL_TILE_MODIFIER;
+        if (attacker.Data.Element == attackerTile.Element)
+        {
+            tileModifier += attackerTile.AttackerTileModifier;
+        }
+        else
+        {
+            tileModifier -= attackerTile.AttackerTileModifier;
+        }
+
+
+        return (Mathf.Max(0, (attacker.Data.Attack * tileModifier - defender.Data.Defense) * elementModifier), damageType);
     }
 
     public void ResetTurnActions()
