@@ -43,7 +43,6 @@ public class BoardController : MonoBehaviour
     {
         _inputMapping.Enable();
         _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
-        _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
         _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
 
@@ -55,7 +54,6 @@ public class BoardController : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
         _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
         _inputMapping.Gameplay.ViewAttack.performed -= OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
@@ -127,29 +125,12 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    private void PlaceCreature(InputAction.CallbackContext context)
-    {
-        if (!CheckIsHumanTurn()) return;
-        
-        Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return;
-        
-        CreatureData creatureData = activePlayer.SelectedCreature;
-        if (creatureData == null)
-        {
-            Debug.LogWarning($"BoardController: {activePlayer.Data.Name} tried to spawn a creature, but hasn't selected a creature yet.");
-            return;
-        }
-        
-        PlaceCreature(creatureData);
-    }
-    
     public Creature PlaceCreature(CreatureData creatureData)
     {
         if (_matchController.CurrentState != MatchState.TurnSummon) return null;
         
         Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return null;
+        if (!activePlayer) return null;
 
         if (!activePlayer.CanSummon()) return null; 
         
