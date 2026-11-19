@@ -30,8 +30,17 @@ public class HUDBridge : MonoBehaviour
         }
     }
 
-    private void OnEnable() => MatchController.OnMatchStateChanged += HandleStateChanged;
-    private void OnDisable() => MatchController.OnMatchStateChanged -= HandleStateChanged;
+    private void OnEnable()
+    {
+        MatchController.OnMatchStateChanged += HandleStateChanged;
+        Creature.OnAnyAttackImpact += HandleAttackImpact;
+    }
+
+    private void OnDisable()
+    {
+        MatchController.OnMatchStateChanged -= HandleStateChanged;
+        Creature.OnAnyAttackImpact -= HandleAttackImpact;
+    }
 
     private void Start()
     {
@@ -62,6 +71,8 @@ public class HUDBridge : MonoBehaviour
 
         if (_match.CurrentPlayer != null) _hud.UpdateTurn(_match.CurrentPlayer.Data);
     }
+
+    private void HandleAttackImpact(AttackResult result) => _hud.UpdateCombatLogValues(result);
 
     private Player FindLocalPlayer()
     {
