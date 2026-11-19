@@ -6,8 +6,10 @@ using UnityEngine;
 public abstract class SFXDefinition : SoundDefinition
 {
     [Header("Playback Variance")]
+    [SerializeField] private bool _useVolumeVariance;
     [Tooltip("Random volume multiplier applied on play")]
     public Vector2 VolumeVariance = new(0.95f, 1.05f);
+    [SerializeField] private bool _usePitchVariance;
     [Tooltip("Random pitch multiplier applied on play")]
     public Vector2 PitchVariance = new(0.95f, 1.05f);
 
@@ -56,14 +58,19 @@ public abstract class SFXDefinition : SoundDefinition
         
         // Playback Randomisation
         // Swap Min/Max if entered wrong in the Inspector
-        float minVol = Mathf.Min(VolumeVariance.x, VolumeVariance.y);
-        float maxVol = Mathf.Max(VolumeVariance.x, VolumeVariance.y);
-        source.volume = Random.Range(minVol, maxVol) * BaseVolume;
-
-        float minPitch = Mathf.Min(PitchVariance.x, PitchVariance.y);
-        float maxPitch = Mathf.Max(PitchVariance.x, PitchVariance.y);
-        source.pitch = Random.Range(minPitch, maxPitch) * BasePitch;
-
+        if (_useVolumeVariance)
+        {
+            float minVol = Mathf.Min(VolumeVariance.x, VolumeVariance.y);
+            float maxVol = Mathf.Max(VolumeVariance.x, VolumeVariance.y);
+            source.volume = Random.Range(minVol, maxVol) * BaseVolume; 
+        }
+        if (_usePitchVariance)
+        {
+            float minPitch = Mathf.Min(PitchVariance.x, PitchVariance.y);
+            float maxPitch = Mathf.Max(PitchVariance.x, PitchVariance.y);
+            source.pitch = Random.Range(minPitch, maxPitch) * BasePitch;
+        }
+        
         // Spatial
         source.panStereo = StereoPanning;
         source.spatialBlend = SpatialBlend;

@@ -382,6 +382,7 @@ MonoBehaviour:
   _phaseStartDelay: 1
   _actionDelay: 1.5
   _selectionBox: {fileID: 291963297}
+  _profile: {fileID: 11400000, guid: 873344d50391401e9c89b1cbdf09f580, type: 2}
   _logActions: 1
 --- !u!1001 &514714596
 PrefabInstance:
@@ -1077,6 +1078,7 @@ GameObject:
   - component: {fileID: 1094911288}
   - component: {fileID: 1094911287}
   - component: {fileID: 1094911291}
+  - component: {fileID: 1094911292}
   m_Layer: 0
   m_Name: HUDBridge
   m_TagString: Untagged
@@ -1149,6 +1151,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleEndHandler
   _menuSceneName: MainMenu_V2
   _returnDelay: 2
+--- !u!114 &1094911292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094911286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bd9749185313047a0fe639e307a1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHand
+  _handContent: {fileID: 1951186846}
+  _highlightColour: {r: 0, g: 0.028357267, b: 1, a: 1}
+  _highlightSize: {x: 6, y: 6}
 --- !u!1001 &1156033339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1515,7 +1532,7 @@ PrefabInstance:
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _definitionData
       value: 
-      objectReference: {fileID: 11400000, guid: a0e7dd1c3419d714981fc53ccc70d0ab, type: 2}
+      objectReference: {fileID: 11400000, guid: fd7312a7524af9247b22b2b3123ad286, type: 2}
     - target: {fileID: 8387224796018182677, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
       propertyPath: _tileSpawnOffset.y
       value: 0
@@ -1828,6 +1845,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1951186846 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4172225454338131845, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+  m_PrefabInstance: {fileID: 1094911285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2013602371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}

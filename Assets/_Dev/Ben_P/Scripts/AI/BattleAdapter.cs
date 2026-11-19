@@ -65,12 +65,14 @@ public class BattleAdapter
         return result;
     }
 
-    public List<Tile> AttackTiles(Creature c)
+    public List<Tile> AttackTiles(Creature c) => AttackTilesFrom(c, c.OccupyingTile.TileIndex);
+
+    public List<Tile> AttackTilesFrom(Creature c, Vector2Int from)
     {
         var result = new List<Tile>();
         foreach (Vector2Int offset in c.ShowValidAttacks())
         {
-            Tile tile = TileAt(c.OccupyingTile.TileIndex + offset);
+            Tile tile = TileAt(from + offset);
             if (tile != null && tile.Occupant != null && tile.Occupant.Owner.Data != _aiPlayer.Data) result.Add(tile);
         }
         return result;
@@ -94,9 +96,31 @@ public class BattleAdapter
      */
 
     public float PredictDamage(Creature attacker, Creature target) =>
-        Mathf.Max(0f, attacker.Data.Attack * attacker.OccupyingTile.Data.AttackerTileModifier - target.Data.Defense);
+        PredictDamageFrom(attacker, attacker.OccupyingTile, target);
+
+    public float PredictDamageFrom(Creature attacker, Tile fromTile, Creature target) =>
+        Mathf.Max(0f, (attacker.Data.Attack * fromTile.Data.AttackerTileModifier - target.Data.Defense)
+            * ElementModifier(attacker.Data.Element, target.Data.Element));
+
+    public float ElementModifier(Element attacker, Element defender)
+    {
+        if (attacker == null || defender == null || attacker.ElementModifiers == null) return 1f;
+        return attacker.ElementModifiers.TryGetValue(defender, out float modifier) ? modifier : 1f;
+    }
 
     public Vector2Int BoardCentre => _board.GetData().MapSize / 2;
+    public Vector2Int BoardSize => _board.GetData().MapSize;
+    public float ActionCost => _aiPlayer.SelectedCreature != null ? _aiPlayer.SelectedCreature.EnergyCost : 0f;
+
+    public bool EnemyHasCardsLeft()
+    {
+        foreach (Player player in PlayerRegistry.MasterList)
+        {
+            if (player == null || player == _aiPlayer) continue;
+            if (player.TryGetComponent(out PlayerDeck deck) && !deck.PlacedAllCreatures) return true;
+        }
+        return false;
+    }
 
     Tile TileAt(Vector2Int index) =>
         _board.IsIndexInBounds(index) ? _board.GetData().Tiles[index.x, index.y] : null;

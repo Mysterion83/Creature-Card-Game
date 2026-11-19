@@ -104,7 +104,7 @@ public class ProfileManager : MonoBehaviour
     {
         if (!IsUnlocked(level)) return;
         CurrentLevel = level;
-        SceneManager.LoadScene(level.SceneName);
+        LoadingScreen.Load(level.SceneName, level.LevelName, level.Preview);
     }
 
     void HandleSceneLoaded(Scene scene, LoadSceneMode mode) => BattleDeckLoader.Apply(Profile, catalog);

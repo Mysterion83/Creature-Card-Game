@@ -30,8 +30,17 @@ public class HUDBridge : MonoBehaviour
         }
     }
 
-    private void OnEnable() => MatchController.OnMatchStateChanged += HandleStateChanged;
-    private void OnDisable() => MatchController.OnMatchStateChanged -= HandleStateChanged;
+    private void OnEnable()
+    {
+        MatchController.OnMatchStateChanged += HandleStateChanged;
+        Creature.OnAnyAttackImpact += HandleAttackImpact;
+    }
+
+    private void OnDisable()
+    {
+        MatchController.OnMatchStateChanged -= HandleStateChanged;
+        Creature.OnAnyAttackImpact -= HandleAttackImpact;
+    }
 
     private void Start()
     {
@@ -40,16 +49,16 @@ public class HUDBridge : MonoBehaviour
 
     private void Update()
     {
-        Player human = FindHumanPlayer();
+        Player localPlayer = FindLocalPlayer();
 
-        if (human != null)
+        if (localPlayer != null)
         {
-            Resource energy = human.EnergySystem.Energy;
+            Resource energy = localPlayer.EnergySystem.Energy;
             _hud.UpdateEnergyCounter((int)energy.CurrentAmount, (int)energy.MaxAmount);
         }
 
         int totalZones = _board != null ? _board.ActiveZones.Count : 0;
-        _hud.UpdateObjectiveCounter(ZonesHeldBy(human), totalZones);
+        _hud.UpdateObjectiveCounter(ZonesHeldBy(localPlayer), totalZones);
 
         if (_advancePhaseButton != null)
             _advancePhaseButton.interactable = _match.IsMatchActive && _match.CurrentPlayer != null && !_match.CurrentPlayer.Data.IsAI;
@@ -63,7 +72,9 @@ public class HUDBridge : MonoBehaviour
         if (_match.CurrentPlayer != null) _hud.UpdateTurn(_match.CurrentPlayer.Data);
     }
 
-    private Player FindHumanPlayer()
+    private void HandleAttackImpact(AttackResult result) => _hud.UpdateCombatLogValues(result);
+
+    private Player FindLocalPlayer()
     {
         foreach (Player player in PlayerRegistry.MasterList)
             if (player != null && !player.Data.IsAI) return player;

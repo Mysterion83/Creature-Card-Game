@@ -39,7 +39,7 @@ public class TileData : ScriptableObject
     public List<TileDecoration> Decorations = new();
 
     // Possibly change to be determined by a game rule
-    public float AttackerTileModifier => EffectStrength * 0.1f + 1;
+    public float AttackerTileModifier => EffectStrength * 0.1f;
     
 #if UNITY_EDITOR
     private void OnValidate()

@@ -62,7 +62,7 @@ public class MenuController : MonoBehaviour
             Debug.LogError($"Scene '{sceneName}' can't be loaded. Is it in the Build Profiles scene list?");
             return;
         }
-        SceneManager.LoadScene(sceneName);
+        LoadingScreen.Load(sceneName);
     }
 
     public void Quit()
