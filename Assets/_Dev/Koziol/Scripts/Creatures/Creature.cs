@@ -1,8 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
+    private const float NORMAL_DAMAGE_MODIFIER = 1f;
+    private const float NORMAL_TILE_MODIFIER = 1f;
+    private const float MOVEMENT_ANIM_DISTANCE_THRESHOLD = 0.001f;
+
     public Player Owner { get; set; }
 
     public CreatureData Data;
@@ -13,12 +18,19 @@ public class Creature : MonoBehaviour
     public float Experience;
 
     public Vector3 TargetPosition;
-
-    [SerializeField] public GameObject HitParticlePrefab;
-
+    
+    public bool IsAttacking { get; private set; }
+    public bool HasMoved { get; private set; }
+    public bool HasAttacked { get; private set; }
+    
     public event Action<Creature> OnCreatureDeath;
-    public event Action<Creature, float> OnCreatureDamaged;
+    public event Action<Creature, AttackResult> OnCreatureDamaged;
+    public event Action<Creature, Creature> OnAttackStarted;
+    public event Action<Creature, Creature> OnAttackFired;
 
+    public static event Action<AttackResult> OnAnyAttackImpact;
+    public static event Action<Creature> OnAnyAttackFinished;
+    
     public void Awake()
     {
         TargetPosition = transform.position;
@@ -31,41 +43,75 @@ public class Creature : MonoBehaviour
         Vector3 movementDirection = TargetPosition - transform.position;
         movementDirection.y = 0f;
 
-        if (movementDirection.sqrMagnitude <= 0.001f) return;
+        if (movementDirection.sqrMagnitude <= MOVEMENT_ANIM_DISTANCE_THRESHOLD) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
     }
 
+    public void Attack(Creature target)
+    {
+        if (IsAttacking || !target) return;
+        StartCoroutine(AttackRoutine(target));
+        HasAttacked = true;
+    }
+
+    private IEnumerator AttackRoutine(Creature target)
+    {
+        IsAttacking = true;
+        
+        // Windup
+        OnAttackStarted?.Invoke(this, target);
+        yield return new WaitForSeconds(Data.WindupDuration);
+        
+        // Attack Start
+        if (target && target.CurrentHealth > 0)
+        {
+            OnAttackFired?.Invoke(this, target);
+            yield return new WaitForSeconds(Data.AttackDuration);
+        }
+        
+        // Attack Impact
+        if (target && target.CurrentHealth > 0)
+        {
+            AttackResult result = target.TakeDamage(this, OccupyingTile.Data);
+            OnAnyAttackImpact?.Invoke(result);
+        }
+        
+        // Recovery
+        yield return new WaitForSeconds(Data.RecoveryDuration);
+
+        IsAttacking = false;
+        OnAnyAttackFinished?.Invoke(this);
+    }
+    
     public AttackResult TakeDamage(Creature attacker, TileData attackerTile)
     {
-        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(Data.Element) ? attacker.Data.Element.ElementModifiers[Data.Element] : 1f;
-        float damage = Mathf.Max(0, (attacker.Data.Attack * attackerTile.AttackerTileModifier - Data.Defense) * elementModifier);
-
+        (float damage, DamageType damageType) = CalculateDamage(attacker, this, attackerTile);
+        
         CurrentHealth -= damage;
-        OnCreatureDamaged?.Invoke(this, damage);
-        if (HitParticlePrefab != null)
+        bool isDead = CurrentHealth <= 0;
+
+        AttackResult result = new()
         {
-            GameObject hitParticle = Instantiate(HitParticlePrefab, transform.position, Quaternion.identity);
-            Material hitMaterial = hitParticle.GetComponentInChildren<Renderer>().material;
-            hitMaterial.color = attacker.Data.Element.Color;
-        }
-        if (CurrentHealth <= 0)
+            Attacker = attacker,
+            Defender = this,
+            DamageDealt = damage,
+            DamageType = damageType,
+            IsDead = isDead
+        };
+
+        OnCreatureDamaged?.Invoke(this, result);
+        
+        if (isDead)
         {
             CurrentHealth = 0;
             OnCreatureDeath?.Invoke(this);
             Destroy(gameObject);
         }
-
-        return new AttackResult
-        {
-            Attacker = attacker,
-            Defender = this,
-            DamageDealt = damage,
-            DamageType = DamageType.Normal,
-            IsDead = CurrentHealth <= 0
-        };
+        
+        return result;
     }
 
     public Vector2Int[] ShowValidMovement()
@@ -77,6 +123,37 @@ public class Creature : MonoBehaviour
         return Data.AttackPattern.ValidPositions;
     }
 
+    public static (float Damage, DamageType DamageType) CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
+    {
+        float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : NORMAL_DAMAGE_MODIFIER;
+        DamageType damageType = elementModifier > NORMAL_DAMAGE_MODIFIER ? DamageType.Advantage : (elementModifier < NORMAL_DAMAGE_MODIFIER ? DamageType.Disadvantage : DamageType.Normal);
+
+        //Calculate tile modifier advantage/disadvantage
+        float tileModifier = NORMAL_TILE_MODIFIER;
+        if (attacker.Data.Element == attackerTile.Element)
+        {
+            tileModifier += attackerTile.AttackerTileModifier;
+        }
+        else
+        {
+            tileModifier -= attackerTile.AttackerTileModifier;
+        }
+
+
+        return (Mathf.Max(0, (attacker.Data.Attack * tileModifier - defender.Data.Defense) * elementModifier), damageType);
+    }
+
+    public void ResetTurnActions()
+    {
+        HasMoved = false;
+        HasAttacked = false;
+    }
+
+    public void MarkMoved()
+    {
+        HasMoved = true;
+    }
+    
     public Creature(CreatureData data, Player owner)
     {
         Data = data;

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,13 +29,13 @@ public class BoardController : MonoBehaviour
 
     private CreatureStage _creatureStage = CreatureStage.None;
 
-    public event Action<Tile> OnTileSelected;
+    public event Action<Tile, Tile> OnTileSelected;
+    private bool _isExecutingAction;
+    public bool IsBusy => _isExecutingAction;
 
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
     public static event Action<Creature> OnCreatureSelected;
-
-    public event Action<AttackResult> OnAttackResult;
 
     [SerializeField] private GameObject _hitParticlesPrefab;
 
@@ -44,21 +43,23 @@ public class BoardController : MonoBehaviour
     {
         _inputMapping.Enable();
         _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
-        _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
         _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
 
+        Creature.OnAnyAttackFinished += HandleAttackFinished;
+        
         MatchController.OnMatchStateChanged += OnMatchStateChanged;
         MatchController.OnTurnEnded += OnTurnEnded;
     }
 
     private void OnDisable()
     {
-        _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
         _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
         _inputMapping.Gameplay.ViewAttack.performed -= OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
         _inputMapping.Disable();
+        
+        Creature.OnAnyAttackFinished -= HandleAttackFinished;
         
         MatchController.OnMatchStateChanged -= OnMatchStateChanged;
         MatchController.OnTurnEnded -= OnTurnEnded;
@@ -85,16 +86,25 @@ public class BoardController : MonoBehaviour
         HandleTileSelection();
     }
 
+    private bool CheckIsHumanTurn()
+    {
+        if (!_matchController || !_matchController.IsMatchActive) return false;
+    
+        Player activePlayer = _matchController.CurrentPlayer;
+        if (!activePlayer) return false;
+
+        return activePlayer is HumanPlayer && !activePlayer.Data.IsAI;
+    }
+    
     [Obsolete("Update events in this function")]
     private void HandleTileSelection()
     {
-        
-        OnTileSelected?.Invoke(null);
+        OnTileSelected?.Invoke(null, null);
         if (_selectionController.TryGetSelectedWorldPosition(out Vector3 mouseWorldPosition))
         {
             Tile tile = _board.GetTileFromPosition(mouseWorldPosition);
 
-            OnTileSelected?.Invoke(tile);
+            OnTileSelected?.Invoke(tile, _selectedTile);
 
             if (tile && _board.IsIndexInBounds(tile.TileIndex))
             {
@@ -115,29 +125,12 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    private void PlaceCreature(InputAction.CallbackContext context)
-    {
-        if (!_matchController || !_matchController.IsMatchActive) return;
- 
-        Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return;
-        
-        CreatureData creatureData = activePlayer.SelectedCreature;
-        if (creatureData == null)
-        {
-            Debug.LogWarning($"BoardController: {activePlayer.Data.Name} tried to spawn a creature, but hasn't selected a creature yet.");
-            return;
-        }
-        
-        PlaceCreature(creatureData);
-    }
-    
     public Creature PlaceCreature(CreatureData creatureData)
     {
         if (_matchController.CurrentState != MatchState.TurnSummon) return null;
         
         Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return null;
+        if (!activePlayer) return null;
 
         if (!activePlayer.CanSummon()) return null; 
         
@@ -177,8 +170,7 @@ public class BoardController : MonoBehaviour
         creature.CurrentHealth = creatureData.MaxHealth;
         creature.Experience = 0;
         creature.OccupyingTile = tile;
-        creature.HitParticlePrefab = _hitParticlesPrefab;
-
+        
         tile.Occupant = creature;
         
         activePlayer.AddCreature(creature);
@@ -200,10 +192,16 @@ public class BoardController : MonoBehaviour
     {
         if (_matchController.CurrentState != MatchState.TurnAction) return;
         
+        if (creature.HasMoved)
+        {
+            if (_enableCreatureDebug) Debug.Log($"Creature {creature} has already moved this turn!");
+            return;
+        }
+        
         if (target.Occupant || !target.Data.IsPassable) return;
 
         Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return;
+        if (!activePlayer) return;
         
         Vector2Int[] validMoves = creature.ShowValidMovement();
         // if there are no valid moves, return
@@ -221,6 +219,8 @@ public class BoardController : MonoBehaviour
             if (_enableCreatureDebug) Debug.Log("Could not move creature as energy is too low");
             return;
         }
+        
+        creature.MarkMoved();
         
         // Move the creature to the new tile
         creature.transform.parent = target.transform;
@@ -249,33 +249,39 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
+    
     [Obsolete("Link AttackResult to HUD")]
     public void AttackCreature(Creature attacker, Tile target)
     {
-        if (!target.Occupant) return;
+        if (_isExecutingAction || !target.Occupant) return;
         if (attacker.Owner == target.Occupant.Owner) return;
 
         Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return;
+        if (!activePlayer) return;
         
         Vector2Int[] validAttacks = attacker.ShowValidAttacks();
-        // if there are no valid attacks, return
-        if (validAttacks.Length == 0) return;
-        Vector2Int relativeTargetPosition = target.TileIndex - attacker.OccupyingTile.TileIndex;
+        if (validAttacks.Length == 0) return; // if there are no valid attacks, return
+        
         // if the target tile is not in the valid attacks, return
+        Vector2Int relativeTargetPosition = target.TileIndex - attacker.OccupyingTile.TileIndex;
         if (!Array.Exists(validAttacks, attack => attack == relativeTargetPosition)) return;
-
+        
+        if (attacker.HasAttacked)
+        {
+            if (_enableCreatureDebug) Debug.Log("Creature has already attacked this turn!");
+            return;
+        }
+        
         if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
         {
             if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
             return;
         }
-
-        AttackResult result = target.Occupant.TakeDamage(attacker, attacker.OccupyingTile.Data);
-
-        OnAttackResult?.Invoke(result);
         
         _highlightingController.ClearPatterns();
+
+        _isExecutingAction = true;
+        attacker.Attack(target.Occupant);
     }
 
     public void PreviewPattern(Tile tile, bool isAttack)
@@ -373,17 +379,32 @@ public class BoardController : MonoBehaviour
     }
     private void SelectCreature()
     {
+        // Stops selection other than in the action stage of a turn
+        if (_matchController.CurrentState != MatchState.TurnAction) return;
+        if (!CheckIsHumanTurn()) return;
+
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
-        if (!tile.Occupant) return;
+        if (!tile?.Occupant) return;
+
+        Creature occupyingCreature = tile.Occupant;
         
-        // Return for creatures selected other than the player's own
-        if (tile.Occupant.Owner.Data.Name != _matchController.CurrentPlayer.Data.Name) return;
+        // Disable selection of other player's creatures
+        if (occupyingCreature.Owner != _matchController.CurrentPlayer) return;
+        
+        // Disable selection if no action
+        if (occupyingCreature.HasAttacked && occupyingCreature.HasMoved)
+        {
+            if (_enableCreatureDebug) Debug.Log("Creature cannot be selected as it has performed an attack and move already!");
+            return;
+        }
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
         
         _creatureStage = CreatureStage.Moving;
-        PreviewPattern(_selectedTile, false);
+
+        // Shows attack pattern if moved, move pattern otherwise
+        PreviewPattern(_selectedTile, occupyingCreature.HasMoved);
 
         tile.Occupant.TargetPosition = tile.transform.position + new Vector3(0, _selectedTile.Data.CreatureYOffset + _selectedCreatureHoverHeight, 0);
 
@@ -418,7 +439,7 @@ public class BoardController : MonoBehaviour
     
     private void OnSelectionPressed(InputAction.CallbackContext context)
     {
-        if (!_matchController || !_matchController.IsMatchActive) return;
+        if (!CheckIsHumanTurn() || _isExecutingAction) return;
         
         if (!_selectedTile)
         {
@@ -453,6 +474,7 @@ public class BoardController : MonoBehaviour
     
     private void OnViewAttack(InputAction.CallbackContext context)
     {
+        if (!CheckIsHumanTurn() || _isExecutingAction || !_selectedTile) return;
         _creatureStage = CreatureStage.Attacking;
         _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, true);
@@ -460,6 +482,7 @@ public class BoardController : MonoBehaviour
 
     private void OnViewMove(InputAction.CallbackContext context)
     {
+        if (!CheckIsHumanTurn() || _isExecutingAction || !_selectedTile) return;
         _creatureStage = CreatureStage.Moving;
         _highlightingController.ClearPatterns();
         PreviewPattern(_selectedTile, false);
@@ -483,11 +506,22 @@ public class BoardController : MonoBehaviour
         _highlightingController.ClearPatterns();
     }
     
+    #region Creature Callbacks
+    private void HandleAttackFinished(Creature attacker)
+    {
+        _isExecutingAction = false;
+    }
+    
     private void HandleCreatureDeath(Creature creature)
     {
         if (!creature) return;
         
         creature.OnCreatureDeath -= HandleCreatureDeath;
+        
+        if (creature.IsAttacking)
+        {
+            _isExecutingAction = false;
+        }
         
         Tile creatureOccupyingTile = creature.OccupyingTile;
         if (!creatureOccupyingTile) return;
@@ -499,6 +533,7 @@ public class BoardController : MonoBehaviour
             RefreshZoneHighlights();
         }
     }
+    #endregion
 }
 
 public enum CreatureStage
