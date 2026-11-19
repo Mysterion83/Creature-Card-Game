@@ -192,6 +192,12 @@ public class BoardController : MonoBehaviour
     {
         if (_matchController.CurrentState != MatchState.TurnAction) return;
         
+        if (creature.HasMoved)
+        {
+            if (_enableCreatureDebug) Debug.Log($"Creature {creature} has already moved this turn!");
+            return;
+        }
+        
         if (target.Occupant || !target.Data.IsPassable) return;
 
         Player activePlayer = _matchController.CurrentPlayer;
@@ -213,6 +219,8 @@ public class BoardController : MonoBehaviour
             if (_enableCreatureDebug) Debug.Log("Could not move creature as energy is too low");
             return;
         }
+        
+        creature.MarkMoved();
         
         // Move the creature to the new tile
         creature.transform.parent = target.transform;
@@ -241,6 +249,7 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
+    
     [Obsolete("Link AttackResult to HUD")]
     public void AttackCreature(Creature attacker, Tile target)
     {
@@ -260,6 +269,12 @@ public class BoardController : MonoBehaviour
         if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
         {
             if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
+            return;
+        }
+
+        if (attacker.HasAttacked)
+        {
+            if (_enableCreatureDebug) Debug.Log("Creature has already attacked this turn!");
             return;
         }
         

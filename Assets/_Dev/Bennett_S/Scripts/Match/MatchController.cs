@@ -83,8 +83,6 @@ public class MatchController : MonoBehaviour
         
         _currentPlayerIndex = UnityEngine.Random.Range(0, PlayerRegistry.PlayerCount);
         CurrentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
-
-        Debug.Log(PlayerRegistry.PlayerCount);
         
         StartNextTurn();
     }
@@ -93,6 +91,13 @@ public class MatchController : MonoBehaviour
     {
         if (_turnsPlayed > 0) _currentPlayerIndex = (_currentPlayerIndex + 1) % PlayerRegistry.PlayerCount;
         CurrentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
+        
+        // Reset action flags for each active creature
+        foreach (Creature creature in CurrentPlayer.ActiveCreatures)
+        {
+            if (!creature) continue;
+            creature.ResetTurnActions();
+        }
         
         _turnsPlayed++;
         CurrentPlayer.StartTurn();

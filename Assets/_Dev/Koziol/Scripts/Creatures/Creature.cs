@@ -16,6 +16,8 @@ public class Creature : MonoBehaviour
     public Vector3 TargetPosition;
     
     public bool IsAttacking { get; private set; }
+    public bool HasMoved { get; private set; }
+    public bool HasAttacked { get; private set; }
     
     public event Action<Creature> OnCreatureDeath;
     public event Action<Creature, AttackResult> OnCreatureDamaged;
@@ -48,6 +50,7 @@ public class Creature : MonoBehaviour
     {
         if (IsAttacking || !target) return;
         StartCoroutine(AttackRoutine(target));
+        HasAttacked = true;
     }
 
     private IEnumerator AttackRoutine(Creature target)
@@ -122,6 +125,17 @@ public class Creature : MonoBehaviour
         return Mathf.Max(0, (attacker.Data.Attack * attackerTile.AttackerTileModifier - defender.Data.Defense) * elementModifier);
     }
 
+    public void ResetTurnActions()
+    {
+        HasMoved = false;
+        HasAttacked = false;
+    }
+
+    public void MarkMoved()
+    {
+        HasMoved = true;
+    }
+    
     public Creature(CreatureData data, Player owner)
     {
         Data = data;
