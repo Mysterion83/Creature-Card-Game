@@ -1078,6 +1078,7 @@ GameObject:
   - component: {fileID: 1094911288}
   - component: {fileID: 1094911287}
   - component: {fileID: 1094911291}
+  - component: {fileID: 1094911292}
   m_Layer: 0
   m_Name: HUDBridge
   m_TagString: Untagged
@@ -1150,6 +1151,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleEndHandler
   _menuSceneName: MainMenu_V2
   _returnDelay: 2
+--- !u!114 &1094911292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094911286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bd9749185313047a0fe639e307a1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHand
+  _handContent: {fileID: 2031874304}
+  _highlightColour: {r: 1, g: 0.85, b: 0.2, a: 1}
+  _highlightSize: {x: 6, y: 6}
 --- !u!1001 &1156033339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1833,6 +1849,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
   m_PrefabInstance: {fileID: 6576931058267975846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2031874304 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4172225454338131845, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+  m_PrefabInstance: {fileID: 1094911285}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2109927144 stripped
 GameObject:
