@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,12 @@ public class HUDBridge : MonoBehaviour
     [Header("References")]
     [SerializeField] private HUD _hud;
     [SerializeField] private Button _advancePhaseButton;
+    [SerializeField] private Transform _handContent;
 
     private MatchController _match;
     private Board _board;
+    private readonly List<GameObject> _handCards = new();
+    private readonly HashSet<Creature> _summoned = new();
 
     private void Awake()
     {
@@ -22,6 +26,7 @@ public class HUDBridge : MonoBehaviour
         if (_advancePhaseButton == null && _hud != null) _advancePhaseButton = FindChildButton("AdvancePhaseButton");
         _match = FindAnyObjectByType<MatchController>();
         _board = FindAnyObjectByType<Board>();
+        if (_handContent == null && _hud != null) _handContent = FindHandContent();
 
         if (_hud == null || _match == null)
         {
@@ -36,20 +41,23 @@ public class HUDBridge : MonoBehaviour
     private void Start()
     {
         if (_advancePhaseButton != null) _advancePhaseButton.onClick.AddListener(_match.RequestNextPhase);
+        BuildHand();
     }
 
     private void Update()
     {
-        Player human = FindHumanPlayer();
+        Player localPlayer = FindLocalPlayer();
 
-        if (human != null)
+        if (localPlayer != null)
         {
-            Resource energy = human.EnergySystem.Energy;
+            Resource energy = localPlayer.EnergySystem.Energy;
             _hud.UpdateEnergyCounter((int)energy.CurrentAmount, (int)energy.MaxAmount);
         }
 
         int totalZones = _board != null ? _board.ActiveZones.Count : 0;
-        _hud.UpdateObjectiveCounter(ZonesHeldBy(human), totalZones);
+        _hud.UpdateObjectiveCounter(ZonesHeldBy(localPlayer), totalZones);
+
+        UpdateHand(localPlayer);
 
         if (_advancePhaseButton != null)
             _advancePhaseButton.interactable = _match.IsMatchActive && _match.CurrentPlayer != null && !_match.CurrentPlayer.Data.IsAI;
@@ -63,7 +71,44 @@ public class HUDBridge : MonoBehaviour
         if (_match.CurrentPlayer != null) _hud.UpdateTurn(_match.CurrentPlayer.Data);
     }
 
-    private Player FindHumanPlayer()
+    private void BuildHand()
+    {
+        Player localPlayer = FindLocalPlayer();
+        if (_handContent == null || localPlayer == null || !localPlayer.TryGetComponent(out PlayerDeck deck)) return;
+
+        Card template = _handContent.GetComponentInChildren<Card>(true);
+        if (template == null) return;
+
+        foreach (CreatureData creature in deck.CreaturesToPlace)
+        {
+            Card card = Instantiate(template, _handContent);
+            card.gameObject.SetActive(true);
+            card.SetCardData(creature);
+            _handCards.Add(card.gameObject);
+        }
+
+        foreach (Transform child in _handContent)
+            if (!_handCards.Contains(child.gameObject)) Destroy(child.gameObject);
+    }
+
+    private void UpdateHand(Player localPlayer)
+    {
+        if (localPlayer == null || _handCards.Count == 0) return;
+
+        foreach (Creature creature in localPlayer.ActiveCreatures)
+            if (creature != null) _summoned.Add(creature);
+
+        for (int i = 0; i < _handCards.Count; i++)
+            if (_handCards[i] != null) _handCards[i].SetActive(i >= _summoned.Count);
+    }
+
+    private Transform FindHandContent()
+    {
+        Card card = _hud.GetComponentInChildren<Card>(true);
+        return card != null ? card.transform.parent : null;
+    }
+
+    private Player FindLocalPlayer()
     {
         foreach (Player player in PlayerRegistry.MasterList)
             if (player != null && !player.Data.IsAI) return player;
