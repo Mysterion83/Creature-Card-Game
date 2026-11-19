@@ -86,7 +86,7 @@ public class HUD : MonoBehaviour
                 $"{ATTACK_COLOR_TAG}<b>ATK:</b>{END_COLOR_TAG} {occupant.Data.Attack} {DEF_COLOR_TAG}<b>DEF:</b>{END_COLOR_TAG} {occupant.Data.Defense}\n";
             if (selectedCreatureTile != null && selectedCreatureTile.Occupant != null)
             {
-                tileInfo += $"{ATTACK_COLOR_TAG}<b>Potential Damage:</b>{END_COLOR_TAG} {Creature.CalculateDamage(selectedCreatureTile.Occupant, occupant, selectedCreatureTile.Data)}\n";
+                tileInfo += $"{ATTACK_COLOR_TAG}<b>Potential Damage:</b>{END_COLOR_TAG} {Creature.CalculateDamage(selectedCreatureTile.Occupant, occupant, selectedCreatureTile.Data).Damage : 0.00}\n";
             }
         }
         else
