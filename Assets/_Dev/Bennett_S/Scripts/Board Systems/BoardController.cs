@@ -43,7 +43,6 @@ public class BoardController : MonoBehaviour
     {
         _inputMapping.Enable();
         _inputMapping.Gameplay.OnSelect.performed += OnSelectionPressed;
-        _inputMapping.Dev.SpawnUnit.performed += PlaceCreature;
         _inputMapping.Gameplay.ViewAttack.performed += OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed += OnViewMove;
 
@@ -55,7 +54,6 @@ public class BoardController : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputMapping.Dev.SpawnUnit.performed -= PlaceCreature;
         _inputMapping.Gameplay.OnSelect.performed -= OnSelectionPressed;
         _inputMapping.Gameplay.ViewAttack.performed -= OnViewAttack;
         _inputMapping.Gameplay.ViewMove.performed -= OnViewMove;
@@ -127,29 +125,12 @@ public class BoardController : MonoBehaviour
         }
     }
     
-    private void PlaceCreature(InputAction.CallbackContext context)
-    {
-        if (!CheckIsHumanTurn()) return;
-        
-        Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return;
-        
-        CreatureData creatureData = activePlayer.SelectedCreature;
-        if (creatureData == null)
-        {
-            Debug.LogWarning($"BoardController: {activePlayer.Data.Name} tried to spawn a creature, but hasn't selected a creature yet.");
-            return;
-        }
-        
-        PlaceCreature(creatureData);
-    }
-    
     public Creature PlaceCreature(CreatureData creatureData)
     {
         if (_matchController.CurrentState != MatchState.TurnSummon) return null;
         
         Player activePlayer = _matchController.CurrentPlayer;
-        if (activePlayer == null) return null;
+        if (!activePlayer) return null;
 
         if (!activePlayer.CanSummon()) return null; 
         
@@ -211,6 +192,12 @@ public class BoardController : MonoBehaviour
     {
         if (_matchController.CurrentState != MatchState.TurnAction) return;
         
+        if (creature.HasMoved)
+        {
+            if (_enableCreatureDebug) Debug.Log($"Creature {creature} has already moved this turn!");
+            return;
+        }
+        
         if (target.Occupant || !target.Data.IsPassable) return;
 
         Player activePlayer = _matchController.CurrentPlayer;
@@ -232,6 +219,8 @@ public class BoardController : MonoBehaviour
             if (_enableCreatureDebug) Debug.Log("Could not move creature as energy is too low");
             return;
         }
+        
+        creature.MarkMoved();
         
         // Move the creature to the new tile
         creature.transform.parent = target.transform;
@@ -260,6 +249,7 @@ public class BoardController : MonoBehaviour
             Debug.Log(target.gameObject.transform.position);
         }
     }
+    
     [Obsolete("Link AttackResult to HUD")]
     public void AttackCreature(Creature attacker, Tile target)
     {
@@ -275,7 +265,13 @@ public class BoardController : MonoBehaviour
         // if the target tile is not in the valid attacks, return
         Vector2Int relativeTargetPosition = target.TileIndex - attacker.OccupyingTile.TileIndex;
         if (!Array.Exists(validAttacks, attack => attack == relativeTargetPosition)) return;
-
+        
+        if (attacker.HasAttacked)
+        {
+            if (_enableCreatureDebug) Debug.Log("Creature has already attacked this turn!");
+            return;
+        }
+        
         if (!activePlayer.TryPerformMove(activePlayer.SelectedCreature.EnergyCost))
         {
             if (_enableCreatureDebug) Debug.Log("Could not move attack with creature as energy is too low");
@@ -389,15 +385,26 @@ public class BoardController : MonoBehaviour
 
         Tile tile = _board.GetTileFromPosition(SelectedPosition);
         if (!tile?.Occupant) return;
+
+        Creature occupyingCreature = tile.Occupant;
         
         // Disable selection of other player's creatures
-        if (tile.Occupant.Owner != _matchController.CurrentPlayer) return;
+        if (occupyingCreature.Owner != _matchController.CurrentPlayer) return;
+        
+        // Disable selection if no action
+        if (occupyingCreature.HasAttacked && occupyingCreature.HasMoved)
+        {
+            if (_enableCreatureDebug) Debug.Log("Creature cannot be selected as it has performed an attack and move already!");
+            return;
+        }
         
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
         
         _creatureStage = CreatureStage.Moving;
-        PreviewPattern(_selectedTile, false);
+
+        // Shows attack pattern if moved, move pattern otherwise
+        PreviewPattern(_selectedTile, occupyingCreature.HasMoved);
 
         tile.Occupant.TargetPosition = tile.transform.position + new Vector3(0, _selectedTile.Data.CreatureYOffset + _selectedCreatureHoverHeight, 0);
 

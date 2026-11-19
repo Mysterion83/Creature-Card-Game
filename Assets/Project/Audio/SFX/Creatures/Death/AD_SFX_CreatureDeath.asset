@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: AD_SFX_CreatureDeath
   m_EditorClassIdentifier: Assembly-CSharp::SFXMultiClipDefinition
   MixerGroupOverride: {fileID: 795586258071113918, guid: 96e7ff3a1e0467a4088c601bf4e934c3, type: 2}
-  BaseVolume: 0.25
+  Priority: 128
+  BaseVolume: 1
   BasePitch: 1
+  _useVolumeVariance: 0
   VolumeVariance: {x: 0.95, y: 1.05}
+  _usePitchVariance: 0
   PitchVariance: {x: 0.95, y: 1.05}
   StereoPanning: 0
   SpatialBlend: 1
@@ -51,7 +54,6 @@ MonoBehaviour:
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
-  Priority: 128
   _audioClips:
   - {fileID: 8300000, guid: 0af2a513feead064d8f33e1e352cab36, type: 3}
   - {fileID: 8300000, guid: d41341ac3f28f444cb9b6b28f84f98b5, type: 3}
