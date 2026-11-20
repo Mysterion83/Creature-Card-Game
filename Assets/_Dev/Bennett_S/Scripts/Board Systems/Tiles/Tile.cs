@@ -96,6 +96,8 @@ public class Tile : MonoBehaviour
         // Mesh and Material assignment
         _meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
             ? prefabMeshFilter.sharedMesh : null;
+        _meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
+            ? Data.EditorMaterial : null;
 #endif
         
         if (Application.isPlaying)

@@ -21,4 +21,5 @@ MonoBehaviour:
   IsPassable: 1
   CreatureYOffset: 0.5
   RenderObjectPrefab: {fileID: 4680689014147119970, guid: cd922f61332952c45b2ac2c07d4c271c, type: 3}
+  EditorMaterial: {fileID: 2100000, guid: e58344bb0e0e83b4a9afeb92e861f4ea, type: 2}
   Decorations: []
