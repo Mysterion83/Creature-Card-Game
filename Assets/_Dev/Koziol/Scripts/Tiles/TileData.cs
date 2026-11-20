@@ -34,12 +34,16 @@ public class TileData : ScriptableObject
     [Header(STYLING_SUBHEADER + "Rendering Settings")]
     // Prefab used for rendering the Tile
     public GameObject RenderObjectPrefab;
+
+    [Header("Board Builder")]
+    [Tooltip("The material this tile will use when creating/editing boards within the Board Builder")]
+    public Material EditorMaterial;
     
     [Header(STYLING_HEADER + "Decorations")]
     public List<TileDecoration> Decorations = new();
 
     // Possibly change to be determined by a game rule
-    public float AttackerTileModifier => EffectStrength * 0.1f + 1;
+    public float AttackerTileModifier => EffectStrength * 0.1f;
     
 #if UNITY_EDITOR
     private void OnValidate()

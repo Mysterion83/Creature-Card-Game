@@ -1,14 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageIndicator : MonoBehaviour
 {
     [Header("Text Settings")]
     [SerializeField] private TMP_Text _damageText;
-    [SerializeField, Min(0)] private int _normalFontSize = 38;
-    [SerializeField, Min(0)] private int _advantageFontSize = 40;
-    [SerializeField, Min(0)] private int _disadvantageFontSize = 36;
+    [SerializeField] private Image _damageIcon;
     [SerializeField] private float _distanceScaleMultiplier = 0.002f;
     
     [Header("Gradient Presets")]
@@ -37,15 +36,12 @@ public class DamageIndicator : MonoBehaviour
         switch (damageType)
         {
             case DamageType.Normal:
-                _damageText.fontSize = _normalFontSize;
                 _damageText.colorGradientPreset = _normalGradient;
                 break;
             case DamageType.Advantage:
-                _damageText.fontSize = _advantageFontSize;
                 _damageText.colorGradientPreset = _advantageGradient;
                 break;
             case DamageType.Disadvantage:
-                _damageText.fontSize = _disadvantageFontSize;
                 _damageText.colorGradientPreset = _disadvantageGradient;
                 break;
         }
@@ -68,6 +64,7 @@ public class DamageIndicator : MonoBehaviour
         for (float elapsed = 0f; elapsed < _duration; elapsed += Time.deltaTime)
         {
             _damageText.alpha = Mathf.Lerp(1f, 0f, elapsed / _duration);
+            _damageIcon.GetComponent<CanvasRenderer>().SetAlpha(Mathf.Lerp(1f, 0f, elapsed / _duration));
             yield return null;
         }
 

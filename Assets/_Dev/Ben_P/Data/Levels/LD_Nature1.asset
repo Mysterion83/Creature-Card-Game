@@ -15,10 +15,10 @@ MonoBehaviour:
   Id: LD_Nature1
   Wing: {fileID: 11400000, guid: 269f4244797fc2a4cae09eaeca01c809, type: 2}
   Number: 1
-  LevelName: 
+  LevelName: The Alder Forest
   Difficulty: 2
-  Description: 
+  Description: The road to Aldervale Academy runs through two twin roads. Recent elemental activity has awoken four standing stones adding danger to this once vibrant forest.
   Preview: {fileID: 0}
-  SceneName: 
+  SceneName: Level_Nature1
   CoinReward: 200
-  RequiredLevel: {fileID: 11400000, guid: e7dce235545baac4ba5e60e3e95c96bc, type: 2}
+  RequiredLevel: {fileID: 11400000, guid: 938f239b29d03c64bbeb7fe1df70471c, type: 2}

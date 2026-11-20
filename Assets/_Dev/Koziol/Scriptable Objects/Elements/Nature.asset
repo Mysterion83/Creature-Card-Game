@@ -15,3 +15,8 @@ MonoBehaviour:
   Name: Nature
   Icon: {fileID: 5415080162996510669, guid: 6da3511818803934b9c37bab9fea463c, type: 3}
   Color: {r: 0.20583123, g: 1, b: 0, a: 1}
+  ElementModifiers:
+  - key: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
+    value: 0.75
+  - key: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
+    value: 1.5

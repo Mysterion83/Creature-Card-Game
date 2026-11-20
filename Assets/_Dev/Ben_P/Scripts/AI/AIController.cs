@@ -17,11 +17,20 @@ public class AIController : MonoBehaviour
     [Header("Board")]
     [SerializeField] private Transform _selectionBox;
 
+    [Header("Brain")]
+    [SerializeField] private AIProfile _profile;
+
     [Header("Debug")]
     [SerializeField] private bool _logActions = true;
 
     private Player _aiPlayer;
     private BattleAdapter _adapter;
+    private AIProfile _fallbackProfile;
+    private bool _lastActionWorked;
+    private readonly HashSet<Creature> _movedThisTurn = new();
+    private readonly HashSet<Creature> _attackedThisTurn = new();
+
+    private AIProfile Profile => _profile != null ? _profile : (_fallbackProfile ??= ScriptableObject.CreateInstance<AIProfile>());
 
     /*
      * The AI follows MatchControllers phases rather than tracking turns itself. 
@@ -67,22 +76,7 @@ public class AIController : MonoBehaviour
         Log($"--- Summon phase. Energy {_adapter.Energy}");
         yield return new WaitForSeconds(_phaseStartDelay);
 
-        while (_adapter.IsMyPhase(MatchState.TurnSummon) && _adapter.CanSummon)
-        {
-            List<Tile> free = _adapter.FreeTiles();
-            if (free.Count == 0) { Log("No free tile to summon on."); break; }
-
-            CreatureData card = _adapter.NextCard;
-            Tile tile = AIRules.ChooseSummonTile(free, _adapter.EnemyCreatures(), _adapter.BoardCentre);
-            if (_adapter.Summon(tile))
-                Log($"SUMMON {card.CreatureName} at {tile.TileIndex}. Energy left {_adapter.Energy}");
-            else
-            {
-                LogRefused($"summon {card.CreatureName} at {tile.TileIndex}");
-                break;
-            }
-            yield return new WaitForSeconds(_actionDelay);
-        }
+        yield return RunPhase(MatchState.TurnSummon);
 
         if (_adapter.IsMyPhase(MatchState.TurnSummon))
         {
@@ -101,67 +95,125 @@ public class AIController : MonoBehaviour
     IEnumerator ActionPhase()
     {
         Log($"--- Action phase. Energy {_adapter.Energy}, creatures {_adapter.MyCreatures.Count}");
+        _movedThisTurn.Clear();
+        _attackedThisTurn.Clear();
         yield return new WaitForSeconds(_phaseStartDelay);
 
-        var creatures = new List<Creature>(_adapter.MyCreatures);
-        creatures.RemoveAll(c => c == null);
-        List<Creature> startEnemies = _adapter.EnemyCreatures();
-        creatures.Sort((a, b) => AIRules.DistanceToNearest(a.OccupyingTile.TileIndex, startEnemies)
-            .CompareTo(AIRules.DistanceToNearest(b.OccupyingTile.TileIndex, startEnemies)));
-
-        foreach (Creature c in creatures)
-        {
-            if (!_adapter.IsMyPhase(MatchState.TurnAction)) yield break;
-            if (c == null) continue;
-            if (_adapter.Energy <= 0) { Log("Out of energy."); break; }
-
-            RuleChoice choice = AIRules.ChooseAction(c, _adapter, _adapter.EnemyCreatures());
-            bool advanced = false;
-
-            if (choice.Rule == RuleType.Advance)
-            {
-                Vector2Int from = c.OccupyingTile.TileIndex;
-                Tile to = choice.Target;
-                if (!_adapter.Move(c, to))
-                {
-                    LogRefused($"move by {c.Data.CreatureName} {from} -> {to.TileIndex}");
-                    yield return new WaitForSeconds(_actionDelay);
-                    continue;
-                }
-                Log($"ADVANCE {c.Data.CreatureName} {from} -> {to.TileIndex}. Energy left {_adapter.Energy}");
-                advanced = true;
-                if (_adapter.Energy <= 0) { Log("Out of energy."); break; }
-                yield return new WaitForSeconds(_actionDelay);
-                choice = AIRules.ChooseAttack(c, _adapter);
-            }
-
-            if (choice.Rule == RuleType.Wait)
-            {
-                if (!advanced) Log($"WAIT {c.Data.CreatureName}: no enemy in range and no move gets closer.");
-            }
-            else
-            {
-                Tile target = choice.Target;
-                Creature victim = target.Occupant;
-                string victimName = victim.Data.CreatureName;
-                float hpBefore = victim.CurrentHealth;
-
-                if (_adapter.Attack(c, target))
-                {
-                    float hpAfter = victim.CurrentHealth;
-                    string result = hpAfter <= 0 ? "KILLED it" : $"HP {hpBefore} -> {hpAfter}";
-                    Log($"{choice.Rule.ToString().ToUpper()} {c.Data.CreatureName} at {c.OccupyingTile.TileIndex} hit {victimName} at {target.TileIndex}: {result}. Energy left {_adapter.Energy}");
-                }
-                else LogRefused($"attack by {c.Data.CreatureName} on {victimName}");
-            }
-            yield return new WaitForSeconds(_actionDelay);
-        }
+        yield return RunPhase(MatchState.TurnAction);
 
         if (_adapter.IsMyPhase(MatchState.TurnAction))
         {
             Log("Turn done.");
             _adapter.NextPhase();
         }
+    }
+
+    IEnumerator RunPhase(MatchState state)
+    {
+        AIProfile profile = Profile;
+
+        for (int i = 0; i < profile.MaxActionsPerPhase; i++)
+        {
+            if (!_adapter.IsMyPhase(state)) yield break;
+
+            List<Creature> enemies = _adapter.EnemyCreatures();
+            List<AIAction> actions = state == MatchState.TurnSummon
+                ? ActionGenerator.Summons(_adapter)
+                : ActionGenerator.Actions(_adapter, _movedThisTurn, _attackedThisTurn);
+
+            if (actions.Count == 0)
+            {
+                Log(state == MatchState.TurnSummon ? "Nothing left to summon." : "No actions left.");
+                yield break;
+            }
+
+            foreach (AIAction action in actions)
+                action.Score = ActionScorer.Score(action, _adapter, profile, enemies);
+            actions.Sort((a, b) => b.Score.CompareTo(a.Score));
+
+            if (profile.LogDecisions) LogTopActions(actions, 5);
+
+            AIAction best = actions[0];
+            if (best.Score < profile.EndTurnThreshold)
+            {
+                Log($"Best score {best.Score:0.0} is below the end turn threshold, stopping.");
+                yield break;
+            }
+
+            yield return Perform(best);
+            if (!_lastActionWorked) yield break;
+
+            yield return new WaitForSeconds(_actionDelay);
+        }
+    }
+
+    IEnumerator Perform(AIAction action)
+    {
+        _lastActionWorked = false;
+        string score = action.Score.ToString("0.0");
+
+        switch (action.Type)
+        {
+            case AIActionType.Summon:
+                if (_adapter.Summon(action.Tile))
+                {
+                    _lastActionWorked = true;
+                    Log($"SUMMON {action.Card.CreatureName} at {action.Tile.TileIndex} (score {score}). Energy left {_adapter.Energy}");
+                }
+                else LogRefused($"summon {action.Card.CreatureName} at {action.Tile.TileIndex}");
+                break;
+
+            case AIActionType.Move:
+                _lastActionWorked = DoMove(action.Actor, action.Tile, score);
+                break;
+
+            case AIActionType.Attack:
+                yield return DoAttack(action.Actor, action.Tile, score);
+                break;
+
+            case AIActionType.MoveThenAttack:
+                if (!DoMove(action.Actor, action.Tile, score)) break;
+                yield return new WaitForSeconds(_actionDelay);
+                if (_adapter.IsMyPhase(MatchState.TurnAction))
+                    yield return DoAttack(action.Actor, action.AttackTarget, score);
+                break;
+        }
+    }
+
+    bool DoMove(Creature creature, Tile to, string score)
+    {
+        Vector2Int from = creature.OccupyingTile.TileIndex;
+        if (_adapter.Move(creature, to))
+        {
+            _movedThisTurn.Add(creature);
+            Log($"MOVE {creature.Data.CreatureName} {from} -> {to.TileIndex} (score {score}). Energy left {_adapter.Energy}");
+            return true;
+        }
+        LogRefused($"move by {creature.Data.CreatureName} {from} -> {to.TileIndex}");
+        return false;
+    }
+
+    IEnumerator DoAttack(Creature attacker, Tile target, string score)
+    {
+        Creature victim = target.Occupant;
+        if (victim == null) yield break;
+        string victimName = victim.Data.CreatureName;
+        float hpBefore = victim.CurrentHealth;
+        Vector2Int from = attacker.OccupyingTile.TileIndex;
+
+        if (!_adapter.Attack(attacker, target))
+        {
+            LogRefused($"attack by {attacker.Data.CreatureName} on {victimName}");
+            yield break;
+        }
+
+        _attackedThisTurn.Add(attacker);
+        _lastActionWorked = true;
+        yield return new WaitUntil(() => !_adapter.IsBusy);
+
+        float hpAfter = victim != null ? victim.CurrentHealth : 0f;
+        string result = hpAfter <= 0 ? "KILLED it" : $"HP {hpBefore} -> {hpAfter}";
+        Log($"ATTACK {attacker.Data.CreatureName} at {from} hit {victimName} at {target.TileIndex}: {result} (score {score}). Energy left {_adapter.Energy}");
     }
 
     // Helpers
@@ -172,4 +224,12 @@ public class AIController : MonoBehaviour
     }
 
     void LogRefused(string action) => Debug.LogWarning($"[AI {_aiPlayer.Data.Name}] The game refused {action}.");
+
+    void LogTopActions(List<AIAction> actions, int count)
+    {
+        string text = $"<color=orange>[AI {_aiPlayer.Data.Name}]</color> Top actions:";
+        for (int i = 0; i < Mathf.Min(count, actions.Count); i++)
+            text += $"\n  {actions[i].Score,7:0.0}  {actions[i]}";
+        Debug.Log(text);
+    }
 }

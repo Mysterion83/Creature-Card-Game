@@ -21,6 +21,7 @@ public class HUD : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI _energyCounter;
+    [SerializeField] private TextMeshProUGUI _energyBonusText;
     [SerializeField] private TextMeshProUGUI _objectiveCounter;
     [SerializeField] private GameObject _noEnergyPopup;
     [SerializeField] private TextMeshProUGUI _turnText;
@@ -31,16 +32,17 @@ public class HUD : MonoBehaviour
     [SerializeField] private Color _activePhaseColour;
     [SerializeField] private Image _phasePopup;
     [SerializeField] private TextMeshProUGUI _phasePopupText;
+    [SerializeField] private TextMeshProUGUI _phasePopupTurnText;
 
-    [SerializeField] private GameObject _tileInfo;
-    [SerializeField] private TextMeshProUGUI _tileInfoText;
+    [SerializeField] private GameObject _infoBox;
+    [SerializeField] private TextMeshProUGUI _infoBoxText;
     [SerializeField] private GameObject _combatLog;
     [HideInInspector] private List<string> _combatLogValues = new List<string>();
     [SerializeField] private TextMeshProUGUI _combatLogText;
 
     public void Start()
     {
-        FindAnyObjectByType<BoardController>().OnTileSelected += SetTileInfoData;
+        FindAnyObjectByType<BoardController>().OnTileSelected += SetInfoBoxData;
         _combatLogText.text = string.Empty;
     }
 
@@ -61,15 +63,15 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void SetTileInfoData(Tile tile)
+    public void SetInfoBoxData(Tile tile, Tile selectedCreatureTile = null)
     {
         if (tile == null)
         {
-            _tileInfo.SetActive(false);
+            _infoBox.SetActive(false);
             return;
         }
-        _tileInfo.SetActive(true);
-        _tileInfo.transform.position = Mouse.current.position.ReadValue();
+        _infoBox.SetActive(true);
+        _infoBox.transform.position = Mouse.current.position.ReadValue();
         string tileInfo = $"<b>Tile:</b> {tile.Data.Name}\n" +
             $"<b>Element:</b> {tile.Data.Element?.Name}\n" +
             $"<b>Elemental Resonance:</b> {tile.Data.EffectStrength}\n";
@@ -82,12 +84,16 @@ public class HUD : MonoBehaviour
                 $"<b>Owner:</b> {occupant.Owner.Data.IsAI}\n" +
                 $"{HP_COLOR_TAG}<b>HP:</b>{END_COLOR_TAG} {FormatValue((int)occupant.CurrentHealth, (int)occupant.Data.MaxHealth)}\n" +
                 $"{ATTACK_COLOR_TAG}<b>ATK:</b>{END_COLOR_TAG} {occupant.Data.Attack} {DEF_COLOR_TAG}<b>DEF:</b>{END_COLOR_TAG} {occupant.Data.Defense}\n";
+            if (selectedCreatureTile != null && selectedCreatureTile.Occupant != null)
+            {
+                tileInfo += $"{ATTACK_COLOR_TAG}<b>Potential Damage:</b>{END_COLOR_TAG} {Creature.CalculateDamage(selectedCreatureTile.Occupant, occupant, selectedCreatureTile.Data).Damage : 0.00}\n";
+            }
         }
         else
         {
             tileInfo += "<b>Occupant:</b> None\n";
         }
-        _tileInfoText.text = tileInfo;
+        _infoBoxText.text = tileInfo;
     }
 
     public void UpdateTurn(PlayerData player)
@@ -98,6 +104,10 @@ public class HUD : MonoBehaviour
     public void UpdateEnergyCounter(int currentEnergy, int maxEnergy)
     {
         _energyCounter.text = FormatValue(currentEnergy, maxEnergy);
+    }
+    public void UpdateEnergyBonus(int energyBonus)
+    {
+        _energyBonusText.text = energyBonus > 0 ? $"+{energyBonus}" : string.Empty;
     }
     public void UpdateObjectiveCounter(int currentObjectives, int maxObjectives)
     {
@@ -114,6 +124,7 @@ public class HUD : MonoBehaviour
         CancelInvoke(nameof(ClosePopup));
         _phasePopupText.text = phaseName;
         _phasePopup.gameObject.SetActive(true);
+        _phasePopupTurnText.text = _turnText.text;
         Invoke(nameof(ClosePopup), PHASE_POPUP_DURATION);
     }
     private void ClosePopup()

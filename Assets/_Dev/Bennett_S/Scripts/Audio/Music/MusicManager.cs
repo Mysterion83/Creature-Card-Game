@@ -135,7 +135,7 @@ public class MusicManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Stop all active music tracks over time
+    /// Stop all active tracks over time
     /// <param name="fadeOutTime">Optional: Time to fade out, leave unchanged for the default fade-out duration</param>
     /// </summary>
     public void StopAll(float fadeOutTime = -1f)
@@ -157,7 +157,7 @@ public class MusicManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Stop all active music tracks instantly
+    /// Stop all active tracks instantly
     /// </summary>
     public void StopAllInstant()
     {

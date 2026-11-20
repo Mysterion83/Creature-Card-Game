@@ -56,6 +56,6 @@ public class BattleEndHandler : MonoBehaviour
             Debug.LogError($"BattleEndHandler: scene '{_menuSceneName}' can't be loaded. Is it in the Build Profiles scene list?");
             yield break;
         }
-        SceneManager.LoadScene(_menuSceneName);
+        LoadingScreen.Load(_menuSceneName);
     }
 }

@@ -20,8 +20,11 @@ MonoBehaviour:
   Defense: 3
   EnergyCost: 10
   PurchaseCost: 0
+  WindupDuration: 0
+  AttackDuration: 1.75
+  RecoveryDuration: 0.5
   AttackPattern: {fileID: 11400000, guid: 8d0f08983cdc9104eb38b2be3bc5385b, type: 2}
   MovementPattern: {fileID: 11400000, guid: e38cc0a874a7e6a41bd9eecbd8565683, type: 2}
-  CreaturePrefab: {fileID: 2657733167573545278, guid: 52ca667aae0c2bf46940bb78ebbee0b0, type: 3}
+  CreaturePrefab: {fileID: 2586681428060571332, guid: 5968b41a852039c4392c62cbd8262650, type: 3}
   CreatureImage: {fileID: -2276488469772668010, guid: f1a65e22067b53b4aa4be402eb319ce1, type: 3}
   XpToEvolve: 0
