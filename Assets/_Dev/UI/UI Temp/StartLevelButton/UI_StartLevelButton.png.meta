@@ -105,12 +105,12 @@ TextureImporter:
       name: UI_StartLevelButton_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 530
-        height: 100
+        x: 15
+        y: 10
+        width: 500
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -127,7 +127,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bb1413adff2c0504b9ee83797f502fc2
     internalID: 0
     vertices: []
     indices: 
