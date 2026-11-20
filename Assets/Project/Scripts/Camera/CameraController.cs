@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
         _inputMapping = new GameControls();
         _originalFOV = Camera.main.fieldOfView;
         _targetFOV = Camera.main.fieldOfView;
-        //sets initial values on current rotation - avoids snapping camera to 0,0,0 when rotation
+        //sets initial values on current rotation - avoids snapping camera to 0,0,0 when rotating
         _xRotation = transform.localEulerAngles.x;
         _yRotation = transform.localEulerAngles.y;
     }

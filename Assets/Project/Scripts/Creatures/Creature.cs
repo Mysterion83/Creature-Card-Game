@@ -17,6 +17,9 @@ public class Creature : MonoBehaviour
     public float CurrentHealth;
     public float Experience;
 
+    /// <summary>
+    /// Position the creature should be animated to move to
+    /// </summary>
     public Vector3 TargetPosition;
     
     public bool IsAttacking { get; private set; }
@@ -38,13 +41,16 @@ public class Creature : MonoBehaviour
 
     public void Update()
     {
+        //Lerp to target position
         transform.position = Vector3.Lerp(transform.position, TargetPosition, Time.deltaTime * 5f);
 
         Vector3 movementDirection = TargetPosition - transform.position;
         movementDirection.y = 0f;
 
+        //stop changing the rotation when below a certain distance - causes rotation to reset if not
         if (movementDirection.sqrMagnitude <= MOVEMENT_ANIM_DISTANCE_THRESHOLD) return;
 
+        //look at movement direction
         Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
@@ -85,7 +91,13 @@ public class Creature : MonoBehaviour
         IsAttacking = false;
         OnAnyAttackFinished?.Invoke(this);
     }
-    
+
+    /// <summary>
+    /// Deals Damage to the Creature with the given attacker
+    /// </summary>
+    /// <param name="attacker">The Creature dealing damage</param>
+    /// <param name="attackerTile">The Tile the Attacker is on</param>
+    /// <returns>A Result of the attack on the creature</returns>
     public AttackResult TakeDamage(Creature attacker, TileData attackerTile)
     {
         (float damage, DamageType damageType) = CalculateDamage(attacker, this, attackerTile);
@@ -123,6 +135,13 @@ public class Creature : MonoBehaviour
         return Data.AttackPattern.ValidPositions;
     }
 
+    /// <summary>
+    /// Simulates a combat move with the provided parameters
+    /// </summary>
+    /// <param name="attacker">The Creature dealing damage</param>
+    /// <param name="defender">The Creature Being dealt Damage</param>
+    /// <param name="attackerTile">The Tile the Attacker is on</param>
+    /// <returns>A struct with damage dealt and type of damage</returns>
     public static (float Damage, DamageType DamageType) CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
     {
         float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : NORMAL_DAMAGE_MODIFIER;

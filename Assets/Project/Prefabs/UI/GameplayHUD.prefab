@@ -1012,8 +1012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _energyCounter: {fileID: 3233341818363411315}
   _energyBonusText: {fileID: 4322790161590813349}
-  _objectiveCounter: {fileID: 58497776682334489}
   _noEnergyPopup: {fileID: 3747509832723962277}
+  _objectiveCounter: {fileID: 58497776682334489}
   _turnText: {fileID: 683752511687181837}
   _turnTimer: {fileID: 6093470747520588044}
   _summoningPhase: {fileID: 8567966854936171322}
@@ -9254,9 +9254,9 @@ RectTransform:
   - {fileID: 5660333148549704499}
   m_Father: {fileID: 7701074812621607030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -35}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8866131501408956561
@@ -10554,9 +10554,9 @@ RectTransform:
   - {fileID: 8525521897905408003}
   m_Father: {fileID: 7701074812621607030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 140, y: -35}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &375223435936235500

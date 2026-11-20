@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapData", menuName = "Project/Map Data")]
@@ -11,11 +9,22 @@ public class SavedMapData : ScriptableObject
 
     public string MapName;
     
-    /*[HideInInspector]*/public Vector2Int MapSize;
+    /// <summary>
+    /// The Size of the map
+    /// </summary>
+    public Vector2Int MapSize;
 
-    /*[HideInInspector]*/public SavedTileData[] Tiles;
+    /// <summary>
+    /// Array of saved tiles
+    /// </summary>
+    public SavedTileData[] Tiles;
     
-    public void Initialise (Vector2Int mapSize, Tile[,] tiles)
+    /// <summary>
+    /// Initialises the map data with the specified size and tiles.
+    /// </summary>
+    /// <param name="mapSize"></param>
+    /// <param name="tiles"></param>
+    public void Initialise(Vector2Int mapSize, Tile[,] tiles)
     {
         MapVersion = CURRENT_MAP_VERSION;
         MapSize = mapSize;

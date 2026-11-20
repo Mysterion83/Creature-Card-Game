@@ -4,13 +4,24 @@ using UnityEngine;
 [Serializable]
 public struct SavedTileData
 {
+    /// <summary>
+    /// Tile GUID being saved
+    /// </summary>
     public GUID TileID;
-    
+    /// <summary>
+    /// Zome of the Tile
+    /// </summary>
     public int ZoneID;
     public bool IsZoneCenter;
     public ZoneDefinition ZoneDefinition;
 
+    /// <summary>
+    /// Can Creatures Spawn in the Tile
+    /// </summary>
     public bool IsSpawnTile;
+    /// <summary>
+    /// Who owns the spawner
+    /// </summary>
     public int SpawnOwnerID;
     
     public Quaternion Rotation;
