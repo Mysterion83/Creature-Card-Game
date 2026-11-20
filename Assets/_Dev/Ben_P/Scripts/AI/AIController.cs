@@ -168,13 +168,14 @@ public class AIController : MonoBehaviour
                 break;
 
             case AIActionType.Attack:
-                _lastActionWorked = DoAttack(action.Actor, action.Tile, score);
+                yield return DoAttack(action.Actor, action.Tile, score);
                 break;
 
             case AIActionType.MoveThenAttack:
                 if (!DoMove(action.Actor, action.Tile, score)) break;
                 yield return new WaitForSeconds(_actionDelay);
-                _lastActionWorked = _adapter.IsMyPhase(MatchState.TurnAction) && DoAttack(action.Actor, action.AttackTarget, score);
+                if (_adapter.IsMyPhase(MatchState.TurnAction))
+                    yield return DoAttack(action.Actor, action.AttackTarget, score);
                 break;
         }
     }
@@ -192,23 +193,27 @@ public class AIController : MonoBehaviour
         return false;
     }
 
-    bool DoAttack(Creature attacker, Tile target, string score)
+    IEnumerator DoAttack(Creature attacker, Tile target, string score)
     {
         Creature victim = target.Occupant;
-        if (victim == null) return false;
+        if (victim == null) yield break;
         string victimName = victim.Data.CreatureName;
         float hpBefore = victim.CurrentHealth;
+        Vector2Int from = attacker.OccupyingTile.TileIndex;
 
-        if (_adapter.Attack(attacker, target))
+        if (!_adapter.Attack(attacker, target))
         {
-            _attackedThisTurn.Add(attacker);
-            float hpAfter = victim.CurrentHealth;
-            string result = hpAfter <= 0 ? "KILLED it" : $"HP {hpBefore} -> {hpAfter}";
-            Log($"ATTACK {attacker.Data.CreatureName} at {attacker.OccupyingTile.TileIndex} hit {victimName} at {target.TileIndex}: {result} (score {score}). Energy left {_adapter.Energy}");
-            return true;
+            LogRefused($"attack by {attacker.Data.CreatureName} on {victimName}");
+            yield break;
         }
-        LogRefused($"attack by {attacker.Data.CreatureName} on {victimName}");
-        return false;
+
+        _attackedThisTurn.Add(attacker);
+        _lastActionWorked = true;
+        yield return new WaitUntil(() => !_adapter.IsBusy);
+
+        float hpAfter = victim != null ? victim.CurrentHealth : 0f;
+        string result = hpAfter <= 0 ? "KILLED it" : $"HP {hpBefore} -> {hpAfter}";
+        Log($"ATTACK {attacker.Data.CreatureName} at {from} hit {victimName} at {target.TileIndex}: {result} (score {score}). Energy left {_adapter.Energy}");
     }
 
     // Helpers

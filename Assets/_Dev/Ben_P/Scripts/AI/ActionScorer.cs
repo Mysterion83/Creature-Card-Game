@@ -44,7 +44,7 @@ public static class ActionScorer
         float element = adapter.ElementModifier(attacker.Data.Element, target.Data.Element);
         score += profile.ElementAdvantage * (element - 1f) * 2f;
 
-        score += profile.TileBonus * (fromTile.Data.AttackerTileModifier - 1f) / 0.3f;
+        score += profile.TileBonus * (adapter.TileModifier(attacker, fromTile) - 1f) / 0.3f;
         return score;
     }
 
