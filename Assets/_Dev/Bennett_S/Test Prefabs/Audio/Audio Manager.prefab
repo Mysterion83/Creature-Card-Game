@@ -104,7 +104,7 @@ MonoBehaviour:
   _defaultFadeOutTime: 1
   _stingerDuckMultiplier: 0.4
   _defaultCapacity: 2
-  _maxCapacity: 5
+  _maxCapacity: 8
   _doCollectionCheck: 1
 --- !u!114 &4691502293948629859
 MonoBehaviour:

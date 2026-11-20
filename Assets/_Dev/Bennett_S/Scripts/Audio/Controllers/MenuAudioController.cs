@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class MenuAudioController : MonoBehaviour
 {
-    [Header("Music")]
-    [SerializeField] private MusicDefinition _menuMusic;
-    
     [Header("UI SFX")]
     [SerializeField] private SFXClipDefinition _navigation;
     [SerializeField] private SFXClipDefinition _open;
@@ -17,8 +14,6 @@ public class MenuAudioController : MonoBehaviour
     private void Start()
     {
         _audioManager = AudioManager.Instance;
-        _audioManager.Music.StopAllInstant();
-        _audioManager.Music.Play(_menuMusic);
     }
 
     public void PlayNavigation()
