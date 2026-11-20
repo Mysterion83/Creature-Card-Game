@@ -276,6 +276,7 @@ MonoBehaviour:
   _phaseStartDelay: 1
   _actionDelay: 1.5
   _selectionBox: {fileID: 291963297}
+  _profile: {fileID: 0}
   _logActions: 1
 --- !u!1001 &514714596
 PrefabInstance:
@@ -1675,5 +1676,5 @@ SceneRoots:
   - {fileID: 1929716824}
   - {fileID: 1094911285}
   - {fileID: 1094911288}
-  - {fileID: 859050824}
   - {fileID: 1993317090}
+  - {fileID: 859050824}
