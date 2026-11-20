@@ -10428,14 +10428,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6519669, g: 0.8584906, b: 0.6793167, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 8860937364809856770, guid: 1cd96d55461ed3b4b85fcc02e7b7f682, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18790,12 +18790,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6393432630046089996, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4327381463193941208}
-    - targetCorrespondingSourceObject: {fileID: 1748659935169847449, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2503486075374794211}
-    - targetCorrespondingSourceObject: {fileID: 836989780596965745, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2095175830582023711}
     - targetCorrespondingSourceObject: {fileID: 6735747527235362508, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6981722417929619614}
@@ -18908,40 +18902,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1 &5124722576842260572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 836989780596965745, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-  m_PrefabInstance: {fileID: 5513313922603991341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2095175830582023711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5124722576842260572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &5527261951370976476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 15761192160665073, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
@@ -18976,40 +18936,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5802844732366610937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &6108927558462955956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1748659935169847449, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-  m_PrefabInstance: {fileID: 5513313922603991341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2503486075374794211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6108927558462955956}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
