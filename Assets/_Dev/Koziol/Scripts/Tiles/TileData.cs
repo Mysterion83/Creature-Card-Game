@@ -34,6 +34,10 @@ public class TileData : ScriptableObject
     [Header(STYLING_SUBHEADER + "Rendering Settings")]
     // Prefab used for rendering the Tile
     public GameObject RenderObjectPrefab;
+
+    [Header("Board Builder")]
+    [Tooltip("The material this tile will use when creating/editing boards within the Board Builder")]
+    public Material EditorMaterial;
     
     [Header(STYLING_HEADER + "Decorations")]
     public List<TileDecoration> Decorations = new();
