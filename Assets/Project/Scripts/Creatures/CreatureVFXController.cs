@@ -75,7 +75,7 @@ public class CreatureVFXController : MonoBehaviour
             : Instantiate(profile.VFXPrefab, spawnPos, spawnRot);
 
         // Change renderer colour to tint the given VFX
-        if (profile.TintWithElementColor 
+        if (profile.TintWithElementColour 
             && _creature 
             && _creature.Data.Element 
             && vfxInstance.TryGetComponent(out Renderer rend))

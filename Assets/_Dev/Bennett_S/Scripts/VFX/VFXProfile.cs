@@ -22,5 +22,6 @@ public struct VFXProfile
     public Vector3 RotationOffset;
 
     [Header("Visual Modifiers")]
-    public bool TintWithElementColor;
+    [Tooltip("Only works for VFX with a Renderer component, like Particle effects")]
+    public bool TintWithElementColour;
 }
