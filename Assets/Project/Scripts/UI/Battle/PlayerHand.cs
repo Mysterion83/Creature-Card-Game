@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,6 +17,8 @@ public class PlayerHand : MonoBehaviour
         public GameObject Object;
         public Outline Highlight;
     }
+
+    public static event Action OnCannotAffordCard;
 
     private readonly List<HandCard> _cards = new();
     private MatchController _match;
@@ -105,6 +108,12 @@ public class PlayerHand : MonoBehaviour
     private void Pick(HandCard card)
     {
         if (!CanSummonNow()) return;
+
+        if (_localPlayer.EnergySystem.Energy.CurrentAmount < card.Creature.EnergyCost)
+        {
+            OnCannotAffordCard?.Invoke();
+            return;
+        }
 
         if (_picked == card)
         {

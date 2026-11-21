@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public abstract class Player : MonoBehaviour
     public CreatureData SelectedCreature { get; private set; }
     public EnergySystem EnergySystem { get; private set; }
     public IReadOnlyList<Creature> ActiveCreatures => _activeCreatures;
+
+    public static event Action<Player> OnNotEnoughEnergy;
 
     private int _summonedCreatureCount;
     
@@ -104,6 +107,7 @@ public abstract class Player : MonoBehaviour
         
         if (cost > EnergySystem.Energy.CurrentAmount) 
         {
+            OnNotEnoughEnergy?.Invoke(this);
             return false;
         }
         
