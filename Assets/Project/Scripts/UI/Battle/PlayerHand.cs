@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,12 +11,21 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private Color _highlightColour = new Color(1f, 0.85f, 0.2f);
     [SerializeField] private Vector2 _highlightSize = new Vector2(6f, 6f);
 
+    [Header("Hover")]
+    [SerializeField] private float _hoverScale = 1.2f;
+    [SerializeField] private float _hoverLift = 40f;
+    [SerializeField] private float _hoverSpeed = 12f;
+
     private class HandCard
     {
         public CreatureData Creature;
-        public GameObject Object;
+        public GameObject Slot;
+        public RectTransform Rect;
+        public HandCardHover Hover;
         public Outline Highlight;
     }
+
+    public static event Action OnCannotAffordCard;
 
     private readonly List<HandCard> _cards = new();
     private MatchController _match;
@@ -55,6 +65,8 @@ public class PlayerHand : MonoBehaviour
 
     private void Update()
     {
+        AnimateCards();
+
         if (_picked == null) return;
 
         if (!CanSummonNow() || Mouse.current == null)
@@ -74,14 +86,35 @@ public class PlayerHand : MonoBehaviour
         Card template = _handContent.GetComponentInChildren<Card>(true);
         if (template == null) return;
 
+        Vector2 cardSize = ((RectTransform)template.transform).sizeDelta;
+
         var newObjects = new List<GameObject>();
         foreach (CreatureData creature in deck.CreaturesToPlace)
         {
-            Card card = Instantiate(template, _handContent);
+            var slot = new GameObject("CardSlot", typeof(RectTransform), typeof(LayoutElement));
+            slot.transform.SetParent(_handContent, false);
+            ((RectTransform)slot.transform).sizeDelta = cardSize;
+            LayoutElement layout = slot.GetComponent<LayoutElement>();
+            layout.preferredWidth = cardSize.x;
+            layout.preferredHeight = cardSize.y;
+
+            Card card = Instantiate(template, slot.transform);
             card.gameObject.SetActive(true);
             card.SetCardData(creature);
 
-            var handCard = new HandCard { Creature = creature, Object = card.gameObject };
+            var rect = (RectTransform)card.transform;
+            rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(0.5f, 0f);
+            rect.anchoredPosition = Vector2.zero;
+            rect.sizeDelta = cardSize;
+            rect.localScale = Vector3.one;
+
+            var handCard = new HandCard
+            {
+                Creature = creature,
+                Slot = slot,
+                Rect = rect,
+                Hover = card.gameObject.AddComponent<HandCardHover>()
+            };
 
             Image image = card.GetComponent<Image>();
             Button button = card.gameObject.AddComponent<Button>();
@@ -95,7 +128,7 @@ public class PlayerHand : MonoBehaviour
             handCard.Highlight.enabled = false;
 
             _cards.Add(handCard);
-            newObjects.Add(card.gameObject);
+            newObjects.Add(slot);
         }
 
         foreach (Transform child in _handContent)
@@ -105,6 +138,12 @@ public class PlayerHand : MonoBehaviour
     private void Pick(HandCard card)
     {
         if (!CanSummonNow()) return;
+
+        if (_localPlayer.EnergySystem.Energy.CurrentAmount < card.Creature.EnergyCost)
+        {
+            OnCannotAffordCard?.Invoke();
+            return;
+        }
 
         if (_picked == card)
         {
@@ -132,8 +171,24 @@ public class PlayerHand : MonoBehaviour
 
         HandCard card = _picked;
         Unpick();
-        card.Object.SetActive(false);
+        card.Slot.SetActive(false);
     }
+
+    private void AnimateCards()
+    {
+        bool localTurn = IsLocalTurn();
+        float t = 1f - Mathf.Exp(-_hoverSpeed * Time.deltaTime);
+
+        foreach (HandCard card in _cards)
+        {
+            bool raised = card == _picked || (localTurn && card.Hover.IsHovered);
+            card.Rect.localScale = Vector3.Lerp(card.Rect.localScale, Vector3.one * (raised ? _hoverScale : 1f), t);
+            card.Rect.anchoredPosition = Vector2.Lerp(card.Rect.anchoredPosition, new Vector2(0f, raised ? _hoverLift : 0f), t);
+        }
+    }
+
+    private bool IsLocalTurn() =>
+        _match != null && _localPlayer != null && _match.IsMatchActive && _match.CurrentPlayer == _localPlayer;
 
     private bool CanSummonNow() =>
         _match != null && _localPlayer != null && _match.IsMatchActive &&

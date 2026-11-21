@@ -34,12 +34,16 @@ public class HUDBridge : MonoBehaviour
     {
         MatchController.OnMatchStateChanged += HandleStateChanged;
         Creature.OnAnyAttackImpact += HandleAttackImpact;
+        Player.OnNotEnoughEnergy += HandleNotEnoughEnergy;
+        PlayerHand.OnCannotAffordCard += HandleNotEnoughEnergyForCard;
     }
 
     private void OnDisable()
     {
         MatchController.OnMatchStateChanged -= HandleStateChanged;
         Creature.OnAnyAttackImpact -= HandleAttackImpact;
+        Player.OnNotEnoughEnergy -= HandleNotEnoughEnergy;
+        PlayerHand.OnCannotAffordCard -= HandleNotEnoughEnergyForCard;
     }
 
     private void Start()
@@ -96,4 +100,11 @@ public class HUDBridge : MonoBehaviour
             if (button.name == objectName) return button;
         return null;
     }
+
+    private void HandleNotEnoughEnergy(Player player)
+    {
+        if (!player.Data.IsAI) _hud.ShowNoEnergyPopup();
+    }
+
+    private void HandleNotEnoughEnergyForCard() => _hud.ShowNoEnergyPopup();
 }
