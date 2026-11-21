@@ -241,6 +241,9 @@ public class Board : MonoBehaviour
                 playerCreatureCounts[owner]++;
             }
 
+            // Continue if no creatures are present but the zone is occupied (keeps the current occupier)
+            if (playerCreatureCounts.Count == 0) continue;
+            
             float bonusEnergy = zone.Definition.BonusEnergy;
             Player controller = DetermineMajorityOwner(playerCreatureCounts);
             
