@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f5db8d02728bb4b89cecc0742e36ad, type: 3}
+  m_Name: VFX_PD_Attack_Water
+  m_EditorClassIdentifier: Assembly-CSharp::VFXAttackProfile
+  _windupEffects:
+  - VFXPrefab: {fileID: 6884321349186655739, guid: 89474f519cce64a439185ae08563f722, type: 3}
+    Delay: 0
+    SpawnOnTarget: 0
+    PositionOffset: {x: 0, y: 0, z: 0}
+    RotationOffset: {x: 0, y: 0, z: 0}
+    TintWithElementColor: 0
+  _attackEffects:
+  - VFXPrefab: {fileID: 2722298861590243563, guid: ed45c2569bbc1e449a971e67ad373b73, type: 3}
+    Delay: 0
+    SpawnOnTarget: 1
+    PositionOffset: {x: 0, y: 0, z: 0}
+    RotationOffset: {x: 0, y: 0, z: 0}
+    TintWithElementColor: 0
+  _impactEffects:
+  - VFXPrefab: {fileID: 1680812763015278310, guid: a548cff9a08189245979c6678cddf48e, type: 3}
+    Delay: 0
+    SpawnOnTarget: 1
+    PositionOffset: {x: 0, y: 0, z: 0}
+    RotationOffset: {x: 0, y: 0, z: 0}
+    TintWithElementColor: 1
+  _recoveryEffects: []

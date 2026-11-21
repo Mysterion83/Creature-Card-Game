@@ -20,7 +20,7 @@ MonoBehaviour:
   Defense: 6
   EnergyCost: 10
   PurchaseCost: 0
-  WindupDuration: 1
+  WindupDuration: 0.75
   AttackDuration: 1.75
   RecoveryDuration: 0.5
   AttackPattern: {fileID: 11400000, guid: 0ef6203fecb7eda4fa89acee64ce78fe, type: 2}
