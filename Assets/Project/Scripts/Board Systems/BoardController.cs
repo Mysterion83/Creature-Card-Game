@@ -401,7 +401,8 @@ public class BoardController : MonoBehaviour
         _selectedTile = tile;
         OnCreatureSelected?.Invoke(tile.Occupant);
         
-        _creatureStage = CreatureStage.Moving;
+        // Sets stage based on if moved
+        _creatureStage = occupyingCreature.HasMoved ? CreatureStage.Attacking : CreatureStage.Moving;
 
         // Shows attack pattern if moved, move pattern otherwise
         PreviewPattern(_selectedTile, occupyingCreature.HasMoved);

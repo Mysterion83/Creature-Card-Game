@@ -65,12 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e546988db444674f8fefc89ba280e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureVFXController
-  _windupVfxPrefab: {fileID: 0}
-  _attackFireVfxPrefab: {fileID: 0}
-  _hitSmokeVfxPrefab: {fileID: 0}
-  _damageIndicatorPrefab: {fileID: 0}
-  _deathVfxPrefab: {fileID: 4828521126213304851, guid: 152764adf907bd84eb38380d06490077, type: 3}
   _vfxTransform: {fileID: 292506960746135351}
+  _defaultAttackProfile: {fileID: 0}
+  _deathProfile: {fileID: 11400000, guid: 8f7348869a705324f955982b92588677, type: 2}
+  _damageIndicatorPrefab: {fileID: 0}
 --- !u!114 &8440459516312530580
 MonoBehaviour:
   m_ObjectHideFlags: 0
