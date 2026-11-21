@@ -16,13 +16,15 @@ MonoBehaviour:
   - VFXPrefab: {fileID: 6884321349186655739, guid: 4396b2636ab7c1d4da37e1fe11a9cc88, type: 3}
     Delay: 0
     SpawnOnTarget: 0
-    PositionOffset: {x: 0, y: 0, z: 0}
+    ParentToAnchor: 1
+    PositionOffset: {x: 0, y: 1.5, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     TintWithElementColor: 0
   _attackEffects:
   - VFXPrefab: {fileID: 4102955471858739986, guid: 335efe351b2f20f49b8a144448b5d840, type: 3}
     Delay: 0
     SpawnOnTarget: 1
+    ParentToAnchor: 0
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     TintWithElementColor: 0
@@ -30,6 +32,7 @@ MonoBehaviour:
   - VFXPrefab: {fileID: 1680812763015278310, guid: a548cff9a08189245979c6678cddf48e, type: 3}
     Delay: 0
     SpawnOnTarget: 1
+    ParentToAnchor: 0
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     TintWithElementColor: 1

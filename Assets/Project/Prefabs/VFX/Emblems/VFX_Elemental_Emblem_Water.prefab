@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: fbdf56d1022503b4c9dcd6f7d702ff92, type: 3}
     - target: {fileID: 1253352650190780581, guid: 7cb54a02c50b4c04eb05bd274a7088e3, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Overridden
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253352650190780581, guid: 7cb54a02c50b4c04eb05bd274a7088e3, type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.b
       value: 47.094337
       objectReference: {fileID: 0}
