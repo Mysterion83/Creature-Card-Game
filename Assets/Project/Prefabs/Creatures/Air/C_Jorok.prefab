@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
       propertyPath: _windupVfxPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6884321349186655739, guid: 4396b2636ab7c1d4da37e1fe11a9cc88, type: 3}
     - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
       propertyPath: _hitSmokeVfxPrefab
       value: 
