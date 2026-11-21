@@ -15,6 +15,9 @@ public struct VFXProfile
     [Header("Placement Settings")]
     [Tooltip("What this VFX should spawn on: \n\nTarget Object (True)\nThis Object (False)")]
     public bool SpawnOnTarget;
+    [Tooltip("If this VFX attaches to an Anchor so it follows a parent object's movement and rotation." +
+             "\n\nIMPORTANT: Disable this for death effects to avoid VFX becoming destroyed with the parent object.")]
+    public bool ParentToAnchor;
     public Vector3 PositionOffset;
     public Vector3 RotationOffset;
 

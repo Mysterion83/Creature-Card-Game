@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ff4cad6270c15943857498845e928ba, type: 3}
-  m_Name: VFX_PD_Death
+  m_Name: VFX_PD_Default_Death
   m_EditorClassIdentifier: Assembly-CSharp::VFXDeathProfile
   _effects:
   - VFXPrefab: {fileID: 4828521126213304851, guid: 152764adf907bd84eb38380d06490077, type: 3}

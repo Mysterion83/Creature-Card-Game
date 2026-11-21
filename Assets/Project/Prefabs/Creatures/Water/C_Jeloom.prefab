@@ -57,6 +57,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -8382115354821933865, guid: 7d8c70dd14661cf48a33f4e3eaeedf1f, type: 3}
     - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _deathProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f7348869a705324f955982b92588677, type: 2}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
       propertyPath: _attackVFXPrefab
       value: 
       objectReference: {fileID: 2722298861590243563, guid: ed45c2569bbc1e449a971e67ad373b73, type: 3}
@@ -76,6 +80,10 @@ PrefabInstance:
       propertyPath: _attackFireVfxPrefab
       value: 
       objectReference: {fileID: 2722298861590243563, guid: ed45c2569bbc1e449a971e67ad373b73, type: 3}
+    - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
+      propertyPath: _defaultAttackProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: efd6de3a3bd6fee4da8b71916ca14c92, type: 2}
     - target: {fileID: 5776271529849124876, guid: a3a52b12116c49b4598e1935eb723ca2, type: 3}
       propertyPath: _damageIndicatorPrefab
       value: 
