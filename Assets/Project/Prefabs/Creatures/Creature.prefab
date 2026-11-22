@@ -68,7 +68,7 @@ MonoBehaviour:
   _vfxTransform: {fileID: 292506960746135351}
   _defaultAttackProfile: {fileID: 0}
   _deathProfile: {fileID: 11400000, guid: 8f7348869a705324f955982b92588677, type: 2}
-  _damageIndicatorPrefab: {fileID: 0}
+  _damageIndicatorPrefab: {fileID: 8610561946721827751, guid: 7dd6aaab5a2800b4c908e7eb992fd9bb, type: 3}
 --- !u!114 &8440459516312530580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,8 +81,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27733e0f61fd34983c522f0bacfe64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureAudioController
-  _damageSound: {fileID: 0}
-  _deathSound: {fileID: 11400000, guid: 7b3117320fb1c2147a635e38f6170a44, type: 2}
+  _attackProfile: {fileID: 11400000, guid: ec91c4eb82fb9a84fb44c33d3270506b, type: 2}
+  _damageProfile: {fileID: 11400000, guid: eb16780047c6b5a4cb15f0f5ae4ac246, type: 2}
+  _deathProfile: {fileID: 11400000, guid: b6621f95e9101314dade6cf20b82f667, type: 2}
+  _boardProfile: {fileID: 11400000, guid: d9359633c7b31404b9624dafccf8a942, type: 2}
 --- !u!1 &5501235228215098190
 GameObject:
   m_ObjectHideFlags: 0
