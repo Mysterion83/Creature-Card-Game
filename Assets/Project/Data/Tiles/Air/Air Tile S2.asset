@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Air_Base_S2
   _id: 095063a5fcfa3ff44801e4e3ff4de5d6
-  _name: 
+  _name: Rainy Plains
   _description: 
   Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   EffectStrength: 2

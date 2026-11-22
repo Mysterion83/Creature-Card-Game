@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Water_Base_S3
   _id: 76b81dc0e65d3e148991904741ea0a1f
-  _name: 
+  _name: Deep Ocean
   _description: 
   Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   EffectStrength: 3

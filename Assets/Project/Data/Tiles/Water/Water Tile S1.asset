@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Water_Base_S1
   _id: 7f5055ecd8430294f9bce6fd7146c145
-  _name: 
+  _name: Puddle
   _description: 
   Element: {fileID: 11400000, guid: 8be81f38676ffc94d93db16afb93c105, type: 2}
   EffectStrength: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Fire_Base_S1
   _id: 92c1c82eb4365c5428b0dc1b8cafe94b
-  _name: 
+  _name: Ashland
   _description: 
   Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   EffectStrength: 1

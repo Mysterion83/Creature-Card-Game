@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Neutral
   _id: c33393dd9fc95864195d1d169f324c24
-  _name: 
+  _name: Grassland
   _description: 
   Element: {fileID: 11400000, guid: c6b1c7fdfb747f246b954d8b4715ba84, type: 2}
   EffectStrength: 0

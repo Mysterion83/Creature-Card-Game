@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Fire_Base_S3
   _id: 7c5f8aa903951fe4fb4c9ae7bdd5224a
-  _name: 
+  _name: Lava Lake
   _description: 
   Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   EffectStrength: 3

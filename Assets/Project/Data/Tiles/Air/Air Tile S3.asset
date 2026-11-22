@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileData
   _stringID: Core_Tiles_Air_Base_S3
   _id: ff740dfb4b216fd45987d24724ab336b
-  _name: 
+  _name: Stormy Plains
   _description: 
   Element: {fileID: 11400000, guid: 0b0ea837148669e4196235c6313176dc, type: 2}
   EffectStrength: 3
