@@ -191,43 +191,43 @@ public class HUD : MonoBehaviour
 
         if (!attackResult.Attacker.Owner.Data.IsAI) 
         {
-            logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
-            rawLogEntry += $"{attackResult.Attacker.Data.CreatureName} ";
+            logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $"{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}";
         }
         else 
         {
-            logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
-            rawLogEntry += $"{attackResult.Attacker.Data.CreatureName} ";
+            logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $"{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}";
         }
 
         if (attackResult.IsDead) 
         {
-            logEntry += "killed ";
-            rawLogEntry += "killed ";
+            logEntry += " killed";
+            rawLogEntry += " killed";
         }
         else 
         {
-            logEntry += "attacked ";
-            rawLogEntry += "attacked ";
+            logEntry += "attacked";
+            rawLogEntry += "attacked";
         }
 
         if (!attackResult.Defender.Owner.Data.IsAI) {
-            logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
-            rawLogEntry += $"{attackResult.Defender.Data.CreatureName} ";
+            logEntry += $" {PLAYER_COLOR_TAG}{attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $" {attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName} ";
         }
         else {
-            logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
-            rawLogEntry += $"{attackResult.Defender.Data.CreatureName} ";
+            logEntry += $" {ENEMY_COLOR_TAG}{attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $" {attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName}";
         }
 
         if (attackResult.DamageDealt > 0 && !attackResult.IsDead) 
         {
-            logEntry += $"for {attackResult.DamageDealt} damage.";
-            rawLogEntry += $"for {attackResult.DamageDealt} damage.";
+            logEntry += $" for {attackResult.DamageDealt} damage.";
+            rawLogEntry += $" for {attackResult.DamageDealt} damage.";
         }
         else if (attackResult.DamageDealt == 0 && !attackResult.IsDead) 
         {
-            logEntry += "but it was ineffective.";
+            logEntry += " but it was ineffective.";
             rawLogEntry += "but it was ineffective.";
         }
 
