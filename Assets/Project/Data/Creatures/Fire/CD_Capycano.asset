@@ -15,9 +15,9 @@ MonoBehaviour:
   CreatureName: Capycano
   Element: {fileID: 11400000, guid: 7d60093bf450cef419df97b611ea6efe, type: 2}
   Type: 1
-  MaxHealth: 44
-  Attack: 9
-  Defense: 6
+  MaxHealth: 30
+  Attack: 8
+  Defense: 5
   EnergyCost: 10
   PurchaseCost: 0
   WindupDuration: 0.75
