@@ -9,7 +9,7 @@ using UnityEngine;
 
 public static class ActionScorer
 {
-    public static float Score(AIAction action, BattleAdapter adapter, AIProfile profile, List<Creature> enemies, ThreatMap threat)
+    public static float Score(AIAction action, BattleAdapter adapter, AIProfile profile, List<Creature> enemies, ThreatMap threat, ZoneMap zones)
     {
         var parts = new List<(string Name, float Value)>();
 
@@ -19,21 +19,25 @@ public static class ActionScorer
                 parts.Add(("Summon", profile.Summon));
                 parts.Add(("Advance", profile.Advance * Closeness(action.Tile.TileIndex, adapter, enemies)));
                 AddDefence(parts, null, action.Card, null, action.Tile, null, adapter, profile, threat);
+                AddZones(parts, null, action.Tile, null, adapter, profile, zones);
                 break;
 
             case AIActionType.Move:
                 parts.Add(("Advance", MoveScore(action.Actor, action.Tile, profile, enemies)));
                 AddDefence(parts, action.Actor, action.Actor.Data, action.Actor.OccupyingTile, action.Tile, null, adapter, profile, threat);
+                AddZones(parts, action.Actor.OccupyingTile, action.Tile, null, adapter, profile, zones);
                 break;
 
             case AIActionType.Attack:
-                AddAttack(parts, action.Actor, action.Actor.OccupyingTile, action.Tile, adapter, profile, enemies);
+                Creature target = AddAttack(parts, action.Actor, action.Actor.OccupyingTile, action.Tile, adapter, profile, enemies);
+                AddZones(parts, null, null, target, adapter, profile, zones);
                 break;
 
             default:
                 parts.Add(("Advance", MoveScore(action.Actor, action.Tile, profile, enemies)));
                 Creature killed = AddAttack(parts, action.Actor, action.Tile, action.AttackTarget, adapter, profile, enemies);
                 AddDefence(parts, action.Actor, action.Actor.Data, action.Actor.OccupyingTile, action.Tile, killed, adapter, profile, threat);
+                AddZones(parts, action.Actor.OccupyingTile, action.Tile, killed, adapter, profile, zones);
                 break;
         }
 
@@ -57,7 +61,8 @@ public static class ActionScorer
         float damage = adapter.PredictDamageFrom(attacker, fromTile, target);
         if (damage <= 0f) return null;
 
-        parts.Add(("Damage", profile.Damage * Mathf.Min(1f, damage / target.CurrentHealth)));
+        parts.Add(("Attack", profile.Attack));
+        parts.Add(("Damage", profile.Damage * Mathf.Sqrt(Mathf.Min(1f, damage / target.CurrentHealth))));
 
         bool kills = damage >= target.CurrentHealth;
         if (kills)
@@ -67,9 +72,9 @@ public static class ActionScorer
         }
 
         float element = adapter.ElementModifier(attacker.Data.Element, target.Data.Element);
-        parts.Add(("Element", profile.ElementAdvantage * (element - 1f) * 2f));
+        parts.Add(("Element", profile.ElementAdvantage * Mathf.Max(0f, element - 1f) * 2f));
 
-        parts.Add(("Tile", profile.TileBonus * (adapter.TileModifier(attacker, fromTile) - 1f) / 0.3f));
+        parts.Add(("Tile", profile.TileBonus * Mathf.Max(0f, adapter.TileModifier(attacker, fromTile) - 1f) / 0.3f));
         return kills ? target : null;
     }
 
@@ -97,6 +102,30 @@ public static class ActionScorer
 
         float alliesBefore = from != null ? AlliesNextTo(from, actor, adapter) : 0f;
         parts.Add(("Together", profile.StayTogether * (AlliesNextTo(to, actor, adapter) - alliesBefore) / 2f));
+    }
+
+    private static void AddZones(List<(string, float)> parts, Tile from, Tile to, Creature killed, BattleAdapter adapter, AIProfile profile, ZoneMap zones)
+    {
+        parts.Add(("Zone", profile.Zone * zones.ControlChange(from, to, killed)));
+        if (to == null) return;
+
+        int after = zones.DistanceToTarget(to);
+        if (after >= 0)
+        {
+            if (from == null)
+            {
+                Vector2Int size = adapter.BoardSize;
+                parts.Add(("ZoneApproach", profile.ZoneApproach * 2f * (1f - Mathf.Min(1f, after / (float)Mathf.Max(1, size.x + size.y)))));
+            }
+            else
+            {
+                int before = zones.DistanceToTarget(from);
+                parts.Add(("ZoneApproach", profile.ZoneApproach * (before - after)));
+            }
+        }
+
+        float guardBefore = from != null ? zones.GuardValue(from) : 0f;
+        parts.Add(("ZoneGuard", profile.ZoneGuard * (zones.GuardValue(to) - guardBefore)));
     }
 
     private static float AlliesNextTo(Tile tile, Creature actor, BattleAdapter adapter)

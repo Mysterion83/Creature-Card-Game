@@ -14,15 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIProfile
   LastEnemy: 1000
   Kill: 30
+  Attack: 8
   Damage: 20
   ElementAdvantage: 8
   TileBonus: 6
   Advance: 4
   Summon: 10
-  Danger: 0
-  WouldDie: 0
-  Retreat: 0
-  StayTogether: 0
+  Danger: 8
+  WouldDie: 25
+  Retreat: 6
+  StayTogether: 3
+  Zone: 15
+  ZoneApproach: 2
+  ZoneGuard: 5
   EndTurnThreshold: 1
   MaxActionsPerPhase: 8
   LogDecisions: 1

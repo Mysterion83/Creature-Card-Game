@@ -118,6 +118,7 @@ public class AIController : MonoBehaviour
 
             List<Creature> enemies = _adapter.EnemyCreatures();
             ThreatMap threat = new ThreatMap(_adapter, enemies);
+            ZoneMap zones = new ZoneMap(_adapter, threat);
             List<AIAction> actions = state == MatchState.TurnSummon
                 ? ActionGenerator.Summons(_adapter)
                 : ActionGenerator.Actions(_adapter, _movedThisTurn, _attackedThisTurn);
@@ -129,7 +130,7 @@ public class AIController : MonoBehaviour
             }
 
             foreach (AIAction action in actions)
-                action.Score = ActionScorer.Score(action, _adapter, profile, enemies, threat);
+                action.Score = ActionScorer.Score(action, _adapter, profile, enemies, threat, zones);
             actions.Sort((a, b) => b.Score.CompareTo(a.Score));
 
             if (profile.LogDecisions) LogTopActions(actions, 5);
