@@ -19,6 +19,10 @@ MonoBehaviour:
   TileBonus: 6
   Advance: 4
   Summon: 10
+  Danger: 0
+  WouldDie: 0
+  Retreat: 0
+  StayTogether: 0
   EndTurnThreshold: 1
   MaxActionsPerPhase: 8
   LogDecisions: 1

@@ -660,6 +660,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1356083140943952970, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356083140943952970, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356083140943952970, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356083140943952970, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1494436129105372695, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -718,6 +734,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2087662196953128215, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315612514073936322, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315612514073936322, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315612514073936322, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315612514073936322, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2599878522290916039, guid: ebc5f5bdd7f235f45ba2d41610ac6c6d, type: 3}
@@ -1092,6 +1124,9 @@ MonoBehaviour:
   _handContent: {fileID: 2031874304}
   _highlightColour: {r: 1, g: 0.85, b: 0.2, a: 1}
   _highlightSize: {x: 6, y: 6}
+  _hoverScale: 1.2
+  _hoverLift: 40
+  _hoverSpeed: 12
 --- !u!1001 &1156033339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1595,6 +1630,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
+--- !u!114 &1528521808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4550795233912878616, guid: 6b9135b09c3817344ae2402e1dcfc0f5, type: 3}
+  m_PrefabInstance: {fileID: 1528521807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75a3478ac6562c4c9d19328137f89ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoardController
 --- !u!1001 &1566936045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1899,6 +1945,10 @@ PrefabInstance:
       propertyPath: _maxTurnTime
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7211967049941050681, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
+      propertyPath: _boardController
+      value: 
+      objectReference: {fileID: 1528521808}
     - target: {fileID: 7338603468826273317, guid: eef2783feb3adcc4f8ee3bbd48af4ffd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
