@@ -101,6 +101,10 @@ public class BattleAdapter
     public float PredictDamageFrom(Creature attacker, Tile fromTile, Creature target) =>
         Creature.CalculateDamage(attacker, target, fromTile.Data).Damage;
 
+    public float DamageAgainst(Creature attacker, Tile fromTile, CreatureData defender) =>
+        Mathf.Max(0f, (attacker.Data.Attack * TileModifier(attacker, fromTile) - defender.Defense)
+            * ElementModifier(attacker.Data.Element, defender.Element));
+
     public float TileModifier(Creature attacker, Tile fromTile)
     {
         float bonus = fromTile.Data.AttackerTileModifier;

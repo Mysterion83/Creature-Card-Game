@@ -11,7 +11,13 @@ using UnityEngine;
 
 public static class BattleDeckLoader
 {
-    public static void Apply(PlayerProfile profile, CreatureCatalog catalog)
+    public static void Apply(PlayerProfile profile, CreatureCatalog catalog, LevelData level)
+    {
+        ApplyPlayerDeck(profile, catalog);
+        ApplyEnemyDeck(level);
+    }
+
+    private static void ApplyPlayerDeck(PlayerProfile profile, CreatureCatalog catalog)
     {
         if (profile == null || catalog == null) return;
 
@@ -43,6 +49,38 @@ public static class BattleDeckLoader
 
         SetDeck(deck, cards);
         Debug.Log($"BattleDeckLoader: loaded {cards.Count} cards from the saved deck.");
+    }
+
+    private static void ApplyEnemyDeck(LevelData level)
+    {
+        if (level == null || level.EnemyCreatures == null || level.EnemyCreatures.Count == 0) return;
+
+        PlayerDeck deck = GetAIPlayerDeck();
+        if (deck == null) return;
+
+        var cards = new List<CreatureData>();
+        foreach (CreatureData creature in level.EnemyCreatures)
+        {
+            if (creature == null) continue;
+            if (creature.CreaturePrefab == null)
+            {
+                Debug.LogWarning($"BattleDeckLoader: {creature.name} has no Creature Prefab so the AI can't summon it, skipping it.");
+                continue;
+            }
+            cards.Add(creature);
+        }
+
+        if (cards.Count == 0) return;
+
+        SetDeck(deck, cards);
+        Debug.Log($"BattleDeckLoader: loaded {cards.Count} enemy cards from {level.name}.");
+    }
+
+    private static PlayerDeck GetAIPlayerDeck()
+    {
+        foreach (Player player in PlayerRegistry.MasterList)
+            if (player != null && player.Data.IsAI && player.TryGetComponent(out PlayerDeck deck)) return deck;
+        return null;
     }
 
     private static PlayerDeck GetLocalPlayerDeck()
