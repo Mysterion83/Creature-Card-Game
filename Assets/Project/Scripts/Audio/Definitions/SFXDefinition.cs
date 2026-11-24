@@ -42,9 +42,18 @@ public abstract class SFXDefinition : SoundDefinition
     public bool BypassListenerEffects;
     [Tooltip("Ignore any reverb zone this audio source may be in.")]
     public bool BypassReverbZones;
+
+    [Header("Concurrency & Optimisation")]
+    [Tooltip("Minimum time in seconds before this definition can be triggered again.")]
+    [Min(0f)] public float Cooldown;
+    [Space]
+    [Tooltip("Enable to cap how many instances of this definition can play at the same time.")]
+    public bool LimitVoices;
+    [Tooltip("Maximum simultaneous instances of this definition, using 1 will cut off the previous.")]
+    [Min(1)] public int MaxVoices = 1;
     
     /*
-    Above is an Audio priority field, from 0-256. Higher amounts mean the sound must absolutely be heard.
+    Above is an Audio priority field, from 0-256. Lower amounts mean the sound must absolutely be heard.
     I researched into how audio works in Unity, something called voice stealing occurs when the number of active
     sources is greater than the engine's limit (specified in project settings), so it cuts off or mutes active sounds.
     To fix this you can apparently set priority for Audio Sources to prioritise sounds over others:

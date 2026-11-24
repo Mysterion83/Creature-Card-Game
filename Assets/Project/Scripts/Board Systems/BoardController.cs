@@ -35,7 +35,9 @@ public class BoardController : MonoBehaviour
 
     public Vector3 SelectedPosition => _selectionBox.position + new Vector3(0, -1, 0); // Offset the position to match tiles
 
+    public static event Action<Creature> OnCreatureSummoned;
     public static event Action<Creature> OnCreatureSelected;
+    public static event Action<Creature, Tile, Tile> OnCreatureMoved;
 
     [SerializeField] private GameObject _hitParticlesPrefab;
 
@@ -176,6 +178,7 @@ public class BoardController : MonoBehaviour
         activePlayer.AddCreature(creature);
         creatureObj.name = creature.Data.CreatureName;
 
+        OnCreatureSummoned?.Invoke(creature);
         creature.OnCreatureDeath += HandleCreatureDeath;
 
         if (tile.ZoneID >= 0)
@@ -226,13 +229,16 @@ public class BoardController : MonoBehaviour
         creature.transform.parent = target.transform;
         creature.TargetPosition = target.transform.position + new Vector3(0, target.Data.CreatureYOffset, 0);
         
-        // Cache the previous Zone ID
+        // Cache the previous Tile and Zone ID
         int oldZoneID = creature.OccupyingTile.ZoneID;
+        Tile previousTile = creature.OccupyingTile;
         
         // Apply new tile data
         creature.OccupyingTile.Occupant = null;
         creature.OccupyingTile = target;
         target.Occupant = creature;
+        
+        OnCreatureMoved?.Invoke(creature, previousTile, target);
         
         // Re-evaluate zone control if a creature moves into a zone or has moved from a zone
         if (oldZoneID >= 0 || target.ZoneID >= 0)

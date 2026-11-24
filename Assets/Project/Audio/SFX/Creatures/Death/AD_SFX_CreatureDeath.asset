@@ -23,8 +23,8 @@ MonoBehaviour:
   StereoPanning: 0
   SpatialBlend: 1
   ReverbZoneMix: 1
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 5
+  MaxDistance: 50
   RolloffMode: 0
   UseCustomRolloffCurve: 0
   CustomRolloffCurve:

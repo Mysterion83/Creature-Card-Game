@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -17,7 +18,8 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private bool _doCollectionCheck;
     
     private IObjectPool<SFXEmitter> _sfxEmitterPool;
-    public readonly List<SFXEmitter> ActiveSoundEmitters = new();
+    private readonly List<SFXEmitter> _activeSoundEmitters = new();
+    private readonly Dictionary<SFXDefinition, float> _lastPlayTimes = new();
     
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class SFXManager : MonoBehaviour
             maxSize: _maxCapacity);
     }
 
+    #region Playback
     /// <summary>
     /// Play a Sound Effect from a provided <c>SFXDefinition</c>
     /// </summary>
@@ -56,13 +59,118 @@ public class SFXManager : MonoBehaviour
     {
         if (!sfxDefinition || !sfxDefinition.IsValid()) return null;
         
+        // Check for cooldown using unscaledTime
+        if (sfxDefinition.Cooldown > 0f && _lastPlayTimes.TryGetValue(sfxDefinition, out float lastTime))
+        {
+            if (Time.unscaledTime - lastTime < sfxDefinition.Cooldown) return null;
+        }
+        
+        // Check for limiting
+        if (sfxDefinition.LimitVoices) LimitVoices(sfxDefinition);
+        
         // Grab an emitter from the pool, initialise and then play it
         SFXEmitter emitter = _sfxEmitterPool.Get();
         emitter.transform.position = position;
         emitter.Initialise(sfxDefinition);
         emitter.Play();
 
+        // Assign a cooldown if the definition has one
+        if (sfxDefinition.Cooldown > 0f)
+        {
+            _lastPlayTimes[sfxDefinition] = Time.unscaledTime;
+        }
+        
         return emitter;
+    }
+    
+    /// <summary>
+    /// Play a Sound Effect from a provided <c>SFXDefinition</c> under a given Transform with an optional offset
+    /// </summary>
+    /// <param name="sfxDefinition">The <c>SFXDefinition</c> to retrieve from</param>
+    /// <param name="anchor">The Transform to play under</param>
+    /// <param name="offset">The local position offset within the anchor</param>
+    /// <returns>The allocated <c>SFXEmitter</c> to play the provided sound</returns>
+    public SFXEmitter Play(SFXDefinition sfxDefinition, Transform anchor, Vector3 offset = default)
+    {
+        return !anchor ? null : Play(sfxDefinition, anchor.TransformPoint(offset));
+    }
+    
+    /// <summary>
+    /// Play a Sound Effect from a provided <c>SFXDefinition</c> after a delay
+    /// </summary>
+    /// <param name="sfxDefinition">The <c>SFXDefinition</c> to retrieve from</param>
+    /// <param name="delay">The delay in seconds until the sound plays</param>
+    public void PlayDelayed(SFXDefinition sfxDefinition, float delay)
+    {
+        PlayDelayed(sfxDefinition, delay, transform.position);
+    }
+
+    /// <summary>
+    /// Play a Sound Effect from a provided <c>SFXDefinition</c> after a delay at a given world-space position 
+    /// </summary>
+    /// <param name="sfxDefinition">The <c>SFXDefinition</c> to retrieve from</param>
+    /// <param name="delay">The delay in seconds until the sound plays</param>
+    /// <param name="position">The world-space position to play the sound at</param>
+    public void PlayDelayed(SFXDefinition sfxDefinition, float delay, Vector3 position)
+    {
+        if (!sfxDefinition) return;
+
+        if (delay <= 0f)
+        {
+            Play(sfxDefinition, position);
+            return;
+        }
+
+        StartCoroutine(PlayDelayedRoutine(sfxDefinition, delay, position));
+    }
+
+    /// <summary>
+    /// Play a Sound Effect from a provided <c>SFXDefinition</c> at a given world-space position after a given delay
+    /// </summary>
+    /// <param name="sfxDefinition">The <c>SFXDefinition</c> to retrieve from</param>
+    /// <param name="delay">The delay in seconds until the sound plays</param>
+    /// <param name="anchor">The transform to play under</param>
+    /// <param name="offset">The local position offset within the anchor</param>
+    public void PlayDelayed(SFXDefinition sfxDefinition, float delay, Transform anchor, Vector3 offset = default)
+    {
+        // If the anchor exists then allocate its position with any offset, otherwise use a fallback (SFXManager's position)
+        Vector3 position = anchor ? anchor.TransformPoint(offset) : transform.position;
+        PlayDelayed(sfxDefinition, delay, position);
+    }
+    #endregion
+    
+    #region Delay Coroutines
+    private IEnumerator PlayDelayedRoutine(SFXDefinition sfxDefinition, float delay, Vector3 position)
+    {
+        yield return new WaitForSeconds(delay);
+        Play(sfxDefinition, position);
+    }
+    #endregion
+
+    #region Helper Methods
+    /// <summary>
+    /// Helper method for limiting the voices of an <c>SFXDefinition</c>
+    /// </summary>
+    /// <param name="sfxDefinition">The <c>SFXDefinition</c> to target</param>
+    private void LimitVoices(SFXDefinition sfxDefinition)
+    {
+        int activeCount = 0;
+        SFXEmitter oldestVoice = null;
+
+        // ActiveSoundEmitters is automatically ordered from oldest to newest
+        foreach (var emitter in _activeSoundEmitters)
+        {
+            if (emitter.CurrentDefinition != sfxDefinition) continue;
+
+            activeCount++;
+            if (!oldestVoice) oldestVoice = emitter;
+        }
+
+        // Stop the oldest voice if it exceeded or reached the max voices
+        if (activeCount >= sfxDefinition.MaxVoices && oldestVoice)
+        {
+            oldestVoice.Stop();
+        }
     }
 
     /// <summary>
@@ -81,7 +189,8 @@ public class SFXManager : MonoBehaviour
         sfxEmitter.transform.localPosition = Vector3.zero;
         _sfxEmitterPool.Release(sfxEmitter);
     }
-    
+    #endregion
+
     #region IObjectPool Callback Methods
     private SFXEmitter CreateSoundEmitter()
     {
@@ -93,13 +202,13 @@ public class SFXManager : MonoBehaviour
     private void OnTakeFromPool(SFXEmitter sfxEmitter)
     {
         sfxEmitter.gameObject.SetActive(true);
-        ActiveSoundEmitters.Add(sfxEmitter);
+        _activeSoundEmitters.Add(sfxEmitter);
     }
 
     private void OnReturnedToPool(SFXEmitter sfxEmitter)
     {
         sfxEmitter.gameObject.SetActive(false);
-        ActiveSoundEmitters.Remove(sfxEmitter);
+        _activeSoundEmitters.Remove(sfxEmitter);
     }
     
     private void OnDestroyedPoolObject(SFXEmitter sfxEmitter)
