@@ -54,4 +54,7 @@ MonoBehaviour:
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
-  AudioClip: {fileID: 8300000, guid: b889091a92bc8f94594a58bc88718efe, type: 3}
+  Cooldown: 0.1
+  LimitVoices: 1
+  MaxVoices: 1
+  AudioClip: {fileID: 8300000, guid: d636435d2dd4a7549bf21efadd47c9e1, type: 3}

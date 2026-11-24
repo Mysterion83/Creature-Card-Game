@@ -10,6 +10,8 @@ public class SFXEmitter : MonoBehaviour
     private AudioSource _audioSource;
     private Coroutine _playingCoroutine;
     
+    public SFXDefinition CurrentDefinition { get; private set; }
+    
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -21,6 +23,7 @@ public class SFXEmitter : MonoBehaviour
     /// <param name="sfxDefinition"> The <c>SFXDefinition</c> to retrieve audio source settings from</param>
     public void Initialise(SFXDefinition sfxDefinition)
     {
+        CurrentDefinition = sfxDefinition;
         sfxDefinition.ApplySource(_audioSource);
         _audioSource.clip = sfxDefinition.GetAudioClip();
     }

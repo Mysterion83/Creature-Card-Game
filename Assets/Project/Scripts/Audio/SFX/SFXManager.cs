@@ -18,7 +18,8 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private bool _doCollectionCheck;
     
     private IObjectPool<SFXEmitter> _sfxEmitterPool;
-    public readonly List<SFXEmitter> ActiveSoundEmitters = new();
+    private readonly List<SFXEmitter> _activeSoundEmitters = new();
+    private readonly Dictionary<SFXDefinition, float> _lastPlayTimes = new();
     
     private void Awake()
     {
@@ -58,12 +59,27 @@ public class SFXManager : MonoBehaviour
     {
         if (!sfxDefinition || !sfxDefinition.IsValid()) return null;
         
+        // Check for cooldown using unscaledTime
+        if (sfxDefinition.Cooldown > 0f && _lastPlayTimes.TryGetValue(sfxDefinition, out float lastTime))
+        {
+            if (Time.unscaledTime - lastTime < sfxDefinition.Cooldown) return null;
+        }
+        
+        // Check for limiting
+        if (sfxDefinition.LimitVoices) LimitVoices(sfxDefinition);
+        
         // Grab an emitter from the pool, initialise and then play it
         SFXEmitter emitter = _sfxEmitterPool.Get();
         emitter.transform.position = position;
         emitter.Initialise(sfxDefinition);
         emitter.Play();
 
+        // Assign a cooldown if the definition has one
+        if (sfxDefinition.Cooldown > 0f)
+        {
+            _lastPlayTimes[sfxDefinition] = Time.unscaledTime;
+        }
+        
         return emitter;
     }
     
@@ -130,7 +146,33 @@ public class SFXManager : MonoBehaviour
         Play(sfxDefinition, position);
     }
     #endregion
-    
+
+    #region Helper Methods
+    /// <summary>
+    /// Helper method for limiting the voices of an <c>SFXDefinition</c>
+    /// </summary>
+    /// <param name="sfxDefinition">The <c>SFXDefinition</c> to target</param>
+    private void LimitVoices(SFXDefinition sfxDefinition)
+    {
+        int activeCount = 0;
+        SFXEmitter oldestVoice = null;
+
+        // ActiveSoundEmitters is automatically ordered from oldest to newest
+        foreach (var emitter in _activeSoundEmitters)
+        {
+            if (emitter.CurrentDefinition != sfxDefinition) continue;
+
+            activeCount++;
+            if (!oldestVoice) oldestVoice = emitter;
+        }
+
+        // Stop the oldest voice if it exceeded or reached the max voices
+        if (activeCount >= sfxDefinition.MaxVoices && oldestVoice)
+        {
+            oldestVoice.Stop();
+        }
+    }
+
     /// <summary>
     /// Wrapper method for retrieving a <c>SFXEmitter</c> from the pool
     /// </summary>
@@ -147,7 +189,8 @@ public class SFXManager : MonoBehaviour
         sfxEmitter.transform.localPosition = Vector3.zero;
         _sfxEmitterPool.Release(sfxEmitter);
     }
-    
+    #endregion
+
     #region IObjectPool Callback Methods
     private SFXEmitter CreateSoundEmitter()
     {
@@ -159,13 +202,13 @@ public class SFXManager : MonoBehaviour
     private void OnTakeFromPool(SFXEmitter sfxEmitter)
     {
         sfxEmitter.gameObject.SetActive(true);
-        ActiveSoundEmitters.Add(sfxEmitter);
+        _activeSoundEmitters.Add(sfxEmitter);
     }
 
     private void OnReturnedToPool(SFXEmitter sfxEmitter)
     {
         sfxEmitter.gameObject.SetActive(false);
-        ActiveSoundEmitters.Remove(sfxEmitter);
+        _activeSoundEmitters.Remove(sfxEmitter);
     }
     
     private void OnDestroyedPoolObject(SFXEmitter sfxEmitter)
