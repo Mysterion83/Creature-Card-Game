@@ -55,6 +55,10 @@ public class SFXEmitter : MonoBehaviour
         AudioManager.Instance.SFX.ReleaseToPool(this);
     }
     
+    // Wrapper audio source methods
+    public void SetPitch(float pitch) => _audioSource.pitch = pitch;
+    public void SetVolume(float volume) => _audioSource.volume = volume;
+    
     /// <summary>
     /// Waits for the audio source to finish playing, then automatically releases to the pool.
     /// </summary>
