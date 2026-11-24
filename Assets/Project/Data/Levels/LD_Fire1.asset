@@ -20,5 +20,13 @@ MonoBehaviour:
   Description: 'Two once dormant volcanos now errupt into flame spreading lava into the valley below. '
   Preview: {fileID: 0}
   SceneName: Level_Fire1
+  EnemyCreatures:
+  - {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
+  - {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
+  - {fileID: 11400000, guid: 0f9b06402a8be8f4c806746336d9f187, type: 2}
+  - {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+  - {fileID: 11400000, guid: d0f7f2c8111f2fc478e039fffe829de6, type: 2}
+  - {fileID: 11400000, guid: faad012e5c22a964d9c02182cca20474, type: 2}
+  - {fileID: 11400000, guid: 5d3aa77073e7a17449941ae6281cdf5e, type: 2}
   CoinReward: 200
   RequiredLevel: {fileID: 11400000, guid: e7dce235545baac4ba5e60e3e95c96bc, type: 2}

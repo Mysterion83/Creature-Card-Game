@@ -107,7 +107,7 @@ public class ProfileManager : MonoBehaviour
         LoadingScreen.Load(level.SceneName, level.LevelName, level.Preview);
     }
 
-    void HandleSceneLoaded(Scene scene, LoadSceneMode mode) => BattleDeckLoader.Apply(Profile, catalog);
+    void HandleSceneLoaded(Scene scene, LoadSceneMode mode) => BattleDeckLoader.Apply(Profile, catalog, CurrentLevel);
 
     public void CompleteCurrentLevel()
     {

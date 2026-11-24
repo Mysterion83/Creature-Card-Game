@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "Ben_P/Level Data")]
@@ -16,6 +17,9 @@ public class LevelData : ScriptableObject
 
     [Header("Loading")]
     public string SceneName;
+
+    [Header("Opponent")]
+    public List<CreatureData> EnemyCreatures = new();
 
     [Header("Rewards")]
     public int CoinReward = 200;
