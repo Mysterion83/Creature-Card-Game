@@ -19,7 +19,7 @@ MonoBehaviour:
   _useVolumeVariance: 0
   VolumeVariance: {x: 0.95, y: 1.05}
   _usePitchVariance: 1
-  PitchVariance: {x: 0.99, y: 1.01}
+  PitchVariance: {x: 0.9, y: 1.2}
   StereoPanning: 0
   SpatialBlend: 0
   ReverbZoneMix: 1
@@ -54,4 +54,4 @@ MonoBehaviour:
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
-  AudioClip: {fileID: 8300000, guid: 05ef673e901016e4db41a50826e25c82, type: 3}
+  AudioClip: {fileID: 8300000, guid: 7d12ac3bca4610c469e74905f7645df3, type: 3}

@@ -54,4 +54,4 @@ MonoBehaviour:
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
-  AudioClip: {fileID: 8300000, guid: e94daeebd686ffb41bc6cd474b70da4d, type: 3}
+  AudioClip: {fileID: 8300000, guid: e7955eb8867730a47a380394ad11d29e, type: 3}

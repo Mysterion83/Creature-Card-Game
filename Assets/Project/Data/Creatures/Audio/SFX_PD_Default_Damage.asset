@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6640596324906d42834c72578a66275, type: 3}
-  m_Name: VFX_PD_Default_Damage
+  m_Name: SFX_PD_Default_Damage
   m_EditorClassIdentifier: Assembly-CSharp::SFXDamageProfile
   _normalSounds: []
   _advantageSounds: []
