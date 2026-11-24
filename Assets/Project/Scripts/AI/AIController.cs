@@ -117,6 +117,7 @@ public class AIController : MonoBehaviour
             if (!_adapter.IsMyPhase(state)) yield break;
 
             List<Creature> enemies = _adapter.EnemyCreatures();
+            ThreatMap threat = new ThreatMap(_adapter, enemies);
             List<AIAction> actions = state == MatchState.TurnSummon
                 ? ActionGenerator.Summons(_adapter)
                 : ActionGenerator.Actions(_adapter, _movedThisTurn, _attackedThisTurn);
@@ -128,7 +129,7 @@ public class AIController : MonoBehaviour
             }
 
             foreach (AIAction action in actions)
-                action.Score = ActionScorer.Score(action, _adapter, profile, enemies);
+                action.Score = ActionScorer.Score(action, _adapter, profile, enemies, threat);
             actions.Sort((a, b) => b.Score.CompareTo(a.Score));
 
             if (profile.LogDecisions) LogTopActions(actions, 5);
@@ -229,7 +230,7 @@ public class AIController : MonoBehaviour
     {
         string text = $"<color=orange>[AI {_aiPlayer.Data.Name}]</color> Top actions:";
         for (int i = 0; i < Mathf.Min(count, actions.Count); i++)
-            text += $"\n  {actions[i].Score,7:0.0}  {actions[i]}";
+            text += $"\n  {actions[i].Score,7:0.0}  {actions[i]}   [{actions[i].Breakdown}]";
         Debug.Log(text);
     }
 }

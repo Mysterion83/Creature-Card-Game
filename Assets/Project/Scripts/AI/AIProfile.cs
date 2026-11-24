@@ -17,6 +17,12 @@ public class AIProfile : ScriptableObject
     public float Advance = 4f;
     public float Summon = 10f;
 
+    [Header("Defence")]
+    public float Danger = 15f;
+    public float WouldDie = 40f;
+    public float Retreat = 10f;
+    public float StayTogether = 3f;
+
     [Header("Turn")]
     public float EndTurnThreshold = 1f;
     public int MaxActionsPerPhase = 8;

@@ -14,6 +14,7 @@ public class AIAction
     public Tile Tile;
     public Tile AttackTarget;
     public float Score;
+    public string Breakdown;
 
     public override string ToString()
     {
