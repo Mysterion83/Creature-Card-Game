@@ -1532,8 +1532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
-  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 778ef6e8e6349ea42be54fdc172bf571, type: 2}
 --- !u!1 &7379056268149552049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1792,7 @@ GameObject:
   - component: {fileID: 6767215321744527319}
   - component: {fileID: 4917985185691615949}
   - component: {fileID: 5639722317843714116}
+  - component: {fileID: 5654011766880838941}
   m_Layer: 5
   m_Name: CardSlotView
   m_TagString: Untagged
@@ -1906,6 +1908,22 @@ MonoBehaviour:
   actionButton: {fileID: 5540701119218529609}
   actionLabel: {fileID: 4969047089286644731}
   countText: {fileID: 4348287864637730618}
+--- !u!114 &5654011766880838941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889223229378354891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a45a1b233258d242b66d652376dd68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIElementAudio
+  _muteOnInactive: 1
+  _enterSfx: {fileID: 11400000, guid: 81d965d98ce51db4e8ce1847e8f856a2, type: 2}
+  _exitSfx: {fileID: 0}
+  _requireCursorMovement: 1
 --- !u!1 &7962441111624532433
 GameObject:
   m_ObjectHideFlags: 0
