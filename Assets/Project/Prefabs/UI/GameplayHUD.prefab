@@ -1346,6 +1346,7 @@ MonoBehaviour:
   _infoBox: {fileID: 8584500390987494139}
   _infoBoxText: {fileID: 3840751217391411619}
   _combatLog: {fileID: 4268412092925250906}
+  _combatLogRaw: 
   _combatLogText: {fileID: 1435941960534174511}
 --- !u!114 &7090636362276665319
 MonoBehaviour:
@@ -8106,7 +8107,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -10, y: -110}
-  m_SizeDelta: {x: 500, y: 300}
+  m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7568161866980684601
 CanvasRenderer:

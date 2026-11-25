@@ -12,6 +12,7 @@ public class ThreatMap
 {
     private readonly BattleAdapter _adapter;
     private readonly Dictionary<Vector2Int, List<(Creature Attacker, Tile From)>> _hits = new();
+    private readonly HashSet<Vector2Int> _reach = new();
 
     public ThreatMap(BattleAdapter adapter, List<Creature> enemies)
     {
@@ -26,6 +27,7 @@ public class ThreatMap
 
             foreach (Tile from in positions)
             {
+                _reach.Add(from.TileIndex);
                 foreach (Vector2Int offset in enemy.ShowValidAttacks())
                 {
                     Vector2Int target = from.TileIndex + offset;
@@ -37,6 +39,8 @@ public class ThreatMap
     }
 
     public bool EnemyCanHit(Tile tile) => tile != null && _hits.ContainsKey(tile.TileIndex);
+
+    public bool EnemyCanReach(Tile tile) => tile != null && _reach.Contains(tile.TileIndex);
 
     public float DamageAt(Tile tile, CreatureData defender, Creature ignore = null)
     {

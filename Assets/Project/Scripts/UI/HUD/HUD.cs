@@ -47,6 +47,8 @@ public class HUD : MonoBehaviour
     // Combat Log
     [SerializeField] private GameObject _combatLog;
     [HideInInspector] private List<string> _combatLogValues = new List<string>();
+    [HideInInspector] private List<string> _combatLogValuesRaw = new List<string>();
+    [SerializeField] private string _combatLogRaw = string.Empty;
     [SerializeField] private TextMeshProUGUI _combatLogText;
 
     public void Start()
@@ -185,20 +187,52 @@ public class HUD : MonoBehaviour
     public void UpdateCombatLogValues(AttackResult attackResult)
     {
         string logEntry = "";
+        string rawLogEntry = "";
 
-        if (!attackResult.Attacker.Owner.Data.IsAI) logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
-        else logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG} ";
+        if (!attackResult.Attacker.Owner.Data.IsAI) 
+        {
+            logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $"{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}";
+        }
+        else 
+        {
+            logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $"{attackResult.Attacker.Owner.Data.Name}'s {attackResult.Attacker.Data.CreatureName}";
+        }
 
-        if (attackResult.IsDead) logEntry += "killed ";
-        else logEntry += "attacked ";
+        if (attackResult.IsDead) 
+        {
+            logEntry += " killed";
+            rawLogEntry += " killed";
+        }
+        else 
+        {
+            logEntry += "attacked";
+            rawLogEntry += "attacked";
+        }
 
-        if (!attackResult.Defender.Owner.Data.IsAI) logEntry += $"{PLAYER_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
-        else logEntry += $"{ENEMY_COLOR_TAG}{attackResult.Defender.Data.CreatureName}{END_COLOR_TAG} ";
+        if (!attackResult.Defender.Owner.Data.IsAI) {
+            logEntry += $" {PLAYER_COLOR_TAG}{attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $" {attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName} ";
+        }
+        else {
+            logEntry += $" {ENEMY_COLOR_TAG}{attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName}{END_COLOR_TAG}";
+            rawLogEntry += $" {attackResult.Defender.Owner.Data.Name}'s {attackResult.Defender.Data.CreatureName}";
+        }
 
-        if (attackResult.DamageDealt > 0 && !attackResult.IsDead) logEntry += $"for {attackResult.DamageDealt} damage.";
-        else if (attackResult.DamageDealt == 0 && !attackResult.IsDead) logEntry += "but it was ineffective.";
+        if (attackResult.DamageDealt > 0 && !attackResult.IsDead) 
+        {
+            logEntry += $" for {attackResult.DamageDealt} damage.";
+            rawLogEntry += $" for {attackResult.DamageDealt} damage.";
+        }
+        else if (attackResult.DamageDealt == 0 && !attackResult.IsDead) 
+        {
+            logEntry += " but it was ineffective.";
+            rawLogEntry += "but it was ineffective.";
+        }
 
         _combatLogValues.Add(logEntry);
+        _combatLogValuesRaw.Add(rawLogEntry);
         UpdateCombatLogDisplay();
     }
     /// <summary>
@@ -210,6 +244,11 @@ public class HUD : MonoBehaviour
         foreach (string feedLine in _combatLogValues)
         {
             _combatLogText.text += feedLine + "\n";
+        }
+        _combatLogRaw = string.Empty;
+        foreach (string feedLine in _combatLogValuesRaw)
+        {
+            _combatLogRaw += feedLine + "\n";
         }
     }
     /// <summary>

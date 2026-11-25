@@ -8,6 +8,8 @@ public class Creature : MonoBehaviour
     private const float NORMAL_TILE_MODIFIER = 1f;
     private const float MOVEMENT_ANIM_DISTANCE_THRESHOLD = 0.001f;
 
+    private const float DAMAGE_REDUCTION_CAP = 0.5f; // 50% damage reduction cap
+
     public Player Owner { get; set; }
 
     public CreatureData Data;
@@ -144,22 +146,22 @@ public class Creature : MonoBehaviour
     /// <returns>A struct with damage dealt and type of damage</returns>
     public static (float Damage, DamageType DamageType) CalculateDamage(Creature attacker, Creature defender, TileData attackerTile)
     {
+        // Calculate Elemental Modifier
         float elementModifier = attacker.Data.Element.ElementModifiers.ContainsKey(defender.Data.Element) ? attacker.Data.Element.ElementModifiers[defender.Data.Element] : NORMAL_DAMAGE_MODIFIER;
         DamageType damageType = elementModifier > NORMAL_DAMAGE_MODIFIER ? DamageType.Advantage : (elementModifier < NORMAL_DAMAGE_MODIFIER ? DamageType.Disadvantage : DamageType.Normal);
 
-        //Calculate tile modifier advantage/disadvantage
+        // Calculate Tile Modifier
         float tileModifier = NORMAL_TILE_MODIFIER;
         if (attacker.Data.Element == attackerTile.Element)
         {
             tileModifier += attackerTile.AttackerTileModifier;
         }
-        else
-        {
-            tileModifier -= attackerTile.AttackerTileModifier;
-        }
 
-
-        return (Mathf.Max(0, (attacker.Data.Attack * tileModifier - defender.Data.Defense) * elementModifier), damageType);
+        float uncappedDamage = (attacker.Data.Attack * tileModifier - defender.Data.Defense) * elementModifier;
+        // Apply damage reduction cap
+        float creatureDamageCap = attacker.Data.Attack * DAMAGE_REDUCTION_CAP;
+        float damage = Mathf.Max(uncappedDamage, creatureDamageCap);
+        return (damage, damageType);
     }
 
     public void ResetTurnActions()

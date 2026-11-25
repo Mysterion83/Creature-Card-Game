@@ -102,13 +102,13 @@ public class BattleAdapter
         Creature.CalculateDamage(attacker, target, fromTile.Data).Damage;
 
     public float DamageAgainst(Creature attacker, Tile fromTile, CreatureData defender) =>
-        Mathf.Max(0f, (attacker.Data.Attack * TileModifier(attacker, fromTile) - defender.Defense)
+        Mathf.Max(attacker.Data.Attack * 0.5f, (attacker.Data.Attack * TileModifier(attacker, fromTile) - defender.Defense)
             * ElementModifier(attacker.Data.Element, defender.Element));
 
     public float TileModifier(Creature attacker, Tile fromTile)
     {
         float bonus = fromTile.Data.AttackerTileModifier;
-        return attacker.Data.Element == fromTile.Data.Element ? 1f + bonus : 1f - bonus;
+        return attacker.Data.Element == fromTile.Data.Element ? 1f + bonus : 1f;
     }
 
     public float ElementModifier(Element attacker, Element defender)
@@ -120,6 +120,8 @@ public class BattleAdapter
     public Vector2Int BoardCentre => _board.GetData().MapSize / 2;
     public Vector2Int BoardSize => _board.GetData().MapSize;
     public bool IsBusy => _boardController.IsBusy;
+    public IReadOnlyList<ZoneInstance> Zones => _board.ActiveZones;
+    public bool IsMine(Player player) => player != null && player == _aiPlayer;
     public float ActionCost => _aiPlayer.SelectedCreature != null ? _aiPlayer.SelectedCreature.EnergyCost : 0f;
 
     public bool EnemyHasCardsLeft()
