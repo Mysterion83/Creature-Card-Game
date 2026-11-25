@@ -372,4 +372,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
-  _clickSfx: {fileID: 11400000, guid: c5f226f8fc6026945b958855bb7f7234, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}

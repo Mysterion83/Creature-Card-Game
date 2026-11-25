@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161234966549892390}
   - component: {fileID: 4119328743882300558}
+  - component: {fileID: 1498939164196745688}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -90,6 +91,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1498939164196745688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73979688011026338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859e002cd03b344d8735f0591c37396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UISliderAudio
+  _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _releaseSfx: {fileID: 11400000, guid: 7b112c2efbedce44ba21c302e8f19d1b, type: 2}
 --- !u!1 &2295679215193880907
 GameObject:
   m_ObjectHideFlags: 0
