@@ -161,6 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8846103401874587338}
   - component: {fileID: 6958503834105855232}
+  - component: {fileID: 4223296107676312279}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -236,6 +237,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &4223296107676312279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233075887899093661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac373e1c87e829479361d215ca60229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIToggleAudio
+  _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _toggleOnSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _toggleOffSfx: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
 --- !u!1 &5020704570375559525
 GameObject:
   m_ObjectHideFlags: 0

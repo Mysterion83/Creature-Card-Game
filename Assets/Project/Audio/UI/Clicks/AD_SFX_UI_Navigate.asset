@@ -19,7 +19,7 @@ MonoBehaviour:
   _useVolumeVariance: 0
   VolumeVariance: {x: 0.95, y: 1.05}
   _usePitchVariance: 1
-  PitchVariance: {x: 0.9, y: 1.2}
+  PitchVariance: {x: 0.85, y: 1.15}
   StereoPanning: 0
   SpatialBlend: 0
   ReverbZoneMix: 1
