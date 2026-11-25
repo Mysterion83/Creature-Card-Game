@@ -23,9 +23,14 @@ public class PlayerHand : MonoBehaviour
         public RectTransform Rect;
         public HandCardHover Hover;
         public Outline Highlight;
+        public bool WasHovered;
     }
 
     public static event Action OnCannotAffordCard;
+    public static event Action<CreatureData> OnCardHovered;
+    public static event Action<CreatureData> OnCardSelected;
+    public static event Action<CreatureData> OnCardDeselected;
+    public static event Action<int> OnHandPopulated;
 
     private readonly List<HandCard> _cards = new();
     private MatchController _match;
@@ -133,6 +138,8 @@ public class PlayerHand : MonoBehaviour
 
         foreach (Transform child in _handContent)
             if (!newObjects.Contains(child.gameObject)) Destroy(child.gameObject);
+
+        OnHandPopulated?.Invoke(_cards.Count);
     }
 
     private void Pick(HandCard card)
@@ -154,11 +161,15 @@ public class PlayerHand : MonoBehaviour
         Unpick();
         _picked = card;
         _picked.Highlight.enabled = true;
+        OnCardSelected?.Invoke(card.Creature);
     }
 
     private void Unpick()
     {
-        if (_picked != null) _picked.Highlight.enabled = false;
+        if (_picked == null) return;
+
+        _picked.Highlight.enabled = false;
+        OnCardDeselected?.Invoke(_picked.Creature);
         _picked = null;
     }
 
@@ -170,7 +181,8 @@ public class PlayerHand : MonoBehaviour
         if (placed == null) return;
 
         HandCard card = _picked;
-        Unpick();
+        card.Highlight.enabled = false;
+        _picked = null;
         card.Slot.SetActive(false);
     }
 
@@ -181,7 +193,11 @@ public class PlayerHand : MonoBehaviour
 
         foreach (HandCard card in _cards)
         {
-            bool raised = card == _picked || (localTurn && card.Hover.IsHovered);
+            bool hovered = localTurn && card.Hover.IsHovered;
+            if (hovered && !card.WasHovered) OnCardHovered?.Invoke(card.Creature);
+            card.WasHovered = hovered;
+
+            bool raised = card == _picked || hovered;
             card.Rect.localScale = Vector3.Lerp(card.Rect.localScale, Vector3.one * (raised ? _hoverScale : 1f), t);
             card.Rect.anchoredPosition = Vector2.Lerp(card.Rect.anchoredPosition, new Vector2(0f, raised ? _hoverLift : 0f), t);
         }
