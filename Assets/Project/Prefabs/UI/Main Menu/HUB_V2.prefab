@@ -15309,7 +15309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -15318,18 +15318,26 @@ PrefabInstance:
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayBack
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -15565,7 +15573,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4288148252431646985}
   m_SourcePrefab: {fileID: 100100000, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
 --- !u!114 &28516219436399242 stripped
 MonoBehaviour:
@@ -15588,12 +15599,32 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4119328743882300558, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
   m_PrefabInstance: {fileID: 3350163807492500037}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3420756706543019495}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &3420756706543019495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+  m_PrefabInstance: {fileID: 3350163807492500037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4288148252431646985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420756706543019495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859e002cd03b344d8735f0591c37396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UISliderAudio
+  _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _releaseSfx: {fileID: 11400000, guid: 7b112c2efbedce44ba21c302e8f19d1b, type: 2}
 --- !u!1001 &3487904532403522926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15725,14 +15756,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1787183677245736343}
   m_SourcePrefab: {fileID: 100100000, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
 --- !u!114 &670276700395409888 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4119328743882300558, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
   m_PrefabInstance: {fileID: 3487904532403522926}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3558215972586177228}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -15754,6 +15788,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &3558215972586177228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+  m_PrefabInstance: {fileID: 3487904532403522926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787183677245736343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558215972586177228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859e002cd03b344d8735f0591c37396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UISliderAudio
+  _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _releaseSfx: {fileID: 11400000, guid: 7b112c2efbedce44ba21c302e8f19d1b, type: 2}
 --- !u!1001 &4676932654460775824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17287,14 +17341,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 912592263680721695}
   m_SourcePrefab: {fileID: 100100000, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+--- !u!1 &6620669309912581441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+  m_PrefabInstance: {fileID: 6550348814863452899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &912592263680721695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620669309912581441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859e002cd03b344d8735f0591c37396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UISliderAudio
+  _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _releaseSfx: {fileID: 11400000, guid: 7b112c2efbedce44ba21c302e8f19d1b, type: 2}
 --- !u!114 &7191483483951158893 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4119328743882300558, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
   m_PrefabInstance: {fileID: 6550348814863452899}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6620669309912581441}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -18107,7 +18184,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 920485279956556863}
   m_SourcePrefab: {fileID: 100100000, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
 --- !u!114 &4879599381597647341 stripped
 MonoBehaviour:
@@ -18130,12 +18210,32 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4119328743882300558, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
   m_PrefabInstance: {fileID: 7902887892957389090}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7830183639509380736}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &7830183639509380736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 73979688011026338, guid: 7644faca7a41c604894fbfe41ebd0d86, type: 3}
+  m_PrefabInstance: {fileID: 7902887892957389090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &920485279956556863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7830183639509380736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859e002cd03b344d8735f0591c37396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UISliderAudio
+  _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
+  _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
+  _releaseSfx: {fileID: 11400000, guid: 7b112c2efbedce44ba21c302e8f19d1b, type: 2}
 --- !u!1001 &8266382733455039274
 PrefabInstance:
   m_ObjectHideFlags: 0

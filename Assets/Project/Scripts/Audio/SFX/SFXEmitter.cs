@@ -65,6 +65,9 @@ public class SFXEmitter : MonoBehaviour
     private IEnumerator WaitForSoundToEnd()
     {
         yield return new WaitWhile(() => _audioSource.isPlaying);
+        
+        CurrentDefinition = null;
+        _audioSource.clip = null;
         AudioManager.Instance.SFX.ReleaseToPool(this);
     }
 }
