@@ -22,5 +22,9 @@ MonoBehaviour:
     Delay: 0
     PlayOnTarget: 1
     PositionOffset: {x: 0, y: 0, z: 0}
-  _impactSounds: []
+  _impactSounds:
+  - SoundDefinition: {fileID: 11400000, guid: c396cb5548bd502489b858ff04a28bc0, type: 2}
+    Delay: 0.5
+    PlayOnTarget: 1
+    PositionOffset: {x: 0, y: 0, z: 0}
   _recoverySounds: []
