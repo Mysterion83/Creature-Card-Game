@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6640596324906d42834c72578a66275, type: 3}
+  m_Name: SFX_PD_Default_Damage
+  m_EditorClassIdentifier: Assembly-CSharp::SFXDamageProfile
+  _normalSounds:
+  - SoundDefinition: {fileID: 11400000, guid: 2ed857875697edb4aa551a7ca78c79b9, type: 2}
+    Delay: 0
+    PlayOnTarget: 1
+    PositionOffset: {x: 0, y: 0, z: 0}
+  _advantageSounds:
+  - SoundDefinition: {fileID: 11400000, guid: fdeed2306c0155149a46749dd6c4fc8d, type: 2}
+    Delay: 0
+    PlayOnTarget: 1
+    PositionOffset: {x: 0, y: 0, z: 0}
+  _disadvantageSounds:
+  - SoundDefinition: {fileID: 11400000, guid: 64639856a9aceaf45b7bd7e259e0dbd0, type: 2}
+    Delay: 0
+    PlayOnTarget: 1
+    PositionOffset: {x: 0, y: 0, z: 0}
