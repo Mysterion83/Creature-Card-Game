@@ -82,6 +82,7 @@ public class MusicEmitter : MonoBehaviour
 
     // Wrapper methods
     public void SetVolume(float volume) => _audioSource.volume = volume;
+    public void SetPitch(float pitch) => _audioSource.pitch = pitch;
     public void Pause() => _audioSource.Pause();
     public void UnPause() => _audioSource.UnPause();
 
