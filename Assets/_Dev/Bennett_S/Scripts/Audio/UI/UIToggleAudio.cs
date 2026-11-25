@@ -6,9 +6,8 @@ using UnityEngine.UI;
 /// Component for playing hover and on/off audio for UI Toggles
 /// </summary>
 [RequireComponent(typeof(Toggle))]
-public class UIToggleAudio : MonoBehaviour, 
-    IPointerEnterHandler, IPointerClickHandler, 
-    ISelectHandler, ISubmitHandler
+public class UIToggleAudio : UISelectableAudioBase, 
+    IPointerClickHandler, ISubmitHandler
 {
     [Header("SFX Definitions")]
     [SerializeField] private SFXDefinition _hoverSfx;
@@ -17,37 +16,21 @@ public class UIToggleAudio : MonoBehaviour,
 
     private Toggle _toggle;
 
-    private void Awake() => _toggle = GetComponent<Toggle>();
+    protected override SFXDefinition HoverSfx => _hoverSfx;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    protected override void Awake()
     {
-        if (!_toggle.interactable || eventData.delta.sqrMagnitude <= 0.01f) return;
-        PlaySfx(_hoverSfx);
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        if (!_toggle.interactable || eventData is PointerEventData) return;
-        PlaySfx(_hoverSfx);
+        base.Awake();
+        _toggle = GetComponent<Toggle>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!_toggle.interactable) return;
-        PlaySfx(_toggle.isOn ? _toggleOnSfx : _toggleOffSfx);
+        if (CanPlayAudio()) PlaySfx(_toggle.isOn ? _toggleOnSfx : _toggleOffSfx);
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
-        if (!_toggle.interactable) return;
-        PlaySfx(_toggle.isOn ? _toggleOnSfx : _toggleOffSfx);
-    }
-
-    private static void PlaySfx(SFXDefinition definition)
-    {
-        if (definition && AudioManager.Instance)
-        {
-            AudioManager.Instance.SFX.Play(definition);
-        }
+        if (CanPlayAudio()) PlaySfx(_toggle.isOn ? _toggleOnSfx : _toggleOffSfx);
     }
 }
