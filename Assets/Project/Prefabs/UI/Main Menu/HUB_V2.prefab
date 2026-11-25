@@ -2548,7 +2548,6 @@ GameObject:
   - component: {fileID: 7865800774494569077}
   - component: {fileID: 4095988651222279801}
   - component: {fileID: 4224928014364587759}
-  - component: {fileID: 8841116435066192284}
   m_Layer: 5
   m_Name: Fire
   m_TagString: Untagged
@@ -2658,18 +2657,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1082790793483066394}
         m_TargetAssemblyTypeName: StarterDeckScreen, Assembly-CSharp
         m_MethodName: Select
@@ -2682,35 +2669,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8841116435066192284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904468140904493595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &920088622635696367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,7 +2747,6 @@ GameObject:
   - component: {fileID: 4974813742273100049}
   - component: {fileID: 6806323715235741790}
   - component: {fileID: 2115513163121693000}
-  - component: {fileID: 850580521709688777}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -2899,18 +2856,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8073519729630395660}
         m_TargetAssemblyTypeName: DeckPanel, Assembly-CSharp
         m_MethodName: SaveDeck
@@ -2923,35 +2868,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &850580521709688777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972541938610487397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1226425068248528782
 GameObject:
   m_ObjectHideFlags: 0
@@ -3662,7 +3578,6 @@ GameObject:
   - component: {fileID: 360996693915955145}
   - component: {fileID: 3852833959163254479}
   - component: {fileID: 813963168954219703}
-  - component: {fileID: 1122532676081926054}
   m_Layer: 5
   m_Name: GameSaveButton
   m_TagString: Untagged
@@ -3773,18 +3688,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4249703014418389837}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SaveGame
@@ -3797,35 +3700,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1122532676081926054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545015036624133755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1578014939801158250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,7 +3998,6 @@ GameObject:
   - component: {fileID: 3823250101827947533}
   - component: {fileID: 1581394695571395027}
   - component: {fileID: 1565372348294232389}
-  - component: {fileID: 5221787252705186114}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -4234,18 +4107,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 9137831437634859809}
         m_TargetAssemblyTypeName: ExitConfirm, Assembly-CSharp
         m_MethodName: ReturnToMainMenu
@@ -4270,35 +4131,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5221787252705186114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849055818383390962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1868169420353751889
 GameObject:
   m_ObjectHideFlags: 0
@@ -6491,7 +6323,6 @@ GameObject:
   - component: {fileID: 6769802691133540629}
   - component: {fileID: 8850896521425799461}
   - component: {fileID: 4267647873309387378}
-  - component: {fileID: 8014969824957622541}
   m_Layer: 5
   m_Name: Air
   m_TagString: Untagged
@@ -6601,18 +6432,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1082790793483066394}
         m_TargetAssemblyTypeName: StarterDeckScreen, Assembly-CSharp
         m_MethodName: Select
@@ -6625,35 +6444,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8014969824957622541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2923775016229770370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2937014371403369280
 GameObject:
   m_ObjectHideFlags: 0
@@ -6666,7 +6456,6 @@ GameObject:
   - component: {fileID: 6210202202074115441}
   - component: {fileID: 6838238538104303890}
   - component: {fileID: 7429163840407427793}
-  - component: {fileID: 660854619743977930}
   m_Layer: 5
   m_Name: RestoreDefaultsButton
   m_TagString: Untagged
@@ -6777,18 +6566,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4249703014418389837}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: RestoreDefaults
@@ -6801,35 +6578,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &660854619743977930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2937014371403369280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2941593039482327591
 GameObject:
   m_ObjectHideFlags: 0
@@ -8086,7 +7834,6 @@ GameObject:
   - component: {fileID: 7373373707910781187}
   - component: {fileID: 4466795075750867958}
   - component: {fileID: 8346436317208806115}
-  - component: {fileID: 4076676542143488039}
   m_Layer: 5
   m_Name: YesButton
   m_TagString: Untagged
@@ -8196,18 +7943,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3889173531383328976}
-        m_TargetAssemblyTypeName: SaveSlotPanel, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1464175330637298179}
         m_TargetAssemblyTypeName: SaveSlotPanel, Assembly-CSharp
         m_MethodName: ConfirmNewGame
@@ -8220,35 +7955,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4076676542143488039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3362692466534407853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &3381735551756875694
 GameObject:
   m_ObjectHideFlags: 0
@@ -9379,7 +9085,6 @@ GameObject:
   - component: {fileID: 5258299553618895892}
   - component: {fileID: 1509054285056893678}
   - component: {fileID: 9096245518969695436}
-  - component: {fileID: 3940788681016243910}
   m_Layer: 5
   m_Name: Water
   m_TagString: Untagged
@@ -9489,18 +9194,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1082790793483066394}
         m_TargetAssemblyTypeName: StarterDeckScreen, Assembly-CSharp
         m_MethodName: Select
@@ -9513,35 +9206,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3940788681016243910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4004324257252039469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &4017487625307867208
 GameObject:
   m_ObjectHideFlags: 0
@@ -9764,7 +9428,6 @@ GameObject:
   - component: {fileID: 4186573022674355785}
   - component: {fileID: 6930948778754365761}
   - component: {fileID: 4464526906615720232}
-  - component: {fileID: 6035685296589400375}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -9874,18 +9537,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayClose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 414507531835610761}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Quit
@@ -9898,35 +9549,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6035685296589400375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097316974792197341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &4104815444782783261
 GameObject:
   m_ObjectHideFlags: 0
@@ -11083,7 +10705,6 @@ GameObject:
   - component: {fileID: 473922878556461651}
   - component: {fileID: 4702365770009035115}
   - component: {fileID: 8530393762691337267}
-  - component: {fileID: 726496927110934201}
   m_Layer: 5
   m_Name: GameLoadButton
   m_TagString: Untagged
@@ -11194,18 +10815,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4249703014418389837}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: LoadGame
@@ -11218,35 +10827,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &726496927110934201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4711071852286372642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &4767893688848333697
 GameObject:
   m_ObjectHideFlags: 0
@@ -13272,7 +12852,6 @@ GameObject:
   - component: {fileID: 3124328261797207007}
   - component: {fileID: 2973542737057661}
   - component: {fileID: 3134311240671397348}
-  - component: {fileID: 1642328168891042251}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
@@ -13382,18 +12961,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayBack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 725795568331638400}
         m_TargetAssemblyTypeName: Popup, Assembly-CSharp
         m_MethodName: Hide
@@ -13406,35 +12973,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1642328168891042251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5557552286293432926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &5722014302873218718
 GameObject:
   m_ObjectHideFlags: 0
@@ -13447,7 +12985,6 @@ GameObject:
   - component: {fileID: 3730385685079094396}
   - component: {fileID: 282462451499931087}
   - component: {fileID: 8118569097044135273}
-  - component: {fileID: 9186092368403905396}
   m_Layer: 5
   m_Name: Level_2
   m_TagString: Untagged
@@ -13557,48 +13094,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 282462451499931087}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &9186092368403905396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5722014302873218718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+      m_Calls: []
 --- !u!1 &5732296864240184258
 GameObject:
   m_ObjectHideFlags: 0
@@ -13998,7 +13494,6 @@ GameObject:
   - component: {fileID: 104084082585870135}
   - component: {fileID: 5690435274412163059}
   - component: {fileID: 1401108842189171823}
-  - component: {fileID: 6411861706411464192}
   m_Layer: 5
   m_Name: ApplyButton
   m_TagString: Untagged
@@ -14109,18 +13604,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4249703014418389837}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: Apply
@@ -14133,35 +13616,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6411861706411464192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6079378896786007142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &6091009768096108159
 GameObject:
   m_ObjectHideFlags: 0
@@ -15741,7 +15195,6 @@ GameObject:
   - component: {fileID: 2308073734057107031}
   - component: {fileID: 4149381878468811230}
   - component: {fileID: 1760252957413349697}
-  - component: {fileID: 2438014447160144315}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -15850,18 +15303,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayClose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4499632340599367323}
         m_TargetAssemblyTypeName: Popup, Assembly-CSharp
         m_MethodName: Hide
@@ -15874,35 +15315,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2438014447160144315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6845720996210375224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &6964232628689501512
 GameObject:
   m_ObjectHideFlags: 0
@@ -16511,7 +15923,6 @@ GameObject:
   - component: {fileID: 4334292423932162756}
   - component: {fileID: 8323648332932833673}
   - component: {fileID: 7524858633656702548}
-  - component: {fileID: 8470056860862296687}
   m_Layer: 5
   m_Name: Level_1
   m_TagString: Untagged
@@ -16621,48 +16032,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8323648332932833673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Level_Water1
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8470056860862296687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7149547763972945299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+      m_Calls: []
 --- !u!1 &7183932495739150862
 GameObject:
   m_ObjectHideFlags: 0
@@ -17930,7 +17300,6 @@ GameObject:
   - component: {fileID: 4317105531822892900}
   - component: {fileID: 2615256109663365908}
   - component: {fileID: 2718595840963059991}
-  - component: {fileID: 244525565443412056}
   m_Layer: 5
   m_Name: Nature
   m_TagString: Untagged
@@ -18040,18 +17409,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1082790793483066394}
         m_TargetAssemblyTypeName: StarterDeckScreen, Assembly-CSharp
         m_MethodName: Select
@@ -18064,35 +17421,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &244525565443412056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7918162640762287439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &7986147347792850021
 GameObject:
   m_ObjectHideFlags: 0
@@ -18105,7 +17433,6 @@ GameObject:
   - component: {fileID: 7354584269879451150}
   - component: {fileID: 8363937300843611565}
   - component: {fileID: 6900740166827579398}
-  - component: {fileID: 8144385314713809174}
   m_Layer: 5
   m_Name: NoButton
   m_TagString: Untagged
@@ -18215,18 +17542,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3889173531383328976}
-        m_TargetAssemblyTypeName: SaveSlotPanel, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1464175330637298179}
         m_TargetAssemblyTypeName: SaveSlotPanel, Assembly-CSharp
         m_MethodName: CancelOverwrite
@@ -18239,35 +17554,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8144385314713809174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7986147347792850021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &7996650486305322793
 GameObject:
   m_ObjectHideFlags: 0
@@ -18492,7 +17778,6 @@ GameObject:
   - component: {fileID: 4302214682388811879}
   - component: {fileID: 4268914279259157013}
   - component: {fileID: 5203177901622478258}
-  - component: {fileID: 5046549307248105602}
   m_Layer: 5
   m_Name: DeckButton
   m_TagString: Untagged
@@ -18602,18 +17887,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 414507531835610761}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Open
@@ -18626,35 +17899,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5046549307248105602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8062713336035744583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &8175979780586664556
 GameObject:
   m_ObjectHideFlags: 0
@@ -19291,7 +18535,6 @@ GameObject:
   - component: {fileID: 6897741713640345517}
   - component: {fileID: 5902480089408476844}
   - component: {fileID: 5599622665120675097}
-  - component: {fileID: 3803737820511236289}
   m_Layer: 5
   m_Name: ClearButton
   m_TagString: Untagged
@@ -19401,18 +18644,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8073519729630395660}
         m_TargetAssemblyTypeName: DeckPanel, Assembly-CSharp
         m_MethodName: ClearDeck
@@ -19425,35 +18656,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3803737820511236289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8543013586284635613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &8551514688255981047
 GameObject:
   m_ObjectHideFlags: 0
@@ -19466,7 +18668,6 @@ GameObject:
   - component: {fileID: 8933589606306879791}
   - component: {fileID: 1739433274505865216}
   - component: {fileID: 5610220608083995422}
-  - component: {fileID: 110531908594189553}
   m_Layer: 5
   m_Name: Level_4
   m_TagString: Untagged
@@ -19576,48 +18777,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1739433274505865216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &110531908594189553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8551514688255981047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+      m_Calls: []
 --- !u!1 &8586635628024093919
 GameObject:
   m_ObjectHideFlags: 0
@@ -20599,7 +19759,6 @@ GameObject:
   - component: {fileID: 5168641853575787232}
   - component: {fileID: 4651064003977294324}
   - component: {fileID: 3037540769292581482}
-  - component: {fileID: 7240037954966684419}
   m_Layer: 5
   m_Name: Level_3
   m_TagString: Untagged
@@ -20709,48 +19868,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4651064003977294324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 925262320853696029}
-        m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7240037954966684419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8837191760444651465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+      m_Calls: []
 --- !u!1 &8863183382053748308
 GameObject:
   m_ObjectHideFlags: 0
@@ -21962,24 +21080,32 @@ PrefabInstance:
       value: MenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 1464175330637298179}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1464175330637298179}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOpen
+      value: OpenForNewGame
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OpenForNewGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveSlotPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -22077,7 +21203,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1607086229275610849, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_AddedGameObjects: []
@@ -22282,24 +21409,32 @@ PrefabInstance:
       value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 1464175330637298179}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1464175330637298179}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOpen
+      value: OpenForLoad
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OpenForLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveSlotPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -22397,7 +21532,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1607086229275610849, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_AddedGameObjects: []
@@ -22599,7 +21735,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b1c529bafe7ebe24caaa9210e05a8e94, type: 3}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -22612,14 +21748,14 @@ PrefabInstance:
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayClose
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -22627,7 +21763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuAudioController, Assembly-CSharp
+      value: MenuController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -22729,7 +21865,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -22788,24 +21925,32 @@ PrefabInstance:
       value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayBack
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -22899,7 +22044,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1607086229275610849, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_AddedGameObjects: []
@@ -23252,7 +22398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -23369,10 +22515,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5546609088425310442}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25014db62c9907a458ec1542c1378070, type: 3}
 --- !u!224 &282425602034254743 stripped
 RectTransform:
@@ -23384,46 +22527,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5805417036988962268, guid: 25014db62c9907a458ec1542c1378070, type: 3}
   m_PrefabInstance: {fileID: 4676932654460775824}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4384837726680131582}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a25cc83a9b67b9447ae38e3161e124fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveSlotView
---- !u!1 &4384837726680131582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-  m_PrefabInstance: {fileID: 4676932654460775824}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5546609088425310442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4384837726680131582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &4720034108545171319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23437,17 +22546,41 @@ PrefabInstance:
       value: PlayButton
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 414507531835610761}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4131650863340494081}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 4131650863340494081}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -23532,7 +22665,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -23556,7 +22690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -23673,10 +22807,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3677462946255788835}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25014db62c9907a458ec1542c1378070, type: 3}
 --- !u!224 &728237773734295411 stripped
 RectTransform:
@@ -23688,46 +22819,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5805417036988962268, guid: 25014db62c9907a458ec1542c1378070, type: 3}
   m_PrefabInstance: {fileID: 5266842715080972660}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3830956196782560026}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a25cc83a9b67b9447ae38e3161e124fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveSlotView
---- !u!1 &3830956196782560026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-  m_PrefabInstance: {fileID: 5266842715080972660}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3677462946255788835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3830956196782560026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &5509541888969973284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24091,7 +23188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -24100,7 +23197,7 @@ PrefabInstance:
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 5527261951370976476}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -24111,7 +23208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayNext
+      value: OnMute
       objectReference: {fileID: 0}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -24119,7 +23216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuAudioController, Assembly-CSharp
+      value: TopBar, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2725567950741543244, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -24163,7 +23260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -24172,7 +23269,7 @@ PrefabInstance:
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 6954027006607509048}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -24183,7 +23280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOpen
+      value: ShowDeckManager
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -24191,7 +23288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuAudioController, Assembly-CSharp
+      value: DeckShopScreen, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3523857081518459142, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -24239,7 +23336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -24248,7 +23345,7 @@ PrefabInstance:
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 5527261951370976476}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -24259,7 +23356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayBack
+      value: OnBack
       objectReference: {fileID: 0}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -24267,7 +23364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuAudioController, Assembly-CSharp
+      value: TopBar, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6419920879345543992, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -24279,7 +23376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -24288,7 +23385,7 @@ PrefabInstance:
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 6954027006607509048}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -24299,7 +23396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOpen
+      value: ShowShop
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -24307,7 +23404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuAudioController, Assembly-CSharp
+      value: DeckShopScreen, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6815934873841797116, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -24352,122 +23449,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6393432630046089996, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4327381463193941208}
-    - targetCorrespondingSourceObject: {fileID: 6735747527235362508, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6981722417929619614}
-    - targetCorrespondingSourceObject: {fileID: 2018986229293621460, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6988437538766666564}
-    - targetCorrespondingSourceObject: {fileID: 7124857764757013735, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 678290378696424266}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
---- !u!1 &1295092193577574369 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6735747527235362508, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-  m_PrefabInstance: {fileID: 5513313922603991341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6981722417929619614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295092193577574369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1457249655167328801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6393432630046089996, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-  m_PrefabInstance: {fileID: 5513313922603991341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4327381463193941208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457249655167328801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &3342706311467910602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7124857764757013735, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-  m_PrefabInstance: {fileID: 5513313922603991341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &678290378696424266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3342706311467910602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &5527261951370976476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 15761192160665073, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
@@ -24484,46 +23467,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 284789192316719176, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
   m_PrefabInstance: {fileID: 5513313922603991341}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3342706311467910602}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!1 &5802844732366610937 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2018986229293621460, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
-  m_PrefabInstance: {fileID: 5513313922603991341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6988437538766666564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5802844732366610937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!224 &6556613060343225945 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1621011205142814580, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
@@ -24534,7 +23483,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3521217874822749155, guid: f7610af57e64d094591a26c7b86d85cc, type: 3}
   m_PrefabInstance: {fileID: 5513313922603991341}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5802844732366610937}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -24550,7 +23499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -24663,17 +23612,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5427087700806802103}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25014db62c9907a458ec1542c1378070, type: 3}
 --- !u!114 &131152733775996269 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5805417036988962268, guid: 25014db62c9907a458ec1542c1378070, type: 3}
   m_PrefabInstance: {fileID: 5854977199944265905}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3277724875334056671}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a25cc83a9b67b9447ae38e3161e124fd, type: 3}
@@ -24684,40 +23630,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4831427742122995207, guid: 25014db62c9907a458ec1542c1378070, type: 3}
   m_PrefabInstance: {fileID: 5854977199944265905}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3277724875334056671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-  m_PrefabInstance: {fileID: 5854977199944265905}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5427087700806802103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3277724875334056671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &6504125856122794736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25198,7 +24110,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4210226831199920706, guid: 25014db62c9907a458ec1542c1378070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -25311,17 +24223,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097303892564505522}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25014db62c9907a458ec1542c1378070, type: 3}
 --- !u!114 &1101137155459691687 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5805417036988962268, guid: 25014db62c9907a458ec1542c1378070, type: 3}
   m_PrefabInstance: {fileID: 6906545326557159803}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586515031950486293}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a25cc83a9b67b9447ae38e3161e124fd, type: 3}
@@ -25332,40 +24241,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4831427742122995207, guid: 25014db62c9907a458ec1542c1378070, type: 3}
   m_PrefabInstance: {fileID: 6906545326557159803}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2586515031950486293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8952557746562992750, guid: 25014db62c9907a458ec1542c1378070, type: 3}
-  m_PrefabInstance: {fileID: 6906545326557159803}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2097303892564505522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586515031950486293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925262320853696029}
-          m_TargetAssemblyTypeName: MenuAudioController, Assembly-CSharp
-          m_MethodName: PlayNavigation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &7186768423897567991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25580,24 +24455,32 @@ PrefabInstance:
       value: ConfirmButton
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3889173531383328976}
+      objectReference: {fileID: 1082790793483066394}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1082790793483066394}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Confirm
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Confirm
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarterDeckScreen, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -25687,7 +24570,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1607086229275610849, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_AddedGameObjects: []
@@ -26195,7 +25079,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -26234,24 +25119,32 @@ PrefabInstance:
       value: BackButtton
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 925262320853696029}
+      objectReference: {fileID: 5527261951370976476}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5527261951370976476}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayOpen
+      value: OnBack
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TopBar, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336768220459651971, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -26349,7 +25242,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8020352610429710824, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1607086229275610849, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
     m_AddedGameObjects: []
