@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1b08ca0b228bd124d9b116235cc9128d
+guid: 600ad4635b3a622439f5cc1cea9b6628
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5756179858152806173
-    second: UI_Overlay_NextTurn_Pressed_0
+      213: -1071805237624899466
+    second: UI_Icon_Notification_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Overlay_NextTurn_Pressed_0
+      name: UI_Icon_Notification_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 220
-        height: 230
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e82b83aae0fd10b0800000000000000
-      internalID: -5756179858152806173
+      spriteID: 678f6f6a0de2021f0800000000000000
+      internalID: -1071805237624899466
       vertices: []
       indices: 
       edges: []
@@ -136,8 +136,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      UI_Overlay_NextTurn_Pressed_0: -5756179858152806173
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
