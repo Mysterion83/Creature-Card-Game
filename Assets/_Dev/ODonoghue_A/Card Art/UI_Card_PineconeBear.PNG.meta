@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0aeb46ee1bc4abb42be9af8e3c378629
+guid: b7622500f514ce74581bb5959b7c0006
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8600987161190134982
-    second: UI_BG_MainMenu_0
+      213: -3853128063918458726
+    second: UI_Card_PineconeBear_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,17 +98,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_BG_MainMenu_0
+      name: UI_Card_PineconeBear_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 2480
+        height: 3508
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c4fe6cc048dc5770800000000000000
-      internalID: 8600987161190134982
+      spriteID: a983d0cc070f68ac0800000000000000
+      internalID: -3853128063918458726
       vertices: []
       indices: 
       edges: []
