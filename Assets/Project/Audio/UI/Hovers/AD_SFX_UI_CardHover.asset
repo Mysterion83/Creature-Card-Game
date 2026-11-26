@@ -16,10 +16,10 @@ MonoBehaviour:
   Priority: 128
   BaseVolume: 1
   BasePitch: 1
-  _useVolumeVariance: 0
-  VolumeVariance: {x: 0.95, y: 1.05}
+  _useVolumeVariance: 1
+  VolumeVariance: {x: 0.75, y: 1}
   _usePitchVariance: 1
-  PitchVariance: {x: 0.85, y: 1.15}
+  PitchVariance: {x: 0.8, y: 1.1}
   StereoPanning: 0
   SpatialBlend: 0
   ReverbZoneMix: 1

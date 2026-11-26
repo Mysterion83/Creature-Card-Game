@@ -1128,6 +1128,7 @@ GameObject:
   - component: {fileID: 1094911287}
   - component: {fileID: 1094911291}
   - component: {fileID: 1094911292}
+  - component: {fileID: 1094911293}
   m_Layer: 0
   m_Name: HUDBridge
   m_TagString: Untagged
@@ -1218,6 +1219,23 @@ MonoBehaviour:
   _hoverScale: 1.2
   _hoverLift: 40
   _hoverSpeed: 12
+--- !u!114 &1094911293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094911286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1123289f133d1f42a77e1031433f6f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandAudioController
+  _cardHoverSfx: {fileID: 11400000, guid: 81d965d98ce51db4e8ce1847e8f856a2, type: 2}
+  _cardSelectSfx: {fileID: 11400000, guid: 778ef6e8e6349ea42be54fdc172bf571, type: 2}
+  _cardDeselectSfx: {fileID: 11400000, guid: c36e4aebfc1e63a42b421996a480b827, type: 2}
+  _cannotAffordSfx: {fileID: 11400000, guid: 6969b081458a4284b9e37ab9e91f405e, type: 2}
+  _handPopulatedSfx: {fileID: 0}
 --- !u!1 &1113032892
 GameObject:
   m_ObjectHideFlags: 0
