@@ -3,8 +3,13 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    private const float MIN_PITCH = 20f;
+    private const float MIN_PITCH = 40f;
     private const float MAX_PITCH = 89.99f;
+
+    private const float BOARD_LINK_ATTEMPT_INTERVAL = 5f;
+    private const float BOUNDS_BUFFER = 1f;
+
+    private int _boardLinkAttempts = 10;
 
     [SerializeField] private float _movementSpeed = 5f;
     [SerializeField] private float _originalFOV;
@@ -16,6 +21,9 @@ public class CameraController : MonoBehaviour
     [HideInInspector] private float _yRotation = 0f;
     [SerializeField] private float _sensitivity = 0.2f;
 
+    [SerializeField] private Board _gameBoard;
+    [SerializeField] private Vector2[] _cameraBounds = new Vector2[2];
+
     private GameControls _inputMapping;
 
     private void Awake()
@@ -26,6 +34,11 @@ public class CameraController : MonoBehaviour
         //sets initial values on current rotation - avoids snapping camera to 0,0,0 when rotating
         _xRotation = transform.localEulerAngles.x;
         _yRotation = transform.localEulerAngles.y;
+    }
+
+    private void Start()
+    {
+        AttemptBoardLink();
     }
 
     private void OnEnable()
@@ -50,12 +63,21 @@ public class CameraController : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 input = _inputMapping.Gameplay.CameraMovement.ReadValue<Vector2>();
-        Vector3 forward = transform.forward * input.y;
+        Vector3 forward = (transform.forward * input.y);
         Vector3 right = transform.right * input.x;
         forward.y = 0;
         right.y = 0;
         Vector3 movementDirection = (forward + right).normalized;
         gameObject.transform.position += movementDirection * Time.deltaTime * _movementSpeed;
+        BoundsCheck();
+    }
+    private void BoundsCheck()
+    {
+        if (_gameBoard == null) return;
+        if (transform.position.x < _cameraBounds[0].x) transform.position = new Vector3(_cameraBounds[0].x, transform.position.y, transform.position.z);
+        if (transform.position.x > _cameraBounds[1].x) transform.position = new Vector3(_cameraBounds[1].x, transform.position.y, transform.position.z);
+        if (transform.position.z < _cameraBounds[0].y) transform.position = new Vector3(transform.position.x, transform.position.y, _cameraBounds[0].y);
+        if (transform.position.z > _cameraBounds[1].y) transform.position = new Vector3(transform.position.x, transform.position.y, _cameraBounds[1].y);
     }
     private void HandleRotation()
     {
@@ -93,5 +115,27 @@ public class CameraController : MonoBehaviour
     public void ChangeFOV(float multiplier)
     {
         _targetFOV *= multiplier;
+    }
+
+    public void AttemptBoardLink()
+    {
+        _gameBoard = FindObjectOfType<Board>();
+        if (_gameBoard == null)
+        {
+            _boardLinkAttempts--;
+            if (_boardLinkAttempts <= 0)
+            {
+                Debug.LogError("CameraController: Failed to link to Board after multiple attempts.");
+                return;
+            }
+            Invoke(nameof(AttemptBoardLink), BOARD_LINK_ATTEMPT_INTERVAL);
+        }
+        else
+        {
+            Debug.Log("CameraController: Successfully linked to Board.");
+            MapData mapData = _gameBoard.GetData();
+            _cameraBounds[0] = new Vector2(0 - mapData.MapSize.x * 0.5f - BOUNDS_BUFFER, 0 - mapData.MapSize.y * 0.5f - BOUNDS_BUFFER);
+            _cameraBounds[1] = new Vector2(mapData.MapSize.x * 0.5f + BOUNDS_BUFFER, mapData.MapSize.y * 0.5f + BOUNDS_BUFFER);
+        }
     }
 }
