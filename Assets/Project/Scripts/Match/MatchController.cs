@@ -41,7 +41,7 @@ public class MatchController : MonoBehaviour
     {
         PlayerEvents.OnPlayerDefeated -= HandlePlayerDefeated;
     }
-
+    
     private void Start()
     {
         if (_beginOnStart) StartMatch();
@@ -85,6 +85,30 @@ public class MatchController : MonoBehaviour
         CurrentPlayer = PlayerRegistry.MasterList[_currentPlayerIndex];
         
         StartNextTurn();
+    }
+
+    public void EndMatch(bool playerWon)
+    {
+        if (!IsMatchActive) return;
+
+        Player localPlayer = null;
+        Player opponentPlayer = null;
+        
+        foreach (Player player in PlayerRegistry.MasterList)
+        {
+            if (!player) continue;
+            
+            if (!player.Data.IsAI) 
+            {
+                localPlayer = player;
+            }
+            else if (!player.IsDefeated)
+            {
+                opponentPlayer = player;
+            }
+        }
+        
+        CompleteMatch(playerWon ? localPlayer : opponentPlayer);
     }
     
     private void StartNextTurn()
@@ -227,7 +251,7 @@ public class MatchController : MonoBehaviour
         OnMatchEnded?.Invoke(winner);
         
         if (!_enableTurnDebugging) return;
-        Debug.Log($"MatchController: Player {winner.Data.Name} was Defeated.");
+        Debug.Log($"MatchController: Player {winner.Data.Name} won!");
     }
     
     private void OnDestroy()
