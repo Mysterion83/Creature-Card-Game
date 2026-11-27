@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a7f4bb2e00383834eb9872dc5dbbe9a9
+guid: 3e0795fadaa48cf41a96955b6454b0cf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5475393258143000979
-    second: UI_Overlay_TextTurn_Hover_0
+      213: -3739145490828429309
+    second: UI_Overlay_TextTurn_Hover 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Overlay_TextTurn_Hover_0
+      name: UI_Overlay_TextTurn_Hover 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d6651d277de7304b0800000000000000
-      internalID: -5475393258143000979
+      spriteID: 308faa7acf2eb1cc0800000000000000
+      internalID: -3739145490828429309
       vertices: []
       indices: 
       edges: []
@@ -136,8 +136,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      UI_Overlay_TextTurn_Hover_0: -5475393258143000979
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
