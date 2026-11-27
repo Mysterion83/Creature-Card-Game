@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
 {
     [Header("Tile Definition")] 
     public TileData Data;
+    public TileDecorationProfile DecorationProfile;
     
     [Header("Tile Info")] 
     public Creature Occupant;
@@ -125,9 +126,9 @@ public class Tile : MonoBehaviour
         }
         
         // Tile Decoration Spawning
-        if (Data.Decorations == null) return;
+        if (DecorationProfile.Decorations == null) return;
         
-        foreach (var decoration in Data.Decorations)
+        foreach (var decoration in DecorationProfile.Decorations)
         {
             decoration?.Spawn(transform);
         }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TileData", menuName = "Project/Tile Data")]
@@ -38,9 +37,6 @@ public class TileData : ScriptableObject
     [Header("Board Builder")]
     [Tooltip("The material this tile will use when creating/editing boards within the Board Builder")]
     public Material EditorMaterial;
-    
-    [Header(STYLING_HEADER + "Decorations")]
-    public List<TileDecoration> Decorations = new();
 
     // Possibly change to be determined by a game rule
     public float AttackerTileModifier => EffectStrength * 0.1f;
