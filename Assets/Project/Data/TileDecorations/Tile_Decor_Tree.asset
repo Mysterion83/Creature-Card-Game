@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tile_Decor_Tree
   m_EditorClassIdentifier: Assembly-CSharp::TileDecorationProfile
   Decorations:
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: d997282891ccd344fa0ba5499de0a7e6, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     Scaling: {x: 0, y: 0, z: 0}
