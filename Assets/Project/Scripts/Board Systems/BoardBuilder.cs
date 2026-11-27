@@ -5,6 +5,8 @@ using UnityEditor;
 
 public class BoardBuilder : MonoBehaviour
 {
+    private const string DEFAULT_BOARD_NAME = "New Board Asset";
+    
     [Header("References")]
     [SerializeField] private Grid _grid;
     [SerializeField] private Transform _shaderPlane;
@@ -14,7 +16,7 @@ public class BoardBuilder : MonoBehaviour
     
     [Header("Build Settings")]
     [SerializeField] private MapData _mapData; // Struct type
-    [SerializeField] private string _fileName = "New MapSaveData";
+    [SerializeField] private string _fileName = DEFAULT_BOARD_NAME;
 
     [Header("Debug")]
     [SerializeField] private bool _showTileDataCreation;
@@ -22,6 +24,9 @@ public class BoardBuilder : MonoBehaviour
     private GameObject _prevTileContainer;
     private GameObject _tileContainer;
     private Vector3Int _bottomLeftTileOffset;
+    
+    private SavedMapData _loadedMapAsset;
+    private string _loadedAssetPath;
      
     private void Resize()
     {
@@ -54,6 +59,16 @@ public class BoardBuilder : MonoBehaviour
             return;
         }
 
+        if (!mapToLoad)
+        {
+            Debug.LogError($"BoardBuilder Load Error: No SavedMapData found at path {filePath}");
+            return;
+        }
+        
+        _loadedMapAsset = mapToLoad;
+        _loadedAssetPath = filePath;
+        _fileName = mapToLoad.name;
+
         CustomBuild(mapToLoad);
     }
     
@@ -67,6 +82,9 @@ public class BoardBuilder : MonoBehaviour
     
     public void Build()
     {
+        _loadedMapAsset = null;
+        _loadedAssetPath = string.Empty;
+
         Resize();
         
         _mapData.Tiles = new Tile[_mapData.MapSize.x, _mapData.MapSize.y];
@@ -156,6 +174,7 @@ public class BoardBuilder : MonoBehaviour
             
             tile.IsZoneCenter = tileData.IsZoneCenter;
             tile.AssignedZone = tileData.ZoneDefinition;
+            tile.DecorationProfile = tileData.DecorationProfile;
             
             tile.IsSpawnTile = tileData.IsSpawnTile;
             tile.SpawnOwnerID = tileData.SpawnOwnerID;
@@ -168,19 +187,42 @@ public class BoardBuilder : MonoBehaviour
     
     public void ConstructSaveData()
     {
-        string filePath = $"Assets/{_fileName}.asset";
+        string targetPath;
+        SavedMapData mapToSave;
+
+        // If a board was previously loaded, overwrite it
+        if (_loadedMapAsset && !string.IsNullOrEmpty(_loadedAssetPath))
+        {
+            targetPath = _loadedAssetPath;
+            mapToSave = _loadedMapAsset;
+        }
+        else
+        {
+            if (string.IsNullOrEmpty(_fileName))
+            {
+                _fileName = DEFAULT_BOARD_NAME;
+            }
+            
+            targetPath = $"Assets/{_fileName}.asset";
+            
+            mapToSave = AssetDatabase.LoadAssetAtPath<SavedMapData>(targetPath);
+            if (!mapToSave)
+            {
+                mapToSave = ScriptableObject.CreateInstance<SavedMapData>();
+                AssetDatabase.CreateAsset(mapToSave, targetPath);
+            }
+        }
+
+        mapToSave.Initialise(_mapData.MapSize, _mapData.Tiles);
         
-        SavedMapData savedMapData = ScriptableObject.CreateInstance<SavedMapData>();
-        
-        savedMapData.Initialise(_mapData.MapSize, _mapData.Tiles);
-        
-        AssetDatabase.CreateAsset(savedMapData, filePath);
-        
-        EditorUtility.SetDirty(savedMapData);
+        EditorUtility.SetDirty(mapToSave);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+
+        _loadedMapAsset = mapToSave;
+        _loadedAssetPath = targetPath;
         
-        Debug.Log($"Saved saved map to {filePath}!");
+        Debug.Log($"Saved board to {targetPath}!");
     }
 }
 #endif

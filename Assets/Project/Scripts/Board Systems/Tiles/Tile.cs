@@ -126,7 +126,7 @@ public class Tile : MonoBehaviour
         }
         
         // Tile Decoration Spawning
-        if (DecorationProfile.Decorations == null) return;
+        if (!DecorationProfile || DecorationProfile.Decorations == null) return;
         
         foreach (var decoration in DecorationProfile.Decorations)
         {
