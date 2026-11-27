@@ -177,6 +177,10 @@ PrefabInstance:
       value: MusicController
       objectReference: {fileID: 0}
     - target: {fileID: 2925735382900182642, guid: 9e5131a0bfcdaab4caf4418cc253919b, type: 3}
+      propertyPath: _musicTrack
+      value: 
+      objectReference: {fileID: 11400000, guid: f955d583f98dfbd4081e2539708688fe, type: 2}
+    - target: {fileID: 2925735382900182642, guid: 9e5131a0bfcdaab4caf4418cc253919b, type: 3}
       propertyPath: _stopEverythingOnPlay
       value: 1
       objectReference: {fileID: 0}
@@ -641,6 +645,10 @@ MonoBehaviour:
   _cameraZoomSpeed: 10
   _isZoomedIn: 0
   _sensitivity: 0.2
+  _gameBoard: {fileID: 0}
+  _cameraBounds:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
 --- !u!1 &824252799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,7 +1545,7 @@ Transform:
   m_GameObject: {fileID: 1244305117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
