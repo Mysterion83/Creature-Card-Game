@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -36,7 +39,18 @@ public class HUD : MonoBehaviour
     [SerializeField] private Image _combatPhase;
     [SerializeField] private Color _defaultPhaseColour;
     [SerializeField] private Color _activePhaseColour;
-    [SerializeField] private Image _phasePopup;
+    [SerializeField] private CanvasGroup _phasePopup;
+    [SerializeField] private Image _phasePopupIcon;
+    [SerializeField] private Sprite _summoningPhaseIcon;
+    [SerializeField] private Sprite _combatPhaseIcon;
+    [SerializeField] private float _phasePopupFadeTime = 0.5f;
+
+    [SerializeField] private TextMeshProUGUI _advancePhaseText;
+    [SerializeField] private Image _advancePhaseIcon;
+    [SerializeField] private Sprite _combatPhaseButtonIcon;
+    [SerializeField] private Sprite _endTurnButtonIcon;
+
+    private Coroutine _phasePopupRoutine;
     [SerializeField] private TextMeshProUGUI _phasePopupText;
     [SerializeField] private TextMeshProUGUI _phasePopupTurnText;
 
@@ -67,13 +81,15 @@ public class HUD : MonoBehaviour
         {
             _summoningPhase.color = _activePhaseColour;
             _combatPhase.color = _defaultPhaseColour;
-            ShowPhasePopup("Summoning Phase");
+            ShowPhasePopup("Summoning Phase", _summoningPhaseIcon);
+            SetAdvanceButton("Combat Phase", _combatPhaseButtonIcon);
         }
         else
         {
             _summoningPhase.color = _defaultPhaseColour;
             _combatPhase.color = _activePhaseColour;
-            ShowPhasePopup("Combat Phase");
+            ShowPhasePopup("Combat Phase", _combatPhaseIcon);
+            SetAdvanceButton("End Turn", _endTurnButtonIcon);
         }
     }
     /// <summary>
@@ -162,17 +178,36 @@ public class HUD : MonoBehaviour
     /// </summary>
     /// <remarks>The popup closes automatically after the configured display duration.</remarks>
     /// <param name="phaseName">The name of the phase to display.</param>
-    private void ShowPhasePopup(string phaseName)
+    private void ShowPhasePopup(string phaseName, Sprite icon)
     {
-        CancelInvoke(nameof(ClosePopup));
         _phasePopupText.text = phaseName;
-        _phasePopup.gameObject.SetActive(true);
         _phasePopupTurnText.text = _turnText.text;
-        Invoke(nameof(ClosePopup), PHASE_POPUP_DURATION);
+        if (_phasePopupIcon != null && icon != null) _phasePopupIcon.sprite = icon;
+
+        if (_phasePopupRoutine != null) StopCoroutine(_phasePopupRoutine);
+        _phasePopupRoutine = StartCoroutine(PhasePopupRoutine());
     }
-    private void ClosePopup()
+
+    private IEnumerator PhasePopupRoutine()
     {
+        _phasePopup.gameObject.SetActive(true);
+        _phasePopup.alpha = 1f;
+        yield return new WaitForSeconds(PHASE_POPUP_DURATION);
+
+        float time = 0f;
+        while (time < _phasePopupFadeTime)
+        {
+            time += Time.deltaTime;
+            _phasePopup.alpha = 1f - time / _phasePopupFadeTime;
+            yield return null;
+        }
         _phasePopup.gameObject.SetActive(false);
+    }
+
+    private void SetAdvanceButton(string label, Sprite icon)
+    {
+        if (_advancePhaseText != null) _advancePhaseText.text = label;
+        if (_advancePhaseIcon != null && icon != null) _advancePhaseIcon.sprite = icon;
     }
 
     public void UpdateCombatLogValues(string text)

@@ -105,12 +105,12 @@ TextureImporter:
       name: UI_Overwrite Save ConfirmDeny buttons_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 170
-        height: 70
+        x: 12
+        y: 11
+        width: 146
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -127,7 +127,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 606b4b5d83bde5b4a918185cd4fdd5dc
     internalID: 0
     vertices: []
     indices: 

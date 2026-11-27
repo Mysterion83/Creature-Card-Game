@@ -2682,6 +2682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &920088622635696367
@@ -2788,7 +2789,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -30, y: 15}
-  m_SizeDelta: {x: 200, y: 70}
+  m_SizeDelta: {x: 250, y: 90}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &4974813742273100049
 CanvasRenderer:
@@ -2818,8 +2819,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -2390436731952375191, guid: bfb5a498edcc01348b63c2ae7a09270a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2847,7 +2848,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2857,8 +2858,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 5281168640898734996, guid: 6e35ff1b5d1a16647a5d47e1037e5ee1, type: 3}
+    m_PressedSprite: {fileID: -8759702346905410860, guid: 45f0ab85b29d79149aa619de792e8743, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2896,6 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &1226425068248528782
@@ -3354,10 +3356,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6090060605606917112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1306076113970992654
 CanvasRenderer:
@@ -3396,8 +3398,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3414,10 +3416,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.65
-  m_fontSizeBase: 24
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -3743,6 +3745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &1578014939801158250
@@ -4189,6 +4192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
 --- !u!1 &1868169420353751889
@@ -4803,7 +4807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chris Coffin
+  m_text: Chris Goffin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5725,14 +5729,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.77874684, g: 0.9433962, b: 0.8380339, a: 1}
+  m_Color: {r: 0.85882354, g: 0.8352941, b: 0.75686276, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 00dea44ded68e5e49b8a131661d05bdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6517,6 +6521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &2937014371403369280
@@ -6666,6 +6671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: c5f226f8fc6026945b958855bb7f7234, type: 2}
 --- !u!1 &2941593039482327591
@@ -7277,10 +7283,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8893608147722403985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7235516054534464241
 CanvasRenderer:
@@ -7310,7 +7316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DECK MANAGER & SHOP
+  m_text: DECK & SHOP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7319,8 +7325,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7337,7 +7343,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.85
+  m_fontSize: 33.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8058,6 +8064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &3381735551756875694
@@ -9306,6 +9313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &4017487625307867208
@@ -9664,6 +9672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
 --- !u!1 &4104815444782783261
@@ -10957,6 +10966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &4767893688848333697
@@ -11561,14 +11571,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.44317776, g: 0.4206123, b: 0.6415094, a: 1}
+  m_Color: {r: 0.8584906, g: 0.8365393, b: 0.75725347, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 00dea44ded68e5e49b8a131661d05bdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12419,10 +12429,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8924850136819567588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6406818346064984687
 CanvasRenderer:
@@ -12461,8 +12471,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12479,7 +12489,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.45
+  m_fontSize: 41.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13118,6 +13128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
 --- !u!1 &5722014302873218718
@@ -13255,6 +13266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &5732296864240184258
@@ -13791,6 +13803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: c5f226f8fc6026945b958855bb7f7234, type: 2}
 --- !u!1 &6091009768096108159
@@ -14017,7 +14030,7 @@ MonoBehaviour:
   deckManagerPanel: {fileID: 2641299585120141309}
   shopTab: {fileID: 5724356119119155557}
   deckManagerTab: {fileID: 8961838685533641422}
-  activeColour: {r: 0.23696156, g: 0.2914378, b: 0.6698113, a: 1}
+  activeColour: {r: 0.8679245, g: 0.6958175, b: 0.1514774, a: 1}
   inactiveColour: {r: 1, g: 1, b: 1, a: 1}
   openOnShop: 1
   unlockLevel: {fileID: 11400000, guid: e7dce235545baac4ba5e60e3e95c96bc, type: 2}
@@ -14776,14 +14789,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.85882354, g: 0.8352941, b: 0.75686276, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 00dea44ded68e5e49b8a131661d05bdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14858,7 +14871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chris Coffin
+  m_text: Chris Goffin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15350,7 +15363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0aeb46ee1bc4abb42be9af8e3c378629, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c64c3041da5f954fa0d5fd6ac5c07a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15505,6 +15518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &6964232628689501512
@@ -16238,6 +16252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &7183932495739150862
@@ -17641,6 +17656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &7986147347792850021
@@ -17789,6 +17805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
 --- !u!1 &7996650486305322793
@@ -18038,9 +18055,9 @@ RectTransform:
   - {fileID: 3612357823465622766}
   m_Father: {fileID: 4552791232381033323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -372, y: -62}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -300, y: 50}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4302214682388811879
@@ -18071,9 +18088,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: a21565f308aa10745bca2b0730466047, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -18149,6 +18166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &8175979780586664556
@@ -18813,7 +18831,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 30, y: 15}
-  m_SizeDelta: {x: 200, y: 70}
+  m_SizeDelta: {x: 250, y: 90}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6897741713640345517
 CanvasRenderer:
@@ -18843,8 +18861,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -2390436731952375191, guid: bfb5a498edcc01348b63c2ae7a09270a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -18872,7 +18890,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -18882,8 +18900,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 5281168640898734996, guid: 6e35ff1b5d1a16647a5d47e1037e5ee1, type: 3}
+    m_PressedSprite: {fileID: -8759702346905410860, guid: 45f0ab85b29d79149aa619de792e8743, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -18921,6 +18939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &8551514688255981047
@@ -19058,6 +19077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &8586635628024093919
@@ -19631,6 +19651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 3207773effa81714ca4d05f8adb8c6bc, type: 2}
 --- !u!1 &8795726348686089307
@@ -20179,6 +20200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!1 &8863183382053748308
@@ -20982,14 +21004,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.85882354, g: 0.8352941, b: 0.75686276, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 00dea44ded68e5e49b8a131661d05bdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23757,6 +23779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: fbbadf9458d1de64c85abe3ff93077aa, type: 2}
 --- !u!1 &3342706311467910602 stripped
@@ -23776,6 +23799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!114 &5527261951370976476 stripped
@@ -23817,6 +23841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b82f28b544a82941a3c1ce9dc7d98da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  _muteOnInactive: 1
   _hoverSfx: {fileID: 11400000, guid: 963b75c231a687a47b6cc65a8db5435e, type: 2}
   _clickSfx: {fileID: 11400000, guid: 2efc8ecb0515afb45bd8c80b93cfc29e, type: 2}
 --- !u!224 &6556613060343225945 stripped
@@ -24761,20 +24786,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 6532538791898018197}
     m_Modifications:
     - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -120.8407
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -29.5141
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.2120056
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1509138503000333659, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.9490013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1662992764328613651, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_text
@@ -24782,7 +24823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1662992764328613651, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_fontSize
-      value: 45.15
+      value: 37.8
       objectReference: {fileID: 0}
     - target: {fileID: 1662992764328613651, guid: b86f604dd9edae1488d71730138b4d4a, type: 3}
       propertyPath: m_enableAutoSizing
