@@ -18,7 +18,7 @@ MonoBehaviour:
   LevelName: The Alder Vortex
   Difficulty: 1
   Description: The eastern shore of the vale has long been home to a deep vortex. Small islands spread around the vortex offer the only saftey from the vortex's pull.
-  Preview: {fileID: 0}
+  Preview: {fileID: 21300000, guid: b0f04c5e7ccf1df499477dd801988545, type: 3}
   SceneName: Level_Water1
   EnemyCreatures:
   - {fileID: 11400000, guid: ac1094a90f306fd4c989c4cf5a5ad8a0, type: 2}

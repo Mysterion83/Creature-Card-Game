@@ -15,11 +15,14 @@ public class HUDBridge : MonoBehaviour
 
     private MatchController _match;
     private Board _board;
+    private Graphic[] _advancePhaseGraphics;
+    private bool? _advancePhaseActive;
 
     private void Awake()
     {
         if (_hud == null) _hud = FindAnyObjectByType<HUD>();
         if (_advancePhaseButton == null && _hud != null) _advancePhaseButton = FindChildButton("AdvancePhaseButton");
+        if (_advancePhaseButton != null) _advancePhaseGraphics = _advancePhaseButton.GetComponentsInChildren<Graphic>(true);
         _match = FindAnyObjectByType<MatchController>();
         _board = FindAnyObjectByType<Board>();
 
@@ -65,15 +68,19 @@ public class HUDBridge : MonoBehaviour
         _hud.UpdateObjectiveCounter(ZonesHeldBy(localPlayer), totalZones);
 
         if (_advancePhaseButton != null)
-            _advancePhaseButton.interactable = _match.IsMatchActive && _match.CurrentPlayer != null && !_match.CurrentPlayer.Data.IsAI;
+        {
+            bool playerTurn = _match.IsMatchActive && _match.CurrentPlayer != null && !_match.CurrentPlayer.Data.IsAI;
+            _advancePhaseButton.interactable = playerTurn;
+            SetAdvancePhaseTint(playerTurn);
+        }
     }
 
     private void HandleStateChanged(MatchState state)
     {
+        if (_match.CurrentPlayer != null) _hud.UpdateTurn(_match.CurrentPlayer.Data);
+
         if (state == MatchState.TurnSummon) _hud.UpdatePhase(true);
         else if (state == MatchState.TurnAction) _hud.UpdatePhase(false);
-
-        if (_match.CurrentPlayer != null) _hud.UpdateTurn(_match.CurrentPlayer.Data);
     }
 
     private void HandleAttackImpact(AttackResult result) => _hud.UpdateCombatLogValues(result);
@@ -92,6 +99,16 @@ public class HUDBridge : MonoBehaviour
         foreach (ZoneInstance zone in _board.ActiveZones)
             if (zone.Occupier == player) count++;
         return count;
+    }
+
+    private void SetAdvancePhaseTint(bool active)
+    {
+        if (_advancePhaseActive == active) return;
+        _advancePhaseActive = active;
+
+        Color tint = active ? Color.white : _advancePhaseButton.colors.disabledColor;
+        foreach (Graphic graphic in _advancePhaseGraphics)
+            if (graphic != _advancePhaseButton.targetGraphic) graphic.CrossFadeColor(tint, 0.1f, true, true);
     }
 
     private Button FindChildButton(string objectName)

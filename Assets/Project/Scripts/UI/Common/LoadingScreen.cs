@@ -81,6 +81,10 @@ public class LoadingScreen : MonoBehaviour
         operation.allowSceneActivation = true;
         while (!operation.isDone) yield return null;
 
+        yield return null;
+        yield return null;
+        yield return new WaitForSecondsRealtime(0.2f);
+
         yield return Fade(0f);
         group.blocksRaycasts = false;
         loading = false;
@@ -92,7 +96,7 @@ public class LoadingScreen : MonoBehaviour
         float time = 0f;
         while (time < fadeTime)
         {
-            time += Time.unscaledDeltaTime;
+            time += Mathf.Min(Time.unscaledDeltaTime, 1f / 30f);
             group.alpha = Mathf.Lerp(start, target, time / fadeTime);
             yield return null;
         }
