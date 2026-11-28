@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tile_Decor_Lighthouse
   m_EditorClassIdentifier: Assembly-CSharp::TileDecorationProfile
   Decorations:
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 1657250090619644847, guid: 5667f05da976db648add62e375c86090, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     Scaling: {x: 0, y: 0, z: 0}

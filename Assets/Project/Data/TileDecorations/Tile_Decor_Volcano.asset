@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tile_Decor_Volcano
   m_EditorClassIdentifier: Assembly-CSharp::TileDecorationProfile
   Decorations:
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 1559606777031645698, guid: 83f49664f4e1bbe42b13664a61b5a22e, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     Scaling: {x: 0, y: 0, z: 0}
