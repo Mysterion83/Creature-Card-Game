@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68d8b84159ae7f64494e7dbd5d8d6158, type: 3}
-  m_Name: Tile_Decor_Lighthouse
+  m_Name: TDec_Volcano
   m_EditorClassIdentifier: Assembly-CSharp::TileDecorationProfile
   Decorations:
-  - Prefab: {fileID: 1657250090619644847, guid: 5667f05da976db648add62e375c86090, type: 3}
+  - Prefab: {fileID: 1559606777031645698, guid: 83f49664f4e1bbe42b13664a61b5a22e, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     Scaling: {x: 0, y: 0, z: 0}

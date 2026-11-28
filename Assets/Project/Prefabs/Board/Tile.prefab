@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   Data: {fileID: 11400000, guid: d1dd337e19807cf48b3042bf02257043, type: 2}
+  DecorationProfile: {fileID: 0}
   Occupant: {fileID: 0}
   TileIndex: {x: 0, y: 0}
   ZoneID: -1

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68d8b84159ae7f64494e7dbd5d8d6158, type: 3}
-  m_Name: Tile_Decor_Volcano
+  m_Name: TDec_Tree
   m_EditorClassIdentifier: Assembly-CSharp::TileDecorationProfile
   Decorations:
-  - Prefab: {fileID: 1559606777031645698, guid: 83f49664f4e1bbe42b13664a61b5a22e, type: 3}
+  - Prefab: {fileID: 919132149155446097, guid: d997282891ccd344fa0ba5499de0a7e6, type: 3}
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     Scaling: {x: 0, y: 0, z: 0}

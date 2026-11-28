@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileDecorationProfile
   Decorations:
   - Prefab: {fileID: 1390745887417869167, guid: af4db6e964dacbc42816a655e21d2141, type: 3}
-    PositionOffset: {x: 0, y: 0.5, z: 0}
+    PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
     Scaling: {x: 0, y: 0, z: 0}

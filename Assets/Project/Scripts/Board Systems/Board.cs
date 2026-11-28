@@ -119,6 +119,8 @@ public class Board : MonoBehaviour
                 Tile tile = tileInstance.GetComponent<Tile>();
 
                 tile.Data = TileRegistry.Instance.GetTileData(savedTileData.TileID);
+                tile.DecorationProfile = savedTileData.DecorationProfile;
+                
                 tile.TileIndex = new Vector2Int(x, y);
                 
                 tile.AssignedZone = savedTileData.ZoneDefinition;
