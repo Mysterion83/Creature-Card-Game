@@ -23,7 +23,8 @@ public class TileData : ScriptableObject
     [Header(STYLING_SUBHEADER+"Element Settings")]
     public Element Element;
     [Range(0,3)] public int EffectStrength;
-
+    public bool IsEmpty;
+    
     [Header(STYLING_SUBHEADER+"Movement Settings")]
     [Tooltip("Can a creature pass through the tile")]
     public bool IsPassable = true;

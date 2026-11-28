@@ -70,70 +70,112 @@ public class Tile : MonoBehaviour
 
     public void Init()
     {
+        if (!_meshFilter) _meshFilter = GetComponent<MeshFilter>();
+        if (!_meshRenderer) _meshRenderer = GetComponent<MeshRenderer>();
+
         ClearDecorations();
-        
-        if (!Data) return;
         _prevData = Data;
 
-        if (!Data.RenderObjectPrefab)
+        if (Data)
         {
-            Debug.LogWarning(
-                $"Tiles using {Data} have no render object prefab, please assign one in {Data}'s Inspector");
+            if (Data.IsEmpty)
+            {
+                ConfigureEmptyTile();
+            }
+            else
+            {
+                ConfigureTile();
+            }
+        }
+
+        SpawnDecorations();
+    }
+
+    private void ConfigureEmptyTile()
+    {
+        GameObject targetSource = Data.RenderObjectPrefab;
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying && targetSource)
+        {
+            var source = PrefabUtility.GetCorrespondingObjectFromSource(targetSource);
+            if (source) targetSource = source;
+
+            ApplyEditorMeshAndMaterial(targetSource, Data.EditorMaterial, true);
             return;
         }
+#endif
+
+        // Disable mesh at runtime
+        if (!Application.isPlaying) return;
         
-#if UNITY_EDITOR
+        if (_meshFilter) _meshFilter.sharedMesh = null;
+        if (_meshRenderer) _meshRenderer.enabled = false;
+    }
+
+    private void ConfigureTile()
+    {
+        if (!Data.RenderObjectPrefab)
+        {
+            Debug.LogWarning($"Tiles using {Data} have no render object prefab, please assign one in {Data}'s Inspector");
+            return;
+        }
+
         GameObject targetSource = Data.RenderObjectPrefab;
-        
+
+#if UNITY_EDITOR
         if (!Application.isPlaying)
         {
-            var source = PrefabUtility.GetCorrespondingObjectFromSource(Data.RenderObjectPrefab);
-            if (source)
-            {
-                targetSource = source;
-            }
+            var source = PrefabUtility.GetCorrespondingObjectFromSource(targetSource);
+            if (source) targetSource = source;
+            
+            ApplyEditorMeshAndMaterial(targetSource, Data.EditorMaterial, true);
+            return;
         }
-        
-        // Mesh and Material assignment
-        _meshFilter.sharedMesh = targetSource.TryGetComponent<MeshFilter>(out var prefabMeshFilter) 
-            ? prefabMeshFilter.sharedMesh : null;
-        _meshRenderer.sharedMaterial = targetSource.TryGetComponent<MeshRenderer>(out var prefabMeshRenderer) 
-            ? Data.EditorMaterial : null;
 #endif
-        
+
         if (Application.isPlaying)
         {
-            if (_renderObject)
-            {
-                Destroy(_renderObject);
-                _renderObject = null;
-            }
-            
-            if (Data.RenderObjectPrefab)
-            {
-                _renderObject = Instantiate(Data.RenderObjectPrefab, transform);
-            }
-            
-            // Set mesh and material to null so the render object is visible
-            if (_meshRenderer)
-            {
-                _meshRenderer.sharedMaterial = null;
-            }
-            if (_meshFilter)
-            {
-                _meshFilter.sharedMesh = null;
-            }
+            ApplyRuntimeMeshAndMaterial(targetSource);
         }
+    }
+
+    private void ApplyEditorMeshAndMaterial(GameObject source, Material material, bool enableRenderer)
+    {
+        if (_meshFilter)
+        {
+            _meshFilter.sharedMesh = source.TryGetComponent<MeshFilter>(out var mf) ? mf.sharedMesh : null;
+        }
+
+        if (!_meshRenderer) return;
         
-        // Tile Decoration Spawning
+        _meshRenderer.sharedMaterial = material;
+        _meshRenderer.enabled = enableRenderer;
+    }
+
+    private void ApplyRuntimeMeshAndMaterial(GameObject source)
+    {
+        if (_meshFilter)
+        {
+            _meshFilter.sharedMesh = source.TryGetComponent<MeshFilter>(out var mf) ? mf.sharedMesh : null;
+        }
+
+        if (!_meshRenderer) return;
+        
+        _meshRenderer.sharedMaterial = source.TryGetComponent<MeshRenderer>(out var mr) ? mr.sharedMaterial : null;
+        _meshRenderer.enabled = true;
+    }
+
+    private void SpawnDecorations()
+    {
         if (!DecorationProfile || DecorationProfile.Decorations == null) return;
-        
+
         foreach (var decoration in DecorationProfile.Decorations)
         {
             decoration?.Spawn(transform);
         }
     }
-    
+
     public void ClearDecorations()
     {
         for (int i = transform.childCount - 1; i >= 0; i--)
