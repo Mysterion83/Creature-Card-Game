@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class TileDecoration
 {
+    private static readonly Vector3 TILE_BASE_OFFSET = new(0, 0.5f, 0);
+
     [Header("Prefab to Spawn")]
     public GameObject Prefab;
     [Header("Spawning Settings")]
@@ -18,7 +20,7 @@ public class TileDecoration
             return;
         }
 
-        Vector3 targetPos = parentTile.position + PositionOffset;
+        Vector3 targetPos = parentTile.position + PositionOffset + TILE_BASE_OFFSET;
         Quaternion targetRot = parentTile.rotation * Quaternion.Euler(RotationOffset);
 
         GameObject spawnedProp = Object.Instantiate(Prefab, targetPos, targetRot, parentTile);

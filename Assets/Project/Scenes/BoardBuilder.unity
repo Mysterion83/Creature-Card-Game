@@ -259,37 +259,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 393065409079913093, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2717472310007726300, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_Name
       value: Board Builder
-      objectReference: {fileID: 0}
-    - target: {fileID: 2717472310007726300, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3071719787645843231, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3071719787645843231, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: _fileName
-      value: y
-      objectReference: {fileID: 0}
-    - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: _mapData.MapSize.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3986098501623615174, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
-      propertyPath: _mapData.MapSize.y
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8826718216982101263, guid: f9eba4a0e9054da45a89b0b10cb23b52, type: 3}
       propertyPath: m_LocalPosition.x
